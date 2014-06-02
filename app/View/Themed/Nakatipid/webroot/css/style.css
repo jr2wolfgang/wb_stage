@@ -1,0 +1,32 @@
+/** GLOBAL STYLE FOR USER VIEW **/
+
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
+ul {
+	list-style: none;
+}
+
+#main-wrapper {
+    background: none repeat scroll 0 0 #F6F6F6;
+    min-height: 100%;
+}
+
+#inner-wrapper {
+
+}
+
+#header-container {
+	min-height: 250px;
+	padding-top: 100px;
+}
+
+#logo-container {
+	text-align: center;
+}
+
+#searchbar-container {
+    margin-top: 100px;
+}

@@ -51,7 +51,34 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
     <!-- body content here -->
 
-    
+    <div id="main-wrapper">
+        <div id="inner-wrapper" class="row">
+            <div id="header-container" class="large-12 column">
+                <div id="logo-container" class="row">
+                    <div class="large-6 large-centered small-centered medium-centered column">
+                        <?php echo $this->Html->image('logo.png'); ?>
+                    </div>
+                </div>
+                <div id="searchbar-container" class="row">
+                    <div id="search-field" class="left">
+                        <input type="text" id="mainsearch-field" placeholder="Type in your keyword ..">
+                    </div>
+                    <div id="location-dropdown" class="left">
+                        <div class="dropdown icon-right">
+                            <ul class="list">
+                                <li>Quezon City</li>
+                            </ul>
+                            <i class="flaticon-arrow133"></i>
+                        </div>
+                    </div>
+                    <div id="search-button" class="left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php echo $this->Session->flash(); ?>
+    <?php echo $this->fetch('content'); ?>
 
     <?php
         echo $this->Html->script('foundation.min');
