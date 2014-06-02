@@ -103,7 +103,7 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),		
 		'default_password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -143,8 +143,20 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		)
 	);
+
+
+	// function equaltofield($check,$otherfield){
+ //        //get name of field
+ //        $fname = '';
+ //        foreach ($check as $key => $value){
+ //            $fname = $key;
+ //            break;
+ //        }
+ //        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
+ //    } 
+	
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -169,4 +181,9 @@ class User extends AppModel {
 			'order' => ''
 		)
 	);
+
+
+	
+
 }
+

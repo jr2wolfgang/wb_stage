@@ -111,4 +111,52 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+
+
+/**
+ * Register Method
+ *
+ *
+ */
+
+	public function register(){
+		$this->layout = 'testing';
+
+		if ($this->request->is('post')) {
+
+			$this->User->create();
+					
+			$data = array('User' => array('firstname' => $this->request->data['User']['firstname'],
+										  'lastname' => $this->request->data['User']['lastname'],
+										  'email' => $this->request->data['User']['email'],
+										  'group_id' => $this->request->data['User']['group_id'],
+										  'account_type_id' => $this->request->data['User']['account_type_id'],
+										  'birthdate' => $this->request->data['User']['birthdate'],
+										  'gender' => $this->request->data['User']['gender'],
+										  'jrr_user' => $this->request->data['User']['jrr_user'],
+										  'jrr_password' => $this->request->data['User']['jrr_password'],
+										  'is_login' => $this->request->data['User']['is_login'],
+										  'is_active' => $this->request->data['User']['is_active'],
+										  'rxt' => $this->request->data['User']['jrr_password']));
+	
+			if ( $this->User->save($data) ) {
+				$this->Session->setFlash(__('The user has been saved.'));
+				//return $this->redirect(array('action' => 'index'));
+			} 
+
+			else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+
+		}
+
+		$groups = $this->User->Group->find('list');
+		$accountTypes = $this->User->AccountType->find('list');
+		$this->set(compact('groups', 'accountTypes'));
+
+	}
+
+
 }
+
