@@ -1,8 +1,11 @@
 /** GLOBAL STYLE FOR USER VIEW **/
 
+@import url("../font/fonts.css");
+
 html, body {
 	height: 100%;
 	min-height: 100%;
+	font-family: 'proxima_nova_rgregular';
 }
 
 ul {
@@ -12,10 +15,7 @@ ul {
 #main-wrapper {
     background: none repeat scroll 0 0 #F6F6F6;
     min-height: 100%;
-}
-
-#inner-wrapper {
-
+    padding-bottom: 300px;
 }
 
 #header-container {
@@ -28,5 +28,202 @@ ul {
 }
 
 #searchbar-container {
-    margin-top: 100px;
+    margin-top: 76px;
+}
+
+#search-field {
+    border-bottom: 5px solid #2980B9;
+    width: 75%;
+}
+
+#mainsearch-field {
+	font-family: 'proxima_novalight';
+    border: 0 none;
+    box-shadow: none;
+    color: #333333;
+    font-size: 20pt;
+    height: 60px;
+    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+#location-dropdown {
+    background: none repeat scroll 0 0 #3EA3E5;
+    border-bottom: 5px solid #2980B9;
+    height: 65px;
+    width: 15%;
+    transition: background 0.5s ease;
+}
+
+#location-dropdown:hover {
+	background: #4eafef;
+}
+
+.dropdown .selected-dropdown {
+    color: #FFFFFF;
+    display: table-cell;
+    height: 65px;
+    margin: 0;
+    padding: 0 17px;
+    vertical-align: middle;
+}
+
+.dropdown ul.list {
+	display: none;
+}
+
+.icon-right i {
+	float: right;
+}
+
+.icon-left i {
+	float: left;
+}
+
+.dropdown i {
+    color: #1F85C8;
+    display: table-cell;
+    float: none;
+    font-size: 10pt;
+    height: 65px;
+    margin: 0;
+    padding: 0;
+    transform: rotate(270deg);
+    vertical-align: middle;
+}
+
+#search-button {
+    background: none repeat scroll 0 0 #2980B9;
+    padding: 18.5px 36px;
+}
+
+#search-button:hover {
+	background: #378ec7;
+}
+
+.btn {
+    padding: 5px;
+    transition: background 0.5s ease;
+    cursor: pointer;
+}
+
+.solo-icon i {
+	color: #fff;
+	font-size: 20pt;
+}
+
+#access-section {
+	min-height: 450px;
+	max-height: 450px;
+	height: 450px;
+	width: 100%;
+	margin-top: 150px;
+}
+
+#register-container {
+	background: #2980b9;
+	min-height: 100%;
+	margin-top: -340px;
+}
+
+#signin-container {
+	background: #e67e22;
+	min-height: 100%;
+	margin-top: -340px;
+}
+
+#access-section input[type="text"] {
+    border: 0 none;
+    box-shadow: none;
+    font-size: 19pt;
+    height: 100%;
+    padding: 10px;
+    font-family: 'proxima_novalight';
+}
+
+.access-forms {
+    position: relative;
+    z-index: 99;
+    margin-top: 200px;
+}
+
+.access-forms > .row {
+	z-index: 99;
+}
+
+#register-btn {
+    background: none repeat scroll 0 0 #3EA3E5;
+    border-bottom: 4px solid #1E73AB;
+    color: #FFFFFF;
+    padding: 10px 17px;
+}
+
+#register-btn:hover {
+	background: #47AFEF;
+}
+
+#register-btn:hover i {
+	background: #2C7FB2;
+}
+
+#login-btn {
+    background: none repeat scroll 0 0 #fb9943;
+    border-bottom: 4px solid #ce6b13;
+    color: #FFFFFF;
+    padding: 10px 17px;
+}
+
+#login-btn:hover {
+	background: #FCA458;
+}
+
+#login-btn:hover i {
+	background: #D67520;
+}
+
+#login-btn i {
+	background: none repeat scroll 0 0 #ce6b13;
+}
+
+.btn.icon-left i {
+    background: none repeat scroll 0 0 #1E73AB;
+    border-radius: 30px;
+    margin-right: 20px;
+    padding: 7px;
+    transition: background 0.5s ease;
+}
+
+.btn.icon-left span {
+    float: right;
+    font-size: 17pt;
+    padding-top: 3px;
+}
+
+.access-title {
+    color: #FFFFFF;
+    font-family: 'chunkfiveroman';
+    font-size: 22pt;
+    padding-bottom: 25px;
+}
+
+.or-circle {
+    background: none repeat scroll 0 0 #2980B9;
+    border: 7px solid #E67E22;
+    border-radius: 85px;
+    color: #FFFFFF;
+    font-size: 20pt;
+    font-weight: bold;
+    margin-left: -65px;
+    margin-top: 166px;
+    padding: 28px 23px;
+    z-index: 99999;
+}
+
+.full-width {
+	width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
+   padding: 0px 20px;
 }
