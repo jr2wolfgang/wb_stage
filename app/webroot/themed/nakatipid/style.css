@@ -1,0 +1,51 @@
+html {
+    background: none repeat scroll 0 0 #ffffff !important;
+}
+@font-face {
+font-family: proxima_nova;
+src: url("../font/PROXIMANOVA-LIGHT-2.OTF") format("opentype");
+}
+
+@font-face {
+    font-family: proxima_nova_bold;
+    src: url("../font/PROXIMANOVA-BOLD.OTF") format("opentype");
+}
+
+@font-face {
+    font-family: alright_sans_black;
+    src: url("../font/AlrightSans/AlrightSans-Black-v3.otf") format("opentype");
+}
+@font-face {
+    font-family: alright_sans_light;
+    src: url("../font/AlrightSans/AlrightSans-Light-v3.otf") format("opentype");
+}
+@font-face {
+    font-family: alright_sans_regular;
+    src: url("../font/AlrightSans/AlrightSans-Regular-v3.otf") format("opentype");
+}
+@font-face {
+    font-family: alright_sans_bold;
+    src: url("../font/AlrightSans/AlrightSans-Bold-v3.otf") format("opentype");
+}
+@font-face {
+    font-family: alright_sans_ultra;
+    src: url("../font/AlrightSans/AlrightSans-Ultra-v3.otf") format("opentype");
+}
+@font-face {
+    font-family: open_sans_regular;
+    src: url("../font/open_sans/OpenSans-Regular.ttf");
+}
+
+body {
+    /* background: #f1f1f1 !important; */
+    margin: 0;
+    padding: 0;
+    font-family: "proxima_nova","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    background-color: #C1CFDB;
+    background: #F6F8F8 !important;
+    
+}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; } /* Hides from IE-mac \*/
+.clearfix { display: block; }
