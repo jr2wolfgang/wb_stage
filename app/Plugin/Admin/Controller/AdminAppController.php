@@ -33,42 +33,17 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
+class AdminAppController extends Controller {
 
 	  function beforeFilter() {
-
-  		$this->theme = 'Nakatipid';
-  		
-  		$this->Auth->allow('index', 'view');
 
 		$userData = $this->Session->read('Auth');
 
 		$this->set(compact('userData'));
+  		
  	}
 
-	  public $components = array(
-        'Session','DebugKit.Toolbar',
-        'Auth' => array(
-			'authenticate' => array(
-			'Form' => array(
-			   'fields' => array(
-			        'username' => 'jrr_user',
-			        'password' => 'jrr_password'
-			    )
-			)
-			),
-            'loginRedirect' => array(
-                'controller' => 'admins',
-                'action' => 'index',
-                'plugin' => 'admin'
-            ),
-            'logoutRedirect' => array(
-                'controller' => 'ads',
-                'action' => 'index',
-                
-            )
-        )
-    );
+	  
 
 
 }

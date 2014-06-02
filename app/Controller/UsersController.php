@@ -20,6 +20,17 @@ class UsersController extends AppController {
  *
  * @return void
  */
+
+
+	public function beforeFilter() {
+	    parent::beforeFilter();
+
+
+	    // Allow users to register and logout.
+	    $this->Auth->allow('register', 'logout');
+	}
+
+
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
@@ -111,4 +122,82 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+
+
+/**
+ * Register Method
+ *
+ *
+ */
+
+	public function register(){
+		$this->layout = 'register';
+
+		if ($this->request->is('post')) {
+
+			$this->User->create();
+
+
+					
+			$data = array('User' => array('firstname' => $this->request->data['User']['firstname'],
+										  'lastname' => $this->request->data['User']['lastname'],
+										  'email' => $this->request->data['User']['email'],
+										  'group_id' => $this->request->data['User']['group_id'],
+										  'account_type_id' => $this->request->data['User']['account_type_id'],
+										  'birthdate' => $this->request->data['User']['birthdate'],
+										  'gender' => $this->request->data['User']['gender'],
+										  'jrr_user' => $this->request->data['User']['jrr_user'],
+										  'jrr_password' => $this->request->data['User']['jrr_password'],
+										  'is_active' => 0,
+										  'rxt' => $this->request->data['User']['re_password']));
+	
+			if ( $this->User->save($data) ) {
+				$this->Session->setFlash(__('The user has been saved.'));
+				return $this->redirect(array('action' => 'login'));
+			} 
+
+			else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+
+		}
+
+		$groups = $this->User->Group->find('list');
+		$accountTypes = $this->User->AccountType->find('list');
+		$this->set(compact('groups', 'accountTypes'));
+
+	}
+
+
+
+
+	public function login() {
+
+		$this->layout = 'login';
+
+	    if ($this->request->is('post')) {
+
+	    
+	        if ($this->Auth->login()) {
+
+	        	// set login to 1
+	        	$this->User->LoginAction($this->Session->read('Auth'),'1');
+				
+				return $this->redirect($this->Auth->redirect());
+	        }
+	        $this->Session->setFlash(__('Invalid username or password, try again'));
+	    }
+	}
+
+	public function logout() {
+		// set login to 1
+		if ($this->User->LoginAction($this->Session->read('Auth'),'0')) {
+				 return $this->redirect($this->Auth->logout());
+		}
+	   
+	}
+
+
 }
+

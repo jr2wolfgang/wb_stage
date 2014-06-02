@@ -1,0 +1,22 @@
+.login fieldset {
+    border: medium none;
+    margin: auto;
+    max-width: 500px;
+}
+.submit > input {
+    background: none repeat scroll 0 0 #3F3F3F;
+    border: medium none;
+    color: #FFFFFF;
+    padding: 6px 20px;
+    border-radius: 2;
+}
+.message,#flashMessage {
+    background: none repeat scroll 0 0 #3F3F3F;
+    color: #FFFFFF;
+    left: 0;
+    padding: 10px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
