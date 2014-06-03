@@ -170,3 +170,6 @@
                 }
             ?>
     </div>
+    <div id="lazy-loader-container" class="fullWidth">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+    </div>

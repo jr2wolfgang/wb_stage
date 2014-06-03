@@ -35,6 +35,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         // STYLES
         echo $this->Html->css('normalize');
         echo $this->Html->css('foundation.min');
+        echo $this->Html->css('font-awesome.min');
         echo $this->Html->css('flaticon');
         echo $this->Html->css('animate');
         echo $this->Html->css('style');

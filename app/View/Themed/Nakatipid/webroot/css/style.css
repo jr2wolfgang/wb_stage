@@ -15,7 +15,6 @@ ul {
 #main-wrapper {
     background: none repeat scroll 0 0 #F6F6F6;
     min-height: 100%;
-    padding-bottom: 300px;
 }
 
 #header-container {
@@ -149,9 +148,8 @@ ul {
 }
 
 #access-section {
-	min-height: 450px;
 	max-height: 450px;
-	height: 450px;
+	height: 390px;
 	width: 100%;
 	margin-top: 150px;
 }
@@ -159,13 +157,13 @@ ul {
 #register-container {
 	background: #2980b9;
 	min-height: 100%;
-	margin-top: -360px;
+	margin-top: -370px;
 }
 
 #signin-container {
 	background: #e67e22;
 	min-height: 100%;
-	margin-top: -360px;
+	margin-top: -370px;
 }
 
 #access-section input[type="text"],#access-section input[type="password"],#access-section input[type="email"]  {
@@ -250,7 +248,7 @@ ul {
     font-family: 'simpleton_gothicregular';
     font-size: 20pt;
     margin-left: -65px;
-    margin-top: 166px;
+    margin-top: 146px;
     padding: 28px 27px;
     z-index: 99999;
 }
@@ -371,4 +369,14 @@ ul {
 
 #ads-list {
     text-align: center;
+}
+
+#lazy-loader-container {
+    color: #48ABEB;
+    font-family: 'simpleton_gothicregular';
+    font-size: 55pt;
+    margin: 20px auto 65px;
+    padding: 10px;
+    text-align: center;
+    display: none;
 }

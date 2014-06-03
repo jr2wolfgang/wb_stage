@@ -41,7 +41,14 @@ $(document).ready(function(){
 	var sampleData = $('#ads-list').html();
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-	   		$('#ads-list').append(sampleData);
+	   		$('#lazy-loader-container').fadeIn();
+	   		
+	   		setTimeout(
+	   		  function() 
+	   		  {
+	   			$('#lazy-loader-container').hide();
+	   		    $('#ads-list').append(sampleData);
+	   		  }, 3000);
 	   }
 	});
 
