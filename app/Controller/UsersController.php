@@ -190,6 +190,8 @@ class UsersController extends AppController {
 
 	public function get_account_type($accountType = null) {
 
+			$this->layout = 'register';
+
 			$roleData = $this->Session->read('Auth');
 
 			if (!empty($accountType)){
@@ -202,8 +204,7 @@ class UsersController extends AppController {
 						$this->redirect($this->Auth->redirect());
 					}
 			}
-			$this->layout = 'register';
-
+			
 			$accountTypes = $this->User->AccountType->find('list');
 
 			$this->set(compact('accountTypes'));

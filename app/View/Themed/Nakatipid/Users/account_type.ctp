@@ -1,6 +1,6 @@
 <div class="row">
 
-
+<h2><?php echo __('Registration Type'); ?><</h2>
 	<div class="large-12 column">
 		<div class="account_type">
 
