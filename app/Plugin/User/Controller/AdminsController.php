@@ -15,15 +15,13 @@ class AdminsController extends UserAppController  {
 
 
 	    // Allow users to register and logout.
-	    $this->Auth->allow('register', 'logout');
+	    $this->Auth->allow('index','register', 'logout');
 	}
 
 
 	public function index() {
 		$this->layout = 'default';
-
-		
-		
+				
 	}
 
 
