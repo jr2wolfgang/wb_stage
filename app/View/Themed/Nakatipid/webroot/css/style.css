@@ -133,7 +133,7 @@ ul {
 	margin-top: -340px;
 }
 
-#access-section input[type="text"] {
+#access-section input[type="text"]  {
     border: 0 none;
     box-shadow: none;
     font-size: 19pt;
@@ -141,7 +141,14 @@ ul {
     padding: 10px;
     font-family: 'proxima_novalight';
 }
-
+#access-section input[type="password"] {
+      border: 0 none;
+    box-shadow: none;
+    font-size: 19pt;
+    height: 100%;
+    padding: 10px;
+    font-family: 'proxima_novalight'; 
+}
 .access-forms {
     position: relative;
     z-index: 99;

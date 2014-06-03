@@ -15,7 +15,43 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'group_id' => array(
+
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'unique' => array(
+				'rule'    => 'isUnique',
+				'message' => 'This Email has already been taken.'
+			)
+		),
+		'jrr_user' => array(
+			
+			'required' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'You must enter a username.'
+			),
+			'length' => array(
+				'rule' => array('between', 3, 15),
+				'message' => 'Your username must be between 3 and 15 characters long.'
+			),
+			'unique' => array(
+				'rule'    => 'isUnique',
+				'message' => 'This username has already been taken.'
+			)
+		),
+		'jrr_password' => array(
+			'identicalFieldValues' => array( 
+				'rule' => array('identicalFieldValues', 'rxt' ), 
+				'message' => 'Please re-enter your password twice so that the values match' 
+				) 
+		),	
+		/* 'group_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -75,37 +111,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'email' => array(
-			'email' => array(
-				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'jrr_user' => array(
 			
-			'required' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'You must enter a username.'
-			),
-			'length' => array(
-				'rule' => array('between', 3, 15),
-				'message' => 'Your username must be between 3 and 15 characters long.'
-			),
-			'unique' => array(
-				'rule'    => 'isUnique',
-				'message' => 'This username has already been taken.'
-			)
-		),
-		'jrr_password' => array(
-			'identicalFieldValues' => array( 
-				'rule' => array('identicalFieldValues', 'rxt' ), 
-				'message' => 'Please re-enter your password twice so that the values match' 
-				) 
-		),		
 		'default_password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -145,7 +151,7 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		)
+		) */
 	);
 
 

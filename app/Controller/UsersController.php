@@ -140,19 +140,9 @@ class UsersController extends AppController {
 
 
 					
-			$data = array('User' => array('firstname' => $this->request->data['User']['firstname'],
-										  'lastname' => $this->request->data['User']['lastname'],
-										  'email' => $this->request->data['User']['email'],
-										  'group_id' => $this->request->data['User']['group_id'],
-										  'account_type_id' => $this->request->data['User']['account_type_id'],
-										  'birthdate' => $this->request->data['User']['birthdate'],
-										  'gender' => $this->request->data['User']['gender'],
-										  'jrr_user' => $this->request->data['User']['jrr_user'],
-										  'jrr_password' => $this->request->data['User']['jrr_password'],
-										  'is_active' => 0,
-										  'rxt' => $this->request->data['User']['re_password']));
+			
 	
-			if ( $this->User->save($data) ) {
+			if ( $this->User->save($this->request->data) ) {
 				$this->Session->setFlash(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'login'));
 			} 

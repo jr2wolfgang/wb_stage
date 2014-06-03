@@ -79,7 +79,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 </div>
             </div>
         </div>
-
+    <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'register')); ?>
         <div id="access-section">
             <div class="access-forms row">
                 <div class="row">
@@ -93,28 +93,32 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         </div>
                         <div class="row">
                             <div class="large-10 columns">
-                                <input type="text" placeholder="Email Address">
+                                <?php echo $this->Form->input('email',array('label' => false,'placeholder' => 'Email Address'));?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-10 columns">
-                                <input type="text" placeholder="Password">
+                                <?php echo $this->Form->input('jrr_password',array('type' => 'password','label' => false,'placeholder' => 'Password'));?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-10 columns">
-                                <input type="text" placeholder="Confirm Password">
+                                <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-10 columns">
-                                <div id="register-btn" class="btn right icon-left">
-                                    <i class="flaticon-user7"></i>
-                                    <span>Register</span>
-                                </div>
+                                     
+                               <button type="submit" id="register-btn" class="btn right icon-left">
+                                  <i class="flaticon-user7"></i> <span>Register</span>
+                                </button>
+                    
+                         <?php echo $this->Form->end(); ?>
                             </div>
                         </div>
                     </div>
+                <?php echo $this->Form->end(); ?>  
+                    <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'login')); ?>
                     <div class="large-6 columns">
                         <div class="row">
                             <div class="large-10 columns right">
@@ -123,23 +127,29 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="large-10 columns right">
-                                <input type="text" placeholder="Email Address">
+                                <?php echo $this->Form->input('email',array('type' => 'text','label' => false,
+                                 'placeholder' =>'Email Address')); ?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-10 columns right">
-                                <input type="text" placeholder="Password">
+                                <?php echo $this->Form->input('jrr_user',array('type' => 'text','label' => false,
+                                 'placeholder' =>'Password')); ?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-10 columns right">
-                                <div id="login-btn" class="btn right icon-left">
-                                    <i class="flaticon-lock39"></i>
-                                    <span>Login</span>
-                                </div>
+                               
+
+                                 <button type="submit" id="login-btn" class="btn right icon-left">
+                                  <i class="flaticon-lock39"></i> 
+                                   <span>Login</span>
+                                </button>
                             </div>
+                             <?php echo $this->Form->end(); ?>  
                         </div>
                     </div>
                 </div>

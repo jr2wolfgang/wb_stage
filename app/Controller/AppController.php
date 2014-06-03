@@ -43,21 +43,15 @@ class AppController extends Controller {
 
 		$userData = $this->Session->read('Auth');
 
+		$this->Auth->authenticate = array('Custom');
+
 		$this->set(compact('userData'));
  	}
 
 	  public $components = array(
         'Session','DebugKit.Toolbar',
         'Auth' => array(
-			'authenticate' => array(
-			'Form' => array(
-			   'fields' => array(
-			        'username' => 'jrr_user',
-			        'password' => 'jrr_password'
-			    )
-			)
-			),
-            'loginRedirect' => array(
+			'loginRedirect' => array(
                 'controller' => 'admins',
                 'action' => 'index',
                 'plugin' => 'admin'

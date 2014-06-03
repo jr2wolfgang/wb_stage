@@ -3,22 +3,12 @@
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
-		$group_type = array('admin', 'user');
-		$accout_type = array('individual', 'business', 'services');
-		$gender_type = array('M' => 'Male', 'F' => 'Female');
-
-		echo $this->Form->input('group_id');
-		echo $this->Form->input('account_type_id');
-		
-		echo $this->Form->input('firstname');
-		echo $this->Form->input('lastname');
-		echo $this->Form->input('birthdate');
-		echo $this->Form->radio('gender', $gender_type);
+	
 		echo $this->Form->input('email');
 		echo $this->Form->input('jrr_user',array('label' => 'Username'));
 		echo $this->Form->input('jrr_password',array('type' => 'password','label' =>'Password'));
 		echo $this->Form->input('re_password', array('type'=>'password', 'label'=>'Re-Enter Password', 'value'=>'', 'autocomplete'=>'off'));
-	
+		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
