@@ -190,6 +190,21 @@ class User extends AppModel {
 		)
 	);
 
+	public $hasMany = array(
+		'Ad' => array(
+			'className' => 'Ad',
+			'foreignKey' => 'modified_by',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 
 	function identicalFieldValues( $field=array(), $compare_field=null )  
     { 

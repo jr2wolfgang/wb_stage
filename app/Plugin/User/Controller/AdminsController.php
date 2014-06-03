@@ -8,8 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class AdminsController extends UserAppController  {
 
-
-
 	public function beforeFilter() {
 	    parent::beforeFilter();
 
@@ -18,11 +16,25 @@ class AdminsController extends UserAppController  {
 	    $this->Auth->allow('index','register', 'logout');
 	}
 
-
 	public function index() {
-		$this->layout = 'default';
-				
+		$this->layout = 'default';				
 	}
 
+	public function ads(){
+		$ads = ClassRegistry::init('Ad');
+		$session_id = $this->Session->read('Auth');
+		$session_id = $session_id['User']['id'];
+
+		if ($this->request->is('post')) { 
+			$ads->create();
+			$this->request->data['Ad']['modified_by'] = $session_id;
+
+			if($ads->save($this->request->data)){
+				$this->Session->setFlash(__('The ads has been saved.'));
+			}else{
+				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
+			}
+		}
+	}
 
 }
