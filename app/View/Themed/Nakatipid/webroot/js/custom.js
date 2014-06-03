@@ -30,4 +30,19 @@ $(document).ready(function(){
 		$('.selected-dropdown').text(loc)
 	});
 
+	$('#ads-list').on('mouseover','.per-ads-list',function(){
+		$(this).children('.per-ads-img').children('.ads-has-label').toggleClass('pulse');
+	});
+
+	$('#ads-list').on('mouseout','.per-ads-list',function(){
+		$(this).children('.per-ads-img').children('.ads-has-label').toggleClass('pulse');
+	});
+
+	var sampleData = $('#ads-list').html();
+	$(window).scroll(function() {
+	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+	   		$('#ads-list').append(sampleData);
+	   }
+	});
+
 });
