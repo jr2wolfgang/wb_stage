@@ -37,7 +37,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'foundation.min',
             'flaticon',
             'style',
-            'login'
+            'register'
             ));
    
 

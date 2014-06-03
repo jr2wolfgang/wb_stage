@@ -18,8 +18,7 @@
 		echo $this->Form->input('jrr_user',array('label' => 'Username'));
 		echo $this->Form->input('jrr_password',array('type' => 'password','label' =>'Password'));
 		echo $this->Form->input('re_password', array('type'=>'password', 'label'=>'Re-Enter Password', 'value'=>'', 'autocomplete'=>'off'));
-		echo $this->Form->input('is_login');
-		echo $this->Form->input('is_active');
+	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -35,12 +35,41 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $components = array('DebugKit.Toolbar','Session');
-
 	  function beforeFilter() {
 
   		$this->theme = 'Nakatipid';
+  		$this->Auth->allow('index', 'view');
+
+		$this->Auth->authenticate = array(
+			'Form' => array(
+				'fields' => array('username' => 'jrr_user', 'password' => 'jrr_password'),
+			),
+		);
  	}
 
-	
+	  public $components = array(
+        'Session','DebugKit.Toolbar',
+        'Auth' => array(
+			 'authenticate' => array(
+			'Form' => array(
+			   'fields' => array(
+			        'username' => 'jrr_user',
+			        'password' => 'jrr_password'
+			    )
+			)
+			),
+            'loginRedirect' => array(
+                'controller' => 'admin',
+                'action' => 'index',
+                'plugin' => 'admin'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'ads',
+                'action' => 'index',
+                
+            )
+        )
+    );
+
+
 }

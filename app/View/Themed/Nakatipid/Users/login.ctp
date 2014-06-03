@@ -10,4 +10,6 @@
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Login')); ?>
+
+<?php echo $this->Html->link('Register an Account',array('controller' => 'users','action' => 'register')); ?>
 </div>

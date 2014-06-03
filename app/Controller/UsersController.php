@@ -20,6 +20,17 @@ class UsersController extends AppController {
  *
  * @return void
  */
+
+
+	public function beforeFilter() {
+	    parent::beforeFilter();
+
+
+	    // Allow users to register and logout.
+	    $this->Auth->allow('register', 'logout');
+	}
+
+
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
@@ -121,11 +132,13 @@ class UsersController extends AppController {
  */
 
 	public function register(){
-		$this->layout = 'testing';
+		$this->layout = 'register';
 
 		if ($this->request->is('post')) {
 
 			$this->User->create();
+
+
 					
 			$data = array('User' => array('firstname' => $this->request->data['User']['firstname'],
 										  'lastname' => $this->request->data['User']['lastname'],
@@ -136,13 +149,12 @@ class UsersController extends AppController {
 										  'gender' => $this->request->data['User']['gender'],
 										  'jrr_user' => $this->request->data['User']['jrr_user'],
 										  'jrr_password' => $this->request->data['User']['jrr_password'],
-										  'is_login' => $this->request->data['User']['is_login'],
-										  'is_active' => $this->request->data['User']['is_active'],
-										  'rxt' => $this->request->data['User']['jrr_password']));
+										  'is_active' => 0,
+										  'rxt' => $this->request->data['User']['re_password']));
 	
 			if ( $this->User->save($data) ) {
 				$this->Session->setFlash(__('The user has been saved.'));
-				//return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'login'));
 			} 
 
 			else {
@@ -155,6 +167,27 @@ class UsersController extends AppController {
 		$accountTypes = $this->User->AccountType->find('list');
 		$this->set(compact('groups', 'accountTypes'));
 
+	}
+
+
+
+
+	public function login() {
+
+		$this->layout = 'login';
+
+	    if ($this->request->is('post')) {
+
+	    
+	        if ($this->Auth->login()) {
+	            return $this->redirect($this->Auth->redirect());
+	        }
+	        $this->Session->setFlash(__('Invalid username or password, try again'));
+	    }
+	}
+
+	public function logout() {
+	    return $this->redirect($this->Auth->logout());
 	}
 
 

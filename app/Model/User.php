@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
@@ -85,24 +86,25 @@ class User extends AppModel {
 			),
 		),
 		'jrr_user' => array(
-			'notEmpty' => array(
+			
+			'required' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'You must enter a username.'
 			),
+			'length' => array(
+				'rule' => array('between', 3, 15),
+				'message' => 'Your username must be between 3 and 15 characters long.'
+			),
+			'unique' => array(
+				'rule'    => 'isUnique',
+				'message' => 'This username has already been taken.'
+			)
 		),
 		'jrr_password' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			'identicalFieldValues' => array( 
+				'rule' => array('identicalFieldValues', 'rxt' ), 
+				'message' => 'Please re-enter your password twice so that the values match' 
+				) 
 		),		
 		'default_password' => array(
 			'notEmpty' => array(
@@ -183,7 +185,32 @@ class User extends AppModel {
 	);
 
 
-	
+	function identicalFieldValues( $field=array(), $compare_field=null )  
+    { 
+        foreach( $field as $key => $value ){ 
+            $v1 = $value; 
+            $v2 = $this->data[$this->name][ $compare_field ];                  
+            if($v1 !== $v2) { 
+                return FALSE; 
+            } else { 
+                continue; 
+            } 
+        } 
+        return TRUE; 
+    } 
+
+		
+	public function beforeSave($options = array()) {
+	    if (isset($this->data[$this->alias]['jrr_password'])) {
+	        $passwordHasher = new SimplePasswordHasher();
+	        $this->data[$this->alias]['jrr_password'] = $passwordHasher->hash(
+	            $this->data[$this->alias]['jrr_password']
+	        );
+	    }
+
+	  
+	    return true;
+	}
 
 }
 
