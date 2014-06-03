@@ -124,16 +124,16 @@ ul {
 #register-container {
 	background: #2980b9;
 	min-height: 100%;
-	margin-top: -340px;
+	margin-top: -360px;
 }
 
 #signin-container {
 	background: #e67e22;
 	min-height: 100%;
-	margin-top: -340px;
+	margin-top: -360px;
 }
 
-#access-section input[type="text"]  {
+#access-section input[type="text"],#access-section input[type="password"],#access-section input[type="email"]  {
     border: 0 none;
     box-shadow: none;
     font-size: 19pt;
@@ -141,14 +141,7 @@ ul {
     padding: 10px;
     font-family: 'proxima_novalight';
 }
-#access-section input[type="password"] {
-      border: 0 none;
-    box-shadow: none;
-    font-size: 19pt;
-    height: 100%;
-    padding: 10px;
-    font-family: 'proxima_novalight'; 
-}
+
 .access-forms {
     position: relative;
     z-index: 99;
@@ -197,7 +190,7 @@ ul {
     background: none repeat scroll 0 0 #1E73AB;
     border-radius: 30px;
     margin-right: 20px;
-    padding: 7px;
+    padding: 7px 9px;
     transition: background 0.5s ease;
 }
 
@@ -219,11 +212,11 @@ ul {
     border: 7px solid #E67E22;
     border-radius: 85px;
     color: #FFFFFF;
+    font-family: 'simpleton_gothicregular';
     font-size: 20pt;
-    font-weight: bold;
     margin-left: -65px;
     margin-top: 166px;
-    padding: 28px 23px;
+    padding: 28px 27px;
     z-index: 99999;
 }
 
