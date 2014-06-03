@@ -57,7 +57,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <div id="header-container" class="large-12 column">
                 <div id="logo-container" class="row">
                     <div class="large-6 large-centered small-centered medium-centered column">
-                        <?php echo $this->Html->image('logo.png'); ?>
+                        <?php echo $this->Html->image('logo_orange.png'); ?>
                     </div>
                 </div>
                 <div id="searchbar-container" class="row">

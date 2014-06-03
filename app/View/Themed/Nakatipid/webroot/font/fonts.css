@@ -33,3 +33,15 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'simpleton_gothicregular';
+    src: url('simpleton-gothic-webfont.eot');
+    src: url('simpleton-gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('simpleton-gothic-webfont.woff') format('woff'),
+         url('simpleton-gothic-webfont.ttf') format('truetype'),
+         url('simpleton-gothic-webfont.svg#simpleton_gothicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
