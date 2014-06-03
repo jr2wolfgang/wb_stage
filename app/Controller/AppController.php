@@ -35,30 +35,12 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	
+	public $components = array('DebugKit.Toolbar','Session');
+
 	  function beforeFilter() {
-	  	 parent::beforeFilter();
+
   		$this->theme = 'Nakatipid';
-  		  $this->Auth->allow('index', 'view');
  	}
-
-
- 	  public $components = array(
-        'Session','DebugKit.Toolbar',
-        'Auth' => array(
-            'loginRedirect' => array(
-                'controller' => 'admins',
-                'action' => 'index',
-                'plugin' => 'admin'
-            ),
-            'logoutRedirect' => array(
-                'controller' => 'ads',
-                'action' => 'index',
-                'home'
-            )
-        )
-    );
-
 
 	
 }

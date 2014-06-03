@@ -1,6 +1,5 @@
 <?php
 App::uses('AppModel', 'Model');
-App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
@@ -88,7 +87,6 @@ class User extends AppModel {
 		'jrr_user' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				 'message' => 'A username is required'	
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -99,14 +97,13 @@ class User extends AppModel {
 		'jrr_password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				'message' => 'A password is required'
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),		
 		'default_password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -146,8 +143,20 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		)
 	);
+
+
+	// function equaltofield($check,$otherfield){
+ //        //get name of field
+ //        $fname = '';
+ //        foreach ($check as $key => $value){
+ //            $fname = $key;
+ //            break;
+ //        }
+ //        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
+ //    } 
+	
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -174,13 +183,7 @@ class User extends AppModel {
 	);
 
 
-	public function beforeSave($options = array()) {
-		if (isset($this->data[$this->alias]['jrr_password'])) {
-		$passwordHasher = new SimplePasswordHasher();
-		$this->data[$this->alias]['jrr_password'] = $passwordHasher->hash(
-		    $this->data[$this->alias]['jrr_password']
-		);
-		}
-		return true;
-	}
+	
+
 }
+
