@@ -12,6 +12,26 @@ ul {
 	list-style: none;
 }
 
+.no-pad-right {
+    padding-right: 0;
+}
+.no-pad-left{
+    padding-left: 0;
+}
+
+.no-pad-both {
+padding-right: 0;
+padding-left: 0;
+}
+
+.mobile-view {
+    display: none;
+}
+
+.desktop-view {
+    display: block;
+}
+
 #main-wrapper {
     background: none repeat scroll 0 0 #F6F6F6;
     min-height: 100%;
@@ -28,13 +48,11 @@ ul {
 
 #searchbar-container {
     margin-top: 76px;
-    height: 65px;
 }
 
 #search-field {
     border-bottom: 5px solid #2980B9;
-    width: 75%;
-    height: 100%
+    height: 65px;
 }
 
 #mainsearch-field {
@@ -52,9 +70,8 @@ ul {
 #location-dropdown {
     background: none repeat scroll 0 0 #3EA3E5;
     border-bottom: 5px solid #2980B9;
-    height: 100%;
+    height: 65px;
     transition: background 0.5s ease 0s;
-    width: 15%;
 }
 
 #location-dropdown:hover {
@@ -63,18 +80,28 @@ ul {
 
 .dropdown .selected-dropdown {
     color: #FFFFFF;
-    display: table-cell;
+    float: left;
+    font-size: 14pt;
     height: 65px;
     margin: 0;
-    min-width: 127px;
-    max-width: 127px;
-    width: 127px;
-    padding: 0 12px;
-    vertical-align: middle;
-    white-space: nowrap;
     overflow: hidden;
+    padding: 21px 12px 0;
+    text-align: center;
     text-overflow: ellipsis;
-    text-align:center;
+    white-space: nowrap;
+    width: 80%;
+}
+
+.dropdown i {
+    color: #1F85C8;
+    float: none;
+    font-size: 10pt;
+    margin-right: 15px;
+    margin-top: 22px;
+    text-align: left;
+    transform: rotate(270deg);
+    transition: rotate 300ms ease-in 0s;
+    width: auto;
 }
 
 .dropdown ul.list {
@@ -82,7 +109,7 @@ ul {
     border-right: 6px solid #4eafef;
     color: #FFFFFF;
     font-size: 13pt;
-    margin-left: -100px;
+    margin-left: -84px;
     margin-top: -5px;
     position: absolute;
     width: 250px;
@@ -113,23 +140,13 @@ ul {
 	float: left;
 }
 
-.dropdown i {
-    color: #1F85C8;
-    display: table-cell;
-    float: none;
-    font-size: 10pt;
-    height: 65px;
-    margin: 0;
-    padding: 0;
-    transform: rotate(270deg);
-    vertical-align: middle;
-    transition: rotate 300ms ease-in;
-}
 
 #search-button {
     background: none repeat scroll 0 0 #2980B9;
-    height: 100%;
-    padding: 18.5px 36px;
+    height: 65px;
+    padding-top: 18px;
+    position: relative;
+    text-align: center;
 }
 
 #search-button:hover {
@@ -152,6 +169,7 @@ ul {
 	height: 390px;
 	width: 100%;
 	margin-top: 150px;
+    margin-bottom: 30px;
 }
 
 #register-container {
@@ -165,6 +183,17 @@ ul {
 	min-height: 100%;
 	margin-top: -370px;
 }
+
+.register-container-mobile {
+    background: #2980b9;
+    padding-top: 30px;
+}
+
+.signin-container-mobile {
+    background: #e67e22;
+    padding-top: 30px;
+}
+
 
 #access-section input[type="text"],#access-section input[type="password"],#access-section input[type="email"]  {
     border: 0 none;
@@ -379,4 +408,9 @@ ul {
     padding: 10px;
     text-align: center;
     display: none;
+}
+
+.mobile-access-container {
+    margin-bottom: 40px;
+    margin-top: 50px;
 }

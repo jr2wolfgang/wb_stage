@@ -39,6 +39,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         echo $this->Html->css('flaticon');
         echo $this->Html->css('animate');
         echo $this->Html->css('style');
+        echo $this->Html->css('responsive');
 
         // SCRIPTS
         echo $this->Html->script('vendor/jquery');
