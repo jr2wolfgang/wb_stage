@@ -248,3 +248,17 @@ ul {
    max-width: initial;
    padding: 0px 20px;
 }
+
+.account_type {
+    text-align: center;
+}
+.account_type a {
+    border: 1px solid #CCCCCC;
+    display: inline-block;
+    height: 200px;
+    line-height: 12;
+    margin: auto !important;
+    max-width: 200px;
+    text-align: center;
+    width: 200px;
+}

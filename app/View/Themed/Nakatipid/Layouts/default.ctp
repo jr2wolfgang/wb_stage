@@ -136,7 +136,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         </div>
                         <div class="row">
                             <div class="large-10 columns right">
-                                <?php echo $this->Form->input('jrr_user',array('type' => 'text','label' => false,
+                                <?php echo $this->Form->input('jrr_password',array('type' => 'password','label' => false,
                                  'placeholder' =>'Password')); ?>
                             </div>
                         </div>

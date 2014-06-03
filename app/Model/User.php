@@ -225,5 +225,12 @@ class User extends AppModel {
 
 	}
 
+	public function CheckData($data) {
+
+			$userData = $this->find('first',array('conditions' => array(
+				'User.email' => $data['User']['email'])));
+			return $userData;
+	}
+
 }
 
