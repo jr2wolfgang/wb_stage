@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
@@ -87,6 +88,7 @@ class User extends AppModel {
 		'jrr_user' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
+				 'message' => 'A username is required'	
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -97,6 +99,7 @@ class User extends AppModel {
 		'jrr_password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
+				'message' => 'A password is required'
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -169,4 +172,15 @@ class User extends AppModel {
 			'order' => ''
 		)
 	);
+
+
+	public function beforeSave($options = array()) {
+		if (isset($this->data[$this->alias]['jrr_password'])) {
+		$passwordHasher = new SimplePasswordHasher();
+		$this->data[$this->alias]['jrr_password'] = $passwordHasher->hash(
+		    $this->data[$this->alias]['jrr_password']
+		);
+		}
+		return true;
+	}
 }
