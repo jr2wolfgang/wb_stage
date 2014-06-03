@@ -110,4 +110,12 @@ class CustomAuthenticate extends BaseAuthenticate
         unset($result[$model][$fields['password']]);
         return $result[$model];
     }
+
+
+    public function checkAccountType($data = null) {
+
+        pr($data);
+        exit();
+
+    }
 }

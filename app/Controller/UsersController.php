@@ -132,32 +132,86 @@ class UsersController extends AppController {
  */
 
 	public function register(){
+		
 		$this->layout = 'register';
 
+			
 		if ($this->request->is('post')) {
 
-			$this->User->create();
+			if (!empty($this->request->data['User']['email'])) {
 
 
-					
-			
-	
-			if ( $this->User->save($this->request->data) ) {
-				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'login'));
-			} 
+				$this->User->create();
 
-			else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+
+				if ( $this->User->save($this->request->data) ) {
+
+					//$this->_checkAccountType($this->request->data);
+
+
+						if ($this->Auth->login($this->request->data['User'])) {
+
+								
+								$account_type = $this->User->CheckData($this->Session->read('Auth'));
+
+								if (!empty($account_type['User']['account_type_id'])) {
+									return $this->redirect($this->Auth->redirectUrl(array('controller' => 'tagroomdemoposts','action' => 'index')));
+								}
+
+								//$this->redirect($this->Auth->redirect());
+								$this->redirect(array('action' => 'get_account_type'));
+
+						}
+
+					//$this->Session->setFlash(__('The user has been saved.'));
+
+					//return $this->redirect(array('action' => 'login'));
+				} 
+
+				else {
+					$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				}
 			}
 
-		}
+			}
+		
 
 		$groups = $this->User->Group->find('list');
 		$accountTypes = $this->User->AccountType->find('list');
+		
 		$this->set(compact('groups', 'accountTypes'));
 
 	}
+
+	public function _checkAccountType($data = null) {
+			
+			$this->User->read(null);
+	}
+
+	public function get_account_type($accountType = null) {
+
+			$roleData = $this->Session->read('Auth');
+
+			if (!empty($accountType)){
+
+					$checkData = $this->User->CheckData($roleData);
+					$this->User->id = $checkData['User']['id'];
+
+					if( $this->User->saveField('account_type_id', $accountType)) {
+						$this->Session->write('Auth',$checkData);
+						$this->redirect($this->Auth->redirect());
+					}
+			}
+			$this->layout = 'register';
+
+			$accountTypes = $this->User->AccountType->find('list');
+
+			$this->set(compact('accountTypes'));
+			
+			$this->render('account_type');
+			
+	}
+
 
 
 

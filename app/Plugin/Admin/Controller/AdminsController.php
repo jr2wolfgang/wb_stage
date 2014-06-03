@@ -21,6 +21,8 @@ class AdminsController extends AdminAppController  {
 
 	public function index() {
 		$this->layout = 'default';
+
+		
 		
 	}
 
