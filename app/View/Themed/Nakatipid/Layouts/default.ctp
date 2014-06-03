@@ -66,10 +66,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </div>
                     <div id="location-dropdown" class="left">
                         <div class="dropdown icon-right">
-                            <div class="selected-dropdown">Quezon City</div>
+                            <div class="selected-dropdown">Green Bit</div>
                             <i class="flaticon-arrow133"></i>
                             <ul class="list">
-                                <li class="selected">Quezon City</li>
+                                <li class="selected">East Blue</li>
+                                <li class="">Grand Line</li>
+                                <li class="">Red Line</li>
+                                <li class="">New World</li>
+                                <li class="">Alabasta</li>
+                                <li class="">Enies Lobby</li>
+                                <li class="">Marineford</li>
+                                <li class="">Dressrosa</li>
+                                <li class="">Arlong Park</li>
                             </ul>
                         </div>
                     </div>
@@ -175,6 +183,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
     <?php
         echo $this->Html->script('foundation.min');
+        echo $this->Html->script('custom');
     ?>
     <script type="text/javascript">
         $(document).foundation();

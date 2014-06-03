@@ -29,11 +29,13 @@ ul {
 
 #searchbar-container {
     margin-top: 76px;
+    height: 65px;
 }
 
 #search-field {
     border-bottom: 5px solid #2980B9;
     width: 75%;
+    height: 100%
 }
 
 #mainsearch-field {
@@ -51,9 +53,9 @@ ul {
 #location-dropdown {
     background: none repeat scroll 0 0 #3EA3E5;
     border-bottom: 5px solid #2980B9;
-    height: 65px;
+    height: 100%;
+    transition: background 0.5s ease 0s;
     width: 15%;
-    transition: background 0.5s ease;
 }
 
 #location-dropdown:hover {
@@ -65,12 +67,43 @@ ul {
     display: table-cell;
     height: 65px;
     margin: 0;
-    padding: 0 17px;
+    min-width: 127px;
+    max-width: 127px;
+    width: 127px;
+    padding: 0 12px;
     vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align:center;
 }
 
 .dropdown ul.list {
-	display: none;
+    background: none repeat scroll 0 0 #2980B9;
+    border-right: 6px solid #4eafef;
+    color: #FFFFFF;
+    font-size: 13pt;
+    margin-left: -100px;
+    margin-top: -5px;
+    position: absolute;
+    width: 250px;
+    z-index: 999;
+    display: none;
+}
+
+.dropdown ul.list li {
+    border-bottom: 1px solid #2679AD;
+    padding: 10px;
+    width: 100%;
+    transition: all 100ms ease-in;
+}
+
+.dropdown ul.list li:last-child {
+    border-bottom: 0px solid;
+}
+
+.dropdown ul.list li:hover {
+    background: #328AC1;
 }
 
 .icon-right i {
@@ -91,10 +124,12 @@ ul {
     padding: 0;
     transform: rotate(270deg);
     vertical-align: middle;
+    transition: rotate 300ms ease-in;
 }
 
 #search-button {
     background: none repeat scroll 0 0 #2980B9;
+    height: 100%;
     padding: 18.5px 36px;
 }
 
