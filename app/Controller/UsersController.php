@@ -180,14 +180,22 @@ class UsersController extends AppController {
 
 	    
 	        if ($this->Auth->login()) {
-	            return $this->redirect($this->Auth->redirect());
+
+	        	// set login to 1
+	        	$this->User->LoginAction($this->Session->read('Auth'),'1');
+				
+				return $this->redirect($this->Auth->redirect());
 	        }
 	        $this->Session->setFlash(__('Invalid username or password, try again'));
 	    }
 	}
 
 	public function logout() {
-	    return $this->redirect($this->Auth->logout());
+		// set login to 1
+		if ($this->User->LoginAction($this->Session->read('Auth'),'0')) {
+				 return $this->redirect($this->Auth->logout());
+		}
+	   
 	}
 
 

@@ -212,5 +212,12 @@ class User extends AppModel {
 	    return true;
 	}
 
+	public function LoginAction($data = null,$action = null) {
+
+		$this->id = $data['User']['id'];
+		return $this->saveField('is_login', $action);
+
+	}
+
 }
 
