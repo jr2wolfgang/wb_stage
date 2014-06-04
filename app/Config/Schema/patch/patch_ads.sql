@@ -42,19 +42,8 @@ CREATE TABLE IF NOT EXISTS `ads` (
   `modified` datetime NOT NULL,
   `modified_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `ads`
---
-
-INSERT INTO `ads` (`id`, `name`, `description`, `why_sell`, `selling_price`, `before_price`, `orig_price`, `discount_price`, `promo_price`, `saved_price`, `is_published`, `created`, `modified`, `modified_by`) VALUES
-(2, 'test', 'test', 'test', 45, 32, 12, 45, 32, 0, 1, '2014-06-03 12:04:39', '2014-06-03 12:04:39', 0),
-(3, 'asdas', 'asdasd', 'asdsad', 123, 123, 412, 124, 124, 0, 1, '2014-06-03 12:09:21', '2014-06-03 12:09:21', 0),
-(4, 'fasf', 'asfasf', 'asd', 123, 412, 124, 14, 124, 0, 1, '2014-06-03 12:12:15', '2014-06-03 12:12:15', 0),
-(15, 'asd', 'asd', 'asdsad', 123, 123, 41, 14, 123, 0, 1, '2014-06-03 12:17:50', '2014-06-03 12:17:50', 0),
-(16, 'asd', 'asdas', 'asd', 123, 124, 1212, 123, 123, 0, 1, '2014-06-03 12:26:12', '2014-06-03 12:26:12', 7),
-(17, 'asd', 'asd', 'asdsad', 1, 3, 4, 1, 4, 0, 0, '2014-06-03 12:32:51', '2014-06-03 12:32:51', 7);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
