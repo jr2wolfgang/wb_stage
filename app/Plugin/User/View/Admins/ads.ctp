@@ -1,4 +1,5 @@
 <?php echo $this->Html->script('User.jquery.uploadfile.min'); ?>
+
 <h4>Post Advertisments</h4>
 <?php echo $this->Form->create('User'); ?>
 <section class="container">
@@ -47,11 +48,24 @@
 
 				
 		</table>
-<?php echo $this->Form->end(); ?>
+
+		
+
+		<?php echo $this->Form->end(); ?>
 </section> 
 	
 <!-- Small modal -->
+
 <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+<div class="clear"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<?php echo $this->Html->script('User.map'); ?>
+
+Click on the map to find a street
+<div id="map_canvas" style="width:400px;height:300px;"></div>
+
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
