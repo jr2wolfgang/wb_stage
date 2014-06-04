@@ -4,3 +4,21 @@
 .container > table {
     width: 100%;
 }
+.choose_images {
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 8px 0;
+    text-align: center;
+    width: 127px;
+}
+.modal-sm {
+	width: 500px;
+}
+
+table {
+    width: 100% !important;
+}
+td,th {
+	
+}
