@@ -9,7 +9,7 @@
 				<tr>
 					<td> Description </td><td>
 					 <?php echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?> </td>
-					
+					<div contenteditable="true" id="editor1" class="wysiwyg-editor"></div>
 					</tr>
 				<tr>
 					<td> Why Im Selling this </td><td> <?php echo $this->Form->input('why_sell',array('label' => false));?> </td>

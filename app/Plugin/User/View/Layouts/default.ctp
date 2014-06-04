@@ -32,8 +32,9 @@
 			echo $this->Html->css('User.ace.min');
 			echo $this->Html->css('User.style');
 
-			echo $this->Html->script('User.ace-extra.min');
 			echo $this->Html->script('User.jquery.min');
+			echo $this->Html->script('User.ace-extra.min');
+			echo $this->Html->script('User.bootstrap.min');
 
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
@@ -71,11 +72,17 @@
 		</div>
 
 		<?php
-			echo $this->Html->script('User.bootstrap.min');
+			echo $this->Html->script('User.jquery-ui.custom.min');
+			echo $this->Html->script('User.jquery.ui.touch-punch.min');
+			echo $this->Html->script('User.markdown.min');
+			echo $this->Html->script('User.bootstrap-markdown.min');
+			echo $this->Html->script('User.jquery.hotkeys.min');
+			echo $this->Html->script('User.bootstrap-wysiwyg.min');
+			echo $this->Html->script('User.bootbox.min');
+
+			// dont remove those script below
 			echo $this->Html->script('User.ace-elements.min');
 			echo $this->Html->script('User.ace.min');
-			echo $this->Html->script('User.js-wasigwasig/bootstrap-wysiwyg.min');
-
 			echo $this->Html->script('User.global');
 		?>
 
