@@ -1,3 +1,6 @@
 .nav-list > li > a > .menu-icon {
 	vertical-align: text-bottom;
 }
+.container > table {
+    width: 100%;
+}

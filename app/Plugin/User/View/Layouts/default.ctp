@@ -35,7 +35,6 @@
 			echo $this->Html->script('User.ace-extra.min');
 			echo $this->Html->script('User.jquery.min');
 
-
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
 			echo $this->fetch('script');
@@ -75,6 +74,9 @@
 			echo $this->Html->script('User.bootstrap.min');
 			echo $this->Html->script('User.ace-elements.min');
 			echo $this->Html->script('User.ace.min');
+			echo $this->Html->script('User.js-wasigwasig/bootstrap-wysiwyg.min');
+
+			echo $this->Html->script('User.global');
 		?>
 
 	</body>

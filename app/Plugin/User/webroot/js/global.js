@@ -1,0 +1,1 @@
+$('#editor1').ace_wysiwyg();

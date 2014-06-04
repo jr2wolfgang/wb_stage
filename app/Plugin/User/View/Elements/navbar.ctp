@@ -303,7 +303,7 @@
 						<li>
 							<a href="#">
 								<i class="ace-icon fa fa-power-off"></i>
-								Logout
+								<?php echo $this->Html->link('Log-out',array('controller' => 'users','action' => 'logout','plugin' => false)); ?>
 							</a>
 						</li>
 					</ul>
