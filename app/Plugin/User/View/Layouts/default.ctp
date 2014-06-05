@@ -32,6 +32,7 @@
 			echo $this->Html->css('User.jquery-ui.custom.min');
 			echo $this->Html->css('User.jquery.gritter');
 			echo $this->Html->css('User.select2');
+			echo $this->Html->css('User.chosen');
 			echo $this->Html->css('User.datepicker');
 			echo $this->Html->css('User.bootstrap-editable');
 			echo $this->Html->css('User.ace.min');
@@ -70,7 +71,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- CONTENT HERE -->
-							<?php echo $this->Session->flash(); ?>
+							<?php //echo $this->Session->flash(); ?>
 							<?php echo $this->fetch('content'); ?>
 						</div>
 					</div>

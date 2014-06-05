@@ -1,94 +1,101 @@
 <?php echo $this->Html->script('User.jquery.uploadfile.min'); ?>
 
-<h4>Post Advertisments</h4>
-<?php echo $this->Form->create('User'); ?>
-<section class="container">
-		<table>
-				<tr>
-					<td> Name </td><td> <?php  echo $this->Form->input('name',array('label' => false)); ?> </td>
-				</tr>
-				<tr>
-					<td> Description </td><td>
-					 <?php echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?> </td>
-					<div contenteditable="true" id="editor1" class="wysiwyg-editor"></div>
-					</tr>
-				<tr>
-					<td> Why Im Selling this </td><td> <?php echo $this->Form->input('why_sell',array('label' => false));?> </td>
-				</tr>
-				<tr>
-					<td> Images </td><td> 
-				
-
-					<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false">Open Image Manager</button>
-					
-					 </td>
-				</tr>
-				<tr>
-					<td> <h5>Price</h5> </td><td> &nbsp  </td>
-				</tr>
-				<tr>
-					<td> Orig Price </td><td> <?php  echo $this->Form->input('selling_price',array('label' => false)); ?> </td>
-				</tr>
-				<tr>
-					<td> Old Price </td><td> <?php  echo $this->Form->input('before_price',array('label' => false)); ?> </td>
-				</tr>
-				<tr>
-					<td> Before Price </td><td> <?php  echo $this->Form->input('before_price',array('label' => false)); ?> </td>
-				</tr>
-				<tr>
-					<td> Discount Price </td><td> <?php  echo $this->Form->input('discount_price',array('label' => false)); ?> </td>
-				</tr>
-				<tr>
-					<td> Promo Price </td><td> <?php  echo $this->Form->input('promo_price',array('label' => false)); ?> </td>
-				</tr>
-
-				<tr>
-					<td> &nbsp </td><td> <?php echo $this->Form->end(__('Submit')); ?> </td>
-				</tr>
-
-				
-		</table>
-
-		
-
-		<?php echo $this->Form->end(); ?>
-</section> 
-	
-<!-- Small modal -->
-
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-<div class="clear"></div>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<?php echo $this->Html->script('User.map'); ?>
-
-Click on the map to find a street
-<div id="map_canvas" style="width:400px;height:300px;"></div>
-
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-   		
-   		<div class="upload_images">Upload Images</div>
-		<div id="mulitplefileuploader">Upload</div>
-		<div id="status"></div>
-		<div class="images_append">
-				<table>
-					<tr class="main_tr">
-						<th> <input type="checkbox" class="check_all"></th>
-						<th> Image </th>
-						<th> ext </th>
-						
-					</tr>
-
-
-				</table>
-		</div>
-    </div>
-  </div>
+<div class="page-header">
+	<h1>
+		Post Advertisment
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			In here you can create ads easily and fast
+		</small>
+	</h1>
 </div>
+<?php echo $this->Form->create('User',array('class'=>'form-horizontal','role'=>'form')); ?>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Title </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Description </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?>
+			<div contenteditable="true" id="editor1" class="wysiwyg-editor"></div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Why Im Selling this </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Images </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Orig Price </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Before Price </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Discount Price </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Title </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Promo Price </label>
+		<div class="col-sm-9">
+			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
+		</div>
+	</div>
+
+	<div class="clearfix form-actions">
+		<div class="col-md-offset-3 col-md-9">
+			<button type="button" class="btn btn-info">
+				<i class="ace-icon fa fa-check bigger-110"></i>
+				Submit
+			</button>
+
+			&nbsp; &nbsp; &nbsp;
+			<button type="reset" class="btn">
+				<i class="ace-icon fa fa-undo bigger-110"></i>
+				Reset
+			</button>
+		</div>
+	</div>
+
+
+
+</form>
+
+
+
 
 <script>
 $(document).ready(function()
