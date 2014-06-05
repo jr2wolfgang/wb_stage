@@ -8,8 +8,14 @@
 				</tr>
 				<tr>
 					<td> Description </td><td>
-					 <?php echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?> </td>
-					<div contenteditable="true" id="editor1" class="wysiwyg-editor"></div>
+
+					<div contenteditable="true" id="editor1" class="wysiwyg-editor">
+						
+						<?php //echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?>
+					</div>
+
+					  </td>
+					
 					</tr>
 				<tr>
 					<td> Why Im Selling this </td><td> <?php echo $this->Form->input('why_sell',array('label' => false));?> </td>
@@ -59,7 +65,8 @@
    		
    		<div class="upload_images">Upload Images</div>
 		<div id="mulitplefileuploader">Upload</div>
-		<div id="status"></div>
+				
+		<button id="use_image" onclick="return false">Use Images </button>
 		<div class="images_append">
 				<table>
 					<tr class="main_tr">
@@ -80,7 +87,7 @@
 $(document).ready(function()
 {
 
-var image_path = "/user/img/uploads/";
+var image_path = "/wb_stage/user/img/uploads/";
 var settings = {
 	url: "upload_multiple",
 	method: "POST",
@@ -88,17 +95,24 @@ var settings = {
 	fileName: "myfile",
 	multiple: true,
 	onSuccess:function(files,data,xhr)
-	{
+	{	
+
+
+	var imageDetails = [jQuery.parseJSON(data)];
+
+
+			console.log(imageDetails)
+		for(var i =0;i <= imageDetails.length-1;i++)
+		{
+			var item = imageDetails[i];
+			var html_table = '<tr><td><input type="checkbox" name="images[]" value="'+i+'"></td><td><img src="'+image_path+item.file+'" width="100" ></td>';
+				html_table += '<td>'+item.extension+'</td></tr>';
+
+			$('.main_tr').after(html_table);
+		}
 			
-			console.log(files);
-			console.log(data);
+			//console.log(data);
 	
-			$.each(data, function(name, obj) {
-
-
-					var html = '<tr><td><input type="checkbox" class="checks"></td><td><img src="'+image_path+obj+'" width="200"></td><td></td></tr>';
-					$('.main_tr').append(html);
-			});
 
 		
 	},

@@ -206,6 +206,51 @@ class User extends AppModel {
 		)
 	);
 
+
+
+	
+	public $recursive = -1;
+	public $actsAs = array('Containable');
+
+	public function bind($model = array('Group')){
+
+		$this->bindModel(array(
+			'belongsTo' => array(
+				'Group' => array(
+					'className' => 'Group',
+					'foreignKey' => 'group_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+				),
+				'AccountType' => array(
+					'className' => 'AccountType',
+					'foreignKey' => 'account_type_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+				)
+			),
+			'hasMany' => array(
+				'Ad' => array(
+					'className' => 'Ad',
+					'foreignKey' => 'modified_by',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				)
+			)
+		));
+
+		$this->contain($model);
+	}
+
 	function identicalFieldValues( $field=array(), $compare_field=null )  
     { 
         foreach( $field as $key => $value ){ 

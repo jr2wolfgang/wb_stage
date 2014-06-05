@@ -19,6 +19,19 @@
 table {
     width: 100% !important;
 }
-td,th {
-	
+td {
+    padding: 5px 0;
+}
+.modal-content {
+    padding: 9px !important;
+}
+.ajax-file-upload-statusbar {
+    display: none !important; 
+}
+.ajax-file-upload {
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    padding: 7px;
+    text-align: center;
+    width: 100px;
 }

@@ -51,25 +51,43 @@ class AdminsController extends UserAppController  {
 
 			if(!is_array($_FILES["myfile"]['name'])) //single file
 			{
+
 			 	$fileName = $_FILES["myfile"]["name"];
+
+			 	$pathinfo = pathinfo($output_dir. $_FILES["myfile"]["name"]);
+
 			 	move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir. $_FILES["myfile"]["name"]);
 			 	 //echo "<br> Error: ".$_FILES["myfile"]["error"];
-			 	 
-				 	 $ret[$fileName]= $output_dir.$fileName;
+		 	 	$ret['extension'] = $pathinfo['extension'];
+			 	
+			 	$ret[$fileName]= $output_dir.$fileName;
+			 	
+			 	$ret['file'] = $fileName;
 			}
 			else
 			{
 				$fileCount = count($_FILES["myfile"]['name']);
 			  for($i=0; $i < $fileCount; $i++)
 			  {
+			  	$pathinfo = pathinfo($output_dir.$fileName);
+
 			  	$fileName = $_FILES["myfile"]["name"][$i];
-				 	 $ret[$fileName]= $output_dir.$fileName;
+				$ret[$fileName]= $output_dir.$fileName;
+				$ret['extension']= $pathinfo['extension'];
+				$ret['file'] = $fileName;
 			    move_uploaded_file($_FILES["myfile"]["tmp_name"][$i],$output_dir.$fileName );
 			  }
 
 			}
+			$ret['path'] = 'user/img/uploads/';
+			$ret['foreign_key'] = $this->Session->read('Auth.User.id');
+
+			ClassRegistry::init('Image')->saveImages($ret);
 		}
+
 		echo json_encode($ret);
+
+
 
 		}
 		exit();
