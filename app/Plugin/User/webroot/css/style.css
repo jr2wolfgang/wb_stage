@@ -19,6 +19,47 @@
 table {
     width: 100% !important;
 }
-td,th {
-	
+td {
+    padding: 5px 0;
+}
+.modal-content {
+    padding: 9px !important;
+}
+.ajax-file-upload-statusbar {
+    display: none !important; 
+}
+.ajax-file-upload {
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    padding: 7px;
+    text-align: center;
+    width: 100px;
+}
+.input.text > label {
+    clear: both;
+    width: 100%;
+}
+label {
+     width: 100%;  
+}
+.images_append {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.images_thumb_selected > img {
+    display: inline;
+    position: relative;
+    vertical-align: top;
+}
+
+.selected_img > img {
+    width: 100%;
+}
+.selected_img {
+    max-height: 100px;
+    max-width: 100px;
+    overflow: hidden;
 }

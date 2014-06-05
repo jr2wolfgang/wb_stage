@@ -22,6 +22,10 @@ class AdminsController extends UserAppController  {
 
 	public function ads(){
 		$ads = ClassRegistry::init('Ad');
+		$User = ClassRegistry::init('User');
+
+		$User->bind(array('Image'));
+		$images =  $User->read(null,$this->Session->read('Auth.User.id'));
 		$session_id = $this->Session->read('Auth');
 		$session_id = $session_id['User']['id'];
 
@@ -35,6 +39,8 @@ class AdminsController extends UserAppController  {
 				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
 			}
 		}
+
+		$this->set(compact('images'));
 	}
 
 	public function upload_multiple(){
@@ -51,31 +57,51 @@ class AdminsController extends UserAppController  {
 
 			if(!is_array($_FILES["myfile"]['name'])) //single file
 			{
+
 			 	$fileName = $_FILES["myfile"]["name"];
+
+			 	$pathinfo = pathinfo($output_dir. $_FILES["myfile"]["name"]);
+
 			 	move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir. $_FILES["myfile"]["name"]);
 			 	 //echo "<br> Error: ".$_FILES["myfile"]["error"];
-			 	 
-				 	 $ret[$fileName]= $output_dir.$fileName;
+		 	 	$ret['extension'] = $pathinfo['extension'];
+			 	
+			 	$ret[$fileName]= $output_dir.$fileName;
+			 	
+			 	$ret['file'] = $fileName;
 			}
 			else
 			{
 				$fileCount = count($_FILES["myfile"]['name']);
 			  for($i=0; $i < $fileCount; $i++)
 			  {
+			  	$pathinfo = pathinfo($output_dir.$fileName);
+
 			  	$fileName = $_FILES["myfile"]["name"][$i];
-				 	 $ret[$fileName]= $output_dir.$fileName;
+				$ret[$fileName]= $output_dir.$fileName;
+				$ret['extension']= $pathinfo['extension'];
+				$ret['file'] = $fileName;
 			    move_uploaded_file($_FILES["myfile"]["tmp_name"][$i],$output_dir.$fileName );
 			  }
 
 			}
+			$ret['path'] = 'user/img/uploads/';
+			$ret['foreign_key'] = $this->Session->read('Auth.User.id');
+
+			ClassRegistry::init('Image')->saveImages($ret);
+			$ret['key'] = ClassRegistry::init('Image')->id;
 		}
+
 		echo json_encode($ret);
+
+
 
 		}
 		exit();
 	}
 
 	public function maps($coordinate){
+		
 		$maps = ClassRegistry::init('Map');
 
 		$session_id = $this->Session->read('Auth');

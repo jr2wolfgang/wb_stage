@@ -1,107 +1,134 @@
 <?php echo $this->Html->script('User.jquery.uploadfile.min'); ?>
 
-<div class="page-header">
-	<h1>
-		Post Advertisment
-		<small>
-			<i class="ace-icon fa fa-angle-double-right"></i>
-			In here you can create ads easily and fast
-		</small>
-	</h1>
+<h4>Post Advertisments</h4>
+<?php echo $this->Form->create('User'); ?>
+<section class="container">
+		<table>
+				<tr>
+					<td>  
+					<?php echo $this->Form->input('name',array('label' => 'Name')); ?>
+					</td>
+				</tr>
+				<tr>
+					<td> <label>Description</label>
+
+						<div contenteditable="true" id="editor1" class="wysiwyg-editor">
+
+						<?php //echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?>
+						</div>
+					</td>
+					
+				</tr>
+				<tr>
+					<td> <?php echo $this->Form->input('why_sell',array('label' => 'Why Im Selling this'));?></td>
+				</tr>
+				<tr>
+				<td> 
+				
+					<label>Images</label>
+					<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false">Open Image Manager</button>
+						<div class="images_thumb_selected"></div>
+				</td>
+				</tr>
+				<tr>
+					<td> <h5>Price</h5> </td><td> &nbsp  </td>
+				</tr>
+				<tr>
+					<td> <?php  echo $this->Form->input('selling_price',array('label' => 'Orig Price')); ?> </td>
+				</tr>
+				<tr>
+					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Old Price')); ?> </td>
+				</tr>
+				<tr>
+					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Before Price')); ?> </td>
+				</tr>
+				<tr>
+					<td> <?php  echo $this->Form->input('discount_price',array('label' => 'Discount Price')); ?> </td>
+				</tr>
+				<tr>
+					<td> <?php  echo $this->Form->input('promo_price',array('label' => 'Promo Price')); ?> </td>
+				</tr>
+
+				<tr>
+					<td> <button id="submit" > Save Ads</button> </td><td> </td>
+				</tr>
+
+				
+		</table>
+
+		
+
+		<?php echo $this->Form->end(); ?>
+</section> 
+	
+<!-- Small modal -->
+<div class="clear"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<?php echo $this->Html->script('User.map'); ?>
+
+Click on the map to find a street
+<div id="map_canvas" style="width:400px;height:300px;"></div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+   		
+   		<div class="upload_images">Upload Images</div>
+		<div id="mulitplefileuploader">Upload</div>
+				
+		<button id="use_image" onclick="return false">Use Images </button>
+			<table>
+			<tr class="main_tr">
+			<th> <input type="checkbox" class="check_all"></th>
+			<th> Image </th>
+			<th> ext </th>
+			</tr>
+			</table>
+		<div class="images_append">
+				<table>
+				
+				<?php foreach ($images['Image'] as $key => $value) : ?>
+						<tr>
+							<td> 
+							<input type="checkbox" class="check_item" name="Ad[Images][]" value="<?php echo $value['id']; ?>">
+							</td>
+							<td> <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '145')); ?></td>
+							<td> <?php echo $value['extension'] ?></td>
+						</tr>
+				<?php endforeach;  ?>
+
+				</table>
+		</div>
+    </div>
+  </div>
 </div>
-<?php echo $this->Form->create('User',array('class'=>'form-horizontal','role'=>'form')); ?>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Title </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Description </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Description',array('label' => false,'id' => 'editor1','contenteditable' => 'true' )); ?>
-			<div contenteditable="true" id="editor1" class="wysiwyg-editor"></div>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Why Im Selling this </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Images </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Orig Price </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Before Price </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Discount Price </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Title </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-1" class="col-sm-1 control-label no-padding-right"> Promo Price </label>
-		<div class="col-sm-9">
-			<input type="text" class="col-xs-10 col-sm-5" placeholder="Title" id="form-field-1">
-		</div>
-	</div>
-
-	<div class="clearfix form-actions">
-		<div class="col-md-offset-3 col-md-9">
-			<button type="button" class="btn btn-info">
-				<i class="ace-icon fa fa-check bigger-110"></i>
-				Submit
-			</button>
-
-			&nbsp; &nbsp; &nbsp;
-			<button type="reset" class="btn">
-				<i class="ace-icon fa fa-undo bigger-110"></i>
-				Reset
-			</button>
-		</div>
-	</div>
-
-
-
-</form>
-
-
-
 
 <script>
 $(document).ready(function()
 {
 
-var image_path = "/user/img/uploads/";
+$('#use_image').click(function(){
+		$('.bs-example-modal-sm ').modal('hide');
+
+		$('.images_append .check_item:checked').each(function(){
+
+				var appendImage = "<div class='selected_img'>";
+					appendImage += "<img src="+$(this).parent().next().find('img').attr('src')+">";
+					appendImage += "</div>";
+			$('.images_thumb_selected').append( appendImage);
+		
+		}); 
+});		
+
+$('.check_all').click(function () {
+$('input:checkbox').prop('checked', this.checked);
+});
+
+var image_path = "/wb_stage/user/img/uploads/";
+
 var settings = {
 	url: "upload_multiple",
 	method: "POST",
@@ -109,17 +136,22 @@ var settings = {
 	fileName: "myfile",
 	multiple: true,
 	onSuccess:function(files,data,xhr)
-	{
+	{	
+
+		var imageDetails = [jQuery.parseJSON(data)];
+
+			console.log(imageDetails)
+		for(var i =0;i <= imageDetails.length-1;i++)
+		{
+			var item = imageDetails[i];
+			var html_table = '<tr><td><input type="checkbox" class="check_item" name="Ads[Images][]" value="'+item.key+'"></td><td><img src="'+image_path+item.file+'" width="100" ></td>';
+				html_table += '<td>'+item.extension+'</td></tr>';
+
+			$('.main_tr').after(html_table);
+		}
 			
-			console.log(files);
-			console.log(data);
+			//console.log(data);
 	
-			$.each(data, function(name, obj) {
-
-
-					var html = '<tr><td><input type="checkbox" class="checks"></td><td><img src="'+image_path+obj+'" width="200"></td><td></td></tr>';
-					$('.main_tr').append(html);
-			});
 
 		
 	},
@@ -131,4 +163,6 @@ var settings = {
 $("#mulitplefileuploader").uploadFile(settings);
 
 });
+
+
 </script>
