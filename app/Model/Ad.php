@@ -42,7 +42,7 @@ class Ad extends AppModel {
  *
  * @var array
  */
-	public $belongsTo = array(
+	/*public $belongsTo = array(
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'modified_by',
@@ -56,7 +56,61 @@ class Ad extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		)
-	);
+	);*/
+
+	public $recursive = -1;
+	public $actsAs = array('Containable');
+
+	public function bind($model = array('Group')){
+
+		$this->bindModel(array(
+			'belongsTo' => array(
+				'User' => array(
+					'className' => 'User',
+					'foreignKey' => 'modified_by',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				)
+			),
+			'hasMany' => array(
+				'Image' => array(
+					'className' => 'User',
+					'foreignKey' => false,
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				),
+				'Maps' => array(
+					'className' => 'User',
+					'foreignKey' => false,
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				)
+			)
+		));
+
+		$this->contain($model);
+	}
 
 
 	

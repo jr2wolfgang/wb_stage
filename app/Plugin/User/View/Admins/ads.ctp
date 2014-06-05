@@ -50,7 +50,7 @@
 				</tr>
 
 				<tr>
-					<td> <button id="submit" > Save Ads</button> </td><td> </td>
+					<td colspan="2"> <?php echo $this->Form->input('location',array('type' => 'hidden','class' => "locationField")); ?> <button id="submit" > Save Ads</button> </td>
 				</tr>
 
 				

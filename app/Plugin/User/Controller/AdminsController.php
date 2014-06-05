@@ -32,10 +32,11 @@ class AdminsController extends UserAppController  {
 		if ($this->request->is('post')) { 
 			$ads->create();
 			$this->request->data['Ad']['modified_by'] = $session_id;
-
+			pr($this->request->data);
+			exit();
 			if($ads->save($this->request->data)){
 				$this->Session->setFlash(__('The ads has been saved.'));
-			}else{
+			} else {
 				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
 			}
 		}

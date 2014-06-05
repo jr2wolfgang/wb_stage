@@ -36,16 +36,15 @@ function fx(latLng) {
       var point=response.routes[0].legs[0];
       marker.setOptions({map:map,position:point.start_location});
       map.setCenter(point.start_location);
-      //alert(response.routes[0].summary+'\n'+point.start_location.toString());
-      //console.log(response.routes[0].summary);
-      console.log(point.start_location.toString());
 
-      jQuery.ajax({
+      $('.locationField').val(point.start_location.toString());
+      
+      /*jQuery.ajax({
           type: "POST", // HTTP method POST or GET
           url: "maps/" + point.start_location.toString(),
           //Where to make Ajax calls
           success: function(data) {},
-      });
+      });*/
 
     }
   });

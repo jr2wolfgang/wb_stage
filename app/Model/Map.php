@@ -24,9 +24,9 @@ class Map extends AppModel {
 
 		$this->bindModel(array(
 			'belongsTo' => array(
-				'User' => array(
-					'className' => 'User',
-					'foreignKey' => 'modified_by',
+				'Ads' => array(
+					'className' => 'Ad',
+					'foreignKey' => 'ads_id',
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''
