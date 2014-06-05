@@ -49,14 +49,27 @@
 					<td> <?php  echo $this->Form->input('promo_price',array('label' => 'Promo Price')); ?> </td>
 				</tr>
 
+				
+				<tr>
+					<td>
+						<!-- MAPS SEARCH & DRAGGABLE -->
+						<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+						<?php echo $this->Html->script('User.map'); ?>
+
+						<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="width:600px;">
+						<div id="map-canvas" style="width:100%; height:600px;"></div>
+
+						Lat: <input type="text" id="lat"><br/>
+						Lng: <input type="text" id="lng">
+						<!--ENDS-->
+					</td>
+				</tr>
+
 				<tr>
 					<td colspan="2"> <?php echo $this->Form->input('location',array('type' => 'hidden','class' => "locationField")); ?> <button id="submit" > Save Ads</button> </td>
 				</tr>
-
 				
 		</table>
-
-		
 
 		<?php echo $this->Form->end(); ?>
 </section> 
@@ -64,16 +77,7 @@
 <!-- Small modal -->
 <div class="clear"></div>
 
-<!-- MAPS SEARCH & DRAGGABLE -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
-<?php echo $this->Html->script('User.map'); ?>
 
-<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="width:600px;">
-<div id="map-canvas" style="width:100%; height:600px;"></div>
-
-Lat: <input type="text" id="lat"><br/>
-Lng: <input type="text" id="lng">
-<!--ENDS-->
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
