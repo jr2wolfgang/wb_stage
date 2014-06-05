@@ -187,7 +187,7 @@ class User extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		)	
 	);
 
 	public $hasMany = array(
@@ -203,7 +203,23 @@ class User extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		)		
+	);
+
+	public $hasOne = array(
+		'Map' => array(
+			'className' => 'Map',
+			'foreignKey' => 'modified_by',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)		
 	);
 
 

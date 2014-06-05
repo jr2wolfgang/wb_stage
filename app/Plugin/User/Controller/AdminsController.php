@@ -93,4 +93,42 @@ class AdminsController extends UserAppController  {
 		exit();
 	}
 
+	public function maps($coordinate){
+		$maps = ClassRegistry::init('Map');
+
+		$session_id = $this->Session->read('Auth');
+		$session_id = $session_id['User']['id'];
+		
+		if ($coordinate){
+			$coordinate = split(", ", $coordinate);
+			$coordinate[0] = str_replace("(","",$coordinate[0]);
+			$coordinate[1] = str_replace(")","",$coordinate[1]);
+
+			$this->request->data['Map']['longhitude'] = $coordinate[0];
+			$this->request->data['Map']['latitude'] = $coordinate[1];
+			$this->request->data['Map']['modified_by'] = $session_id;
+
+			if ($maps->hasAny(array('modified_by' => $this->request->data['Map']['modified_by']))) {
+			  // update
+			  $existing = $maps->find('first', array(
+			    'conditions' => array(
+			      'modified_by' => $this->request->data['Map']['modified_by']
+			    )
+			  ));
+			  $maps->id = $existing['Map']['id'];
+			} else {
+			  $maps->create();
+			}
+			
+			// save or update
+			if($maps->save($this->request->data)){
+				$this->Session->setFlash(__('The Maps has been saved.'));
+			}else{
+				$this->Session->setFlash(__('The Maps could not be saved. Please, try again.'));
+			}
+
+		}
+		exit();		
+	}
+
 }

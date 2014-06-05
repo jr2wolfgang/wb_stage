@@ -29,7 +29,14 @@
 			echo $this->Html->css('User.bootstrap.min');
 			echo $this->Html->css('User.font-awesome.min');
 			echo $this->Html->css('User.flaticon');
+			echo $this->Html->css('User.jquery-ui.custom.min');
+			echo $this->Html->css('User.jquery.gritter');
+			echo $this->Html->css('User.select2');
+			echo $this->Html->css('User.datepicker');
+			echo $this->Html->css('User.bootstrap-editable');
 			echo $this->Html->css('User.ace.min');
+			echo $this->Html->css('User.ace-skins.min');
+			echo $this->Html->css('User.rtl.min');
 			echo $this->Html->css('User.style');
 
 			echo $this->Html->script('User.jquery.min');
@@ -40,6 +47,9 @@
 			echo $this->fetch('css');
 			echo $this->fetch('script');
 		?>
+
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet">
+		
 	</head>
 
 	<body class="no-skin">
@@ -78,7 +88,15 @@
 			echo $this->Html->script('User.bootstrap-markdown.min');
 			echo $this->Html->script('User.jquery.hotkeys.min');
 			echo $this->Html->script('User.bootstrap-wysiwyg.min');
+			echo $this->Html->script('User.jquery.gritter.min');
 			echo $this->Html->script('User.bootbox.min');
+			echo $this->Html->script('User.jquery.easypiechart.min');
+			echo $this->Html->script('User.bootstrap-datepicker.min');
+			echo $this->Html->script('User.select2.min');
+			echo $this->Html->script('User.fuelux.spinner.min');
+			echo $this->Html->script('User.bootstrap-editable.min');
+			echo $this->Html->script('User.ace-editable.min');
+			echo $this->Html->script('User.jquery.maskedinput.min');
 
 			// dont remove those script below
 			echo $this->Html->script('User.ace-elements.min');
