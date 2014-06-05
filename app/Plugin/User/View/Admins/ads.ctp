@@ -64,13 +64,16 @@
 <!-- Small modal -->
 <div class="clear"></div>
 
-
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!-- MAPS SEARCH & DRAGGABLE -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 <?php echo $this->Html->script('User.map'); ?>
 
-Click on the map to find a street
-<div id="map_canvas" style="width:400px;height:300px;"></div>
+<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="width:600px;">
+<div id="map-canvas" style="width:100%; height:600px;"></div>
 
+Lat: <input type="text" id="lat"><br/>
+Lng: <input type="text" id="lng">
+<!--ENDS-->
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
