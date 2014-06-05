@@ -260,7 +260,21 @@ class User extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
+				),
+				'Image' => array(
+					'className' => 'Image',
+					'foreignKey' => 'foreign_key',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
 				)
+
 			)
 		));
 
@@ -307,6 +321,7 @@ class User extends AppModel {
 				'User.email' => $data['User']['email'])));
 			return $userData;
 	}
+
 
 }
 

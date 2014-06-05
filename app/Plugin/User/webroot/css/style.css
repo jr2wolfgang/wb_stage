@@ -35,3 +35,31 @@ td {
     text-align: center;
     width: 100px;
 }
+.input.text > label {
+    clear: both;
+    width: 100%;
+}
+label {
+     width: 100%;  
+}
+.images_append {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.images_thumb_selected > img {
+    display: inline;
+    position: relative;
+    vertical-align: top;
+}
+
+.selected_img > img {
+    width: 100%;
+}
+.selected_img {
+    max-height: 100px;
+    max-width: 100px;
+    overflow: hidden;
+}

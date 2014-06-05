@@ -22,6 +22,10 @@ class AdminsController extends UserAppController  {
 
 	public function ads(){
 		$ads = ClassRegistry::init('Ad');
+		$User = ClassRegistry::init('User');
+
+		$User->bind(array('Image'));
+		$images =  $User->read(null,$this->Session->read('Auth.User.id'));
 		$session_id = $this->Session->read('Auth');
 		$session_id = $session_id['User']['id'];
 
@@ -35,6 +39,8 @@ class AdminsController extends UserAppController  {
 				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
 			}
 		}
+
+		$this->set(compact('images'));
 	}
 
 	public function upload_multiple(){
@@ -83,6 +89,7 @@ class AdminsController extends UserAppController  {
 			$ret['foreign_key'] = $this->Session->read('Auth.User.id');
 
 			ClassRegistry::init('Image')->saveImages($ret);
+			$ret['key'] = ClassRegistry::init('Image')->id;
 		}
 
 		echo json_encode($ret);
@@ -94,6 +101,7 @@ class AdminsController extends UserAppController  {
 	}
 
 	public function maps($coordinate){
+		
 		$maps = ClassRegistry::init('Map');
 
 		$session_id = $this->Session->read('Auth');
