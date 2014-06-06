@@ -37,18 +37,45 @@ class Image extends AppModel {
 		)
 	);
 
-public function saveImages($data = null, $model = 'User') {
+public function saveImages($ImageData = null, $model = 'User',$foreign_key = null) {
 
 
-			if (!empty($data)) {
+			if (!empty($ImageData)) {
 
-					$images['name'] = $data['file'];
-					$images['model'] = $model;
-					$images['foreign_key'] = $data['foreign_key'];
-					$images['path'] =  $data['path'];
-					$images['extension'] =  $data['extension'];
+				foreach ($ImageData as $key => $data) {
+					
+					if (!empty($data['id'])) {
+						$images['id'] = $data['id'];
+					}
 
+					if (!empty($data['file'])) {
+						$images['name'] = $data['file'];
+					}
+
+					if (!empty($data['model'])) {
+						$images['model'] = $model;
+					}
+
+					if (!empty($foreign_key)) {
+						$images['foreign_key'] = $foreign_key;
+					} else {
+						$images['foreign_key'] =  $data['foreign_key'];	
+					}
+
+					if (!empty($data['path'])) {
+						$images['path'] = $data['path'];
+					}
+					if (!empty($data['extension'])) {
+						$images['extension'] = $data['extension'];
+					}
+
+
+					
 					$this->save($images);
+				}
+
+
+				
 			}
 	}
 	

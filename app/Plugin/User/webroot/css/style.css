@@ -56,10 +56,15 @@ label {
 }
 
 .selected_img > img {
+    min-height: 100px;
     width: 100%;
+}
+.images_thumb_selected {
+    margin-top: 10px;
 }
 .selected_img {
     max-height: 100px;
     max-width: 100px;
     overflow: hidden;
+    float: left;
 }

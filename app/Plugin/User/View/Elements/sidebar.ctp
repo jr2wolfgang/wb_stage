@@ -44,7 +44,7 @@
 		</li>
 
 		<li class="">
-			<?php echo $this->Html->link('<i class="menu-icon fa fa-heart"></i><span class="menu-text"> My Ads </span>',								array('controller' => 'admins', 'action' => 'ads'),
+			<?php echo $this->Html->link('<i class="menu-icon fa fa-heart"></i><span class="menu-text"> My Ads </span>',								array('controller' => 'ads', 'action' => 'index'),
 										    array('escape' => false)); 
 			?>
 			<b class="arrow"></b>

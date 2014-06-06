@@ -71,7 +71,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- CONTENT HERE -->
-							<?php //echo $this->Session->flash(); ?>
+							<?php echo $this->Session->flash(); ?>
 							<?php echo $this->fetch('content'); ?>
 						</div>
 					</div>
