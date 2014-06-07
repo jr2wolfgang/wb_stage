@@ -58,9 +58,9 @@
 
 						<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="width:600px;">
 						<div id="map-canvas" style="width:100%; height:600px;"></div>
-
-						Lat: <input type="text" id="lat"><br/>
-						Lng: <input type="text" id="lng">
+						<?php echo $this->Form->input('Map.model',array('value' => 'model','type' => 'hidden')); ?>
+						 <?php echo $this->Form->input('Map.latitude',array('id' => 'lat')); ?>
+						 <?php echo $this->Form->input('Map.longhitude',array('id' => 'lng')); ?>
 						<!--ENDS-->
 					</td>
 				</tr>
@@ -171,5 +171,13 @@ $("#mulitplefileuploader").uploadFile(settings);
 
 });
 
+$('#AdNewAdForm').submit(function(e){
+
+	$('#AdDescription').val($('#editor1').text());
+
+	e.preventDefault();
+
+});
+	
 
 </script>

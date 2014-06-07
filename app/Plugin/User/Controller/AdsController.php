@@ -26,9 +26,22 @@ class AdsController extends UserAppController  {
     );
 
 	public function index() {
-				
-		$this->Ad->recursive = 0;
 
+	  $this->Ad->bind(array('User','Map'));
+				
+	  $this->Ad->recursive = 0;
+
+	  $conditions = array('Ad.modified_by' => $this->Session->read('Auth.User.id'));
+	  
+	  $this->paginate = array(
+          	'recursive' => -1,
+            'conditions' => $conditions,
+            
+            
+         );
+
+
+		
 		$this->set('ads', $this->paginate('Ad'));		
 	}
 
@@ -43,26 +56,23 @@ class AdsController extends UserAppController  {
 
 		$images = $User->read(null,$this->Session->read('Auth.User.id'));
 
-		$session_id = $this->Session->read('Auth');
-		
-		$session_id = $session_id['User']['id'];
-
-
-
 		if ($this->request->is('post')) {
 
 			$this->Ad->create();
 
-			$this->request->data['Ad']['modified_by'] = $session_id;
+			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $images['User']['id'];
 
 			$AdsData = $this->Ad->GetData($this->request->data);
 				
-		
-			if ($this->Ad->save($this->request->data['Ad'])) {
+
+			$this->Ad->bind(array('Map'));
+			
+			if ($this->Ad->saveAssociated($this->request->data)) {
 
 				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id);
 				
 				$this->Session->setFlash(__('The ads has been saved.'));
+			
 			} else {
 				
 				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
@@ -170,5 +180,24 @@ class AdsController extends UserAppController  {
 		}
 		exit();		
 	}
+
+	
+
+
+	public function delete($id = null) {
+		$this->Ad->bind(array('Map'));
+		$this->Ad->id = $id;
+		if (!$this->Ad->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		$this->request->allowMethod('post', 'delete');
+		if ($this->Ad->delete()) {
+			$this->Session->setFlash(__('Ad has been deleted.'));
+		} else {
+			$this->Session->setFlash(__('Ad could not be deleted. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
 
 }

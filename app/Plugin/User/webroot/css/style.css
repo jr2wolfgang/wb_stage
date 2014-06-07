@@ -68,3 +68,14 @@ label {
     overflow: hidden;
     float: left;
 }
+
+
+/* map */
+.map_container {
+    margin-top: 10px;
+}
+#map-canvas {
+    max-width: 539px;
+    max-height: 400px;  
+
+}

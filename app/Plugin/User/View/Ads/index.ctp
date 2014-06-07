@@ -1,27 +1,27 @@
-<h2> MY ADS </h2>
-
-<?php echo $this->Html->link('New Ads',array('controller' => 'ads','action' => 'new_ad')); ?>
-
-
 
 <div class="users index">
-	<h2><?php echo __('Users'); ?></h2>
+<h2> MY ADS </h2>
+<?php echo $this->Html->link('New Ads',array('controller' => 'ads','action' => 'new_ad')); ?>
+	<br>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('ads'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($ads as $adslist): ?>
 	<tr>
-		<td><?php echo h($adslist['Ad']['id']); ?>&nbsp;</td>
+		
 		<td>
 			<?php echo $this->Html->link($adslist['Ad']['name'], array('controller' => 'ads', 'action' => 'view',
 			 $adslist['Ad']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $adslist['Ad']['created']?>
+		</td>
+		<td>
+			<?php echo $adslist['Ad']['modified']?>
 		</td>
 		
 		<td class="actions">
