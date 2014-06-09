@@ -93,6 +93,18 @@ $(document).ready(function() {
         type: 'text',
         name: 'username'
     });
+    $('#firstname').editable({
+        type: 'text',
+        name: 'firstname'
+    });
+    $('#lastname').editable({
+        type: 'text',
+        name: 'lastname'
+    });
+    $('#email').editable({
+        type: 'text',
+        name: 'email'
+    });
     //select2 editable
     var countries = [];
     $.each({
@@ -188,7 +200,7 @@ $(document).ready(function() {
         }
     });
     //custom date editable
-    $('#signup').editable({
+    $('#birthdate').editable({
         type: 'adate',
         date: {
             //datepicker plugin options

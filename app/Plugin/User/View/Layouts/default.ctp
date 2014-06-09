@@ -37,7 +37,7 @@
 			echo $this->Html->css('User.bootstrap-editable');
 			echo $this->Html->css('User.ace.min');
 			echo $this->Html->css('User.ace-skins.min');
-			echo $this->Html->css('User.rtl.min');
+			echo $this->Html->css('User.ace-rtl.min');
 			echo $this->Html->css('User.style');
 
 			echo $this->Html->script('User.jquery.min');

@@ -124,59 +124,15 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-9">
-			<div class="center">
-				<span class="btn btn-app btn-sm btn-light no-hover">
-					<span class="line-height-1 bigger-170 blue"> 1,411 </span>
-
-					<br>
-					<span class="line-height-1 smaller-90"> Views </span>
-				</span>
-
-				<span class="btn btn-app btn-sm btn-yellow no-hover">
-					<span class="line-height-1 bigger-170"> 32 </span>
-
-					<br>
-					<span class="line-height-1 smaller-90"> Followers </span>
-				</span>
-
-				<span class="btn btn-app btn-sm btn-pink no-hover">
-					<span class="line-height-1 bigger-170"> 4 </span>
-
-					<br>
-					<span class="line-height-1 smaller-90"> Projects </span>
-				</span>
-
-				<span class="btn btn-app btn-sm btn-grey no-hover">
-					<span class="line-height-1 bigger-170"> 23 </span>
-
-					<br>
-					<span class="line-height-1 smaller-90"> Reviews </span>
-				</span>
-
-				<span class="btn btn-app btn-sm btn-success no-hover">
-					<span class="line-height-1 bigger-170"> 7 </span>
-
-					<br>
-					<span class="line-height-1 smaller-90"> Albums </span>
-				</span>
-
-				<span class="btn btn-app btn-sm btn-primary no-hover">
-					<span class="line-height-1 bigger-170"> 55 </span>
-
-					<br>
-					<span class="line-height-1 smaller-90"> Contacts </span>
-				</span>
-			</div>
 
 			<div class="space-12"></div>
-
 			<div class="profile-user-info profile-user-info-striped">
 				<div class="profile-info-row">
 					<div class="profile-info-name"> Username </div>
 
 					<div class="profile-info-value">
-						<span id="username" class="" style="display: inline;">
-							<?php echo $this->request->data['User']['jrr_user']; ?>
+						<span id="username" class="editable editable-click" style="display: inline;">
+							<?php echo ($this->request->data['User']['jrr_user'] != '') ? $this->request->data['User']['jrr_user']: 'Username here'; ?>
 						</span>
 					</div>
 				</div>
@@ -185,8 +141,8 @@
 					<div class="profile-info-name"> Firstname </div>
 
 					<div class="profile-info-value">
-						<span id="city" class="" style="display: inline;">
-							<?php echo $this->request->data['User']['firstname']; ?>
+						<span id="firstname" class="editable editable-click" style="display: inline;">
+							<?php echo ($this->request->data['User']['firstname'] != '') ? $this->request->data['User']['firstname']: 'First name here'; ?>
 						</span>
 					</div>
 				</div>
@@ -195,8 +151,8 @@
 					<div class="profile-info-name"> Lastname </div>
 
 					<div class="profile-info-value">
-						<span id="age" class="" style="display: inline;">
-							<?php echo $this->request->data['User']['lastname']; ?>
+						<span id="lastname" class="editable editable-click" style="display: inline;">
+							<?php echo ($this->request->data['User']['lastname'] != '') ? $this->request->data['User']['lastname']: 'Last name here'; ?>
 						</span>
 					</div>
 				</div>
@@ -205,7 +161,7 @@
 					<div class="profile-info-name"> Birthdate </div>
 
 					<div class="profile-info-value">
-						<span id="signup" class="" style="display: inline;">
+						<span id="birthdate" class="editable editable-click" style="display: inline;">
 							<?php echo $this->request->data['User']['birthdate']; ?>
 						</span>
 					</div>
@@ -215,8 +171,8 @@
 					<div class="profile-info-name"> Gender </div>
 
 					<div class="profile-info-value">
-						<span id="login" class="" style="display: inline;">
-							<?php echo $this->request->data['User']['gender']; ?>
+						<span id="gender" class="editable editable-click" style="display: inline;">
+							<?php echo ($this->request->data['User']['gender'] != '') ? $this->request->data['User']['gender']: 'Male'; ?>
 						</span>
 					</div>
 				</div>
@@ -225,7 +181,7 @@
 					<div class="profile-info-name">Email</div>
 
 					<div class="profile-info-value">
-						<span id="about" class="" style="display: inline;">
+						<span id="email" class="editable editable-click" style="display: inline;">
 							<?php echo $this->request->data['User']['email']; ?>
 						</span>
 					</div>
