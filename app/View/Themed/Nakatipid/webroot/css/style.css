@@ -1,4 +1,4 @@
-/** GLOBAL STYLE FOR USER VIEW **/
+  /** GLOBAL STYLE FOR USER VIEW **/
 
 @import url("../font/fonts.css");
 
@@ -6,6 +6,7 @@ html, body {
 	height: 100%;
 	min-height: 100%;
 	font-family: 'proxima_nova_rgregular';
+    letter-spacing: 0.5px;
 }
 
 ul {
@@ -33,7 +34,7 @@ padding-left: 0;
 }
 
 #main-wrapper {
-    background: none repeat scroll 0 0 #F6F6F6;
+    background: none repeat scroll 0 0 #ecf0f1;
     min-height: 100%;
 }
 
@@ -165,23 +166,23 @@ padding-left: 0;
 }
 
 #access-section {
-	max-height: 450px;
+	max-height: 350px;
 	height: 390px;
 	width: 100%;
 	margin-top: 150px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
 }
 
 #register-container {
-	background: #2980b9;
-	min-height: 100%;
-	margin-top: -370px;
+    background: none repeat scroll 0 0 #2980B9;
+    margin-top: -340px;
+    min-height: 100%;
 }
 
 #signin-container {
-	background: #e67e22;
-	min-height: 100%;
-	margin-top: -370px;
+	background: #f5943d;
+	margin-top: -340px;
+    min-height: 100%;
 }
 
 .register-container-mobile {
@@ -198,16 +199,15 @@ padding-left: 0;
 #access-section input[type="text"],#access-section input[type="password"],#access-section input[type="email"]  {
     border: 0 none;
     box-shadow: none;
-    font-size: 19pt;
+    font-size: 13pt;
     height: 100%;
     padding: 10px;
-    font-family: 'proxima_novalight';
 }
 
 .access-forms {
     position: relative;
     z-index: 99;
-    margin-top: 200px;
+    margin-top: 140px;
 }
 
 .access-forms > .row {
@@ -218,7 +218,7 @@ padding-left: 0;
     background: none repeat scroll 0 0 #3EA3E5;
     border-bottom: 4px solid #1E73AB;
     color: #FFFFFF;
-    padding: 10px 17px;
+    padding: 7px 8px;
 }
 
 #register-btn:hover {
@@ -230,10 +230,10 @@ padding-left: 0;
 }
 
 #login-btn {
-    background: none repeat scroll 0 0 #fb9943;
-    border-bottom: 4px solid #ce6b13;
+    background: none repeat scroll 0 0 #fbb476;
+    border-bottom: 4px solid #e2832d;
     color: #FFFFFF;
-    padding: 10px 17px;
+    padding: 7px 8px;
 }
 
 #login-btn:hover {
@@ -245,20 +245,20 @@ padding-left: 0;
 }
 
 #login-btn i {
-	background: none repeat scroll 0 0 #ce6b13;
+	background: none repeat scroll 0 0 #e2832d;
 }
 
 .btn.icon-left i {
     background: none repeat scroll 0 0 #1E73AB;
     border-radius: 30px;
-    margin-right: 20px;
-    padding: 7px 9px;
-    transition: background 0.5s ease;
+    margin-right: 15px;
+    padding: 5px 7px;
+    transition: background 0.5s ease 0s;
 }
 
 .btn.icon-left span {
     float: right;
-    font-size: 17pt;
+    font-size: 14pt;
     padding-top: 3px;
 }
 
@@ -271,13 +271,13 @@ padding-left: 0;
 
 .or-circle {
     background: none repeat scroll 0 0 #2980B9;
-    border: 7px solid #E67E22;
+    border: 7px solid #f5943d;
     border-radius: 85px;
     color: #FFFFFF;
     font-family: 'simpleton_gothicregular';
     font-size: 20pt;
     margin-left: -65px;
-    margin-top: 146px;
+    margin-top: 126px;
     padding: 28px 27px;
     z-index: 99999;
 }
@@ -298,6 +298,7 @@ padding-left: 0;
     margin-bottom: 20px;
     margin-left: 20px;
     display: inline-block;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.26);
 }
 
 .per-ads-list.new-ads {
@@ -306,6 +307,10 @@ padding-left: 0;
 
 .per-ads-list.discount-ads {
     border-bottom: 4px solid #ff8010;
+}
+
+.per-ads-list.new-ads .per-ads-title, .per-ads-list.new-ads .per-ads-exerpt, .per-ads-list.new-ads .per-ads-info {
+    
 }
 
 .per-ads-img {
@@ -363,7 +368,7 @@ padding-left: 0;
 
 .per-ads-info {
     font-family: 'proxima_nova_rgregular';
-    color: #bcbcbc;
+    color: #a1a1a1;
     font-size: 10pt;
 }
 
@@ -413,4 +418,82 @@ padding-left: 0;
 .mobile-access-container {
     margin-bottom: 40px;
     margin-top: 50px;
+}
+
+#navi-top {
+    height: 40px;
+    background: #23313e;
+}
+
+.no-pads {
+    padding: 0 !important;
+}
+
+#navi-top ul {
+    margin: 0 !important;
+}
+
+#navi-top ul li {
+    color: #FFFFFF;
+    margin-left: 10px;
+    min-width: 57px;
+    padding: 5px 10px;
+    text-align: center;
+    transition: all 300ms ease-in;
+}
+
+#navi-top ul li.active {
+    border-bottom: 4px solid #E67E22;
+}
+
+#navi-top ul li:hover {
+    border-bottom: 4px solid #334454;
+    cursor: pointer;
+}
+
+#search-filter { 
+    min-height: 60px;
+    border: 1px solid #e3e2e2;
+    padding: 8px;
+    background: #fff;
+    margin-bottom:70px;
+}
+
+.filter-option {
+    padding: 12px;
+    width: auto;
+    color:#6c6c6c;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+    transition: all 300ms ease;
+}
+
+.filter-option:hover {
+    background: #F2F2F2;
+    cursor: pointer
+}
+
+.has-dropdown .flaticon-arrow208 {
+    color: #BEBEBE;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-top: 2px;
+    transform: rotate(270deg);
+}
+
+.filter-option-btn {
+    background: none repeat scroll 0 0 #3EA3E5;
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-left: 10px;
+    min-width: 90px;
+    padding: 12px;
+    text-align: center;
+    width: auto;
+    cursor: pointer;
+}
+
+.filter-option-btn:hover {
+    background: #47AFEF
 }

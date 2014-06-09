@@ -1,3 +1,16 @@
+    <div class="row full-width no-pads">
+    	<div id="navi-top" class="">
+    		<ul>
+    			<li class="pull-left active">Home</li>
+    			<li class="pull-left">Clothes</li>
+    			<li class="pull-left">Accessories</li>
+    			<li class="pull-left">Real State</li>
+    			<li class="pull-left">Automotive</li>
+    			<li class="pull-left">Gadgets</li>
+    		</ul>
+    		<div class="clearfix"></div>
+    	</div>
+    </div>
     <div class="row">
         <div id="header-container" class="large-12 column">
             <div id="logo-container" class="row">
@@ -29,7 +42,7 @@
                         </div>
                     </div>
                     <div id="search-button" class="large-1 small-2 no-pad-both columns solo-icon btn">
-                        <i class="flaticon-magnifying40"></i>
+                        <i class="flaticon-search54"></i>
                     </div>
                 </div>
             </div>
@@ -190,6 +203,35 @@
             </div>
         </div>
     </div>
+	
+	<div class="row">
+		<div id="search-filter" class="large-9 small-11 large-centered small-centered columns">
+			<div class="filter-option pull-left has-dropdown">
+				<span class="pull-left">Condition</span>
+				<div class="flaticon-arrow208 pull-left"></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="filter-option pull-left has-dropdown">
+				<span class="pull-left">Location</span>
+				<div class="flaticon-arrow208 pull-left"></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="filter-option pull-left has-dropdown">
+				<span class="pull-left">Price range</span>
+				<div class="flaticon-arrow208 pull-left"></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="filter-option pull-left has-dropdown">
+				<span class="pull-left">Date Posted</span>
+				<div class="flaticon-arrow208 pull-left"></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="filter-option-btn  pull-left">
+				Filter
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 
     <div class="row full-width" id="ads-list">
             <?php
@@ -204,12 +246,10 @@
                                 <div class="per-ads-title">
                                     Slim Fit Low Hugger Pants
                                 </div>
-                                <div class="per-ads-exerpt">
-                                    Lorem ipsum supsup domoit
-                                </div>
                                 <div class="per-ads-info">
                                     <span><i class="flaticon-clock61"></i> 5 days ago.</span>
                                     <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
+                                    <span><i class="flaticon-small44"></i> 500 views</span>
                                 </div>
                                 <div class="per-ads-price-box">
                                     <div class="per-ads-price">PHP 500.00</div>
@@ -226,12 +266,10 @@
                                 <div class="per-ads-title">
                                     Slim Fit Low Hugger Pants
                                 </div>
-                                <div class="per-ads-exerpt">
-                                    Lorem ipsum supsup domoit
-                                </div>
                                 <div class="per-ads-info">
                                     <span><i class="flaticon-clock61"></i> 5 days ago.</span>
                                     <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
+                                    <span><i class="flaticon-small44"></i> 500 views</span>
                                 </div>
                                 <div class="per-ads-price-box">
                                     <div class="per-ads-price per-discount-price">NOW PHP 500.00</div>

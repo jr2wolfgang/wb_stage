@@ -15,21 +15,30 @@ font-style: normal;
 }.flaticon-arrow133:before {
 	content: "\e000";
 }
-.flaticon-black302:before {
+.flaticon-arrow208:before {
 	content: "\e001";
 }
-.flaticon-clock61:before {
+.flaticon-arrow73:before {
 	content: "\e002";
 }
-.flaticon-lock39:before {
+.flaticon-clock61:before {
 	content: "\e003";
 }
-.flaticon-magnifying40:before {
+.flaticon-lock39:before {
 	content: "\e004";
 }
-.flaticon-map58:before {
+.flaticon-male80:before {
 	content: "\e005";
 }
-.flaticon-user7:before {
+.flaticon-map5:before {
 	content: "\e006";
+}
+.flaticon-search54:before {
+	content: "\e007";
+}
+.flaticon-small44:before {
+	content: "\e008";
+}
+.flaticon-user7:before {
+	content: "\e009";
 }
