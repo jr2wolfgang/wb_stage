@@ -1,3 +1,9 @@
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; } /* Hides from IE-mac \*/
+.clearfix { display: block; }
+
+
 .nav-list > li > a > .menu-icon {
 	vertical-align: text-bottom;
 }
@@ -45,7 +51,7 @@ label {
 .images_append {
     max-height: 400px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 

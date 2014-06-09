@@ -20,29 +20,7 @@ class AdminsController extends UserAppController  {
 		$this->layout = 'default';				
 	}
 
-	public function ads(){
-		$ads = ClassRegistry::init('Ad');
-		$User = ClassRegistry::init('User');
 
-		$User->bind(array('Image'));
-		$images =  $User->read(null,$this->Session->read('Auth.User.id'));
-		$session_id = $this->Session->read('Auth');
-		$session_id = $session_id['User']['id'];
-
-		if ($this->request->is('post')) { 
-			$ads->create();
-			$this->request->data['Ad']['modified_by'] = $session_id;
-			pr($this->request->data);
-			exit();
-			if($ads->save($this->request->data)){
-				$this->Session->setFlash(__('The ads has been saved.'));
-			} else {
-				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
-			}
-		}
-
-		$this->set(compact('images'));
-	}
 
 	public function upload_multiple(){
 

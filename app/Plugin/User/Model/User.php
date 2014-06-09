@@ -14,6 +14,11 @@ class User extends AppModel {
  *
  * @var array
  */
+
+
+	public $recursive = -1;
+	public $actsAs = array('Containable');
+
 	public $validate = array(
 
 		'email' => array(
@@ -225,9 +230,6 @@ class User extends AppModel {
 
 
 	
-	public $recursive = -1;
-	public $actsAs = array('Containable');
-
 	public function bind($model = array('Group')){
 
 		$this->bindModel(array(

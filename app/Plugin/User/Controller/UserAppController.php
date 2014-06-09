@@ -35,13 +35,20 @@ App::uses('Controller', 'Controller');
  */
 class UserAppController extends Controller {
 
-	  function beforeFilter() {
+	 function beforeFilter() {
 
 		$userData = $this->Session->read('Auth');
 
 		$this->set(compact('userData'));
   		
  	}
+
+ 	public function index() {
+
+
+  			
+	
+	}
 
 	  
 

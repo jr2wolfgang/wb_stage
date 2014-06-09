@@ -12,6 +12,11 @@ class Ad extends AppModel {
  *
  * @var array
  */
+
+	public $recursive = -1;
+	
+	public $actsAs = array('Containable');
+	
 	public $validate = array(
 		// 'name' => array(
 		// 	'notEmpty' => array(
@@ -59,9 +64,7 @@ class Ad extends AppModel {
 	);*/
 
 
-	public $recursive = -1;
-	
-	public $actsAs = array('Containable');
+
 
 	
 	public function bind($model = array('Group')){

@@ -121,7 +121,7 @@
 							<td> 
 							<input type="checkbox" class="check_item" name="data[Ad][images][]" value="<?php echo $value['id']; ?>">
 							</td>
-							<td> <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '145')); ?></td>
+							<td> <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100')); ?></td>
 							<td> <?php echo $value['extension'] ?></td>
 						</tr>
 				<?php endforeach;  ?>

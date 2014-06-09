@@ -16,6 +16,14 @@
 							<span class="white">Daniel Patilya</span>
 						</a>
 
+						<div class="edit_profile clearfix">
+								<ul>
+									<li><a href="#">View</a></li>
+									<li><?php echo $this->Html->link('Edit',array('controller' => 'users','action' => 'edit')) ?></li>
+								</ul>
+
+						</div>
+
 						<ul class="dropdown-menu dropdown-caret dropdown-lighter align-left">
 							<li class="dropdown-header"> Change Status </li>
 
@@ -51,6 +59,11 @@
 
 			<div class="profile-contact-info">
 				<div class="profile-contact-links align-left">
+
+					<?php echo $this->Html->link('<i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
+						Edit Profile',array('controller' => 'users','action' => 'edit'),
+						array('class' => 'btn btn-link','escape' => false)) ?>
+
 					<a class="btn btn-link" href="#">
 						<i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
 						Add as a friend
