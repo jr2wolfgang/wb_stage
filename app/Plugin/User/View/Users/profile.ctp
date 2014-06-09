@@ -5,7 +5,7 @@
 	<div class="col-xs-12 col-sm-3 center">
 		<span class="profile-picture">
 			<img width="294" height="294" style="display: block;" id="avatar-img" class="editable img-responsive editable-click editable-empty" src="<?php echo $this->request->data['User']['avatar']; ?>" />
-			<input id="avatar" type="file">change avatar</button>
+			<input id="avatar" type="file"/>
 		</span>
 	</div>
 	<div class="col-xs-12 col-sm-9">

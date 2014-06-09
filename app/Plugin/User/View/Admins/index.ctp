@@ -3,7 +3,7 @@
 		<div class="col-xs-12 col-sm-3 center">
 			<div>
 				<span class="profile-picture">
-					<?php echo $this->Html->image('User.irvin.png',array('alt'=>'Irvino\'s Avatar','class'=>'editable img-responsive editable-click editable-empty','id'=>'avatar','style'=>'display: block;')); ?>
+					<?php echo $this->Html->image($this->request->data['User']['avatar'],array('alt'=>'Avatar','class'=>'img-responsive editable-empty','id'=>'avatar','style'=>'display: block; width:200px;')); ?>
 				</span>
 
 				<div class="space-4"></div>
@@ -13,7 +13,12 @@
 						<a data-toggle="dropdown" class="user-title-label dropdown-toggle" href="#">
 							<i class="ace-icon fa fa-circle light-green"></i>
 							&nbsp;
-							<span class="white">Daniel Patilya</span>
+							<span class="white">
+								<?php
+									echo $this->request->data['User']['firstname'] . ' ';
+									echo $this->request->data['User']['lastname'];
+								?>
+							</span>
 						</a>
 
 						<div class="edit_profile clearfix">
@@ -30,7 +35,7 @@
 							<li>
 								<a href="#">
 									<i class="ace-icon fa fa-circle green"></i>
-&nbsp;
+									&nbsp;
 									<span class="green">Available</span>
 								</a>
 							</li>
@@ -38,7 +43,7 @@
 							<li>
 								<a href="#">
 									<i class="ace-icon fa fa-circle red"></i>
-&nbsp;
+									&nbsp;
 									<span class="red">Busy</span>
 								</a>
 							</li>
@@ -46,7 +51,7 @@
 							<li>
 								<a href="#">
 									<i class="ace-icon fa fa-circle grey"></i>
-&nbsp;
+									&nbsp;
 									<span class="grey">Invisible</span>
 								</a>
 							</li>
@@ -170,49 +175,59 @@
 					<div class="profile-info-name"> Username </div>
 
 					<div class="profile-info-value">
-						<span id="username" class="editable editable-click" style="display: inline;">chixser4ever</span>
+						<span id="username" class="" style="display: inline;">
+							<?php echo $this->request->data['User']['jrr_user']; ?>
+						</span>
 					</div>
 				</div>
 
 				<div class="profile-info-row">
-					<div class="profile-info-name"> Location </div>
+					<div class="profile-info-name"> Firstname </div>
 
 					<div class="profile-info-value">
-						<i class="fa fa-map-marker light-orange bigger-110"></i>
-						<span id="country" class="editable editable-click" style="display: inline;">Tayabas</span>
-						<span id="city" class="editable editable-click" style="display: inline;">Quezon Province</span>
+						<span id="city" class="" style="display: inline;">
+							<?php echo $this->request->data['User']['firstname']; ?>
+						</span>
 					</div>
 				</div>
 
 				<div class="profile-info-row">
-					<div class="profile-info-name"> Age </div>
+					<div class="profile-info-name"> Lastname </div>
 
 					<div class="profile-info-value">
-						<span id="age" class="editable editable-click" style="display: inline;">21</span>
+						<span id="age" class="" style="display: inline;">
+							<?php echo $this->request->data['User']['lastname']; ?>
+						</span>
 					</div>
 				</div>
 
 				<div class="profile-info-row">
-					<div class="profile-info-name"> Joined </div>
+					<div class="profile-info-name"> Birthdate </div>
 
 					<div class="profile-info-value">
-						<span id="signup" class="editable editable-click" style="display: inline;">2010/06/20</span>
+						<span id="signup" class="" style="display: inline;">
+							<?php echo $this->request->data['User']['birthdate']; ?>
+						</span>
 					</div>
 				</div>
 
 				<div class="profile-info-row">
-					<div class="profile-info-name"> Last Online </div>
+					<div class="profile-info-name"> Gender </div>
 
 					<div class="profile-info-value">
-						<span id="login" class="editable editable-click editable-unsaved" style="display: inline;">50 hours ago</span>
+						<span id="login" class="" style="display: inline;">
+							<?php echo $this->request->data['User']['gender']; ?>
+						</span>
 					</div>
 				</div>
 
 				<div class="profile-info-row">
-					<div class="profile-info-name"> About Me </div>
+					<div class="profile-info-name">Email</div>
 
 					<div class="profile-info-value">
-						<span id="about" class="editable editable-click" style="display: inline;">Editable as WYSIWYG</span>
+						<span id="about" class="" style="display: inline;">
+							<?php echo $this->request->data['User']['email']; ?>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -223,14 +238,14 @@
 				<div class="widget-header widget-header-small">
 					<h4 class="widget-title blue smaller">
 						<i class="ace-icon fa fa-rss orange"></i>
-						Recent Activities
+						Recent Ads
 					</h4>
 
 					<div class="widget-toolbar action-buttons">
 						<a data-action="reload" href="#">
 							<i class="ace-icon fa fa-refresh blue"></i>
 						</a>
-&nbsp;
+						&nbsp;
 						<a class="pink" href="#">
 							<i class="ace-icon fa fa-trash-o"></i>
 						</a>
@@ -240,240 +255,29 @@
 				<div class="widget-body">
 					<div class="widget-main padding-8">
 						<div class="profile-feed ace-scroll scroll-active" id="profile-feed-1" style="position: relative;"><div class="scroll-track" style="display: block; height: 200px;"><div class="scroll-bar" style="height: 62px; top: 137px;"></div></div><div class="scroll-content" style="max-height: 200px;">
-							<div class="profile-activity clearfix">
-								<div>
-									<?php echo $this->Html->image('User.irvin.png',array('alt'=>'Daniel Patilya','class'=>'pull-left')); ?>
-									<a href="#" class="user"> Daniel Patilya </a>
-									changed his profile photo.
-									<a href="#">Take a look</a>
+							<?php foreach ($this->request->data['Ad'] as $ads): ?>
+								<div class="profile-activity clearfix">
+									<div>
+										<?php echo $this->Html->image('User.irvin.png',array('alt'=>'Daniel Patilya','class'=>'pull-left')); ?>
+										<a href="#" class="user"> <?php echo $ads['name']; ?> </a>
+										<?php echo $ads['description']; ?>
+										<div class="time">
+											<i class="ace-icon fa fa-clock-o bigger-110"></i>
+											an hour ago
+										</div>
+									</div>
 
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										an hour ago
+									<div class="tools action-buttons">
+										<a class="blue" href="#">
+											<i class="ace-icon fa fa-pencil bigger-125"></i>
+										</a>
+
+										<a class="red" href="#">
+											<i class="ace-icon fa fa-times bigger-125"></i>
+										</a>
 									</div>
 								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<?php echo $this->Html->image('User.miketyson.jpg',array('alt'=>'Mike Tyson','class'=>'pull-left')); ?>
-									<a href="#" class="user"> Mike Tyson </a>
-
-									is now friends with Daniel Patilya.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										2 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<i class="thumbicon fa fa-check btn-success no-hover pull-left"></i>
-									<a href="#" class="user"> Daniel Patilya </a>
-									is going to
-									<a href="#">One Direction</a>
-
-									concert.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										5 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<i class="thumbicon fa fa-picture-o btn-info no-hover pull-left"></i>
-									<a href="#" class="user"> Alex Doe </a>
-									uploaded a new photo.
-									<a href="#">Take a look</a>
-
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										5 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<img src="assets/avatars/avatar4.png" alt="David Palms's avatar" class="pull-left">
-									<a href="#" class="user"> David Palms </a>
-
-									left a comment on Alex's wall.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										8 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<i class="thumbicon fa fa-pencil-square-o btn-pink no-hover pull-left"></i>
-									<a href="#" class="user"> Alex Doe </a>
-									published a new blog post.
-									<a href="#">Read now</a>
-
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										11 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<img src="assets/avatars/avatar5.png" alt="Alex Doe's avatar" class="pull-left">
-									<a href="#" class="user"> Alex Doe </a>
-
-									upgraded his skills.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										12 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<i class="thumbicon fa fa-key btn-info no-hover pull-left"></i>
-									<a href="#" class="user"> Alex Doe </a>
-
-									logged in.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										12 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<i class="thumbicon fa fa-power-off btn-inverse no-hover pull-left"></i>
-									<a href="#" class="user"> Alex Doe </a>
-
-									logged out.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										16 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="profile-activity clearfix">
-								<div>
-									<i class="thumbicon fa fa-key btn-info no-hover pull-left"></i>
-									<a href="#" class="user"> Alex Doe </a>
-
-									logged in.
-									<div class="time">
-										<i class="ace-icon fa fa-clock-o bigger-110"></i>
-										16 hours ago
-									</div>
-								</div>
-
-								<div class="tools action-buttons">
-									<a class="blue" href="#">
-										<i class="ace-icon fa fa-pencil bigger-125"></i>
-									</a>
-
-									<a class="red" href="#">
-										<i class="ace-icon fa fa-times bigger-125"></i>
-									</a>
-								</div>
-							</div>
+							<?php endforeach; ?>
 						</div></div>
 					</div>
 				</div>

@@ -47,21 +47,21 @@ class Ad extends AppModel {
  *
  * @var array
  */
-	/*public $belongsTo = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'modified_by',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);*/
+	public $hasMany = array(
+		'Image' => array(
+					'className' => 'User',
+					'foreignKey' => false,
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				)
+	);
 
 
 

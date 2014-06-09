@@ -17,16 +17,20 @@ class AdminsController extends UserAppController  {
 	}
 
 	public function index() {
-		$this->layout = 'default';				
+		$this->layout = 'default';	
+
+		$user = ClassRegistry::init('User');
+		$user->bind(array('Ad'));
+	
+		if(empty($this->data)){
+			$user_data = $user->findById($this->Session->read('Auth.User.id'));
+			$this->data = $user_data;			
+		}
 	}
-
-
 
 	public function upload_multiple(){
 
-
 		$output_dir = App::pluginPath('User') . WEBROOT_DIR.DS.'img/uploads/';
-
 		if(isset($_FILES["myfile"]))
 		{
 		$ret = array();

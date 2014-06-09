@@ -44,24 +44,32 @@ class UsersController extends UserAppController  {
 
 	public function profile(){
 		$user = $this->User;
-
+	
 		if(empty($this->data)){
 			$user_data = $user->findById($this->Session->read('Auth.User.id'));
 			$this->data = $user_data;
 			$this->request->data['User']['jrr_password'] = '';
 		}
 
+		$user->validate = array();
 		if ($this->request->is('post')) {
 			$user->id = $this->Session->read('Auth.User.id');
-			$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
-	
+
+			if (empty($this->request->data['User']['jrr_password'])){
+				$this->request->data['User']['jrr_password'] = $this->Session->read('Auth.User.rxt');
+				$this->request->data['User']['rxt'] = $this->Session->read('Auth.User.rxt');
+			}
+			else {
+				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
+			}
+
+
 			if ($user->save($this->request->data)) {
 				$this->Session->setFlash(__('The User has been saved.'));
 			} 
 			else {			
 				$this->Session->setFlash(__('The User could not be saved. Please, try again.'));
 			}
-
 		}
 	}
 
