@@ -144,9 +144,14 @@ $('#add_map').click(function(){
 		google.maps.event.trigger(map, 'resize');
 	},2000); */
 
-	//$('.map_container').slideToggle();
+	$('.map_container').slideToggle();
+	$('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">');
+
+	initialize();
 
 });
+
+$('#add_map').trigger('click');
 
 
 $('#use_image').click(function(){
