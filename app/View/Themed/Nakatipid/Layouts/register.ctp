@@ -34,16 +34,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
         // STYLES
         echo $this->Html->css(array('normalize',
-            'foundation.min',
-            'flaticon',
-            'style',
-            'register'
+                'foundation.min',
+                'font-awesome.min',
+                'flaticon',
+                'animate',
+                'style',
+                'register',
+                'jquery-impromptu',
+                'responsive'
             ));
    
 
         // SCRIPTS
         echo $this->Html->script('vendor/jquery');
         echo $this->Html->script('vendor/modernizr');
+        echo $this->Html->script('jquery-impromptu');
         
     	echo $this->fetch('meta');
     	echo $this->fetch('css');
@@ -55,19 +60,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <!-- body content here -->
 
     <div id="main-wrapper" class="login">
-        <div id="inner-wrapper" class="row">
-            <div id="header-container" class="large-12 column">
-                <div id="logo-container" class="row">
-                    <div class="large-6 large-centered small-centered medium-centered column">
-                        <?php echo $this->Html->image('logo.png'); ?>
-                    </div>
-
-
-                    <?php echo $this->Session->flash(); ?>
-                    <?php echo $this->fetch('content'); ?>
+        <div class="row full-width no-pads">
+            <div class="" id="navi-top">
+                <div class="logo-top">
+                    <?php echo $this->Html->image('logo_orange_white.png'); ?>
                 </div>
-           
             </div>
+        </div>
+
+        <div id="inner-wrapper" class="row">
+            <?php echo $this->fetch('content'); ?>
         </div>
     </div>
 

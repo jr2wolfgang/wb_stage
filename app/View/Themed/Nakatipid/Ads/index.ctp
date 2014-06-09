@@ -28,7 +28,7 @@
                             <div class="selected-dropdown">Green Bit</div>
                             <i class="flaticon-arrow133"></i>
                             <div class="clearfix"></div>
-                            <ul class="list">
+                            <ul class="list dropdown-fade">
                                 <li class="selected">East Blue</li>
                                 <li class="">Grand Line</li>
                                 <li class="">Red Line</li>
@@ -210,21 +210,49 @@
 				<span class="pull-left">Condition</span>
 				<div class="flaticon-arrow208 pull-left"></div>
 				<div class="clearfix"></div>
+                <div class="filter-option-drp dropdown-fade">
+                    <ul>
+                        <li>Used</li>
+                        <li>Brand News</li>
+                    </ul>
+                </div>
 			</div>
 			<div class="filter-option pull-left has-dropdown">
 				<span class="pull-left">Location</span>
 				<div class="flaticon-arrow208 pull-left"></div>
 				<div class="clearfix"></div>
+                <div class="filter-option-drp dropdown-fade">
+                    <ul>
+                        <li>Luzon</li>
+                        <li>Visayaz</li>
+                        <li>Mindanao</li>
+                    </ul>
+                </div>
 			</div>
 			<div class="filter-option pull-left has-dropdown">
 				<span class="pull-left">Price range</span>
 				<div class="flaticon-arrow208 pull-left"></div>
 				<div class="clearfix"></div>
+                <div class="filter-option-drp dropdown-fade">
+                    <ul>
+                        <li>PHP 100 to PHP 200</li>
+                        <li>PHP 300 to PHP 400</li>
+                        <li>PHP 500 to PHP 600</li>
+                    </ul>
+                </div>
 			</div>
 			<div class="filter-option pull-left has-dropdown">
 				<span class="pull-left">Date Posted</span>
 				<div class="flaticon-arrow208 pull-left"></div>
 				<div class="clearfix"></div>
+                <div class="filter-option-drp dropdown-fade">
+                    <ul>
+                        <li>Today</li>
+                        <li>Yesterday</li>
+                        <li>Last Week</li>
+                        <li>Last Month</li>
+                    </ul>
+                </div>
 			</div>
 			<div class="filter-option-btn  pull-left">
 				Filter

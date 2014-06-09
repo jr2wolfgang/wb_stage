@@ -1,7 +1,7 @@
 @font-face {
 	font-family: "Flaticon";
 	src: url("../font/flaticon.eot");
-	src: url("../font/flaticon.eot#iefix") format("embedded-opentype"),
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
 	url("../font/flaticon.woff") format("woff"),
 	url("../font/flaticon.ttf") format("truetype"),
 	url("../font/flaticon.svg") format("svg");
@@ -21,24 +21,45 @@ font-style: normal;
 .flaticon-arrow73:before {
 	content: "\e002";
 }
-.flaticon-clock61:before {
+.flaticon-arrow83:before {
 	content: "\e003";
 }
-.flaticon-lock39:before {
+.flaticon-businessmen5:before {
 	content: "\e004";
 }
-.flaticon-male80:before {
+.flaticon-career:before {
 	content: "\e005";
 }
-.flaticon-map5:before {
+.flaticon-check1:before {
 	content: "\e006";
 }
-.flaticon-search54:before {
+.flaticon-clock61:before {
 	content: "\e007";
 }
-.flaticon-small44:before {
+.flaticon-lock39:before {
 	content: "\e008";
 }
-.flaticon-user7:before {
+.flaticon-male79:before {
 	content: "\e009";
+}
+.flaticon-male80:before {
+	content: "\e00a";
+}
+.flaticon-map5:before {
+	content: "\e00b";
+}
+.flaticon-search54:before {
+	content: "\e00c";
+}
+.flaticon-small44:before {
+	content: "\e00d";
+}
+.flaticon-three115:before {
+	content: "\e00e";
+}
+.flaticon-user7:before {
+	content: "\e00f";
+}
+.flaticon-viral:before {
+	content: "\e010";
 }

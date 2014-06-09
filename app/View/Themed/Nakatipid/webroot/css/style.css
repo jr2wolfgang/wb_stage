@@ -36,6 +36,7 @@ padding-left: 0;
 #main-wrapper {
     background: none repeat scroll 0 0 #ecf0f1;
     min-height: 100%;
+    padding-bottom: 100px;
 }
 
 #header-container {
@@ -496,4 +497,42 @@ padding-left: 0;
 
 .filter-option-btn:hover {
     background: #47AFEF
+}
+
+.filter-option-drp {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-left: -80px;
+    margin-top: 20px;
+    min-width: 200px;
+    padding: 5px;
+    position: absolute;
+    z-index: 99;
+    border: 1px solid #e3e2e2;
+    display: none;
+}
+
+.filter-option-drp  ul {
+    margin: 0;
+}
+
+.filter-option-drp li {
+    border-bottom: 1px solid #E3E2E2;
+    padding: 5px;
+}
+
+.filter-option-drp li:last-child {
+    border-bottom: 0px;
+}
+
+.logo-top img {
+    margin-left: 10px;
+    width: 124px;
+}
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #f00;
 }
