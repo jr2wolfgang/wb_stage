@@ -98,6 +98,8 @@
 			echo $this->Html->script('User.bootstrap-editable.min');
 			echo $this->Html->script('User.ace-editable.min');
 			echo $this->Html->script('User.jquery.maskedinput.min');
+			echo $this->Html->script('User.jquery.dataTables.min');
+			echo $this->Html->script('User.jquery.dataTables.bootstrap');
 
 			// dont remove those script below
 			echo $this->Html->script('User.ace-elements.min');
