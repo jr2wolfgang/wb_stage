@@ -85,3 +85,7 @@ label {
     max-height: 400px;  
 
 }
+
+#simple-statistic-box .profile-info-name {
+    width: 40px;
+}
