@@ -38,10 +38,10 @@
 					<td> <h5>Price</h5> </td><td> &nbsp  </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('selling_price',array('label' => 'Orig Price')); ?> </td>
+					<td> <?php  echo $this->Form->input('orig_price',array('label' => 'Orig Price')); ?> </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Old Price')); ?> </td>
+					<td> <?php  echo $this->Form->input('selling_price',array('label' => 'Selling Price')); ?> </td>
 				</tr>
 				<tr>
 					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Before Price')); ?> </td>
