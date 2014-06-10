@@ -271,7 +271,7 @@
                                 <div class="per-ads-new-label ads-has-label animated">New</div>
                             <?php endif; ?>
                             
-                            <a href="view/<?php echo $data['Ad']['id']; ?>/">
+                            <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
                                 <div class="img-container">
                                     <?php echo $this->Html->image('/user/img/uploads/'. $data['Image'][0]['name']); ?>
                                 </div>
@@ -279,7 +279,7 @@
                         </div>
                         <div class="per-ads-desc">
                             <div class="per-ads-title">
-                                <a href="view/<?php echo $data['Ad']['id']; ?>/">
+                                <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
                                     <?php echo $data['Ad']['name']; ?>
                                 </a>
                             </div>

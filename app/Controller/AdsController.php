@@ -19,7 +19,7 @@ class AdsController extends AppController {
 
 	function beforeFilter() {
 		$this->theme = 'Nakatipid';
-  		$this->Auth->allow('index');
+  		$this->Auth->allow('index','view');
  	}
 
 	public function index() {
@@ -38,4 +38,19 @@ class AdsController extends AppController {
 		}	
 	}
 
+	public function view($id) {
+		$this->theme = 'Nakatipid';
+
+		$ads = $this->Ad;
+		$ads->bind(array('Image','User'));
+		// Please refer to User-jrr Model
+		/*$this->User->bind(array('Ad'));*/
+
+	
+		if(empty($this->data)){
+			$ads_data = $ads->findById($id);
+			$this->data = $ads_data; 					
+			
+		}	
+	}	
 }
