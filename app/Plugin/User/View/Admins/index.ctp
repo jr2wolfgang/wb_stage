@@ -3,7 +3,13 @@
 		<div class="col-xs-12 col-sm-3 center">
 			<div>
 				<span class="profile-picture">
-					<?php echo $this->Html->image($this->request->data['User']['avatar'],array('alt'=>'Avatar','class'=>'img-responsive editable-empty','id'=>'avatar','style'=>'display: block; width:200px;')); ?>
+				<?php 
+					if (!empty($this->request->data['User']['avatar'])) {
+						echo $this->Html->image(
+					$this->request->data['User']['avatar']
+					,array('alt'=>'Avatar','class'=>'img-responsive editable-empty','id'=>'avatar','style'=>'display: block; width:200px;'));
+					}
+				?>
 				</span>
 
 				<div class="space-4"></div>
@@ -20,14 +26,6 @@
 								?>
 							</span>
 						</a>
-
-						<div class="edit_profile clearfix">
-								<ul>
-									<li><a href="#">View</a></li>
-									<li><?php echo $this->Html->link('Edit',array('controller' => 'users','action' => 'edit')) ?></li>
-								</ul>
-
-						</div>
 
 						<ul class="dropdown-menu dropdown-caret dropdown-lighter align-left">
 							<li class="dropdown-header"> Change Status </li>
@@ -66,7 +64,7 @@
 				<div class="profile-contact-links align-left">
 
 					<?php echo $this->Html->link('<i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
-						Edit Profile',array('controller' => 'users','action' => 'edit'),
+						Edit Profile',array('controller' => 'users','action' => 'profile'),
 						array('class' => 'btn btn-link','escape' => false)) ?>
 
 					<a class="btn btn-link" href="#">

@@ -184,8 +184,7 @@ class UsersController extends AppController {
 	}
 
 	public function _checkAccountType($data = null) {
-			
-			$this->User->read(null);
+			//$this->User->read(null);
 	}
 
 	public function get_account_type($accountType = null) {
