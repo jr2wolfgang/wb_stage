@@ -18,7 +18,7 @@ class AdminsController extends UserAppController  {
 
 	public function index() {
 		$this->layout = 'default';	
-
+		$imgFolder = '/user/img/';
 		$user = ClassRegistry::init('User');
 		$user->bind(array('Ad'));
 	
@@ -26,9 +26,8 @@ class AdminsController extends UserAppController  {
 			$user_data = $user->findById($this->Session->read('Auth.User.id'));
 			$this->data = $user_data;			
 		}
-
 		if ( empty($this->request->data['User']['avatar']) ){
-			$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
+			$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
 		}
 	}
 

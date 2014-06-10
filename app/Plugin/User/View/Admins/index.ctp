@@ -4,10 +4,7 @@
 			<div class="col-xs-12 col-sm-3 center">
 				<span class="profile-picture">
 					<?php 
-						$img = $this->request->data['User']['avatar'];
-						if(!$img)
-							$img = 
-						echo $this->Html->image($img,array('alt'=>'Avatar','class'=>'img-responsive editable-empty','id'=>'avatar2'));
+						echo $this->Html->image($this->request->data['User']['avatar'],array('alt'=>'Avatar','class'=>'img-responsive editable-empty','id'=>'avatar2'));
 					?>
 				</span>
 
