@@ -26,6 +26,10 @@ class AdminsController extends UserAppController  {
 			$user_data = $user->findById($this->Session->read('Auth.User.id'));
 			$this->data = $user_data;			
 		}
+
+		if ( empty($this->request->data['User']['avatar']) ){
+			$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
+		}
 	}
 
 	public function upload_multiple(){
