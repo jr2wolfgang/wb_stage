@@ -10,6 +10,16 @@ function showErrorAlert(reason, detail) {
 }
 
 $(document).ready(function() {
+
+    $('.disabled_field').keyup(function() {
+        $('.disabled_field').attr('disabled', 'disabled');
+        $(this).attr('disabled', false);
+        if ($('.disabled_field.discount_price').val() == '' && $('.disabled_field.promo_price').val() == '') {
+            $('.disabled_field').attr('disabled', false);
+        }
+    });
+
+
     $('#editor1').ace_wysiwyg({
         toolbar: [
             'font',
@@ -453,6 +463,9 @@ $(document).ready(function() {
         $('.user-profile').parent().addClass('hide');
         $('#user-profile-' + which).parent().removeClass('hide');
     });
+
+
+
 
 
 });

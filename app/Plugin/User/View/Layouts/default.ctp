@@ -40,6 +40,8 @@
 			echo $this->Html->css('User.ace-rtl.min');
 			echo $this->Html->css('User.style');
 
+			echo $this->Html->script('User.global'); 	
+
 			echo $this->Html->script('User.jquery.min');
 			echo $this->Html->script('User.ace-extra.min');
 			echo $this->Html->script('User.bootstrap.min');

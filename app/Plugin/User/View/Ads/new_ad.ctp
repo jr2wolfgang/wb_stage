@@ -1,4 +1,5 @@
 <?php echo $this->Html->script('User.jquery.uploadfile.min'); ?>
+<?php echo $this->Html->script('User.global'); ?>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 <h4>Post Advertisments</h4>
 <?php echo $this->Form->create('Ad',array('controller' => 'ads','action' => 'new_ad')); ?>
@@ -47,10 +48,10 @@
 					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Before Price')); ?> </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('discount_price',array('label' => 'Discount Price')); ?> </td>
+					<td> <?php  echo $this->Form->input('discount_price',array('label' => 'Discount Price','class' => 'disabled_field discount_price')); ?> </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('promo_price',array('label' => 'Promo Price')); ?> </td>
+					<td> <?php  echo $this->Form->input('promo_price',array('label' => 'Promo Price','class' => 'disabled_field promo_price')); ?> </td>
 				</tr>
 
 					
@@ -60,21 +61,6 @@
 						<button class="btn btn-primary" id="add_map"  data-toggle="modal" data-target=".google_map_pop" onclick="return false">Add Google Map ?</button>
 						<!-- MAPS SEARCH & DRAGGABLE -->
 
-						
-
-						<div class="map_container" style="display:block" >
-						
-						<?php echo $this->Html->script('User.map'); ?>
-
-						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
-						<div id="map-canvas" style="width:100%; height:600px;"></div>
-							
-					<?php echo $this->Form->input('Map.model',array('value' => 'Ad','type' => 'hidden')); ?>
-					<?php echo $this->Form->input('Map.latitude',array('id' => 'lat','type' => 'hidden')); ?>
-					<?php echo $this->Form->input('Map.longhitude',array('id' => 'lng','type' => 'hidden')); ?>
-
-						<!--ENDS-->
 						
 
 					</td>
@@ -89,7 +75,27 @@
 		</table>
 
 	
+<div class="modal fade google_map_pop" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="map_container" style="display:block" >
+			
+				<?php echo $this->Html->script('User.map'); ?>
 
+				<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+				<div id="map-canvas" style="width:100%; height:600px;"></div>
+					
+				<?php echo $this->Form->input('Map.model',array('value' => 'Ad','type' => 'hidden')); ?>
+				<?php echo $this->Form->input('Map.latitude',array('id' => 'lat','type' => 'hidden')); ?>
+				<?php echo $this->Form->input('Map.longhitude',array('id' => 'lng','type' => 'hidden')); ?>
+				
+				<button id="close" onclick="return false">Close </button>
+				<!--ENDS-->
+			</div>
+		</div>
+	</div>
+</div>
 		<?php echo $this->Form->end(); ?>
 </section> 
 	
@@ -132,6 +138,8 @@
   </div>
 </div>
 
+
+
 <script>
 $(document).ready(function()
 {
@@ -139,20 +147,22 @@ $(document).ready(function()
 $('#add_map').click(function(){
 
 
-	/* google.maps.event.trigger(map, 'resize');
-	setTimeout(function(){
-		google.maps.event.trigger(map, 'resize');
-	},2000); */
+	if ($('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">')) {
 
-	$('.map_container').slideToggle();
-	$('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">');
+		setTimeout(function(){
 
-	initialize();
+		initialize();
 
+
+	},1000); 
+
+	}
+
+	
 });
-
-$('#add_map').trigger('click');
-
+$('#close').click(function() {
+	$('.google_map_pop').modal('hide');
+   }); 
 
 $('#use_image').click(function(){
 		$('.bs-example-modal-sm ').modal('hide');
