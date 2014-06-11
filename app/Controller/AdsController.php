@@ -41,6 +41,8 @@ class AdsController extends AppController {
 	public function view($id) {
 		$this->theme = 'Nakatipid';
 
+		$imgFolder = '/user/img/';
+		
 		$ads = $this->Ad;
 		$ads->bind(array('Image','User'));
 		// Please refer to User-jrr Model
@@ -49,8 +51,12 @@ class AdsController extends AppController {
 	
 		if(empty($this->data)){
 			$ads_data = $ads->findById($id);
-			$this->data = $ads_data; 					
-			
+			$this->data = $ads_data;
+
+			if ( empty($this->request->data['User']['avatar']) ){
+				$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
+			}
+
 		}	
 	}	
 }

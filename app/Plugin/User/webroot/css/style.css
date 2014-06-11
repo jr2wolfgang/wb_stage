@@ -31,6 +31,18 @@
  
 }
 
+<<<<<<< HEAD
+=======
+label {
+     width: 100%;  
+     float: none !important;
+    font-weight: bold !important;
+    margin: 10px 0;
+}
+input[type="text"],input[type="number"] {
+    width: 100%;
+}
+>>>>>>> e53d940f58a21a7964d2ecae6888ad715c6eec72
 .images_append {
     max-height: 400px;
     overflow-x: hidden;
@@ -52,11 +64,30 @@
     margin-top: 10px;
 }
 .selected_img {
+    float: left;
+    margin-bottom: 31px;
+    margin-right: 9px;
     max-height: 100px;
     max-width: 100px;
-    overflow: hidden;
-    float: left;
+    position: relative;
 }
+
+
+.fa.fa-times-circle-o.remove_image {
+    font-size: 1.5em;
+    position: absolute;
+    right: -8px;
+    top: -11px;
+    cursor: pointer;
+    display: none;
+}
+.fa.fa-times-circle-o.remove_image:hover {
+    color:#B74635;
+}
+.selected_img:hover .fa.fa-times-circle-o.remove_image {
+    display: block;
+}
+
 
 
 /* map */
@@ -118,4 +149,14 @@ section.row {
 .img_prev {
     height: 100px;
     width: 100px;
+}
+
+
+.select_primary > input {
+    margin: 4px 0;
+}
+
+.select_primary {
+    font-size: 10px;
+    position: absolute;
 }
