@@ -168,17 +168,16 @@ $( "#AdNewAdForm" ).validate({
   }
 });
 
-$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
+/*$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
 
 	if ($(this).val() != '') {
 		$('.price_error').remove();
 	} else {
 		$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
-		
 	}
 
+});*/
 
-})
 $('#AdNewAdForm').submit(function(e){
 
 		$('.price_error').remove();
