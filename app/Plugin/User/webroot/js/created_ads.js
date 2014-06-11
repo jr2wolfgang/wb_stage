@@ -81,17 +81,20 @@ $('#use_image').click(function(){
 });	
 
 $('body').on('click','.remove_image',function(){
-	$array = $('#AdSelectedImg').val().split('1');
+	$array = $('#AdSelectedImg').val().split(',');
 	var image_id = $(this).data('id');
-	$(this).parent().remove(function(){
+
+	alert($array);
+
+	/* $(this).parent().remove(function(){
 
 		$array = jQuery.grep($array, function(value) {
 		return value != image_id;
 		});
 
-		//alert($array);
+		alert($array);
 
-	});
+	}); */
 });
 
 
