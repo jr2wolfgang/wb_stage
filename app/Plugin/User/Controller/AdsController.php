@@ -60,8 +60,7 @@ class AdsController extends UserAppController  {
 
 			$this->Ad->create();
 
-			pr($this->request->data);
-			exit();
+		
 
 			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $images['User']['id'];
 
