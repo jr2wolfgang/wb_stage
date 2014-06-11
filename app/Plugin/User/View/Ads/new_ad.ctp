@@ -96,42 +96,7 @@
 <!-- Small modal -->
 <div class="clear"></div>
 
-
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-   		
-   		<div class="upload_images">Upload Images</div>
-		<div id="mulitplefileuploader">Upload</div>
-				
-		<button id="use_image" onclick="return false">Use Images </button>
-			<table>
-			<tr >
-			<th> <input type="checkbox" class="check_all"></th>
-			<th> Image </th>
-			<th> ext </th>
-			</tr>
-			</table>
-		<div class="images_append">
-				<table class="main_tr">
-				
-				<?php foreach ($images['Image'] as $key => $value) : ?>
-						<tr>
-							<td> 
-							<input type="checkbox" class="check_item" name="data[Ad][images][]" value="<?php echo $value['id']; ?>">
-							</td>
-							<td> <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100')); ?></td>
-							<td> <?php echo $value['extension'] ?></td>
-						</tr>
-				<?php endforeach;  ?>
-
-				</table>
-		</div>
-    </div>
-  </div>
-</div>
-
+<?php echo $this->element('file_manager'); ?>
 <script>
 $(document).ready(function()
 {
@@ -139,12 +104,8 @@ $(document).ready(function()
 $('#add_map').click(function(){
 
 
-	/* google.maps.event.trigger(map, 'resize');
-	setTimeout(function(){
-		google.maps.event.trigger(map, 'resize');
-	},2000); */
-
 	$('.map_container').slideToggle();
+	
 	$('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">');
 
 	initialize();
@@ -155,6 +116,8 @@ $('#add_map').trigger('click');
 
 
 $('#use_image').click(function(){
+
+		alert('test');
 		$('.bs-example-modal-sm ').modal('hide');
 
 		$('#AdSelectedImg').empty();

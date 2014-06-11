@@ -19,7 +19,7 @@
     width: 127px;
 }
 .modal-sm {
-	width: 500px;
+	width: 800px;
 }
 
 table {
@@ -35,11 +35,12 @@ td {
     display: none !important; 
 }
 .ajax-file-upload {
-    background: none repeat scroll 0 0 #000000;
+  background: none repeat scroll 0 0 #438EB9;
     color: #FFFFFF;
     padding: 7px;
     text-align: center;
     width: 100px;
+ 
 }
 .input.text > label {
     clear: both;
@@ -84,4 +85,19 @@ label {
     max-width: 539px;
     max-height: 400px;  
 
+}
+
+button {
+    background: none repeat scroll 0 0 #438EB9;
+    border: 0 none;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 6px;
+}
+
+
+.search_input {
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
