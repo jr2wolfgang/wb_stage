@@ -31,18 +31,6 @@
  
 }
 
-<<<<<<< HEAD
-=======
-label {
-     width: 100%;  
-     float: none !important;
-    font-weight: bold !important;
-    margin: 10px 0;
-}
-input[type="text"],input[type="number"] {
-    width: 100%;
-}
->>>>>>> e53d940f58a21a7964d2ecae6888ad715c6eec72
 .images_append {
     max-height: 400px;
     overflow-x: hidden;
