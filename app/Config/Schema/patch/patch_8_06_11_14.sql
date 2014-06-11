@@ -1,0 +1,1 @@
+ALTER TABLE `maps` CHANGE `longhitude` `longhitude` FLOAT NULL, CHANGE `latitude` `latitude` FLOAT NULL;

@@ -7,7 +7,7 @@
 		<table>
 				<tr>
 					<td>  
-					<?php echo $this->Form->input('name',array('label' => 'Name')); ?>
+					<?php echo $this->Form->input('name',array('label' => 'Name','class' => 'required')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -39,13 +39,13 @@
 					<td> <h5>Price</h5> </td><td> &nbsp  </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('orig_price',array('label' => 'Orig Price')); ?> </td>
+				<td> <?php  echo $this->Form->input('orig_price',array('label' => 'Orig Price','class' => 'required')); ?> </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('selling_price',array('label' => 'Selling Price')); ?> </td>
+					<td> <?php  echo $this->Form->input('selling_price',array('label' => 'Selling Price','class' => 'required')); ?> </td>
 				</tr>
 				<tr>
-					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Before Price')); ?> </td>
+					<td> <?php  echo $this->Form->input('before_price',array('label' => 'Before Price','class' => 'required')); ?> </td>
 				</tr>
 				<tr>
 					<td> <?php  echo $this->Form->input('discount_price',array('label' => 'Discount Price','class' => 'disabled_field discount_price')); ?> </td>
@@ -86,9 +86,9 @@
 
 				<div id="map-canvas" style="width:100%; height:600px;"></div>
 					
-				<?php echo $this->Form->input('Map.model',array('value' => 'Ad','type' => 'hidden')); ?>
-				<?php echo $this->Form->input('Map.latitude',array('id' => 'lat','type' => 'hidden')); ?>
-				<?php echo $this->Form->input('Map.longhitude',array('id' => 'lng','type' => 'hidden')); ?>
+				<?php echo $this->Form->input('Map.model',array('value' => 'Ad','type' => 'text')); ?>
+				<?php echo $this->Form->input('Map.latitude',array('id' => 'lat','type' => 'text')); ?>
+				<?php echo $this->Form->input('Map.longhitude',array('id' => 'lng','type' => 'text')); ?>
 				
 				<button id="close" onclick="return false">Close </button>
 				<!--ENDS-->
@@ -111,7 +111,7 @@
    		<div class="upload_images">Upload Images</div>
 		<div id="mulitplefileuploader">Upload</div>
 				
-		<button id="use_image" onclick="return false">Use Images </button>
+		
 			<table>
 			<tr >
 			<th> <input type="checkbox" class="check_all"></th>
@@ -134,6 +134,14 @@
 
 				</table>
 		</div>
+		<div class="image_controls">
+
+		<button id="use_image" onclick="return false">Use Images </button>
+
+		<button id="delete_images" onclick="return false">Delete </button>
+		</div>
+
+
     </div>
   </div>
 </div>
@@ -230,6 +238,37 @@ var settings = {
 	}
 }
 $("#mulitplefileuploader").uploadFile(settings);
+
+
+jQuery.validator.setDefaults({
+  debug: false,
+  success: "valid"
+});
+$( "#AdNewAdForm" ).validate({
+  rules: {
+    required: {
+      required: true,
+    
+    },
+    
+  
+  }
+});
+
+$('#AdNewAdForm').submit(function(e){
+
+		$('.price_error').remove();
+		if ($('#AdDiscountPrice').val() == '' &&  $('#AdPromoPrice').val() == '') {
+
+			$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
+		
+			e.preventDefault();
+
+		}
+	
+});
+
+
 
 
 });

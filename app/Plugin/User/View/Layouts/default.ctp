@@ -45,8 +45,15 @@
 			echo $this->Html->script('User.ace-extra.min');
 			echo $this->Html->script('User.bootstrap.min');
 
+			/* redactor */
 			echo $this->Html->css('User./js/redactor/css/redactor');
 			echo $this->Html->script('User.redactor/redactor/redactor_new.js');
+
+			/* validate */
+			echo $this->Html->css('User./js/validate/validate');
+			echo $this->Html->script('User.validate/jquery.validate');
+			echo $this->Html->script('User.validate/additional-methods');
+
 			
 			echo $this->fetch('meta');
 			echo $this->fetch('css');

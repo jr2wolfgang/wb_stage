@@ -107,3 +107,15 @@ section.row {
 .redactor_redactor.redactor_editor {
     min-height: 160px;
 }
+.image_controls {
+    margin-top: 12px;
+}
+
+.valid {
+    clear: none !important;
+    float: left !important;
+}
+.error.valid {
+    float: left;
+    width: auto !important;
+}
