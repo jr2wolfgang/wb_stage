@@ -2,51 +2,42 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
 
-    <i class="fa fa-times close_modal"></i>
-   		
-   		<div class="upload_images">Upload Images</div>
-		<div id="mulitplefileuploader">Upload</div>
-				
-		
-			<table>
-			<tr >
-			<td class="check_box"> <input type="checkbox" class="check_all"></td>
-			<td class="images_td"> Image </td>
-			<td class="img_name"> filename </td>
-			<td> ext </td>
-			</tr>
-			</table>
-		<div class="images_append">
-				<table class="main_tr">
-				
-				<?php
-				if (!empty($images['Image'])) : 
-				foreach ($images['Image'] as $key => $value) : ?>
-						<tr>
-							<td> 
-							<input type="checkbox" class="check_item" name="data[Ad][images][]" value="<?php echo $value['id']; ?>">
-							</td>
-							<td class="image_cont">
-							<a class="fancybox" href="<?php echo Configure::read('folder_name').$value["path"].$value["name"]; ?>" data-fancybox-group="gallery" title="<?php echo $value['name']; ?>">
-							 <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100','data-id' => $value['id'])); ?>
-							 </a>
-							 </td>
-							<td class="image_cont"> <?php echo $value['name']?></td>
-							<td> <?php echo $value['extension'] ?></td>
-						</tr>
-				<?php  endforeach;
-						endif;
-				 ?>
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4 class="widget-title">Custom File Input</h4>
 
-				</table>
+				<div class="widget-toolbar">
+					<a data-action="collapse" href="#">
+						<i class="ace-icon fa fa-chevron-up"></i>
+					</a>
+
+					<a data-action="close" href="#">
+						<i class="ace-icon fa fa-times"></i>
+					</a>
+				</div>
+			</div>
+
+			<div class="widget-body"><div class="widget-body-inner" style="display: block;">
+				<div class="widget-main">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label class="ace-file-input"><input type="file" id="id-input-file-2"><span data-title="Choose" class="ace-file-container"><span data-title="No File ..." class="ace-file-name"><i class=" ace-icon fa fa-upload"></i></span></span><a href="#" class="remove"><i class=" ace-icon fa fa-times"></i></a></label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label class="ace-file-input ace-file-multiple"><input type="file" id="id-input-file-3" multiple=""><span data-title="Drop files here or click to choose" class="ace-file-container"><span data-title="No File ..." class="ace-file-name"><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a href="#" class="remove"><i class=" ace-icon fa fa-times"></i></a></label>
+						</div>
+					</div>
+
+					<label>
+						<input type="checkbox" class="ace" id="id-file-format" name="file-format">
+						<span class="lbl"> Allow only images</span>
+					</label>
+				</div>
+			</div></div>
 		</div>
-		<div class="image_controls">
-
-		<button id="use_image" onclick="return false">Use Images </button>
-
-		<button id="delete_images" class="" onclick="return false">Delete </button>
-		</div>
-
 
     </div>
   </div>
