@@ -51,6 +51,11 @@ class UsersController extends UserAppController  {
 			$this->request->data['User']['jrr_password'] = '';
 		}
 
+		if ( empty($this->request->data['User']['avatar']) ){
+			$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
+		}
+
+
 		$user->validate = array();
 		if ($this->request->is('post')) {
 			$user->id = $this->Session->read('Auth.User.id');

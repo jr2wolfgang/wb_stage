@@ -10,6 +10,16 @@ function showErrorAlert(reason, detail) {
 }
 
 $(document).ready(function() {
+
+    $('.disabled_field').keyup(function() {
+        $('.disabled_field').attr('disabled', 'disabled');
+        $(this).attr('disabled', false);
+        if ($('.disabled_field.discount_price').val() == '' && $('.disabled_field.promo_price').val() == '') {
+            $('.disabled_field').attr('disabled', false);
+        }
+    });
+
+
     $('#editor1').ace_wysiwyg({
         toolbar: [
             'font',
@@ -453,6 +463,23 @@ $(document).ready(function() {
         $('.user-profile').parent().addClass('hide');
         $('#user-profile-' + which).parent().removeClass('hide');
     });
+
+    var oTable1 =
+    $('#ads-table').dataTable();
+
+    $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+    function tooltip_placement(context, source) {
+        var $source = $(source);
+        var $parent = $source.closest('table')
+        var off1 = $parent.offset();
+        var w1 = $parent.width();
+        var off2 = $source.offset();
+        if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+        return 'left';
+    } 
+
+
+
 
 
 });

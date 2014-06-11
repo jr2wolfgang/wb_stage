@@ -536,3 +536,74 @@ padding-left: 0;
     border-right: 20px solid transparent;
     border-top: 20px solid #f00;
 }
+
+/** VIEW CSS **/
+.view-container { padding: 30px 0; }
+.view-container .per-ads-price { float: left; }
+
+.ads-description > p {
+    padding: 15px 0;
+}
+.ads-user { 
+      background-color: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      display: inline-block;
+      max-width: 100%;
+      padding: 4px;
+      width: 100%;
+}
+
+.profile-info-row {
+    display: table-row;
+}
+.profile-user-info {
+    display: table;
+    margin: 0 auto;
+    width: calc(100% - 24px);
+}
+.profile-info-row:first-child .profile-info-name {
+    border-top: medium none;
+}
+.profile-info-name {
+    background-color: rgba(0, 0, 0, 0);
+    border-top: 1px dotted #D5E4F1;
+    color: #667E99;
+    display: table-cell;
+    font-weight: normal;
+    padding: 6px 10px 6px 4px;
+    text-align: right;
+    vertical-align: middle;
+    width: 110px;
+}
+.profile-info-row:first-child .profile-info-value {
+    border-top: medium none;
+}
+.profile-info-value {
+    border-top: 1px dotted #D5E4F1;
+    display: table-cell;
+    padding: 6px 4px 6px 6px;
+}
+
+.ads-picture > img { width: 100%; height: auto; }
+.ads-picture {
+      background-color: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      display: inline-block;
+      max-width: 100%;
+      padding: 4px;
+      width: 100%;
+      height: 536px;
+      overflow: hidden;
+}
+.gallery-ads { margin:0; }
+.gallery-ads > li {
+    display: inline-block;
+    height: 79px;
+    overflow: hidden;
+    padding: 4px 0;
+    width: 70px;
+}

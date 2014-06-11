@@ -262,54 +262,55 @@
 	</div>
 
     <div class="row full-width" id="ads-list">
-            <?php
-                for ($i=0; $i < 20; $i++) { 
-                    ?>
-                        <div class="per-ads-list new-ads ">
-                            <div class="per-ads-img">
+            <?php $getData = $this->data;
+                foreach ($getData as $data): ?>
+
+                    <div class="per-ads-list">
+                        <div class="per-ads-img">                            
+                            <?php if (time() - strtotime($data['Ad']['created']) < 60*60*24): ?>
                                 <div class="per-ads-new-label ads-has-label animated">New</div>
-                                <?php echo $this->Html->image('sample-product.jpg'); ?>
+                            <?php endif; ?>
+                            
+                            <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
+                                <div class="img-container">
+                                    <?php echo $this->Html->image('/user/img/uploads/'. $data['Image'][0]['name']); ?>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="per-ads-desc">
+                            <div class="per-ads-title">
+                                <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
+                                    <?php echo $data['Ad']['name']; ?>
+                                </a>
                             </div>
-                            <div class="per-ads-desc">
-                                <div class="per-ads-title">
-                                    Slim Fit Low Hugger Pants
-                                </div>
-                                <div class="per-ads-info">
-                                    <span><i class="flaticon-clock61"></i> 5 days ago.</span>
-                                    <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
-                                    <span><i class="flaticon-small44"></i> 500 views</span>
-                                </div>
-                                <div class="per-ads-price-box">
-                                    <div class="per-ads-price">PHP 500.00</div>
-                                    <div class="clearfix"></div>
-                                </div>
+                            <div class="per-ads-info">
+                                <span>
+                                    <i class="flaticon-clock61"></i>
+                                    <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
+                                </span>
+                                <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
+                                <span><i class="flaticon-small44"></i> 500 views</span>
+                            </div>
+                            <div class="per-ads-price-box">
+                                <?php $line = '';?>
+                                <?php if ($data['Ad']['discount_price'] != 0): ?>
+                                     <div class="per-ads-price per-discount-price">
+                                         &nbsp; NOW PHP <?php echo $data['Ad']['discount_price']; ?>
+                                         <?php $line = 'style="text-decoration: line-through;"'; ?>
+                                     </div>
+                                <?php endif;?>
+                                <div class="per-ads-price" <?php echo $line; ?>>PHP <?php echo $data['Ad']['orig_price']; ?></div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
-                        <div class="per-ads-list discount-ads">
-                            <div class="per-ads-img">
-                                <div class="per-ads-discount-label ads-has-label animated">-50%</div>
-                                <?php echo $this->Html->image('sample-product.jpg'); ?>
-                            </div>
-                            <div class="per-ads-desc">
-                                <div class="per-ads-title">
-                                    Slim Fit Low Hugger Pants
-                                </div>
-                                <div class="per-ads-info">
-                                    <span><i class="flaticon-clock61"></i> 5 days ago.</span>
-                                    <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
-                                    <span><i class="flaticon-small44"></i> 500 views</span>
-                                </div>
-                                <div class="per-ads-price-box">
-                                    <div class="per-ads-price per-discount-price">NOW PHP 500.00</div>
-                                    <div class="per-ads-old-price">PHP 500.00</div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>    
-                    <?php
-                }
-            ?>
+                    </div>                        
+            <?php endforeach; ?>
     </div>
+    <style type="text/css">
+        .per-ads-img img { height: auto; }
+        .per-ads-img .img-container { display: block; margin: auto; padding: 15px; width: 90%; overflow: hidden; height: 300px; }
+    </style>
+
     <div id="lazy-loader-container" class="fullWidth">
         <i class="fa fa-circle-o-notch fa-spin"></i>
     </div>
