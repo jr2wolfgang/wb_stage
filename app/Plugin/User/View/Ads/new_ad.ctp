@@ -41,6 +41,7 @@
 		<div class="col-sm-9">
 			<div class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
 			<div class="images_thumb_selected"></div>
+			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'hidden')); ?>
 		</div>
 	</div>
 
