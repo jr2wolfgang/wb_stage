@@ -9,6 +9,7 @@
 		<table>
 				<tr>
 					<td>  
+					<?php echo $this->Form->input('id',array('type' => 'hidden','class' => 'required')); ?>
 					<?php echo $this->Form->input('name',array('label' => 'Name','class' => 'required')); ?>
 					</td>
 				</tr>
