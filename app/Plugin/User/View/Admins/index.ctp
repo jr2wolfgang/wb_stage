@@ -11,7 +11,7 @@
 				<div class="space space-4"></div>
 				
 				<a class="btn btn-sm btn-block btn-success" href="#">
-					<i class="ace-icon fa fa-heart bigger-110"></i>
+					<i class="ace-icon fa fa-plus-square-o bigger-130"></i>
 					<span class="bigger-110">Create ADS</span>
 				</a>
 
