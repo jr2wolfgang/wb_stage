@@ -88,8 +88,8 @@ class Ad extends AppModel {
 			),
 			'hasMany' => array(
 				'Image' => array(
-					'className' => 'User',
-					'foreignKey' => false,
+					'className' => 'Image',
+					'foreignKey' => 'foreign_key',
 					'dependent' => false,
 					'conditions' => '',
 					'fields' => '',

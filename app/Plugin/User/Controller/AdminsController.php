@@ -11,17 +11,19 @@ class AdminsController extends UserAppController  {
 	public function beforeFilter() {
 	    parent::beforeFilter();
 
-
+	    $this->loadModel('User.Ad');
+	    $this->loadModel('User.Image');
 	    // Allow users to register and logout.
 	    $this->Auth->allow('register', 'logout');
 	}
 
 	public function index() {
+
 		$this->layout = 'default';	
 		$imgFolder = '/user/img/';
 		$user = ClassRegistry::init('User');
 		$user->bind(array('Ad'));
-	
+		
 		if(empty($this->data)){
 			$user_data = $user->findById($this->Session->read('Auth.User.id'));
 			$this->data = $user_data;			
@@ -29,6 +31,28 @@ class AdminsController extends UserAppController  {
 		if ( empty($this->request->data['User']['avatar']) ){
 			$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
 		}
+		//useradmmin ads
+		 $this->Ad->bind(array('User','Map','Image'));
+				
+		  $this->Ad->recursive = 0;
+
+		  $conditions = array('Ad.modified_by' => $this->Session->read('Auth.User.id'));
+		  
+		  $this->paginate = array(
+	          	'recursive' => -1,
+	            'conditions' => $conditions,
+	            
+	            
+	         );
+
+
+			
+			$this->set('ads', $this->paginate('Ad'));		
+	
+		 // foreach ($user_data as $value) {
+		 // 	pr($value);
+		 // }exit();
+		//pr($user_data);exit();
 	}
 
 	public function upload_multiple(){
