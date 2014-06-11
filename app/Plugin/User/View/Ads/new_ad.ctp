@@ -40,6 +40,7 @@
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Select Images </label>
 		<div class="col-sm-9">
 			<div class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
+			<div class="images_thumb_selected"></div>
 		</div>
 	</div>
 
