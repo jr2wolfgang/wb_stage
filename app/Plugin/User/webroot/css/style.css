@@ -101,3 +101,9 @@ button {
     right: 10px;
     top: 10px;
 }
+section.row {
+    padding: 1px 14px;
+}
+.redactor_redactor.redactor_editor {
+    min-height: 160px;
+}

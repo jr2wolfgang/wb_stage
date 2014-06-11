@@ -3,7 +3,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 <h4>Post Advertisments</h4>
 <?php echo $this->Form->create('Ad',array('controller' => 'ads','action' => 'new_ad')); ?>
-<section class="container">
+<section class="row">
 		<table>
 				<tr>
 					<td>  
@@ -12,22 +12,22 @@
 				</tr>
 				<tr>
 					<td> <label>Description</label>
-
-						<div contenteditable="true" id="editor1" class="wysiwyg-editor">
-
-						<?php echo $this->Form->input('description',array('label' => false,'contenteditable' => 'true','type' =>'hidden')); ?>
+						<?php echo $this->Form->input('description',array('label' => false,'class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '50','row' => '50')); ?>
 						</div>
 					</td>
 					
 				</tr>
 				<tr>
-					<td> <?php echo $this->Form->input('why_sell',array('label' => 'Why Im Selling this'));?></td>
+					<td> 
+					<?php echo $this->Form->input('why_sell',array('type' =>'textarea','class' => 'redactor',
+					'label' => 'Why Im Selling this'));?>
+					</td>
 				</tr>
 				<tr>
 				<td> 
 				
 					<label>Images</label>
-					<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false">Open Image Manager</button>
+					<div class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false">Open Image Manager</div>
 
 					<?php  echo $this->Form->input('selected_img',array('label' => false,'type' => 'hidden')); ?>
 
@@ -141,9 +141,17 @@
 
 
 <script>
-$(document).ready(function()
-{
+$(document).ready(function() {
 
+
+$('.redactor').redactor({
+	/* imageUpload: '/tagroom_cake/admins/redactor_upload_image',
+	//fileUpload: 'redactor/demo/scripts/file_upload.php',
+	imageGetJson: '/tagroom_cake/js/json_data/new_data.json',
+    focus: true,
+    plugins: ['fontfamily'] */
+});  
+                
 $('#add_map').click(function(){
 
 
@@ -162,7 +170,7 @@ $('#add_map').click(function(){
 });
 $('#close').click(function() {
 	$('.google_map_pop').modal('hide');
-   }); 
+ }); 
 
 $('#use_image').click(function(){
 		$('.bs-example-modal-sm ').modal('hide');
@@ -222,14 +230,6 @@ var settings = {
 	}
 }
 $("#mulitplefileuploader").uploadFile(settings);
-
-$('#AdNewAdForm').submit(function(e){
-
-	$('#AdDescription').val($('#editor1').text());
-
-	
-
-});
 
 
 });

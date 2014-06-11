@@ -41,13 +41,17 @@
 			echo $this->Html->css('User.style');
 
 			echo $this->Html->script('User.global'); 	
-
 			echo $this->Html->script('User.jquery.min');
 			echo $this->Html->script('User.ace-extra.min');
 			echo $this->Html->script('User.bootstrap.min');
 
+			echo $this->Html->css('User./js/redactor/css/redactor');
+			echo $this->Html->script('User.redactor/redactor/redactor_new.js');
+			
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
+			
+
 			echo $this->fetch('script');
 		?>
 
