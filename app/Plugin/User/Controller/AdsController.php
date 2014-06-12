@@ -14,6 +14,7 @@ class AdsController extends UserAppController  {
 
 	    $this->layout = 'default';
 	    $this->loadModel('User.Ad');
+	    $this->loadModel('User.Image');
 	    // Allow users to register and logout.
 	    $this->Auth->allow('register', 'logout');
 	}
@@ -27,7 +28,7 @@ class AdsController extends UserAppController  {
 
 	public function index() {
 
-	  $this->Ad->bind(array('User','Map'));
+	  $this->Ad->bind(array('User','Map','Image'));
 				
 	  $this->Ad->recursive = 0;
 
@@ -37,10 +38,7 @@ class AdsController extends UserAppController  {
           	'recursive' => -1,
             'conditions' => $conditions,
             
-            
          );
-
-
 		
 		$this->set('ads', $this->paginate('Ad'));		
 	}
@@ -183,9 +181,6 @@ class AdsController extends UserAppController  {
 		exit();		
 	}
 
-	
-
-
 	public function delete($id = null) {
 		$this->Ad->bind(array('Map'));
 		$this->Ad->id = $id;
@@ -201,5 +196,45 @@ class AdsController extends UserAppController  {
 		return $this->redirect(array('action' => 'index'));
 	}
 
+	public function edit($id = null) {
+		
+		$User = ClassRegistry::init('User');
+
+		if (!$id) {
+	        throw new NotFoundException(__('Invalid post'));
+	    }
+	    
+	    $ads = $this->Ad->findById($id);
+
+	    if (!$ads) {
+	        throw new NotFoundException(__('Invalid post'));
+	    }
+
+	    if ($this->request->is(array('post', 'put'))) {
+	        $this->Ad->id = $id;
+	        if ($this->Ad->save($this->request->data)) {
+	            $this->Session->setFlash(__('Your Ads has been updated.'));
+	            return $this->redirect(array('action' => 'index'));
+	        }
+	        $this->Session->setFlash(__('Unable to update your post.'));
+	    }
+
+	    if (!$this->request->data) {
+	        $this->request->data = $ads;
+	    }
+ 		
+		$image = $this->Image->find('first', array(
+	        'conditions' => array('Image.foreign_key' => $id)
+	    	));	
+		
+		$images = $User->read(null,$this->Session->read('Auth.User.id'));
+
+
+		$this->set(compact('image','images'));
+		
+		// foreach ($image as $key) {
+		// pr($key);
+		// }exit();
+	}
 
 }

@@ -1,38 +1,27 @@
 
 <div class="users index">
-<h2> MY ADS </h2>
-<?php echo $this->Html->link('New Ads',array('controller' => 'ads','action' => 'new_ad')); ?>
-	<br>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('ads'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($ads as $adslist): ?>
-	<tr>
-		
-		<td>
-			<?php echo $this->Html->link($adslist['Ad']['name'], array('controller' => 'ads', 'action' => 'view',
-			 $adslist['Ad']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $adslist['Ad']['created']?>
-		</td>
-		<td>
-			<?php echo $adslist['Ad']['modified']?>
-		</td>
-		
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $adslist['Ad']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $adslist['Ad']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $adslist['Ad']['id']), array(), __('Are you sure you want to delete # %s?', $adslist['Ad']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
+	<h2> MY ADS </h2>
+	<?php echo $this->Html->link('New Ads',array('controller' => 'ads','action' => 'new_ad')); ?>
+	<div class="row">
+	    <div class="col-xs-12">
+	        <table aria-describedby="sample-table-2_info" id="ads-table" class="table table-striped table-bordered table-hover dataTable">
+	            <thead>
+	                <tr role="row">
+	                    <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Image</th>
+	                    <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Title</th>
+	                    <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Price</th>
+	                    <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Discount Price</th>
+	                    <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Published</th>
+	                    <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Created</th>
+	                   	<th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Actions</th>
+	                </tr>
+	            </thead>
+				<?php echo $this->element('ads_view'); ?>
+	        </table>
+	    </div>
+	</div>
+	
+	<!-- <p>
 	<?php
 	echo $this->Paginator->counter(array(
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
@@ -44,5 +33,5 @@
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
-	</div>
+	</div> -->
 </div>

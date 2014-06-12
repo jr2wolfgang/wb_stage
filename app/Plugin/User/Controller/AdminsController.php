@@ -42,11 +42,8 @@ class AdminsController extends UserAppController  {
 	          	'recursive' => -1,
 	            'conditions' => $conditions,
 	            
-	            
-	         );
+	        );
 
-
-			
 			$this->set('ads', $this->paginate('Ad'));		
 	
 		 // foreach ($user_data as $value) {
