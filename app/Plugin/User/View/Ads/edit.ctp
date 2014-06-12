@@ -177,36 +177,39 @@
 
 		var image_path = "/wb_stage/user/img/uploads/";
 
-		var settings = {
-			url: "upload_multiple",
-			method: "POST",
-			allowedTypes:"jpg,png,gif,doc,pdf,zip",
-			fileName: "myfile",
-			multiple: true,
-			onSuccess:function(files,data,xhr)
-			{	
+var settings = {
+	url: "upload_multiple",
+	method: "POST",
+	allowedTypes:"jpg,png,gif,doc,pdf,zip",
+	fileName: "myfile",
+	multiple: true,
+	onSuccess:function(files,data,xhr)
+	{	
 
-				var imageDetails = [jQuery.parseJSON(data)];
+		var imageDetails = [jQuery.parseJSON(data)];
 
-				console.log(imageDetails)
-				for(var i =0;i <= imageDetails.length-1;i++)
-				{
-					var item = imageDetails[i];
-					var html_table = '<tr><td><input type="checkbox" class="check_item" name="data[Ad][images][]" value="'+item.key+'"></td><td><img src="'+image_path+item.file+'" width="100" ></td>';
-						html_table += '<td>'+item.extension+'</td></tr>';
+			console.log(imageDetails)
+		for(var i =0;i <= imageDetails.length-1;i++)
+		{
+			var item = imageDetails[i];
+			var html_table = '<tr><td><input type="checkbox" class="check_item" name="data[Ad][images][]" value="'+item.key+'"></td><td><img src="'+image_path+item.file+'" width="100" ></td>';
+				html_table += '<td>'+item.extension+'</td></tr>';
 
-					$('.main_tr').append(html_table);
-				}
-				
-				//console.log(data);
-			},
-			onError: function(files,status,errMsg)
-			{		
-				$("#status").html("<font color='red'>Upload is Failed</font>");
-			}
+			$('.main_tr').append(html_table);
 		}
+			
+			//console.log(data);
+	
 
-		$("#mulitplefileuploader").uploadFile(settings);
+		
+	},
+	onError: function(files,status,errMsg)
+	{		
+		$("#status").html("<font color='red'>Upload is Failed</font>");
+	}
+}
+$("#mulitplefileuploader").uploadFile(settings);
+
 
 
 		jQuery.validator.setDefaults({
