@@ -13,7 +13,7 @@
 
 			<span class="icon-bar"></span>
 		</button>
-
+		
 		<div class="navbar-header pull-left">
 			<a class="navbar-brand" href="#">
 				<small>
@@ -277,7 +277,7 @@
 						<img alt="" src="assets/avatars/user.jpg" class="nav-user-photo">
 						<span class="user-info">
 							<small>Welcome,</small>
-							Bryan
+							<?php echo $userData['User']['firstname'] ?>
 						</span>
 
 						<i class="ace-icon fa fa-caret-down"></i>
@@ -292,18 +292,20 @@
 						</li>
 
 						<li>
-							<a href="profile.html">
-								<i class="ace-icon fa fa-user"></i>
-								Profile
-							</a>
+						
+							<?php echo $this->Html->link('<i class="ace-icon fa fa-user"></i>Profile',
+								array('controller' => 'users','action' => 'profile'),
+								array('escape' => false )); ?>
 						</li>
 
 						<li class="divider"></li>
 
 						<li>
 							<a href="#">
-								<i class="ace-icon fa fa-power-off"></i>
-								<?php echo $this->Html->link('Log-out',array('controller' => 'users','action' => 'logout','plugin' => false)); ?>
+								
+								<?php echo $this->Html->link('<i class="ace-icon fa fa-power-off"></i> Log-out',
+								array('controller' => 'users','action' => 'logout','plugin' => false),
+								array('escape' => false )); ?>
 							</a>
 						</li>
 					</ul>

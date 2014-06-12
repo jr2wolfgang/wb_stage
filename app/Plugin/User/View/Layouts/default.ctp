@@ -21,7 +21,7 @@
 <html>
 	<head>
 		<?php echo $this->Html->charset(); ?>
-		<title>Dashboard - Bryan Sumague</title>
+		<title>Dashboard - <?php echo $userData['User']['firstname'].', '.$userData['User']['lastname'] ?></title>
 		<script src="js/ace-extra.min.js"></script>
 				<script src="js/jquery.min.js"></script>
 		<?php
