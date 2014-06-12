@@ -73,6 +73,7 @@
 						<?php echo $this->Form->input('rpt_password',array( 'type' => 'password', 'label' => false )); ?>
 					</div>
 				</div>
+				    
 				<div class="profile-info-name"><b> Address </b></div>
 				
 
