@@ -119,3 +119,32 @@ section.row {
     float: left;
     width: auto !important;
 }
+th.check_box {
+    max-width: 80px !important;
+    width: 80px;
+}
+
+.row button#submit {
+    background: none repeat scroll 0 0 #629B58;
+    padding: 14px;
+    width: 156px;
+}
+
+
+.fa.fa-times.close_modal {
+    cursor: pointer;
+    font-size: 19px;
+    position: absolute;
+    right: 13px;
+}
+.fa.fa-times.close_modal:hover {
+    color: #B74635;
+}
+
+.image_cont {
+    max-width: 37px;
+}
+
+.main_tr td {
+    max-width: 50px;
+}

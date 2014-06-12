@@ -74,6 +74,8 @@ class AdsController extends UserAppController  {
 				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id);
 				
 				$this->Session->setFlash(__('The ads has been saved.'));
+
+				$this->redirect(array('action' => 'index'));
 			
 			} else {
 				
@@ -134,6 +136,7 @@ class AdsController extends UserAppController  {
 			ClassRegistry::init('Image')->saveImages($saveImage);
 
 			$ret['key'] = ClassRegistry::init('Image')->id;
+			//$ret['name'] = ClassRegistry::init('Image')->id;
 		}
 
 		echo json_encode($ret);
