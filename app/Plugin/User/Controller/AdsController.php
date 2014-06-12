@@ -203,41 +203,33 @@ class AdsController extends UserAppController  {
 		
 		$User = ClassRegistry::init('User');
 
-		if (!$id) {
-	        throw new NotFoundException(__('Invalid post'));
-	    }
-	    
-	    $ads = $this->Ad->findById($id);
-
-	    if (!$ads) {
-	        throw new NotFoundException(__('Invalid post'));
-	    }
-
-	    if ($this->request->is(array('post', 'put'))) {
-	        $this->Ad->id = $id;
-	        if ($this->Ad->save($this->request->data)) {
-	            $this->Session->setFlash(__('Your Ads has been updated.'));
-	            return $this->redirect(array('action' => 'index'));
-	        }
-	        $this->Session->setFlash(__('Unable to update your post.'));
-	    }
-
-	    if (!$this->request->data) {
-	        $this->request->data = $ads;
-	    }
- 		
-		$image = $this->Image->find('first', array(
-	        'conditions' => array('Image.foreign_key' => $id)
-	    	));	
 		
 		$images = $User->read(null,$this->Session->read('Auth.User.id'));
 
 
+
+		if (!$this->Ad->exists($id)) {
+			throw new NotFoundException(__('Invalid group'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Ad->save($this->request->data)) {
+				$this->Session->setFlash(__('The Ads has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The Ads could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('Ad.id' => $id));
+			$this->Ad->bind(array('Image'));
+			$this->request->data = $this->Ad->find('first', $options);
+		}
+
+
 		$this->set(compact('image','images'));
-		
-		// foreach ($image as $key) {
-		// pr($key);
-		// }exit();
+
+
 	}
+
+
 
 }

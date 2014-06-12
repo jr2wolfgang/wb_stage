@@ -90,7 +90,7 @@ public function saveImages($ImageData = null, $model = 'User',$foreign_key = nul
 	}
 
 
-	function beforeDelete(){
+	function beforeDelete($options = array()){
 		$relatedImages = $this->find('all',array('conditions' => array('Image.id' => $this->id)));
 		$this->relatedImages = $relatedImages;
 		$this->currentId = $this->id; //I am not sure if this is necessary

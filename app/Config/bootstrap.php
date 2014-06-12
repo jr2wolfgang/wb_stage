@@ -72,6 +72,28 @@ Cache::config('default', array('engine' => 'File'));
 CakePlugin::load('DebugKit');
 CakePlugin::load('Admin');
 CakePlugin::load('User');
+
+
+switch ($_SERVER['HTTP_HOST']) {
+    case 'localhost:81':
+	Configure::write('folder_name','/wb_stage/');
+        Configure::write('debug', 2);
+        
+	break;
+	case 'localhost:80':
+	Configure::write('folder_name','/wb_stage/');
+        Configure::write('debug', 2);
+        
+	break;
+    default:
+		Configure::write('folder_name','/');
+        Configure::write('debug', 0);
+       
+}
+
+
+
+
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter. By default CakePHP bundles two filters:
  *

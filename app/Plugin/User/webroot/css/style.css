@@ -46,8 +46,15 @@ td {
     clear: both;
     width: 100%;
 }
+
 label {
      width: 100%;  
+     float: none !important;
+    font-weight: bold !important;
+    margin: 10px 0;
+}
+input {
+    width: 100%;
 }
 .images_append {
     max-height: 400px;
@@ -147,4 +154,12 @@ th.check_box {
 
 .main_tr td {
     max-width: 50px;
+}
+
+.selected_img img {
+    width: 100% !important;
+}
+.img_prev {
+    height: 100px;
+    width: 100px;
 }
