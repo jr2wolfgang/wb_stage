@@ -21,10 +21,15 @@
 <html>
 	<head>
 		<?php echo $this->Html->charset(); ?>
-		<title>Dashboard - Bryan Sumague</title>
+		<title>Dashboard - <?php echo $userData['User']['firstname'].', '.$userData['User']['lastname'] ?></title>
 		<script src="js/ace-extra.min.js"></script>
 				<script src="js/jquery.min.js"></script>
 		<?php
+
+			echo $this->Html->css('User.style');
+			/* validate */
+			echo $this->Html->css('User./js/validate/validate');
+			
 
 			echo $this->Html->css('User.bootstrap.min');
 			echo $this->Html->css('User.font-awesome.min');
@@ -38,7 +43,7 @@
 			echo $this->Html->css('User.ace.min');
 			echo $this->Html->css('User.ace-skins.min');
 			echo $this->Html->css('User.ace-rtl.min');
-			echo $this->Html->css('User.style');
+
 
 			echo $this->Html->script('User.global'); 	
 			echo $this->Html->script('User.jquery.min');
@@ -48,9 +53,7 @@
 			/* redactor */
 			echo $this->Html->css('User./js/redactor/css/redactor');
 			echo $this->Html->script('User.redactor/redactor/redactor_new.js');
-
 			/* validate */
-			echo $this->Html->css('User./js/validate/validate');
 			echo $this->Html->script('User.validate/jquery.validate');
 			echo $this->Html->script('User.validate/additional-methods');
 

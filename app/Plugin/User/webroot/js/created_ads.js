@@ -64,10 +64,13 @@ $('#use_image').click(function(){
 
 		$('.images_append .check_item:checked').each(function(){
 				$img_src = $(this).parent().next().find('img').attr('src');
+				$data_id = $(this).parent().next().find('img').attr('data-id');
 				
 				
 		var appendImage = "<div class='selected_img'>";
+			appendImage += "<i class='fa fa-times-circle-o remove_image' data-id='"+$data_id+"'></i> ";
 			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;'></div></a>";
+			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[Image][primary]' value='"+$data_id+"'> Select As Primary</div>";
 			appendImage += "</div>";
 				imgArray.push($(this).val());		
 			$('.images_thumb_selected').append( appendImage);
@@ -76,6 +79,23 @@ $('#use_image').click(function(){
 
 		$('#AdSelectedImg').val(imgArray);	
 });	
+
+$('body').on('click','.remove_image',function(){
+	$array = $('#AdSelectedImg').val().split(',');
+	var image_id = $(this).data('id');
+
+	alert($array);
+
+	/* $(this).parent().remove(function(){
+
+		$array = jQuery.grep($array, function(value) {
+		return value != image_id;
+		});
+
+		alert($array);
+
+	}); */
+});
 
 
 $('#delete_images').click(function(){
@@ -168,17 +188,16 @@ $( "#AdNewAdForm" ).validate({
   }
 });
 
-$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
+/*$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
 
 	if ($(this).val() != '') {
 		$('.price_error').remove();
 	} else {
 		$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
-		
 	}
 
+});*/
 
-})
 $('#AdNewAdForm').submit(function(e){
 
 		$('.price_error').remove();

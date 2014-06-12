@@ -28,7 +28,7 @@
 							</td>
 							<td class="image_cont">
 							<a class="fancybox" href="<?php echo Configure::read('folder_name').$value["path"].$value["name"]; ?>" data-fancybox-group="gallery" title="<?php echo $value['name']; ?>">
-							 <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100')); ?>
+							 <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100','data-id' => $value['id'])); ?>
 							 </a>
 							 </td>
 							<td class="image_cont"> <?php echo $value['name']?></td>

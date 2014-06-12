@@ -1,15 +1,15 @@
-#field { margin-left: .5em; float: left; }
-#field, label { float: left; font-family: Arial, Helvetica, sans-serif; font-size: small; }
-br { clear: both; }
-input { border: 1px solid black; margin-bottom: .5em;  }
+
 input.error { border: 1px solid red; }
-label.error,.price_error {
-	background: url('images/unchecked.gif') no-repeat;
-	padding-left: 16px;
-	margin-left: .3em;
+label.error, .price_error {
+    xbackground: url("images/unchecked.gif") no-repeat scroll left center rgba(0, 0, 0, 0);
+    margin-left: 20px;
+    color:#939393;
+}
+label.error .ace-icon, .price_error .ace-icon{
+	margin-right: 7px;
 }
 label.valid {
-	background: url('images/checked.gif') no-repeat;
+	xbackground: url('images/checked.gif') no-repeat;
 	display: block;
 	width: 16px;
 	height: 16px;
