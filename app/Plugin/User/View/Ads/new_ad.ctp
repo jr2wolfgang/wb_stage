@@ -107,6 +107,8 @@
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
+
+    <i class="fa fa-times close_modal"></i>
    		
    		<div class="upload_images">Upload Images</div>
 		<div id="mulitplefileuploader">Upload</div>
@@ -114,9 +116,10 @@
 		
 			<table>
 			<tr >
-			<th> <input type="checkbox" class="check_all"></th>
-			<th> Image </th>
-			<th> ext </th>
+			<td class="check_box"> <input type="checkbox" class="check_all"></td>
+			<td class="images_td"> Image </td>
+			<td class="img_name"> filename </td>
+			<td> ext </td>
 			</tr>
 			</table>
 		<div class="images_append">
@@ -127,7 +130,8 @@
 							<td> 
 							<input type="checkbox" class="check_item" name="data[Ad][images][]" value="<?php echo $value['id']; ?>">
 							</td>
-							<td> <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100')); ?></td>
+							<td class="image_cont"> <?php echo $this->Html->image('/'.$value['path'].$value['name'],array('width' => '100')); ?></td>
+							<td class="image_cont"> <?php echo $value['name']?></td>
 							<td> <?php echo $value['extension'] ?></td>
 						</tr>
 				<?php endforeach;  ?>
@@ -138,7 +142,7 @@
 
 		<button id="use_image" onclick="return false">Use Images </button>
 
-		<button id="delete_images" onclick="return false">Delete </button>
+		<button id="delete_images" class="" onclick="return false">Delete </button>
 		</div>
 
 
@@ -149,7 +153,10 @@
 
 
 <script>
+
 $(document).ready(function() {
+
+var serverPath = "/wb_stage";
 
 
 $('.redactor').redactor({
@@ -176,9 +183,11 @@ $('#add_map').click(function(){
 
 	
 });
-$('#close').click(function() {
+$('#close,.close_modal').click(function() {
 	$('.google_map_pop').modal('hide');
+	$('.bs-example-modal-sm ').modal('hide');
  }); 
+
 
 $('#use_image').click(function(){
 		$('.bs-example-modal-sm ').modal('hide');
@@ -198,16 +207,51 @@ $('#use_image').click(function(){
 		}); 
 
 		$('#AdSelectedImg').val(imgArray);	
-});		
+});	
+
+
+$('#delete_images').click(function(){
+
+		$(this).addClass('disable');
+
+		var imgArray = [];
+
+		$('.images_append .check_item:checked').each(function(){
+
+				$(this).parent().parent().remove();
+
+				var appendImage = "<div class='selected_img'>";
+					appendImage += "<img src="+$(this).parent().next().find('img').attr('src')+">";
+					appendImage += "</div>";
+				imgArray.push($(this).val());		
+			//$('.images_thumb_selected').append( appendImage);
+		
+		}); 
+
+
+		$.ajax({
+			type: "POST",
+			url: ''+serverPath+'/user/images/remove',
+			data : { img_id : imgArray },
+			success: function(data,values)
+			{
+					$('#delete_images').removeClass('disable');
+				
+			}
+		});
+
+
+
+});	
 
 $('.check_all').click(function () {
 $('input:checkbox').prop('checked', this.checked);
 });
 
-var image_path = "/wb_stage/user/img/uploads/";
+var image_path = ""+serverPath+"/user/img/uploads/";
 
 var settings = {
-	url: "upload_multiple",
+	url: ""+serverPath+"/user/images/upload_multiple",
 	method: "POST",
 	allowedTypes:"jpg,png,gif,doc,pdf,zip",
 	fileName: "myfile",
@@ -221,7 +265,10 @@ var settings = {
 		for(var i =0;i <= imageDetails.length-1;i++)
 		{
 			var item = imageDetails[i];
-			var html_table = '<tr><td><input type="checkbox" class="check_item" name="data[Ad][images][]" value="'+item.key+'"></td><td><img src="'+image_path+item.file+'" width="100" ></td>';
+			
+			var html_table = '<tr><td><input type="checkbox" class="check_item" name="data[Ad][images][]" value="'+item.key+'"></td>';
+				html_table +='<td class="image_cont"><img src="'+image_path+item.file+'" width="100" ></td>';
+				html_table +='<td >'+item.file+'</td>';
 				html_table += '<td>'+item.extension+'</td></tr>';
 
 			$('.main_tr').append(html_table);
@@ -255,9 +302,21 @@ $( "#AdNewAdForm" ).validate({
   }
 });
 
+$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
+
+	if ($(this).val() != '') {
+		$('.price_error').remove();
+	} else {
+		$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
+		
+	}
+
+
+})
 $('#AdNewAdForm').submit(function(e){
 
 		$('.price_error').remove();
+
 		if ($('#AdDiscountPrice').val() == '' &&  $('#AdPromoPrice').val() == '') {
 
 			$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');

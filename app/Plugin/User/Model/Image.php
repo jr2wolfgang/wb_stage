@@ -88,5 +88,26 @@ public function saveImages($ImageData = null, $model = 'User',$foreign_key = nul
 				
 			}
 	}
-	
+
+
+	function beforeDelete(){
+		$relatedImages = $this->find('all',array('conditions' => array('Image.id' => $this->id)));
+		$this->relatedImages = $relatedImages;
+		$this->currentId = $this->id; //I am not sure if this is necessary
+		return true;
+	}
+
+	function afterDelete(){
+	  $relatedImages = $this->relatedImages;
+	  $containerId = $this->currentId; //probably this could be just $this->id;
+	  foreach ($relatedImages as $image) {
+	  	
+	  	$path = App::pluginPath('User') . WEBROOT_DIR.DS.'img/uploads/';
+
+	  	$file = new File($path.$image['Image']['name']);
+		$file->delete();
+	 
+	    }
+	}
+
 }
