@@ -1,4 +1,3 @@
-
 <section>
 	<h4>My Profile</h4>
 
@@ -72,6 +71,44 @@
 
 					<div class="profile-info-value">
 						<?php echo $this->Form->input('rpt_password',array( 'type' => 'password', 'label' => false )); ?>
+					</div>
+				</div>
+				<div class="profile-info-name"><b> Address </b></div>
+				
+
+				<div class="profile-info-row">
+					<div class="profile-info-name"> Street </div>
+
+					<div class="profile-info-value">
+						<?php echo $this->Form->input('Addresses.street',array( 'type' => 'text', 'label' => false )); ?>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> Town </div>
+
+					<div class="profile-info-value">
+						<?php echo $this->Form->input('Addresses.town',array( 'type' => 'text', 'label' => false )); ?>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> Province </div>
+
+					<div class="profile-info-value">
+						<?php echo $this->Form->input('Addresses.province',array( 'type' => 'text', 'label' => false )); ?>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> Zip Code </div>
+
+					<div class="profile-info-value">
+						<?php echo $this->Form->input('Addresses.zipcode',array( 'type' => 'text', 'label' => false )); ?>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> Home Town </div>
+
+					<div class="profile-info-value">
+						<?php echo $this->Form->input('Addresses.hometown',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>
 				<?php echo $this->Form->input('avatar', array('type' => 'hidden')); ?>
