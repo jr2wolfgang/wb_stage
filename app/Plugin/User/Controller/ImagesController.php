@@ -55,7 +55,7 @@ class ImagesController  extends UserAppController  {
 			  	$newFilename = str_replace(' ', '-', $fileName); // Replaces all spaces with hyphens.
 				$newFilename = preg_replace('/[^A-Za-z0-9.\-]/', '', $newFilename);
 
-
+ 
 				$ret[$fileName]= $output_dir.$newFilename;
 				$ret['extension']= $pathinfo['extension'];
 				$ret['file'] = $fileName;
@@ -85,7 +85,6 @@ class ImagesController  extends UserAppController  {
 
 	public function remove(){
 
-		pr($this->request->data);
 			
 		if (!empty( $this->request->data )) {
 
@@ -101,20 +100,12 @@ class ImagesController  extends UserAppController  {
 				'fields'=>array('name','path')
 				));
 
-				/* if (!empty($imgDetail)) {
-
-					unlink('../webroot/img/uploads/'.$imgDetail['Image']['name']);
 				
-				} */
 				$this->Image->delete($value);
 			}
 
 
-			/* if ( $this->Image->deleteAll($condition,false) ) {
-
-
-			} */
-
+			
 		}
 		exit();
 	}
