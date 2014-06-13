@@ -156,3 +156,17 @@ section.row {
     background: transparent !important;
     border: 0px solid !important;
 }
+
+.fm-per-img {
+    border-bottom: 1px solid #ededed;
+    padding: 10px 0 !important;
+}
+
+.fm-per-img:nth-child(even) {
+    background: #F9F9F9;
+}
+
+.add-selected-image-btn {
+    margin-top: 20px;
+    text-align: right;
+}
