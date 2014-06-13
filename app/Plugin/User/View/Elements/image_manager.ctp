@@ -1,44 +1,55 @@
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content transparent-modal">
+		<div class="row">
+			<div class="col-sm-12 col-lg-12">
+				<div class="widget-box">
+					<div class="widget-header">
+						<h4 class="widget-title">File Manager</h4>
 
-		<div class="widget-box">
-			<div class="widget-header">
-				<h4 class="widget-title">Custom File Input</h4>
-
-				<div class="widget-toolbar">
-					<a data-action="collapse" href="#">
-						<i class="ace-icon fa fa-chevron-up"></i>
-					</a>
-
-					<a data-action="close" href="#">
-						<i class="ace-icon fa fa-times"></i>
-					</a>
+						<div class="widget-toolbar">
+							<a class="close_modal" href="#">
+								<i class="ace-icon fa fa-times"></i>
+							</a>
+						</div>
+					</div>
+					<div class="widget-body">
+						
+						<div class="widget-body-inner" style="display: block;">
+							<div class="widget-main">
+								<div id="mulitplefileuploader" class="btn btn-warning"><i class='ace-icon fa fa-folder'></i>Choose File</div>
+								<div class="clearfix"></div>
+								<div class="fm-image-wrap">
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="fm-per-img col-lg-12">
+												<div class="row">
+													<div class="col-lg-3"><?php echo $this->Html->image('/user/img/uploads/monster.jpg',array('class' => 'img-responsive')); ?></div>
+													<div class="col-lg-5">monster.jpg</div>
+													<div class="col-lg-4">jpg</div>
+												</div>
+												
+											</div>
+											<div class="fm-per-img col-lg-12">
+												<?php echo $this->Html->image('/user/img/uploads/IMG3114.jpg',array('class' => 'img-responsive')); ?>
+											</div>
+											<div class="fm-per-img col-lg-12">
+												<?php echo $this->Html->image('/user/img/uploads/about_us_img.jpg',array('class' => 'img-responsive')); ?>
+											</div>
+											<div class="fm-per-img col-lg-12">
+												<?php echo $this->Html->image('/user/img/uploads/monster.jpg',array('class' => 'img-responsive')); ?>
+											</div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="widget-body"><div class="widget-body-inner" style="display: block;">
-				<div class="widget-main">
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label class="ace-file-input"><input type="file" id="id-input-file-2"><span data-title="Choose" class="ace-file-container"><span data-title="No File ..." class="ace-file-name"><i class=" ace-icon fa fa-upload"></i></span></span><a href="#" class="remove"><i class=" ace-icon fa fa-times"></i></a></label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label class="ace-file-input ace-file-multiple"><input type="file" id="id-input-file-3" multiple=""><span data-title="Drop files here or click to choose" class="ace-file-container"><span data-title="No File ..." class="ace-file-name"><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a href="#" class="remove"><i class=" ace-icon fa fa-times"></i></a></label>
-						</div>
-					</div>
-
-					<label>
-						<input type="checkbox" class="ace" id="id-file-format" name="file-format">
-						<span class="lbl"> Allow only images</span>
-					</label>
-				</div>
-			</div></div>
 		</div>
-
     </div>
   </div>
 </div>
+
