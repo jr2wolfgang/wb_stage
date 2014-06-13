@@ -208,7 +208,20 @@ class User extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)		
+		),
+		'Addresses' => array(
+			'className' => 'Addresses',
+			'foreignKey' => 'foreign_key',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)				
 	);
 
 	public $hasOne = array(
@@ -265,6 +278,19 @@ class User extends AppModel {
 				),
 				'Image' => array(
 					'className' => 'Image',
+					'foreignKey' => 'foreign_key',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				),
+				'Addresses' => array(
+					'className' => 'Addresses',
 					'foreignKey' => 'foreign_key',
 					'dependent' => false,
 					'conditions' => '',
