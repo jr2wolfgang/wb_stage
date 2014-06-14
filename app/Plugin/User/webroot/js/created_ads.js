@@ -33,7 +33,7 @@ $('.redactor').redactor({
     plugins: ['fontfamily'] */
 });  
                 
-$('#add_map').click(function(){
+$('.btn-danger').click(function(){
 
 
 	if ($('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">')) {
