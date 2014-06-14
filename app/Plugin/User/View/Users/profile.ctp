@@ -10,7 +10,7 @@
 	<div class="col-xs-12 col-sm-9">
 		<div class="profile-user-info profile-user-info-striped">
 			<?php echo $this->Form->create('User',array('controller' => 'profile','action' => 'profile')); ?>
-				<div class="profile-info-row">
+				<div class="profile-info-row"> 
 					<div class="profile-info-name"> Username </div>
 
 					<div class="profile-info-value">
@@ -114,7 +114,7 @@
 				</div>
 				<?php echo $this->Form->input('avatar', array('type' => 'hidden')); ?>
 
-				<button id="submit" style="float:right;padding:5px; margin:5px;">Update Profile</button>
+				<button id="submit" class="btn btn-warning" style="padding:5px; margin:5px;">Update Profile</button>
 			<?php echo $this->Form->end(); ?>
 		</div>
 	</div>

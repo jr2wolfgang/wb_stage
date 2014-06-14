@@ -65,11 +65,18 @@ class Addresses extends AppModel {
 					'counterQuery' => ''
 				)
 			)
-		),
+		)
 		
 		);
 
 		$this->contain($model);
+	}
+
+	public function SavemyAddress($data = null) {
+		pr($data);exit();
+		$this->id = $data['User']['id'];
+		return $this->saveField('is_login', $action);
+
 	}
 
 

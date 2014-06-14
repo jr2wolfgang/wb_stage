@@ -13,6 +13,7 @@ class AdminsController extends UserAppController  {
 
 	    $this->loadModel('User.Ad');
 	    $this->loadModel('User.Image');
+	    $this->loadModel('User.Addresses');
 	    // Allow users to register and logout.
 	    $this->Auth->allow('register', 'logout');
 	}
@@ -22,7 +23,7 @@ class AdminsController extends UserAppController  {
 		$this->layout = 'default';	
 		$imgFolder = '/user/img/';
 		$user = ClassRegistry::init('User');
-		$user->bind(array('Ad'));
+		$user->bind(array('Ad','Addresses'));
 		
 		if(empty($this->data)){
 			$user_data = $user->findById($this->Session->read('Auth.User.id'));
@@ -31,6 +32,7 @@ class AdminsController extends UserAppController  {
 		if ( empty($this->request->data['User']['avatar']) ){
 			$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
 		}
+		
 		//useradmmin ads
 		 $this->Ad->bind(array('User','Map','Image'));
 				

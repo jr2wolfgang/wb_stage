@@ -66,8 +66,8 @@
 
 						<div class="profile-info-value">
 							<i class="fa fa-map-marker light-orange bigger-110"></i>
-							<span>None</span>
-							<span>None</span>
+							<span><?php echo $this->request->data['Addresses'][0]['hometown']; ?></span>
+							<span></span>
 						</div>
 					</div>
 

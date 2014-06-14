@@ -80,7 +80,7 @@ switch ($_SERVER['HTTP_HOST']) {
         Configure::write('debug', 2);
         
 	break;
-	case 'localhost:80':
+	case 'localhost':
 	Configure::write('folder_name','/wb_stage/');
         Configure::write('debug', 2);
         

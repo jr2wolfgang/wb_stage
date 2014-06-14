@@ -178,6 +178,7 @@ class User extends AppModel {
  *
  * @var array
  */
+	
 	public $belongsTo = array(
 		'Group' => array(
 			'className' => 'Group',
@@ -221,7 +222,7 @@ class User extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)				
+		)		
 	);
 
 	public $hasOne = array(
@@ -237,11 +238,21 @@ class User extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)		
+		),
+		'Addresses' => array(
+			'className' => 'Addresses',
+			'foreignKey' => 'foreign_key',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)					
 	);
-
-
-
 	
 	public function bind($model = array('Group')){
 
