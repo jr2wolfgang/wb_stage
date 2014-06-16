@@ -62,9 +62,9 @@ $(document).ready(function(){
 		 loading: {
 	        finished: undefined,
 	        img:"/wb_stage/theme/Nakatipid/img/big_blue.gif",
-	        finishedMsg: "<em>Congratulations, you've reached the end of the internet.</em>",
+	        finishedMsg: "<em>There are no more ads to list.</em>",
 	        msg: null,
-	        msgText: "<em>Loading the next set of posts...</em>",
+	        msgText: "<em>Loading the next set of ads...</em>",
 	        selector: null,
 	        speed: 'fast',
 	        start: undefined
