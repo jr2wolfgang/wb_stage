@@ -82,15 +82,17 @@
 
 
 /* map */
-.map_container {
-    margin-top: 10px;
-}
 #map-canvas {
-    max-width: 539px;
-    max-height: 400px;  
-
+    max-width: 100%;
+    max-height: 50%;  
 }
-
+input#pac-input {
+    width: 40%;
+    margin-top: 23px;
+    padding: 7px;
+    border: 0px solid;
+    border-bottom: 3px solid #2091CF;
+}
 
 .search_input {
     position: absolute;

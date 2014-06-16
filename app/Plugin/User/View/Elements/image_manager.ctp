@@ -21,7 +21,7 @@
 								<div class="clearfix"></div>
 								<div class="row add-selected-image-btn">
 									<div class="col-lg-12">
-										<button class="btn btn-lg btn-success">
+										<button class="btn btn-lg btn-success use_image">
 											<i class="ace-icon fa fa-check"></i>
 											Add Selected Image(s)
 										</button>
@@ -78,4 +78,3 @@
     </div>
   </div>
 </div>
-
