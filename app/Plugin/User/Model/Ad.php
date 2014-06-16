@@ -114,6 +114,19 @@ class Ad extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
+					),
+				'PrimaryImage' => array(
+					'className' => 'Image',
+					'foreignKey' => 'foreign_key',
+					'dependent' => '',
+					'conditions' => array('PrimaryImage.is_primary' => 1),
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
 					)
 			)
 		

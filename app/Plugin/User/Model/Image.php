@@ -47,7 +47,7 @@ class Image extends AppModel {
 
 		$this->contain($model);
 	}
-public function saveImages($ImageData = null, $model = 'User',$foreign_key = null) {
+public function saveImages($ImageData = null, $model = 'User',$foreign_key = null,$primary = null) {
 
 
 			if (!empty($ImageData)) {
@@ -78,6 +78,9 @@ public function saveImages($ImageData = null, $model = 'User',$foreign_key = nul
 					if (!empty($data['extension'])) {
 						$images['extension'] = $data['extension'];
 					}
+					if ($data['id'] == $primary) {
+						$images['is_primary'] = 1;
+					}	
 
 
 					

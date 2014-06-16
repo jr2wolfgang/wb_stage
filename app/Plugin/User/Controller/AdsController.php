@@ -28,7 +28,7 @@ class AdsController extends UserAppController  {
 
 	public function index() {
 
-	  $this->Ad->bind(array('User','Map','Image'));
+	  $this->Ad->bind(array('User','Map','Image','PrimaryImage'));
 				
 	  $this->Ad->recursive = 0;
 
@@ -37,10 +37,11 @@ class AdsController extends UserAppController  {
 	  $this->paginate = array(
           	'recursive' => -1,
             'conditions' => $conditions,
+            'order' => array('Ad.created' => 'DESC')
             
          );
-		
-		$this->set('ads', $this->paginate('Ad'));		
+
+	$this->set('ads', $this->paginate());		
 	}
 
 	public function new_ad(){
@@ -58,18 +59,18 @@ class AdsController extends UserAppController  {
 
 			$this->Ad->create();
 
-		
-
 			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $images['User']['id'];
 
 			$AdsData = $this->Ad->GetData($this->request->data);
+			$primaryImage = $this->request->data['Image']['primary'];
 				
+			
 
 			$this->Ad->bind(array('Map'));
 			
 			if ($this->Ad->saveAssociated($this->request->data)) {
 
-				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id);
+				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$primaryImage);
 				
 				$this->Session->setFlash(__('The ads has been saved.'));
 
