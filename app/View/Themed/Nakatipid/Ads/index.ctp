@@ -311,8 +311,7 @@
     </div>
     <style type="text/css">
         .per-ads-img img { height: auto; }
-        .per-ads-img .img-container { display: block; margin: auto; padding: 15px; width: 90%; overflow: hidden; height: 300px; }
-        #infscr-loading { display: none !important; }
+        .per-ads-img .img-container { display: block; margin: auto; padding: 15px; width: 90%; overflow: hidden; height: 300px; }       
     </style>
 
     <div id="lazy-loader-container" class="fullWidth">

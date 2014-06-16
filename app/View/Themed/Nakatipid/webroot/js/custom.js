@@ -48,19 +48,20 @@ $(document).ready(function(){
 		$(this).children('.per-ads-img').children('.ads-has-label').toggleClass('pulse');
 	});
 
-	$(window).scroll(function() {
-	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-	   		$('#lazy-loader-container').fadeIn();
-	   		setTimeout(
-	   		  function(){
-	   			$('#lazy-loader-container').hide();
-	   		  }, 3000);
-	   }
-	});
+	// $(window).scroll(function() {
+	//    if($(window).scrollTop() + $(window).height() == $(document).height()) {
+	//    		$('#lazy-loader-container').fadeIn();
+	//    		setTimeout(
+	//    		  function(){
+	//    			$('#lazy-loader-container').hide();
+	//    		  }, 3000);
+	//    }
+	// });
 
 	$('#ads-list').infinitescroll({
 		 loading: {
 	        finished: undefined,
+	        img:"/wb_stage/theme/Nakatipid/img/big_blue.gif",
 	        finishedMsg: "<em>Congratulations, you've reached the end of the internet.</em>",
 	        msg: null,
 	        msgText: "<em>Loading the next set of posts...</em>",
