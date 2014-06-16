@@ -58,7 +58,7 @@ $(document).ready(function(){
 	   }
 	});
 
-	$('#container-ads').infinitescroll({
+	$('#ads-list').infinitescroll({
 		 loading: {
 	        finished: undefined,
 	        finishedMsg: "<em>Congratulations, you've reached the end of the internet.</em>",
@@ -73,7 +73,7 @@ $(document).ready(function(){
 	                   // selector for the paged navigation (it will be hidden)
 	    nextSelector : "div.navigation a:first",    
 	                   // selector for the NEXT link (to page 2)
-	    itemSelector : "#ads-list"          
+	    itemSelector : "#ads-list div.per-ads-list"          
 	                   // selector for all items you'll retrieve
  	 });
 
