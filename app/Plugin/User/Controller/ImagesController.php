@@ -83,29 +83,14 @@ class ImagesController  extends UserAppController  {
 	}
 
 
-	public function remove(){
-
-			
-		if (!empty( $this->request->data )) {
-
-			$imageIds = $this->request->data['img_id'];
-
-			$condition = array('Image.id' => $imageIds );
-
-
-
-			foreach ($imageIds as $key => $value) {
-				$imgDetail = $this->Image->find('first', array(
-				'conditions'=>array('id'=>$value),
-				'fields'=>array('name','path')
-				));
-
-				
-				$this->Image->delete($value);
-			}
-
-
-			
+	public function remove($id){
+		$condition = array('Image.id' => $id );
+		foreach ($id as $key => $value) {
+			$imgDetail = $this->Image->find('first', array(
+			'conditions'=>array('id'=>$value),
+			'fields'=>array('name','path')
+			));
+			$this->Image->delete($value);
 		}
 		exit();
 	}

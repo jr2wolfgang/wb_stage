@@ -35,7 +35,7 @@
 											if (!empty($images['Image'])) : 
 												foreach ($images['Image'] as $key => $value) :
 											?>
-											<div class="fm-per-img col-lg-12">
+											<div id="<?php echo $value['id']; ?>-img" class="fm-per-img col-lg-12">
 												<div class="row">
 													<div class="col-lg-1">
 														<div class="checkbox">

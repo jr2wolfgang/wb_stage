@@ -10,7 +10,7 @@
 
 				<div class="space space-4"></div>
 				
-				<a class="btn btn-sm btn-block btn-success" href="#">
+				<a class="btn btn-sm btn-block btn-success" href="ads/new_ad">
 					<i class="ace-icon fa fa-plus-square-o bigger-130"></i>
 					<span class="bigger-110">Create ADS</span>
 				</a>

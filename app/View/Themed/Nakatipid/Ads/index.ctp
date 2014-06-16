@@ -288,28 +288,24 @@
                                     <i class="flaticon-clock61"></i>
                                     <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
                                 </span>
-                                <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
+                                <span><i class="flaticon-map5"></i> Dressrossa, New World</span>
                                 <span><i class="flaticon-small44"></i> 500 views</span>
                             </div>
                             <div class="per-ads-price-box">
-                                <?php $line = '';?>
+                                <?php $class = '';?>
                                 <?php if ($data['Ad']['discount_price'] != 0): ?>
                                      <div class="per-ads-price per-discount-price">
                                          &nbsp; NOW PHP <?php echo $data['Ad']['discount_price']; ?>
-                                         <?php $line = 'style="text-decoration: line-through;"'; ?>
+                                         <?php $class = 'per-ads-before-price'; ?>
                                      </div>
                                 <?php endif;?>
-                                <div class="per-ads-price" <?php echo $line; ?>>PHP <?php echo $data['Ad']['orig_price']; ?></div>
+                                <div class="per-ads-price <?php echo $class; ?>">PHP <?php echo $data['Ad']['orig_price']; ?></div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>                        
             <?php endforeach; ?>
     </div>
-    <style type="text/css">
-        .per-ads-img img { height: auto; }
-        .per-ads-img .img-container { display: block; margin: auto; padding: 15px; width: 90%; overflow: hidden; height: 300px; }
-    </style>
 
     <div id="lazy-loader-container" class="fullWidth">
         <i class="fa fa-circle-o-notch fa-spin"></i>

@@ -147,18 +147,40 @@ var settings = {
 
 		var imageDetails = [jQuery.parseJSON(data)];
 
-			console.log(imageDetails)
+			
 		for(var i =0;i <= imageDetails.length-1;i++)
 		{
 			var item = imageDetails[i];
-				
-	var html_table = '<tr><td><input type="checkbox" class="check_item" name="data[Ad][images][]" value="'+item.key+'"></td>';
-		html_table +='<td class="image_cont"><a class="fancybox" data-fancybox-group="gallery" href="'+image_path+item.file+'"><img src="'+image_path+item.file+'" width="100" ></a></td>';
-		html_table +='<td >'+item.file+'</td>';
-		html_table += '<td>'+item.extension+'</td></tr>';
+			console.log(i);
+		var html_table = '<div id="'+item.key+'-img" class="fm-per-img col-lg-12">\
+							<div class="row">\
+								<div class="col-lg-1">\
+									<div class="checkbox">\
+										<label>\
+											<input type="checkbox" class="ace" value="'+item.key+'" name="data[Ad][images][]">\
+											<span class="lbl"></span>\
+										</label>\
+									</div>\
+								</div>\
+								<div class="col-lg-3">\
+									<a class="fancybox" href="'+image_path+item.file+'" data-fancybox-group="gallery" title="'+item.file+'">\
+										<img src="'+image_path+item.file+'" class="img-responsive" >\
+									</a>\
+								</div>\
+								<div class="col-lg-6">'+item.file+'</div>\
+								<div class="col-lg-2">\
+									<button class="btn btn-info btn-sm edit-image" data-id="'+item.key+'">\
+										<i class="ace-icon fa fa-pencil icon-only"></i>\
+									</button>\
+									<button class="btn btn-danger btn-sm delete-image" data-id="'+item.key+'">\
+										<i class="ace-icon fa fa-trash-o icon-only"></i>\
+									</button>\
+								</div>\
+							</div>\
+						</div>';
 
-			$('.main_tr').append(html_table);
 		}
+			$('.fm-image-wrap').children('.row').children('.col-lg-12').prepend(html_table);
 			
 			//console.log(data);
 	
@@ -212,7 +234,22 @@ $('#AdNewAdForm').submit(function(e){
 	
 });
 
+$('input[type="number"]').bind('keypress', function (e) {
+        return !(e.which != 8 && e.which != 0 &&
+                (e.which < 48 || e.which > 57) && e.which != 46);
+});
 
+$('.fm-image-wrap').on('click','.delete-image',function(){
+	var $id = $(this).data('id');
+	$.ajax({
+		type: "POST",
+		url: ''+serverPath+'/user/images/remove/'+$id,
+		success: function()
+		{
+			$('#'+$id+'-img').slideUp('fast').remove();
+		}
+	});
+});
 
 
 });
