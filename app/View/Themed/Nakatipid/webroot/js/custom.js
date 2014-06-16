@@ -48,18 +48,33 @@ $(document).ready(function(){
 		$(this).children('.per-ads-img').children('.ads-has-label').toggleClass('pulse');
 	});
 
-	var sampleData = $('#ads-list').html();
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
 	   		$('#lazy-loader-container').fadeIn();
-	   		
 	   		setTimeout(
-	   		  function() 
-	   		  {
+	   		  function(){
 	   			$('#lazy-loader-container').hide();
-	   		    $('#ads-list').append(sampleData);
 	   		  }, 3000);
 	   }
 	});
+
+	$('#container-ads').infinitescroll({
+		 loading: {
+	        finished: undefined,
+	        finishedMsg: "<em>Congratulations, you've reached the end of the internet.</em>",
+	        msg: null,
+	        msgText: "<em>Loading the next set of posts...</em>",
+	        selector: null,
+	        speed: 'fast',
+	        start: undefined
+	    },
+
+	    navSelector  : "div.navigation",            
+	                   // selector for the paged navigation (it will be hidden)
+	    nextSelector : "div.navigation a:first",    
+	                   // selector for the NEXT link (to page 2)
+	    itemSelector : "#ads-list"          
+	                   // selector for all items you'll retrieve
+ 	 });
 
 });

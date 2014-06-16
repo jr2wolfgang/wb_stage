@@ -261,54 +261,62 @@
 		</div>
 	</div>
 
-    <div class="row full-width" id="ads-list">
-            <?php $getData = $this->data;
-                foreach ($getData as $data): ?>
+    <div id="container-ads">
+        <div class="row full-width" id="ads-list">
 
-                    <div class="per-ads-list">
-                        <div class="per-ads-img">                            
-                            <?php if (time() - strtotime($data['Ad']['created']) < 60*60*24): ?>
-                                <div class="per-ads-new-label ads-has-label animated">New</div>
-                            <?php endif; ?>
-                            
+            <?php foreach ($ads as $data): ?>
+
+                <div class="per-ads-list">
+                    <div class="per-ads-img">                            
+                        <?php if (time() - strtotime($data['Ad']['created']) < 60*60*24): ?>
+                            <div class="per-ads-new-label ads-has-label animated">New</div>
+                        <?php endif; ?>
+                        
+                        <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
+                            <div class="img-container">
+                                <?php echo $this->Html->image('/user/img/uploads/'. $data['Image'][0]['name']); ?>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="per-ads-desc">
+                        <div class="per-ads-title">
                             <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
-                                <div class="img-container">
-                                    <?php echo $this->Html->image('/user/img/uploads/'. $data['Image'][0]['name']); ?>
-                                </div>
+                                <?php echo $data['Ad']['name']; ?>
                             </a>
                         </div>
-                        <div class="per-ads-desc">
-                            <div class="per-ads-title">
-                                <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
-                                    <?php echo $data['Ad']['name']; ?>
-                                </a>
-                            </div>
-                            <div class="per-ads-info">
-                                <span>
-                                    <i class="flaticon-clock61"></i>
-                                    <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
-                                </span>
-                                <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
-                                <span><i class="flaticon-small44"></i> 500 views</span>
-                            </div>
-                            <div class="per-ads-price-box">
-                                <?php $line = '';?>
-                                <?php if ($data['Ad']['discount_price'] != 0): ?>
-                                     <div class="per-ads-price per-discount-price">
-                                         &nbsp; NOW PHP <?php echo $data['Ad']['discount_price']; ?>
-                                         <?php $line = 'style="text-decoration: line-through;"'; ?>
-                                     </div>
-                                <?php endif;?>
-                                <div class="per-ads-price" <?php echo $line; ?>>PHP <?php echo $data['Ad']['orig_price']; ?></div>
-                                <div class="clearfix"></div>
-                            </div>
+                        <div class="per-ads-info">
+                            <span>
+                                <i class="flaticon-clock61"></i>
+                                <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
+                            </span>
+                            <span><i class="flaticon-map58"></i> Dressrossa, New World</span>
+                            <span><i class="flaticon-small44"></i> 500 views</span>
                         </div>
-                    </div>                        
+                        <div class="per-ads-price-box">
+                            <?php $line = '';?>
+                            <?php if ($data['Ad']['discount_price'] != 0): ?>
+                                 <div class="per-ads-price per-discount-price">
+                                     &nbsp; NOW PHP <?php echo $data['Ad']['discount_price']; ?>
+                                     <?php $line = 'style="text-decoration: line-through;"'; ?>
+                                 </div>
+                            <?php endif;?>
+                            <div class="per-ads-price" <?php echo $line; ?>>PHP <?php echo $data['Ad']['orig_price']; ?></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>                        
             <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <?php echo $this->Paginator->prev(' <'); ?>
+        <?php echo $this->Paginator->next(' >'); ?>
     </div>
     <style type="text/css">
         .per-ads-img img { height: auto; }
         .per-ads-img .img-container { display: block; margin: auto; padding: 15px; width: 90%; overflow: hidden; height: 300px; }
+        #infscr-loading { display: none !important; }
     </style>
 
     <div id="lazy-loader-container" class="fullWidth">
