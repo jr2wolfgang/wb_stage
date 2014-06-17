@@ -5,7 +5,7 @@
 			<div class="col-sm-12 col-lg-12">
 				<div class="widget-box">
 					<div class="widget-header">
-						<h4 class="widget-title">Maps</h4>
+						<h4 class="widget-title">Map</h4>
 
 						<div class="widget-toolbar">
 							<a class="close_modal" href="#">
@@ -15,7 +15,15 @@
 					</div>
 					<div class="widget-body">
 						<div class="widget-body-inner" style="display: block;">
-							
+							<div class="map_container" style="display:block" >
+								<?php echo $this->Html->script('User.map'); ?>
+								<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+								<div id="map-canvas" style="width:100%; height:600px;"></div>
+								<?php echo $this->Form->hidden('Map.model',array('value' => 'Ad','type' => 'text')); ?>
+								<?php echo $this->Form->hidden('Map.latitude',array('id' => 'lat','type' => 'text')); ?>
+								<?php echo $this->Form->hidden('Map.longhitude',array('id' => 'lng','type' => 'text')); ?>
+								<button id="close" class="btn btn-success btn-block" onclick="return false">Save Location for this ADS</button>
+							</div>
 						</div>
 					</div>
 				</div>
