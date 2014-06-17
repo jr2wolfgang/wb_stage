@@ -52,7 +52,13 @@
 
 			/* redactor */
 			echo $this->Html->css('User./js/redactor/css/redactor');
-			echo $this->Html->script('User.redactor/redactor/redactor_new.js');
+			echo $this->Html->script(array(
+				'User.redactor/redactor/redactor_new',
+				'User.redactor/redactor/fontfamily',
+				'User.redactor/redactor/fontcolor',
+				'User.redactor/redactor/fontsize',
+				));
+
 			/* validate */
 			echo $this->Html->script('User.validate/jquery.validate');
 			echo $this->Html->script('User.validate/additional-methods');
