@@ -23,19 +23,17 @@ class AdsController extends AppController {
  	}
 
 	public function index() {
-		$ads = $this->Ad;
-		$image = $ads->bind('Image');
 		// Please refer to User-jrr Model
 		/*$this->User->bind(array('Ad'));*/
 
-		if(empty($this->data)){
-			$ads_data = $ads->find('all');
-			$this->data = $ads_data; 		
-			/*
-				pr($this->data);
-				exit();
-			*/
-		}	
+		$this->Ad->bind('Image');
+
+		$this->paginate = array(
+		    'limit' => 8, // this was the option which you forgot to mention
+		    'order' => array(
+		        'Ad.id' => 'DESC')
+		);
+		$this->set('ads', $this->paginate('Ad'));
 	}
 
 	public function view($id) {

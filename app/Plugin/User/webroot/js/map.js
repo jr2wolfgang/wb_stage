@@ -91,6 +91,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 function addMarker(latlng,title,map) {
-  
-   
+  var test;
 }

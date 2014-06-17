@@ -8,13 +8,14 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends UserAppController  {
 
+
 	public function beforeFilter() {
 
 	    parent::beforeFilter();
 
 	    $userData = $this->Session->read('Auth');
 	    
-	    $this->User->bind(array('Group','AccountType'));
+	    $this->User->bind(array('Group','AccountType','Addresses'));
 	
 
 	    $AccountType = $this->User->find('list');
@@ -26,9 +27,6 @@ class UsersController extends UserAppController  {
 
 
 	public function index() {
-
-
- 
 
 	}
 
@@ -42,38 +40,49 @@ class UsersController extends UserAppController  {
 		
 	}
 
-	public function profile(){
+	public function profile(){ 
+		
 		$user = $this->User;
-	
-		if(empty($this->data)){
+		$this->User->bind( array('Addresses') );
+
+		if(empty($this->request->data)){
+
 			$user_data = $user->findById($this->Session->read('Auth.User.id'));
 			$this->data = $user_data;
+
 			$this->request->data['User']['jrr_password'] = '';
+			
 		}
 
 		if ( empty($this->request->data['User']['avatar']) ){
 			$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
 		}
 
-
 		$user->validate = array();
 		if ($this->request->is('post')) {
+			
 			$user->id = $this->Session->read('Auth.User.id');
-
+			
 			if (empty($this->request->data['User']['jrr_password'])){
+				
 				$this->request->data['User']['jrr_password'] = $this->Session->read('Auth.User.rxt');
 				$this->request->data['User']['rxt'] = $this->Session->read('Auth.User.rxt');
 			}
 			else {
 				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
 			}
-
-
+			
 			if ($user->save($this->request->data)) {
-				$this->Session->setFlash(__('The User has been saved.'));
+				$user_data = $user->findById($this->Session->read('Auth.User.id'));
+				$this->request->data['Addresses']['id'] = $user_data['Addresses']['id'];
+				$this->request->data['Addresses']['foreign_key'] = $this->User->id;
+				$this->request->data['Addresses']['model'] = "User";
+				$this->request->data['Addresses']['modified_by'] = $this->User->id;
+				$this->User->Addresses->save($this->request->data);
+				$this->Session->setFlash(__('The Profile has been updated.'));
 			} 
 			else {			
-				$this->Session->setFlash(__('The User could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The User could not be update. Please, try again.'));
 			}
 		}
 	}
