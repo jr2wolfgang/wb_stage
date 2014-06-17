@@ -13,29 +13,33 @@ class Image extends AppModel {
  * @var array
  */
 
+public $recursive = -1;
+	
+public $actsAs = array('Containable');
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+public function bind($model = array('Group')){
 
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'Ad' => array(
-			'className' => 'Ad',
-			'foreignKey' => 'foreign_key',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
+	$this->bindModel(array(
+			'belongsTo' => array(
+				'Ad' => array(
+					'className' => 'Ad',
+					'foreignKey' => 'foreign_key',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+					)
+			)
+		));
+
+		$this->contain($model);
+
+}
 
 public function saveImages($ImageData = null, $model = 'User',$foreign_key = null) {
 

@@ -41,27 +41,14 @@ class UsersController extends UserAppController  {
 	}
 
 	public function profile(){ 
-		
-		$user = $this->User;
-		$this->User->bind( array('Addresses') );
+	
+		$this->User->bind( array('Addresses'));
 
-		if(empty($this->request->data)){
+		$this->User->validate = array();
 
-			$user_data = $user->findById($this->Session->read('Auth.User.id'));
-			$this->data = $user_data;
 
-			$this->request->data['User']['jrr_password'] = '';
-			
-		}
-
-		if ( empty($this->request->data['User']['avatar']) ){
-			$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
-		}
-
-		$user->validate = array();
 		if ($this->request->is('post')) {
 			
-			$user->id = $this->Session->read('Auth.User.id');
 			
 			if (empty($this->request->data['User']['jrr_password'])){
 				
@@ -71,20 +58,32 @@ class UsersController extends UserAppController  {
 			else {
 				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
 			}
-			
-			if ($user->save($this->request->data)) {
-				$user_data = $user->findById($this->Session->read('Auth.User.id'));
-				$this->request->data['Addresses']['id'] = $user_data['Addresses']['id'];
-				$this->request->data['Addresses']['foreign_key'] = $this->User->id;
-				$this->request->data['Addresses']['model'] = "User";
-				$this->request->data['Addresses']['modified_by'] = $this->User->id;
-				$this->User->Addresses->save($this->request->data);
+				
+			$this->request->data['Addresses']['foreign_key'] = $this->request->data['User']['id'];
+
+
+			if ($this->User->saveAssociated($this->request->data)) {
+
 				$this->Session->setFlash(__('The Profile has been updated.'));
 			} 
 			else {			
 				$this->Session->setFlash(__('The User could not be update. Please, try again.'));
 			}
-		}
+		} else {
+
+			$this->User->bind( array('Addresses'));
+
+			$this->request->data = $this->User->findById($this->Session->read('Auth.User.id'));
+
+
+			$this->request->data['User']['jrr_password'] = '';
+
+			if (empty($this->request->data['User']['avatar']) ){
+				$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
+			}
+
+		
+		 }
 	}
 
 }
