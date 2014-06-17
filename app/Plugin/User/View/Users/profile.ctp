@@ -23,6 +23,8 @@
 					<div class="profile-info-name"> Firstname </div>
 
 					<div class="profile-info-value">
+						<?php echo $this->Form->input('id',array('type' => 'text','label' => false )); ?>
+						
 						<?php echo $this->Form->input('firstname',array( 'label' => false )); ?>
 					</div>
 				</div>
@@ -81,6 +83,11 @@
 					<div class="profile-info-name"> Street </div>
 
 					<div class="profile-info-value">
+						<?php echo $this->Form->input('Addresses.id',array( 'type' => 'hidden')); ?>
+
+						<?php echo $this->Form->input('Addresses.model',array('value' => 'User','type' => 'text')); ?>
+
+
 						<?php echo $this->Form->input('Addresses.street',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>

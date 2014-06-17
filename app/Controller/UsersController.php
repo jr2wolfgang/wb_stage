@@ -193,6 +193,8 @@ class UsersController extends AppController {
 
 			$roleData = $this->Session->read('Auth');
 
+			$this->User->bind('AccountType');
+
 			if (!empty($accountType)){
 
 					$checkData = $this->User->CheckData($roleData);

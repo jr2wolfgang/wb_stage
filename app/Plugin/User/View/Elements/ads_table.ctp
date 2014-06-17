@@ -4,7 +4,7 @@
 
         <tr class="even">
             <td class="sorting_1">
-                <?php echo $this->Html->image('/user/img/uploads/'.$adslist['Image'][0]['name'], array('style' => 'width: 150px;'))?>
+                <?php echo $this->Html->image('/user/img/uploads/'.$adslist['PrimaryImage']['name'], array('style' => 'width: 150px;'))?>
             </td>
             <td class="">
 

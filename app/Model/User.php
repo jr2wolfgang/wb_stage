@@ -14,6 +14,13 @@ class User extends AppModel {
  *
  * @var array
  */
+
+	
+	public $recursive = -1;
+	
+	public $actsAs = array('Containable');
+
+
 	public $validate = array(
 
 		'email' => array(
@@ -95,78 +102,6 @@ class User extends AppModel {
 	);
 
 
-	// function equaltofield($check,$otherfield){
- //        //get name of field
- //        $fname = '';
- //        foreach ($check as $key => $value){
- //            $fname = $key;
- //            break;
- //        }
- //        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
- //    } 
-	
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'Group' => array(
-			'className' => 'Group',
-			'foreignKey' => 'group_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'AccountType' => array(
-			'className' => 'AccountType',
-			'foreignKey' => 'account_type_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)	
-	);
-
-	public $hasMany = array(
-		'Ad' => array(
-			'className' => 'Ad',
-			'foreignKey' => 'modified_by',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)		
-	);
-
-	public $hasOne = array(
-		'Map' => array(
-			'className' => 'Map',
-			'foreignKey' => 'modified_by',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)		
-	);
-
-
-
-	
-	public $recursive = -1;
-	public $actsAs = array('Containable');
 
 	public function bind($model = array('Group')){
 

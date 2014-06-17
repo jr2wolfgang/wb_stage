@@ -3,9 +3,9 @@
 // pick list containing a mix of places and predicted search terms.
 
 function initialize() {
-  var chicago = new google.maps.LatLng(12.879721, 121.774017);
+  var chicago = new google.maps.LatLng(14.60314622, 120.98376889);
   var mapOptions = {
-    zoom:7,
+    zoom:15,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: chicago
   }
@@ -41,8 +41,9 @@ function initialize() {
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
+        scaledSize: new google.maps.Size(15, 15)
       };
+
 
       // Create a marker for each place.
       var marker = new google.maps.Marker({
@@ -53,13 +54,12 @@ function initialize() {
       });
 
       markers.push(marker);
-
       bounds.extend(place.geometry.location);
+      
       //console.log(place.geometry.location.k);
 
       document.getElementById('lat').value = place.geometry.location.k;
       document.getElementById('lng').value = place.geometry.location.A;
-
 
       google.maps.event.addListener(marker,'drag',function(event) {
         document.getElementById('lat').value = event.latLng.lat();
@@ -71,10 +71,14 @@ function initialize() {
           document.getElementById('lng').value = event.latLng.lng();
       });
 
-
     }
 
     map.fitBounds(bounds);
+    var listener = google.maps.event.addListener(map, "idle", function() { 
+      if (map.getZoom() > 16) map.setZoom(15); 
+      google.maps.event.removeListener(listener); 
+    });
+
   });
   // [END region_getplaces]
 
@@ -93,3 +97,4 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function addMarker(latlng,title,map) {
   var test;
 }
+

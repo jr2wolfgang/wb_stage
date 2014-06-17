@@ -26,27 +26,27 @@ class AdsController extends AppController {
 		// Please refer to User-jrr Model
 		/*$this->User->bind(array('Ad'));*/
 
-		$this->Ad->bind('Image');
+		$this->Ad->bind(array('Image','PrimaryImage'));
 
 		$this->paginate = array(
 		    'limit' => 8, // this was the option which you forgot to mention
 		    'order' => array(
 		        'Ad.id' => 'DESC')
 		);
+
+
 		$this->set('ads', $this->paginate('Ad'));
 	}
 
 	public function view($id) {
 		$this->theme = 'Nakatipid';
-
 		$imgFolder = '/user/img/';
 		
 		$ads = $this->Ad;
-		$ads->bind(array('Image','User'));
+		$ads->bind(array('Image','User','PrimaryImage'));
 		// Please refer to User-jrr Model
 		/*$this->User->bind(array('Ad'));*/
 
-	
 		if(empty($this->data)){
 			$ads_data = $ads->findById($id);
 			$this->data = $ads_data;
@@ -55,6 +55,7 @@ class AdsController extends AppController {
 				$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
 			}
 
+			$this->set('ad', $this->data);
 		}	
 	}	
 }
