@@ -37,11 +37,12 @@ class AdsController extends UserAppController  {
 	  $this->paginate = array(
           	'recursive' => -1,
             'conditions' => $conditions,
-            'order' => array('Ad.created' => 'DESC')
+          	'order' => array('Ad.created DESC')
             
          );
+		$ads =  $this->paginate();
 
-	$this->set('ads', $this->paginate());		
+	$this->set(compact('ads'));		
 	}
 
 	public function new_ad(){
@@ -62,11 +63,12 @@ class AdsController extends UserAppController  {
 			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $images['User']['id'];
 
 			$AdsData = $this->Ad->GetData($this->request->data);
+			
 			$primaryImage = $this->request->data['Image']['primary'];
 				
-			
-
 			$this->Ad->bind(array('Map'));
+
+			
 			
 			if ($this->Ad->saveAssociated($this->request->data)) {
 

@@ -55,47 +55,7 @@ $('#close,.close_modal').click(function() {
  }); 
 
 
-$('#use_image').click(function(){
-		$('.bs-example-modal-sm ').modal('hide');
 
-		$('#AdSelectedImg').empty();
-
-		var imgArray = [];
-
-		$('.images_append .check_item:checked').each(function(){
-				$img_src = $(this).parent().next().find('img').attr('src');
-				$data_id = $(this).parent().next().find('img').attr('data-id');
-				
-				
-		var appendImage = "<div class='selected_img'>";
-			appendImage += "<i class='fa fa-times-circle-o remove_image' data-id='"+$data_id+"'></i> ";
-			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;'></div></a>";
-			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[Image][primary]' value='"+$data_id+"'> Select As Primary</div>";
-			appendImage += "</div>";
-				imgArray.push($(this).val());		
-			$('.images_thumb_selected').append( appendImage);
-		
-		}); 
-
-		$('#AdSelectedImg').val(imgArray);	
-});	
-
-$('body').on('click','.remove_image',function(){
-	$array = $('#AdSelectedImg').val().split(',');
-	var image_id = $(this).data('id');
-
-	alert($array);
-
-	/* $(this).parent().remove(function(){
-
-		$array = jQuery.grep($array, function(value) {
-		return value != image_id;
-		});
-
-		alert($array);
-
-	}); */
-});
 
 
 $('#delete_images').click(function(){
@@ -249,6 +209,64 @@ $('.fm-image-wrap').on('click','.delete-image',function(){
 			$('#'+$id+'-img').slideUp('fast').remove();
 		}
 	});
+});
+
+
+
+
+$('.use_image').click(function(){
+
+	$('.bs-example-modal-sm').modal('hide');
+	
+	
+		$('#AdSelectedImg').empty();
+
+		var imgArray = [];
+
+		$('.fm-image-wrap .ace:checked').each(function(){
+		
+		$img_src = $(this).parents('.fm-per-img').find('.img-responsive').attr('src');
+		$data_id = $(this).attr('value');
+
+		console.log($data_id);
+		
+		console.log($(this).val());
+				
+				
+		var appendImage = "<div class='selected_img'>";
+			appendImage += "<i class='fa fa-times-circle-o remove_image' data-id='"+$data_id+"'></i> ";
+			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;'></div></a>";
+			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[Image][primary]' value='"+$data_id+"'> Select As Primary</div>";
+			appendImage += "</div>";
+				imgArray.push($(this).val());		
+			$('.images_thumb_selected').append( appendImage);
+		
+		}); 
+
+		$('#AdSelectedImg').val(imgArray);	
+});	
+
+
+
+$('body').on('click','.remove_image',function(){
+	$ImgArray = $('#AdSelectedImg').val().split(',');
+	
+	$image_id = $(this).attr('data-id');
+
+	
+	console.log($ImgArray);
+
+	 $(this).parent().fadeOut(function(){
+
+		
+		$newImgArray = jQuery.grep($ImgArray, function(value) {
+			return value != $image_id;
+		});
+
+		$('#AdSelectedImg').val($newImgArray);
+	
+	});
+	 
 });
 
 
