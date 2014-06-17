@@ -65,19 +65,22 @@ class AdsController extends UserAppController  {
 			$AdsData = $this->Ad->GetData($this->request->data);
 			
 					
-	if ($this->Ad->saveAssociated($this->request->data)) {
+		if ($this->Ad->saveAssociated($this->request->data)) {
 
-				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$this->request->data['PrimaryImage']);
-				
-				$this->Session->setFlash(__('The ads has been saved.'));
-
-				$this->redirect(array('action' => 'index'));
+			ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$this->request->data['PrimaryImage']);
 			
-			} else {
+			$this->Session->setFlash(__('The ads has been saved.'));
+
+			$this->redirect(array('action' => 'index'));
 				
-				$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
-			}
+		} else {
+					
+			$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
 		}
+		
+		}
+
+		$this->create_json_data();
 
 		$this->set(compact('images'));
 	}
@@ -230,11 +233,104 @@ class AdsController extends UserAppController  {
 			
 		}
 
+		 $this->create_json_data();
 
 		$this->set(compact('image','images'));
 
 
 	}
+
+	public function redactor_upload_image() {
+
+		 	$isHTTPS = (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on");
+            $port = (isset($_SERVER["SERVER_PORT"]) && ((!$isHTTPS && $_SERVER["SERVER_PORT"] != "80") || ($isHTTPS && $_SERVER["SERVER_PORT"] != "443")));
+            $port = ($port) ? ':'.$_SERVER["SERVER_PORT"] : '';
+            $url = ($isHTTPS ? 'https://' : 'http://').$_SERVER["SERVER_NAME"];
+
+			$dir = App::pluginPath('User') . WEBROOT_DIR.DS.'img/redactor_uploads/';
+
+		
+			$_FILES['file']['type'] = strtolower($_FILES['file']['type']);
+
+
+            if ($_FILES['file']['type'] == 'image/png' 
+            || $_FILES['file']['type'] == 'image/jpg' 
+            || $_FILES['file']['type'] == 'image/gif' 
+            || $_FILES['file']['type'] == 'image/jpeg'
+            || $_FILES['file']['type'] == 'image/pjpeg')
+            {
+             
+            $filename = $_FILES['file']['name'];
+            $file = $dir.$filename;
+
+            copy($_FILES['file']['tmp_name'], $file);
+            
+            $array = array(
+                    'filelink' => Configure::read('folder_name').'user/img/redactor_uploads/'.$filename
+            );
+
+
+            echo stripslashes(json_encode($array));   
+            
+            exit();
+        }
+
+	}
+
+
+	 public function create_json_data() {
+
+
+        //$directory = WWW_ROOT . "/images/post_upload/";
+
+        $directory = App::pluginPath('User') . WEBROOT_DIR.DS.'img/redactor_uploads/';
+
+        $imageDirectory = Configure::read('folder_name').'user/img/redactor_uploads/';
+
+
+        if (!is_dir($directory)) {
+            exit('Invalid diretory path');
+        }
+
+        $files = array();
+
+        foreach (scandir($directory) as $file) {
+            if ('.' === $file)
+                continue;
+            if ('..' === $file)
+                continue;
+
+            $files[] = $file;
+        }
+       
+         $data = array();
+
+        $index = 1;
+
+        foreach ($files as $key => $list) {
+        	if ($key % 10 == 0 && $key != 0 ) {
+        		 $data[] = '{ "thumb": "'. $imageDirectory . $list . '", "image": "'.$imageDirectory. $list . '", "title": "Image' . $key . '", "folder": "Folder '.$index++.'" },';
+ 
+        	} else {
+        		 $data[] = '{ "thumb": "'. $imageDirectory . $list . '", "image": "'.$imageDirectory. $list . '", "title": "Image' . $key . '", "folder": "Folder '.$index.'" },';
+ 
+        	}
+
+
+       }
+
+
+        $new_data = implode('', $data);
+        $new_data = trim($new_data);
+
+        $new_data_replace = substr_replace($new_data, " ", -1);
+
+
+        $content = '[' . $new_data_replace . ']';
+        $fp = fopen(App::pluginPath('User') . WEBROOT_DIR . DS . "js" . DS . "json_data" . DS . "new_data.json", "wb");
+        fwrite($fp, $content);
+        fclose($fp);
+    }
 
 
 

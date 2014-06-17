@@ -160,7 +160,7 @@
 <div class="clear"></div>
 
 
-
+<?php echo $this->element('redactor_settings')?>
 <?php echo $this->element('image_manager'); ?>
 
 

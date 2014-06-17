@@ -24,14 +24,7 @@ $('.fancybox').fancybox();
 
 var serverPath = "/wb_stage";
 
-
-$('.redactor').redactor({
-		imageUpload: '/user/redactor_upload_image',
-		//fileUpload: 'redactor/demo/scripts/file_upload.php',
-		imageGetJson: '/js/json_data/new_data.json',				
-		plugins: ['fontfamily','fontcolor','fontsize'],
-		focus: true,
-	});  
+ 
                 
 $('.btn-danger').click(function(){
 
