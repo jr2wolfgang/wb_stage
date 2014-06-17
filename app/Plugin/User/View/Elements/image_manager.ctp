@@ -20,7 +20,7 @@
 								<div id="mulitplefileuploader" class="btn btn-warning"><i class='ace-icon fa fa-folder'></i>Choose File</div>
 								<div class="clearfix"></div>
 								<div class="row add-selected-image-btn">
-									<div class="col-lg-12">
+									<div class="col-lg-12 text-left">
 										<button class="btn btn-lg btn-success use_image">
 											<i class="ace-icon fa fa-check"></i>
 											Add Selected Image(s)

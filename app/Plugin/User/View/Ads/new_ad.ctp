@@ -108,41 +108,14 @@
 			</button>
 		</div>
 	</div>
-
-	<?php echo $this->element('maps_popup'); ?>
 	
-<!-- 	<div class="modal fade google_map_pop" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="map_container" style="display:block" >
-			
-				<?php echo $this->Html->script('User.map'); ?>
-
-				<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
-				<div id="map-canvas" style="width:100%; height:600px;"></div>
-					
-				<?php echo $this->Form->input('Map.model',array('value' => 'Ad','type' => 'text')); ?>
-				<?php echo $this->Form->input('Map.latitude',array('id' => 'lat','type' => 'text')); ?>
-				<?php echo $this->Form->input('Map.longhitude',array('id' => 'lng','type' => 'text')); ?>
-				
-				<button id="close" onclick="return false">Close </button>
-				ENDS
-			</div>
-		</div>
-	</div>
-</div> -->
-
+	<?php echo $this->element('maps_popup'); ?>
 		
 <?php echo $this->Form->end(); ?> 
-	
-<!-- Small modal -->
+
 <div class="clear"></div>
 
-
-
 <?php echo $this->element('image_manager'); ?>
-
 
 <?php echo $this->Html->script('User.fancybox/source/jquery.fancybox');  ?>
 <?php echo $this->Html->css('User./js/fancybox/source/jquery.fancybox');  ?>
