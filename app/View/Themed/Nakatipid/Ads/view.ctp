@@ -20,7 +20,7 @@
 			<section class="container-image row">
 				<div class="large-9 columns no-pads">
 					<div class="img-wrapper">
-						 <?php echo $this->Html->image('/user/img/uploads/'. $ad['Image'][0]['name']); ?>
+						 <?php echo $this->Html->image('/user/img/uploads/'. $ad['PrimaryImage']['name']); ?>
 					</div>
 				</div>
 				<div class="gallery-images large-3 columns">

@@ -43,7 +43,7 @@ class AdsController extends AppController {
 		$imgFolder = '/user/img/';
 		
 		$ads = $this->Ad;
-		$ads->bind(array('Image','User'));
+		$ads->bind(array('Image','User','PrimaryImage'));
 		// Please refer to User-jrr Model
 		/*$this->User->bind(array('Ad'));*/
 
