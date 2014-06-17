@@ -26,13 +26,15 @@ class AdsController extends AppController {
 		// Please refer to User-jrr Model
 		/*$this->User->bind(array('Ad'));*/
 
-		$this->Ad->bind('Image');
+		$this->Ad->bind(array('Image','PrimaryImage'));
 
 		$this->paginate = array(
 		    'limit' => 8, // this was the option which you forgot to mention
 		    'order' => array(
 		        'Ad.id' => 'DESC')
 		);
+
+
 		$this->set('ads', $this->paginate('Ad'));
 	}
 

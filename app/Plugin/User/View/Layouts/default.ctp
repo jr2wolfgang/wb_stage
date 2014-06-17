@@ -22,8 +22,6 @@
 	<head>
 		<?php echo $this->Html->charset(); ?>
 		<title>Dashboard - <?php echo $userData['User']['firstname'].', '.$userData['User']['lastname'] ?></title>
-		<script src="js/ace-extra.min.js"></script>
-				<script src="js/jquery.min.js"></script>
 		<?php
 
 			echo $this->Html->css('User.style');

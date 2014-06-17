@@ -34,24 +34,21 @@ class AdminsController extends UserAppController  {
 		}
 		
 		//useradmmin ads
-		 $this->Ad->bind(array('User','Map','Image'));
-				
-		  $this->Ad->recursive = 0;
+		$this->Ad->bind(array('User','Map','Image','PrimaryImage'));
+			
+		$this->Ad->recursive = 0;
 
-		  $conditions = array('Ad.modified_by' => $this->Session->read('Auth.User.id'));
-		  
-		  $this->paginate = array(
-	          	'recursive' => -1,
-	            'conditions' => $conditions,
-	            
-	        );
+		$conditions = array('Ad.modified_by' => $this->Session->read('Auth.User.id'));
 
-			$this->set('ads', $this->paginate('Ad'));		
+		$this->paginate = array(
+		  	'recursive' => -1,
+		    'conditions' => $conditions,
+		    
+		);
+
+		$this->set('ads', $this->paginate('Ad'));		
 	
-		 // foreach ($user_data as $value) {
-		 // 	pr($value);
-		 // }exit();
-		//pr($user_data);exit();
+		
 	}
 
 	public function upload_multiple(){

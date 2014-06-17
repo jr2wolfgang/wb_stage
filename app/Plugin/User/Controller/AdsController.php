@@ -64,15 +64,10 @@ class AdsController extends UserAppController  {
 
 			$AdsData = $this->Ad->GetData($this->request->data);
 			
-			$primaryImage = $this->request->data['Image']['primary'];
-				
-			$this->Ad->bind(array('Map'));
+					
+	if ($this->Ad->saveAssociated($this->request->data)) {
 
-			
-			
-			if ($this->Ad->saveAssociated($this->request->data)) {
-
-				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$primaryImage);
+				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$this->request->data['PrimaryImage']);
 				
 				$this->Session->setFlash(__('The ads has been saved.'));
 
@@ -206,25 +201,33 @@ class AdsController extends UserAppController  {
 		
 		$User = ClassRegistry::init('User');
 
-		
-		$images = $User->read(null,$this->Session->read('Auth.User.id'));
-
-
-
 		if (!$this->Ad->exists($id)) {
 			throw new NotFoundException(__('Invalid group'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+
+			$AdsData = $this->Ad->GetData($this->request->data);
+			
+			$current_id = $this->request->data['Ad']['id'];
+
 			if ($this->Ad->save($this->request->data)) {
+
+				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
+				
 				$this->Session->setFlash(__('The Ads has been saved.'));
 				return $this->redirect(array('action' => 'index'));
+
 			} else {
 				$this->Session->setFlash(__('The Ads could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Ad.id' => $id));
-			$this->Ad->bind(array('Image'));
+			$this->Ad->bind(array('Image','PrimaryImage'));
 			$this->request->data = $this->Ad->find('first', $options);
+
+			$User->bind(array('Image'));
+			$images = $User->read(null,$this->Session->read('Auth.User.id'));
+			
 		}
 
 

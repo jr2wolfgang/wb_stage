@@ -273,7 +273,7 @@
                     
                     <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
                         <div class="img-container">
-                            <?php echo $this->Html->image('/user/img/uploads/'. $data['Image'][0]['name']); ?>
+                            <?php echo $this->Html->image('/user/img/uploads/'. $data['PrimaryImage']['name']); ?>
                         </div>
                     </a>
                 </div>

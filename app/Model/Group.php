@@ -12,6 +12,13 @@ class Group extends AppModel {
  *
  * @var array
  */
+	
+
+	public $recursive = -1;
+		
+	public $actsAs = array('Containable');
+
+
 	public $validate = array(
 		'name' => array(
 			'notEmpty' => array(
@@ -52,20 +59,32 @@ class Group extends AppModel {
  *
  * @var array
  */
-	public $hasMany = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'group_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
 
+
+public function bind($model = array('User')){
+
+
+	$this->bindModel(array(
+			'hasMany' => array(
+				'User' => array(
+					'className' => 'User',
+					'foreignKey' => 'group_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+					)
+			)
+		));
+
+
+	$this->contain($model);
+
+}
+	
 }
