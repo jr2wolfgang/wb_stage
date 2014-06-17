@@ -32,11 +32,9 @@ $('.btn-danger').click(function(){
 	if ($('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">')) {
 
 		setTimeout(function(){
-
 		initialize();
 
-
-	},1000); 
+		},1000); 
 
 	}
 
