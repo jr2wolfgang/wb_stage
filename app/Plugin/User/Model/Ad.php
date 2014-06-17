@@ -75,6 +75,19 @@ class Ad extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
+				),
+				'Addresses' => array(
+					'className' => 'Addresses',
+					'foreignKey' => 'foreign_key',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
 				)
 			),
 			'hasOne' => array(

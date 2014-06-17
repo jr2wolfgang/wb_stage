@@ -66,6 +66,19 @@ class Addresses extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
+				),
+				'Ad' => array(
+					'className' => 'Ad',
+					'foreignKey' => 'foreign_key',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
 				)
 			)
 		)
