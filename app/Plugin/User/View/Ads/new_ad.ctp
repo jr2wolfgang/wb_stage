@@ -109,6 +109,8 @@
 		</div>
 	</div>
 
+	<?php echo $this->element('maps_popup'); ?>
+	
 	<div class="modal fade google_map_pop" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
