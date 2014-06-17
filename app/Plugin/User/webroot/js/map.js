@@ -56,8 +56,7 @@ function initialize() {
       markers.push(marker);
       bounds.extend(place.geometry.location);
       
-      //console.log(place.geometry.location.k);
-
+     
       document.getElementById('lat').value = place.geometry.location.k;
       document.getElementById('lng').value = place.geometry.location.A;
 
@@ -66,9 +65,11 @@ function initialize() {
         document.getElementById('lng').value = event.latLng.lng();
       });
 
+
       google.maps.event.addListener(marker,'dragend',function(event) {
           document.getElementById('lat').value = event.latLng.lat();
           document.getElementById('lng').value = event.latLng.lng();
+          geocodePosition(marker.getPosition());
       });
 
     }
@@ -94,7 +95,27 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-function addMarker(latlng,title,map) {
-  var test;
+function geocodePosition(pos) {
+   geocoder = new google.maps.Geocoder();
+   geocoder.geocode
+    ({
+        latLng: pos
+    }, 
+        function(results, status) 
+        {
+            if (status == google.maps.GeocoderStatus.OK){
+                $('#street').val(results[0].address_components[0].long_name);
+                $('#town').val(results[0].address_components[1].long_name);
+                $('#province').val(results[0].address_components[2].long_name);
+                $('#hometown').val(results[0].address_components[3].long_name);
+                $('#location').html(results[0].formatted_address);
+                // jQuery('').val(results[0].address_components[4].long_name));
+            } 
+
+            else{
+                console.log('Error!!!');
+            }
+        }
+    );
 }
 

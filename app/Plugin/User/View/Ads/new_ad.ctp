@@ -49,6 +49,7 @@
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Point your Location </label>
 		<div class="col-sm-9">
 			<div class="btn btn-danger" data-toggle="modal" data-target=".google_map_pop" onclick="return false"><i class="ace-icon fa fa-map-marker bigger-130"></i><span>Select your location for meet-ups</span></div>
+			<div id="location"></div>
 		</div>
 	</div>
 
@@ -93,6 +94,46 @@
 			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
+
+
+	<div class="page-header">
+		<h1>
+			Create ADS
+			<small><i class="ace-icon fa fa-angle-double-right"></i> Address</small>
+		</h1>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Street </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('street',array('id' => 'street','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Town </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('town',array('id' => 'town','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Province </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('province',array('id' => 'province','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Zip Code </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('zip_code',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Home Town </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('home_town',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+		</div>
+	</div>
+
 
 	<div class="clearfix form-actions">
 		<div class="col-md-offset-3 col-md-9">
