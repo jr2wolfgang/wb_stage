@@ -7,46 +7,35 @@ App::uses('AppModel', 'Model');
  */
 class Image extends AppModel {
 
-/**
- * Validation rules
- *
- * @var array
- */
 
+public $recursive = -1;
+public $actsAs = array('Containable');
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+public function bind($model = array('Group')){
+	$this->bindModel(array(
+		'belongsTo' => array(
+			'Ad' => array(
+				'className' => 'Ad',
+				'foreignKey' => 'foreign_key',
+				'dependent' => false,
+				'conditions' => '',
+				'fields' => '',
+				'order' => '',
+				'limit' => '',
+				'offset' => '',
+				'exclusive' => '',
+				'finderQuery' => '',
+				'counterQuery' => ''
+			)
+		),
+	)
 
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $recursive = -1;
-	public $actsAs = array('Containable');
+	);
 
-	public function bind($model = array('Group')){
-		$this->bindModel(array(
-			'belongsTo' => array(
-				'Ad' => array(
-					'className' => 'Ad',
-					'foreignKey' => 'foreign_key',
-					'dependent' => false,
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'exclusive' => '',
-					'finderQuery' => '',
-					'counterQuery' => ''
-				)
-			),
-		)
+$this->contain($model);
+}
 
-		);
-
-	$this->contain($model);
-	}
+	
 public function saveImages($ImageData = null, $model = 'User',$foreign_key = null,$primary = null) {
 
 			//pr($ImageData);

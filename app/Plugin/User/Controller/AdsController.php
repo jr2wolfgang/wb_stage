@@ -60,11 +60,14 @@ class AdsController extends UserAppController  {
 
 			$this->Ad->create();
 
-			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $images['User']['id'];
+			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $this->request->data['Address']['modified_by'] = $images['User']['id'];
 
 			$AdsData = $this->Ad->GetData($this->request->data);
 			
-					
+			$this->Ad->bind(array('Map','Address'));
+			$this->request->data['Address']['id'] = '';
+			$this->request->data['Address']['model'] = 'Ad';
+
 		if ($this->Ad->saveAssociated($this->request->data)) {
 
 			ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$this->request->data['PrimaryImage']);

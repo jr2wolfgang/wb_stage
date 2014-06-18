@@ -120,8 +120,8 @@ class User extends AppModel {
 
 			),
 			'hasOne' => array(
-				'Addresses' => array(
-					'className' => 'Addresses',
+				'Address' => array(
+					'className' => 'Address',
 					'foreignKey' => 'foreign_key',
 					'dependent' => false,
 					'conditions' =>'',

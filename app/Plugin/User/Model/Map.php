@@ -1,27 +1,8 @@
 <?php
 App::uses('AppModel', 'Model');
-/**
- * AccountType Model
- *
- * @property User $User
- */
+
+
 class Ad extends AppModel {
-
-/**
- * Validation rules
- *
- * @var array
- */
-	
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	
 
 	public $recursive = -1;
 	

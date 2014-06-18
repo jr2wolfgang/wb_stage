@@ -106,31 +106,31 @@
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Street </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('street',array('id' => 'street','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.street',array('id' => 'street','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Town </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('town',array('id' => 'town','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.town',array('id' => 'town','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Province </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('province',array('id' => 'province','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.province',array('id' => 'province','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Zip Code </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('zip_code',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.zip_code',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Home Town </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('home_town',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.home_town',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 
