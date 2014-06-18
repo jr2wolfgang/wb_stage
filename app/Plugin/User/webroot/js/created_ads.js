@@ -210,26 +210,28 @@ $('.use_image').click(function(){
 		$('#AdSelectedImg').empty();
 
 		var imgArray = [];
-
+		var appendImage = "";
 		$('.fm-image-wrap .ace:checked').each(function(){
 		
 		$img_src = $(this).parents('.fm-per-img').find('.img-responsive').attr('src');
 		$data_id = $(this).attr('value');
-
-		console.log($data_id);
-		
-		console.log($(this).val());
 				
-				
-		var appendImage = "<div class='selected_img'>";
-			appendImage += "<i class='fa fa-times-circle-o remove_image' data-id='"+$data_id+"'></i> ";
-			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;'></div></a>";
-			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[PrimaryImage]' value='"+$data_id+"'> Select As Primary</div>";
+			appendImage += "<div class='selected_img'>";
+			appendImage += "<i class='fa fa-times remove_image' data-id='"+$data_id+"'></i> ";
+			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;background-position:top center;'></div></a>";
+			appendImage += '<div class="radio">\
+								<label>\
+									<input type="radio" class="ace" checked="true" name="data[PrimaryImage]" value="'+$data_id+'">\
+									<span class="lbl"> Set as Primary </span>\
+								</label>\
+							</div>';
 			appendImage += "</div>";
-				imgArray.push($(this).val());		
-			$('.images_thumb_selected').append( appendImage);
-		
-		}); 
+				imgArray.push($(this).val());
+			
+		});
+		$('.images_thumb_selected').html('<div class="clearfix"></div>');
+		$('.images_thumb_selected').prepend(appendImage);
+		$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast')
 		if ($('#AdSelectedImg').val() != '') {
 				$('#AdSelectedImg').val( $('#AdSelectedImg').val() +','+imgArray);	
 
@@ -237,29 +239,17 @@ $('.use_image').click(function(){
 			$('#AdSelectedImg').val(imgArray);	
 		}
 		
-});	
-
-
+});
 
 $('body').on('click','.remove_image',function(){
 	$ImgArray = $('#AdSelectedImg').val().split(',');
-	
 	$image_id = $(this).attr('data-id');
-
-	
-	console.log($ImgArray);
-
 	 $(this).parent().fadeOut(function(){
-
-		
 		$newImgArray = jQuery.grep($ImgArray, function(value) {
 			return value != $image_id;
 		});
-
 		$('#AdSelectedImg').val($newImgArray);
-	
-	});
-	 
+	}).remove();
 });
 
 

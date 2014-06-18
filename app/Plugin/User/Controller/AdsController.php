@@ -73,13 +73,13 @@ class AdsController extends UserAppController  {
 
 			ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$this->Ad->id,$this->request->data['PrimaryImage']);
 			
-			$this->Session->setFlash(__('The ads has been saved.'));
+			$this->Session->setFlash(__('The ads has been saved.'),'success');
 
 			$this->redirect(array('action' => 'index'));
 				
 		} else {
 					
-			$this->Session->setFlash(__('The ads could not be saved. Please, try again.'));
+			$this->Session->setFlash(__('The ads could not be saved. Please, try again.'),'error');
 		}
 		
 		}
@@ -180,9 +180,9 @@ class AdsController extends UserAppController  {
 			
 			// save or update
 			if($maps->save($this->request->data)){
-				$this->Session->setFlash(__('The Maps has been saved.'));
+				$this->Session->setFlash(__('The Maps has been saved.'),'success');
 			}else{
-				$this->Session->setFlash(__('The Maps could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The Maps could not be saved. Please, try again.'),'error');
 			}
 
 		}
@@ -197,9 +197,9 @@ class AdsController extends UserAppController  {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Ad->delete()) {
-			$this->Session->setFlash(__('Ad has been deleted.'));
+			$this->Session->setFlash(__('Ad has been deleted.'),'warning');
 		} else {
-			$this->Session->setFlash(__('Ad could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Ad could not be deleted. Please, try again.'),'error');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
@@ -230,11 +230,11 @@ class AdsController extends UserAppController  {
 
 				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
 				
-				$this->Session->setFlash(__('The Ads has been saved.'));
+				$this->Session->setFlash(__('The Ads has been saved.'),'success');
 				return $this->redirect(array('action' => 'index'));
 
 			} else {
-				$this->Session->setFlash(__('The Ads could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The Ads could not be saved. Please, try again.'),'error');
 			}
 		} else {
 			$options = array('conditions' => array('Ad.id' => $id));
