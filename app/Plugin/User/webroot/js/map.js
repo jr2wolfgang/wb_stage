@@ -104,11 +104,7 @@ function geocodePosition(pos) {
         function(results, status) 
         {
             if (status == google.maps.GeocoderStatus.OK){
-                $('#street').val(results[0].address_components[0].long_name);
-                $('#town').val(results[0].address_components[1].long_name);
-                $('#province').val(results[0].address_components[2].long_name);
-                $('#hometown').val(results[0].address_components[3].long_name);
-                $('#location').html(results[0].formatted_address);
+                $('#location').html('<i class="ace-icon fa fa-map-marker bigger-130"></i>'+results[0].formatted_address);
                 // jQuery('').val(results[0].address_components[4].long_name));
             } 
 

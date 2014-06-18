@@ -32,7 +32,7 @@
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Why Im Selling this </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('why_sell',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '30','row' => '50')); ?>
+			<?php echo $this->Form->input('why_sell',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '10','row' => '20')); ?>
 		</div>
 	</div>
 
@@ -61,13 +61,6 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="form-field-orig" class="col-sm-3 control-label no-padding-right"> Original Price </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('orig_price',array('id' => 'form-field-orig','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-
-	<div class="form-group">
 		<label for="form-field-price" class="col-sm-3 control-label no-padding-right"> Selling Price </label>
 		<div class="col-sm-9">
 			<?php echo $this->Form->input('selling_price',array('id' => 'form-field-price','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
@@ -84,56 +77,16 @@
 	<div class="form-group">
 		<label for="form-field-discount" class="col-sm-3 control-label no-padding-right"> Discount Price </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('discount_price',array('id' => 'form-field-discount','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('discount_price',array('id' => 'form-field-discount','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 	
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Promo Price </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
-
-
-	<div class="page-header">
-		<h1>
-			Create ADS
-			<small><i class="ace-icon fa fa-angle-double-right"></i> Address</small>
-		</h1>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Street </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.street',array('id' => 'street','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Town </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.town',array('id' => 'town','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Province </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.province',array('id' => 'province','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Zip Code </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.zipcode',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Home Town </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.hometown',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-
 
 	<div class="clearfix form-actions">
 		<div class="col-md-offset-3 col-md-9">
@@ -152,10 +105,8 @@
 
 	<?php echo $this->element('maps_popup'); ?>
 	
-	
 <?php echo $this->Form->end(); ?> 
-	
-<!-- Small modal -->
+
 <div class="clear"></div>
 
 <?php echo $this->element('redactor_settings')?>

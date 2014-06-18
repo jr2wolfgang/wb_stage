@@ -103,7 +103,7 @@ section.row {
     padding: 1px 14px;
 }
 .redactor_redactor.redactor_editor {
-    min-height: 160px;
+    min-height: 112px;
 }
 .image_controls {
     margin-top: 12px;
@@ -174,3 +174,22 @@ section.row {
 }
 
 .pac-container { z-index: 99999 !important; }
+
+#location {
+    color: #d15b47;
+    font-size: 11pt;
+    margin-top: 20px;
+    position: relative;
+}
+
+#location i {
+    margin-right: 10px;
+}
+
+#ads-table img {
+    width: 120px;
+}
+
+#ads-table .sorting_1 {
+    text-align: center;
+}
