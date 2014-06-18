@@ -299,7 +299,7 @@
                                  <?php $class = 'per-ads-before-price'; ?>
                              </div>
                         <?php endif;?>
-                        <div class="per-ads-price <?php echo $class; ?>">PHP <?php echo $data['Ad']['orig_price']; ?></div>
+                        <div class="per-ads-price <?php echo $class; ?>">PHP <?php echo $data['Ad']['before_price']; ?></div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
