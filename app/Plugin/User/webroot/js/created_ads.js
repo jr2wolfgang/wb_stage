@@ -252,5 +252,26 @@ $('body').on('click','.remove_image',function(){
 	}).remove();
 });
 
+$('#is-discounted').click(function(){
+	if($(this).is(':checked')) {
+		$('.select-disc-type').removeClass('hide');
+		$('#form-field-discount').removeClass('hide');
+	} else {
+		$('.select-disc-type').addClass('hide');
+		$('#form-field-discount').addClass('hide');
+		$('#form-field-promo').addClass('hide');
+	}
+});
+
+$('.select-disc-type').on('change', function() {
+	if($(this).val() == 0) {
+		$('#form-field-discount').removeClass('hide');
+		$('#form-field-promo').addClass('hide');
+	} else {
+		$('#form-field-promo').removeClass('hide');
+		$('#form-field-discount').addClass('hide');
+	}
+});
+
 
 });

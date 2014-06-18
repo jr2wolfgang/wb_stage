@@ -467,7 +467,7 @@ $(document).ready(function() {
     var oTable1 =
     $('#ads-table').dataTable();
 
-    $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+    $('[data-rel="tooltipx"]').tooltip({placement: tooltip_placement});
     function tooltip_placement(context, source) {
         var $source = $(source);
         var $parent = $source.closest('table')
@@ -479,7 +479,7 @@ $(document).ready(function() {
     } 
 
 
-
-
+    $('[data-rel=popover]').popover({container:'body'});
+    $('[data-rel=tooltip]').tooltip({container:'body'});
 
 });

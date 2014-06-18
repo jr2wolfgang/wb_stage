@@ -206,3 +206,15 @@ section.row {
 .create-ad-btn {
     margin: 20px 0 !important;
 }
+
+.is-disc {
+    padding-left: 0px !important;
+}
+
+.select-disc-type {
+    margin: 10px 0;
+}
+
+.help-button {
+    line-height: 19px !important;
+}
