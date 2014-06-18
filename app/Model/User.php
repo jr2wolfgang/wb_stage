@@ -149,8 +149,8 @@ class User extends AppModel {
 					'finderQuery' => '',
 					'counterQuery' => ''
 				),
-				'Addresses' => array(
-					'className' => 'Addresses',
+				'Address' => array(
+					'className' => 'Address',
 					'foreignKey' => 'foreign_key',
 					'dependent' => false,
 					'conditions' => '',
