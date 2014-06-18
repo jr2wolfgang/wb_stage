@@ -279,9 +279,14 @@
                 </div>
                 <div class="per-ads-desc">
                     <div class="per-ads-title">
-                        <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
-                            <?php echo $data['Ad']['name']; ?>
-                        </a>
+                       
+                        <?php echo $this->Html->link($data['Ad']['name'],array(
+                                'controller' => 'ads',
+                                'action' => 'view',
+                                'slug' => strtolower(Inflector::slug($data['Ad']['name'],'-')),
+                                'id' => $data['Ad']['id']
+                        )); ?>
+
                     </div>
                     <div class="per-ads-info">
                         <span>
