@@ -293,9 +293,9 @@
                     </div>
                     <div class="per-ads-price-box">
                         <?php $class = '';?>
-                        <?php if ($data['Ad']['discount_price'] != 0): ?>
+                        <?php if ($data['Ad']['selling_price'] != 0): ?>
                              <div class="per-ads-price per-discount-price">
-                                 &nbsp; NOW PHP <?php echo $data['Ad']['discount_price']; ?>
+                                 &nbsp; NOW PHP <?php echo $data['Ad']['selling_price']; ?>
                                  <?php $class = 'per-ads-before-price'; ?>
                              </div>
                         <?php endif;?>
