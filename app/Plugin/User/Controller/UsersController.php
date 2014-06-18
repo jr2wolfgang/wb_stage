@@ -15,8 +15,10 @@ class UsersController extends UserAppController  {
 
 	    $userData = $this->Session->read('Auth');
 	    
-	    $this->User->bind(array('Group','AccountType','Addresses'));
+	    $this->User->bind(array('Group','AccountType','Address'));
 	
+	    $this->loadModel('User.User');
+	   
 
 	    $AccountType = $this->User->find('list');
 
@@ -42,7 +44,7 @@ class UsersController extends UserAppController  {
 
 	public function profile(){ 
 	
-		$this->User->bind( array('Addresses'));
+		$this->User->bind( array('Address'));
 
 		$this->User->validate = array();
 
@@ -59,7 +61,7 @@ class UsersController extends UserAppController  {
 				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
 			}
 				
-			$this->request->data['Addresses']['foreign_key'] = $this->request->data['User']['id'];
+			$this->request->data['Address']['foreign_key'] = $this->request->data['User']['id'];
 
 
 			if ($this->User->saveAssociated($this->request->data)) {
@@ -71,7 +73,7 @@ class UsersController extends UserAppController  {
 			}
 		} else {
 
-			$this->User->bind( array('Addresses'));
+			$this->User->bind( array('Address'));
 
 			$this->request->data = $this->User->findById($this->Session->read('Auth.User.id'));
 

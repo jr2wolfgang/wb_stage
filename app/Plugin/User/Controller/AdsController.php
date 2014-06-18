@@ -65,6 +65,7 @@ class AdsController extends UserAppController  {
 			$AdsData = $this->Ad->GetData($this->request->data);
 			
 			$this->Ad->bind(array('Map','Address'));
+
 			$this->request->data['Address']['id'] = '';
 			$this->request->data['Address']['model'] = 'Ad';
 
@@ -216,7 +217,20 @@ class AdsController extends UserAppController  {
 			
 			$current_id = $this->request->data['Ad']['id'];
 
-			if ($this->Ad->save($this->request->data)) {
+			$this->Ad->bind(array('Image','Address'));
+
+			//$this->Ad->Address->bind(array('Ad'));
+
+
+			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $this->request->data['Address']['modified_by'] = $this->Session->read('Auth.User.id');
+
+			$this->request->data['Address'][0] = $this->request->data['Address'];
+
+
+			if ($this->Ad->saveAssociated($this->request->data,array('deep' => true))) {
+				
+				/* $this->request->data['Address']['id'];
+				ClassRegistry::init('Address')->save($this->request->data['Address']);*/	
 
 				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
 				
@@ -228,11 +242,13 @@ class AdsController extends UserAppController  {
 			}
 		} else {
 			$options = array('conditions' => array('Ad.id' => $id));
-			$this->Ad->bind(array('Image','PrimaryImage'));
+				
+			$this->Ad->bind(array('Image','PrimaryImage','Address'));
 			$this->request->data = $this->Ad->find('first', $options);
 
 			$User->bind(array('Image'));
 			$images = $User->read(null,$this->Session->read('Auth.User.id'));
+
 			
 		}
 

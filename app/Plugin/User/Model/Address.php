@@ -14,6 +14,7 @@ class Address extends AppModel {
  */
 		
 
+
 	public $recursive = -1;
 
 	public $actsAs = array('Containable');
@@ -38,7 +39,7 @@ class Address extends AppModel {
 				'Ad' => array(
 					'className' => 'Ad',
 					'foreignKey' => 'foreign_key',
-					'dependent' => false,
+					'dependent' => true,
 					'conditions' => '',
 					'fields' => '',
 					'order' => '',
