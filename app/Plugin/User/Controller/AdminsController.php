@@ -13,7 +13,7 @@ class AdminsController extends UserAppController  {
 
 	    $this->loadModel('User.Ad');
 	    $this->loadModel('User.Image');
-	   
+	    $this->loadModel('User.Address');
 	    // Allow users to register and logout.
 	    $this->Auth->allow('register', 'logout');
 	}
@@ -27,8 +27,9 @@ class AdminsController extends UserAppController  {
 		
 		if(empty($this->data)){
 		
-			$this->request->data = $user->findById($this->Session->read('Auth.User.id'));
-
+			$user_data = $user->findById($this->Session->read('Auth.User.id'));
+			$this->data = $user_data;
+			//pr($user_data);exit();			
 				
 		}
 		if ( empty($this->request->data['User']['avatar']) ){

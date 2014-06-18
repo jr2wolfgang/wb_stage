@@ -47,8 +47,10 @@ class UsersController extends UserAppController  {
 		$this->User->bind( array('Address'));
 
 		$this->User->validate = array();
-
-
+		$address = $this->User->Address->find('first', array(
+	        'conditions' => array('Address.foreign_key' => $this->Session->read('Auth.User.id')
+	    )));
+		
 		if ($this->request->is('post')) {
 			
 			
@@ -60,12 +62,11 @@ class UsersController extends UserAppController  {
 			else {
 				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
 			}
-				
-			$this->request->data['Address']['foreign_key'] = $this->request->data['User']['id'];
-
 
 			if ($this->User->saveAssociated($this->request->data)) {
 
+				$this->request->data['Address']['id'] = $address['Address']['id'];
+   				ClassRegistry::init('Address')->save($this->request->data['Address']);
 				$this->Session->setFlash(__('The Profile has been updated.'));
 			} 
 			else {			
