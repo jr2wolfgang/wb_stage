@@ -22,3 +22,4 @@ Thumbs.db
 app/Config/exce.txt
 app/Plugin/User/webroot/img/uploads/
 app/Plugin/User/webroot/img/redactor_uploads/
+app/Plugin/User/webroot/js/json_data/
