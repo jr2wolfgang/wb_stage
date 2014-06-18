@@ -219,9 +219,6 @@ class AdsController extends UserAppController  {
 
 			$this->Ad->bind(array('Image','Address'));
 
-			//$this->Ad->Address->bind(array('Ad'));
-
-
 			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $this->request->data['Address']['modified_by'] = $this->Session->read('Auth.User.id');
 
 			$this->request->data['Address'][0] = $this->request->data['Address'];
@@ -229,8 +226,7 @@ class AdsController extends UserAppController  {
 
 			if ($this->Ad->saveAssociated($this->request->data,array('deep' => true))) {
 				
-				/* $this->request->data['Address']['id'];
-				ClassRegistry::init('Address')->save($this->request->data['Address']);*/	
+				ClassRegistry::init('Address')->save($this->request->data['Address']);
 
 				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
 				

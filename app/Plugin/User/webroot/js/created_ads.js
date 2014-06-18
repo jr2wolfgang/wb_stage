@@ -120,9 +120,6 @@ var settings = {
 								</div>\
 								<div class="col-lg-6">'+item.file+'</div>\
 								<div class="col-lg-2">\
-									<button class="btn btn-info btn-sm edit-image" data-id="'+item.key+'">\
-										<i class="ace-icon fa fa-pencil icon-only"></i>\
-									</button>\
 									<button class="btn btn-danger btn-sm delete-image" data-id="'+item.key+'">\
 										<i class="ace-icon fa fa-trash-o icon-only"></i>\
 									</button>\

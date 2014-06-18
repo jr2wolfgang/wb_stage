@@ -124,13 +124,13 @@
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Zip Code </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.zip_code',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.zipcode',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Home Town </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.home_town',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('Address.hometown',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 

@@ -82,30 +82,7 @@
 
 				<div class="hr hr-8 dotted"></div>
 
-				<div class="profile-user-info">
-					<div class="profile-info-row">
-						<div class="profile-info-name"> Social Media </div>
-					</div>
-
-					<div class="profile-info-row">
-						<div class="profile-info-name">
-							<i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
-						</div>
-
-						<div class="profile-info-value">
-							<a href="#">Add me on Facebook</a>
-						</div>
-
-						<div class="profile-info-name">
-							<i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
-						</div>
-
-						<div class="profile-info-value">
-							<a href="#">Follow me on Twitter</a>
-						</div>
-
-					</div>
-				</div>
+				
 			</div><!-- /.col -->
 		</div>
 	</div>

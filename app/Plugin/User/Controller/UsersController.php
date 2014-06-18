@@ -65,8 +65,8 @@ class UsersController extends UserAppController  {
 
 			if ($this->User->saveAssociated($this->request->data)) {
 
-				$this->request->data['Address']['id'] = $address['Address']['id'];
-   				ClassRegistry::init('Address')->save($this->request->data['Address']);
+				ClassRegistry::init('Address')->save($this->request->data['Address']);
+				
 				$this->Session->setFlash(__('The Profile has been updated.'));
 			} 
 			else {			
