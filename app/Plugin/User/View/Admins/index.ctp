@@ -15,7 +15,7 @@
 					<span class="bigger-110">Create ADS</span>
 				</a>
 
-				<a class="btn btn-sm btn-block btn-primary" href="#">
+				<a class="btn btn-sm btn-block btn-primary" href="users/profile">
 					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 					<span class="bigger-110">Edit Profile</span>
 				</a>
