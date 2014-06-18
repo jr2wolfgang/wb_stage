@@ -1,0 +1,1 @@
+ALTER TABLE `addresses` CHANGE `date_created` `created` DATETIME NULL DEFAULT NULL, CHANGE `date_modified` `modified` DATETIME NULL DEFAULT NULL;

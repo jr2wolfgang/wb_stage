@@ -24,14 +24,7 @@ $('.fancybox').fancybox();
 
 var serverPath = "/wb_stage";
 
-
-$('.redactor').redactor({
-	/* imageUpload: '/tagroom_cake/admins/redactor_upload_image',
-	//fileUpload: 'redactor/demo/scripts/file_upload.php',
-	imageGetJson: '/tagroom_cake/js/json_data/new_data.json',
-    focus: true,
-    plugins: ['fontfamily'] */
-});  
+ 
                 
 $('.btn-danger').click(function(){
 
@@ -236,14 +229,19 @@ $('.use_image').click(function(){
 		var appendImage = "<div class='selected_img'>";
 			appendImage += "<i class='fa fa-times-circle-o remove_image' data-id='"+$data_id+"'></i> ";
 			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;'></div></a>";
-			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[Image][primary]' value='"+$data_id+"'> Select As Primary</div>";
+			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[PrimaryImage]' value='"+$data_id+"'> Select As Primary</div>";
 			appendImage += "</div>";
 				imgArray.push($(this).val());		
 			$('.images_thumb_selected').append( appendImage);
 		
 		}); 
+		if ($('#AdSelectedImg').val() != '') {
+				$('#AdSelectedImg').val( $('#AdSelectedImg').val() +','+imgArray);	
 
-		$('#AdSelectedImg').val(imgArray);	
+		} else {
+			$('#AdSelectedImg').val(imgArray);	
+		}
+		
 });	
 
 

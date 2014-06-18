@@ -18,6 +18,7 @@ class Map extends AppModel {
 	/** -----------------------------------------
 	 * jRr added this */
 	public $recursive = -1;
+	
 	public $actsAs = array('Containable');
 
 	public function bind($model = array('Group')){

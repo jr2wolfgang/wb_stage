@@ -42,14 +42,14 @@ class Image extends AppModel {
 				)
 			),
 		)
-		
+
 		);
 
-		$this->contain($model);
+	$this->contain($model);
 	}
 public function saveImages($ImageData = null, $model = 'User',$foreign_key = null,$primary = null) {
 
-
+			//pr($ImageData);
 			if (!empty($ImageData)) {
 
 				foreach ($ImageData as $key => $data) {
@@ -80,13 +80,13 @@ public function saveImages($ImageData = null, $model = 'User',$foreign_key = nul
 					}
 					if ($data['id'] == $primary) {
 						$images['is_primary'] = 1;
+					} else {
+						$images['is_primary'] = 0;	
 					}	
-
 
 					
 					$this->save($images);
 				}
-
 
 				
 			}
@@ -113,4 +113,13 @@ public function saveImages($ImageData = null, $model = 'User',$foreign_key = nul
 	    }
 	}
 
+	function beforeSave($options = array()) {
+
+		//pr($this->data);
+		/* $this->updateAll(
+		array('Image.is_primary' => '0'), 
+		array('Image.foreign_key' => $this->data['Image']['foreign_key'])); */
+	
+    	return true;
+	}
 }

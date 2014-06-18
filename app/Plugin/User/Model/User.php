@@ -56,120 +56,10 @@ class User extends AppModel {
 				'message' => 'Please re-enter your password twice so that the values match' 
 				) 
 		),	
-		/* 'group_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'account_type_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'firstname' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'lastname' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'birthdate' => array(
-			'date' => array(
-				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'gender' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-			
-		'default_password' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'rxt' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'is_login' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'is_active' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		) */
+	
 	);
 
 
-	// function equaltofield($check,$otherfield){
- //        //get name of field
- //        $fname = '';
- //        foreach ($check as $key => $value){
- //            $fname = $key;
- //            break;
- //        }
- //        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
- //    } 
-	
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -178,81 +68,7 @@ class User extends AppModel {
  *
  * @var array
  */
-	
-	public $belongsTo = array(
-		'Group' => array(
-			'className' => 'Group',
-			'foreignKey' => 'group_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'AccountType' => array(
-			'className' => 'AccountType',
-			'foreignKey' => 'account_type_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)	
-	);
 
-	public $hasMany = array(
-		'Ad' => array(
-			'className' => 'Ad',
-			'foreignKey' => 'modified_by',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Addresses' => array(
-			'className' => 'Addresses',
-			'foreignKey' => 'foreign_key',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)		
-	);
-
-	public $hasOne = array(
-		'Map' => array(
-			'className' => 'Map',
-			'foreignKey' => 'modified_by',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Addresses' => array(
-			'className' => 'Addresses',
-			'foreignKey' => 'foreign_key',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)					
-	);
 	
 	public function bind($model = array('Group')){
 
@@ -300,11 +116,15 @@ class User extends AppModel {
 					'finderQuery' => '',
 					'counterQuery' => ''
 				),
+				
+
+			),
+			'hasOne' => array(
 				'Addresses' => array(
 					'className' => 'Addresses',
 					'foreignKey' => 'foreign_key',
 					'dependent' => false,
-					'conditions' => '',
+					'conditions' =>'',
 					'fields' => '',
 					'order' => '',
 					'limit' => '',
@@ -313,7 +133,6 @@ class User extends AppModel {
 					'finderQuery' => '',
 					'counterQuery' => ''
 				)
-
 			)
 		));
 
