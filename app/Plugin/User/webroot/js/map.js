@@ -59,6 +59,7 @@ function initialize() {
      
       document.getElementById('lat').value = place.geometry.location.k;
       document.getElementById('lng').value = place.geometry.location.A;
+      geocodePosition(marker.getPosition(),place.geometry.location.k,place.geometry.location.A);
 
       google.maps.event.addListener(marker,'drag',function(event) {
         document.getElementById('lat').value = event.latLng.lat();
@@ -90,11 +91,40 @@ function initialize() {
     searchBox.setBounds(bounds);
   });
 
+
+  //On Click
+  google.maps.event.addListener(map, 'click', function(event) {
+     placeMarker(event.latLng, map);
+  });
+
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
+function placeMarker(location, map) {
+    var marker = new google.maps.Marker({
+        position: location, 
+        map: map,
+        draggable:true
+    });
+
+    document.getElementById('lat').value = location.k;
+    document.getElementById('lng').value = location.A;
+    geocodePosition(marker.getPosition(),location.k,location.A);
+
+    google.maps.event.addListener(marker,'drag',function(event) {
+      document.getElementById('lat').value = event.latLng.lat();
+      document.getElementById('lng').value = event.latLng.lng();
+    });
+
+    google.maps.event.addListener(marker,'dragend',function(event) {
+        document.getElementById('lat').value = event.latLng.lat();
+        document.getElementById('lng').value = event.latLng.lng(); 
+        geocodePosition(marker.getPosition(),event.latLng.lat(),event.latLng.lng());
+    });
+
+}
 
 function geocodePosition(pos,lat,lng) {
    geocoder = new google.maps.Geocoder();
