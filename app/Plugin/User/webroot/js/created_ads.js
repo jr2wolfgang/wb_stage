@@ -187,6 +187,11 @@ $('input[type="number"]').bind('keypress', function (e) {
                 (e.which < 48 || e.which > 57) && e.which != 46);
 });
 
+$('.percent-limit').bind('keypress', function (e) {
+        return !(e.which != 8 && e.which != 0 &&
+                (e.which < 48 || e.which > 57) && e.which != 46  && e.which != 36);
+});
+
 $('.fm-image-wrap').on('click','.delete-image',function(){
 	var $id = $(this).data('id');
 	$.ajax({
@@ -271,6 +276,12 @@ $('.select-disc-type').on('change', function() {
 		$('#form-field-promo').removeClass('hide');
 		$('#form-field-discount').addClass('hide');
 	}
+});
+
+$('input.percent-limit').on('focusout', function() {
+    var val = $(this).val();
+    var $this = $(this);
+    val = val.replace('$', '');
 });
 
 

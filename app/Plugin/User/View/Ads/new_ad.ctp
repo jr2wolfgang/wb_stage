@@ -85,12 +85,12 @@
 				<span title="" data-content="Check this if you want to add discount on your selling price." data-placement="left" data-trigger="hover" data-rel="popover" class="help-button" data-original-title="Create ADS Guide">?</span>
 			</div>
 			<select id="form-field-select-1" class="select-disc-type hide col-xs-10 col-sm-5">
-				<option value="0">Discount Price</option>
-				<option value="1">Promo Price</option>
+				<option value="0">Discount Percent</option>
+				<option value="1">Promo Percent</option>
 			</select>
 			<div class="clearfix"></div>
-			<?php echo $this->Form->input('discount_price',array('id' => 'form-field-discount','class' => 'col-xs-10 col-sm-5 hide','label' => false,'div' => false)); ?>
-			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'hide col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('discount_price',array('data-rel'=>'tooltip','min'=>"1",'max'=>"99",'data-original-title'=>'Must enter 1% to 99% only','id' => 'form-field-discount','class' => 'hide percent-limit col-xs-10 col-sm-5','type'=>'text','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('promo_price',array('data-rel'=>'tooltip','min'=>"1",'max'=>"99",'data-original-title'=>'Must enter 1% to 99% only','id' => 'form-field-promo','class' => 'hide percent-limit col-xs-10 col-sm-5','type'=>'text','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 
