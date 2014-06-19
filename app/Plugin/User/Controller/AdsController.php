@@ -47,14 +47,18 @@ class AdsController extends UserAppController  {
 
 	public function new_ad(){
 
-	
+		
 		$ads = ClassRegistry::init('Ad');
 		
+		$this->loadModel('User.User');
+
 		$User = ClassRegistry::init('User');
 
 		$User->bind(array('Image'));
 
 		$images = $User->read(null,$this->Session->read('Auth.User.id'));
+
+
 
 		if ($this->request->is('post')) {
 
@@ -139,8 +143,10 @@ class AdsController extends UserAppController  {
 			$ret['foreign_key'] = $this->Session->read('Auth.User.id');
 			
 			$saveImage[0] = $ret;
-
-			ClassRegistry::init('Image')->saveImages($saveImage);
+			
+			ClassRegistry::init('Image')->saveImages($AdsData['Image'],'User');
+				
+			
 
 			$ret['key'] = ClassRegistry::init('Image')->id;
 			//$ret['name'] = ClassRegistry::init('Image')->id;
@@ -248,6 +254,7 @@ class AdsController extends UserAppController  {
 			$this->request->data = $this->Ad->find('first', $options);
 
 			$User->bind(array('Image'));
+
 			$images = $User->read(null,$this->Session->read('Auth.User.id'));
 
 			

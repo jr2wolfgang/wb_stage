@@ -68,7 +68,7 @@ class ImagesController  extends UserAppController  {
 			
 			$saveImage[0] = $ret;
 
-			ClassRegistry::init('Image')->saveImages($saveImage);
+			ClassRegistry::init('Image')->saveImages($saveImage,'User');
 
 			$ret['key'] = ClassRegistry::init('Image')->id;
 			//$ret['name'] = ClassRegistry::init('Image')->id;
