@@ -23,7 +23,7 @@ class AdsController extends AppController {
  	}
 
 	public function index() {
-		$this->Ad->bind(array('Image','PrimaryImage'));
+		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		$this->paginate = array(
 		    'limit' => 8, 

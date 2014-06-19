@@ -296,7 +296,17 @@
                             <i class="flaticon-clock61"></i>
                             <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
                         </span>
-                        <span><i class="flaticon-map5"></i> Dressrossa, New World</span>
+                        <span>
+                            <i class="flaticon-map5"></i>
+                            <?php if(!empty($data['Address']['street'])): ?>
+
+                                <?php echo $data['Address']['street']; ?>, 
+                                <?php echo $data['Address']['town']; ?>, <br/>
+                                <?php echo $data['Address']['province']; ?>,
+                                <?php echo $data['Address']['hometown']; ?>
+
+                            <?php endif; ?>
+                        </span>
                         <span><i class="flaticon-small44"></i> 500 views</span>
                     </div>
                     <div class="per-ads-price-box">
