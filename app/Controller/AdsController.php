@@ -23,20 +23,37 @@ class AdsController extends AppController {
  	}
 
 	public function index() {
-		// Please refer to User-jrr Model
-		/*$this->User->bind(array('Ad'));*/
-
 		$this->Ad->bind(array('Image','PrimaryImage'));
 
 		$this->paginate = array(
-		    'limit' => 8, // this was the option which you forgot to mention
+		    'limit' => 8, 
 		    'order' => array(
-		        'Ad.id' => 'DESC')
+		        'Ad.id' => 'DESC')		    
 		);
+		$this->set('ads', $this->paginate('Ad'));
+
+	}
 
 
+	public function search(){
+		$keyword = $this->request->query('q');
+		$this->Ad->bind(array('Image','PrimaryImage'));
+
+		if ( !empty($keyword) ){
+			$cond=array( 'OR'=>array("Ad.name LIKE '%$keyword%'")  );
+		} else {
+			$cond=array();
+		}
+
+		$this->paginate = array(
+		    'limit' => 8, 
+		    'order' => array(
+		        'Ad.id' => 'DESC'),
+		    'conditions' => $cond
+		);
 		$this->set('ads', $this->paginate('Ad'));
 	}
+
 
 	public function view($slugUrl = null) {
 

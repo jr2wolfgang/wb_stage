@@ -18,7 +18,7 @@
 							<div class="map_container" style="display:block" >
 								<?php echo $this->Html->script('User.map'); ?>
 								<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-								<div id="map-canvas" style="width:100%; height:600px;"></div>
+								<div id="map-canvas" style="width:100%; height:400px;"></div>
 								<?php echo $this->Form->hidden('Map.model',array('value' => 'Ad','type' => 'text')); ?>
 								<?php echo $this->Form->hidden('Map.latitude',array('id' => 'lat','type' => 'text')); ?>
 								<?php echo $this->Form->hidden('Map.longhitude',array('id' => 'lng','type' => 'text')); ?>
