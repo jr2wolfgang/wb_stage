@@ -22,7 +22,8 @@
 								<?php echo $this->Form->hidden('Map.model',array('value' => 'Ad','type' => 'text')); ?>
 								<?php echo $this->Form->hidden('Map.latitude',array('id' => 'lat','type' => 'text')); ?>
 								<?php echo $this->Form->hidden('Map.longhitude',array('id' => 'lng','type' => 'text')); ?>
-								<button id="close" class="btn btn-success btn-block" onclick="return false">Save Location for this ADS</button>
+								<button id="close" class="btn btn-success btn-block save-map-btn" onclick="return false">Save Location for this ADS</button>
+								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
