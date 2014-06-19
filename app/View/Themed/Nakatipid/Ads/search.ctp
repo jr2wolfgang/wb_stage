@@ -13,7 +13,7 @@
 </header>
 
 <div class="search-logo">
-    <?php echo $this->Html->image('logo_orange.png',array('id'=>'search-logo')); ?>
+    <?php echo $this->Html->image('logo_orange.png',array('id'=>'search-logo','url'=>array('controller' => 'ads', 'action' => 'index'))); ?>
 </div>
 
 <section class="row full-width no-pads wrapper-ads"> 
@@ -47,6 +47,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 <?php foreach ($ads as $ad): ?>                    
                     <tr>
                         <td>
@@ -58,8 +59,20 @@
                             GreenBit
                         </td>
                         <td>
-                             PHP <?php echo $ad['Ad']['before_price']; ?> <br />
-                             NOW PHP <?php echo $ad['Ad']['selling_price']; ?>                            
+                             <?php if( $ad['Ad']['selling_price'] != 0): ?>
+                                <?php
+                                    $class = "class='before-price'";
+                                    $selling_price = 'NOW PHP ' . $ad['Ad']['selling_price'];
+                                ?>
+                             <?php else: ?>
+                                <?php
+                                    $class = "";
+                                    $selling_price = "";
+                                ?>
+                             <?php endif;?>
+                             <span <?php echo $class; ?>>PHP <?php echo $ad['Ad']['before_price']; ?></span>
+                             <br />
+                             <span style="color:red;"><?php echo $selling_price; ?></span>                                                     
                         </td>
                         <td>
                             <?php echo $this->Time->timeAgoInWords($ad['Ad']['created']); ?>
@@ -89,12 +102,13 @@
 
 <style type="text/css">
     #main-wrapper { padding-bottom: 0px; }
+    .before-price { text-decoration: line-through; }
 
-    .search-logo { border-bottom: 1px solid; }
+    .search-logo { border-bottom: 1px solid; padding: 10px; }
     .block { text-align: center; padding: 20px; }
     .block div { background: rgba(0,0,0,0.8); color: #fff; width: 100%; height: 100px; margin: 10px; display: block; vertical-align: middle; }
 
-    #search-left { border-right: 1px solid; }
+    #search-right { border-left: 1px solid; }
     #search-pagination { text-align: left; }
     #search-logo { width: 10%; }
     #search-table { width: 100%; }

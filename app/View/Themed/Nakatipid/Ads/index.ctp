@@ -20,7 +20,7 @@
             </div>
             <div id="searchbar-container" class="row">
                 <div class="large-12 small-12 colums">
-                    <form method="get" action="search/" id="search-form">
+                    <form method="get" action="<?php echo $this->html->url('search', true); ?>" id="search-form">
                         <div id="search-field" class="large-9 small-7 no-pad-both columns">
                             <input type="text" id="mainsearch-field" placeholder="Type in your keyword .." name="q" />
                         </div>
