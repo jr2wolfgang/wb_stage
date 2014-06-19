@@ -18,26 +18,6 @@ class Ad extends AppModel {
 	public $actsAs = array('Containable');
 	
 	public $validate = array(
-		// 'name' => array(
-		// 	'notEmpty' => array(
-		// 		'rule' => array('notEmpty'),
-		// 		//'message' => 'Your custom message here',
-		// 		//'allowEmpty' => false,
-		// 		//'required' => false,
-		// 		//'last' => false, // Stop validation after this rule
-		// 		//'on' => 'create', // Limit validation to 'create' or 'update' operations
-		// 	),
-		// ),
-		// 'modified_by' => array(
-		// 	'numeric' => array(
-		// 		'rule' => array('numeric'),
-		// 		//'message' => 'Your custom message here',
-		// 		'allowEmpty' => true,
-		// 		//'required' => false,
-		// 		//'last' => false, // Stop validation after this rule
-		// 		//'on' => 'create', // Limit validation to 'create' or 'update' operations
-		// 	),
-		// ),
 	);
 
 	

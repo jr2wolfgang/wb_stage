@@ -1,0 +1,9 @@
+ALTER TABLE `maps` CHANGE `id` `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+CHANGE `model` `model` VARCHAR( 45 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL ,
+CHANGE `foreign_key` `foreign_key` INT( 11 ) NOT NULL ,
+CHANGE `type` `type` VARCHAR( 80 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL ,
+CHANGE `longhitude` `longhitude` FLOAT NULL DEFAULT '0',
+CHANGE `latitude` `latitude` FLOAT NULL DEFAULT '0',
+CHANGE `created` `created` DATETIME NOT NULL ,
+CHANGE `modified` `modified` DATETIME NOT NULL ,
+CHANGE `modified_by` `modified_by` INT( 11 ) NOT NULL ;

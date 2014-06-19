@@ -1,7 +1,14 @@
-
+<div class="page-header">
+	<h1>
+		ADS
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			Here is the list of all your ADS
+		</small>
+	</h1>
+</div>
 <div class="users index">
-	<h2> MY ADS </h2>
-	<?php echo $this->Html->link('New Ads',array('controller' => 'ads','action' => 'new_ad')); ?>
+	<?php echo $this->Html->link('<i class="ace-icon fa fa-plus align-top bigger-125"></i> Create New ADS',array('controller' => 'ads','action' => 'new_ad'),array('class'=>'btn btn-info create-ad-btn','escape' => FALSE)); ?>
 	<div class="row">
 	    <div class="col-xs-12">
 	        <table aria-describedby="sample-table-2_info" id="ads-table" class="table table-striped table-bordered table-hover dataTable">

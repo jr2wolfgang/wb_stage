@@ -1,0 +1,4 @@
+ALTER TABLE `ads` CHANGE `discount_price` `discount_price` FLOAT NOT NULL DEFAULT '0';
+ALTER TABLE `ads` CHANGE `promo_price` `promo_price` FLOAT NOT NULL DEFAULT '0';
+ALTER TABLE `ads` CHANGE `promo_price` `promo_price` FLOAT NULL DEFAULT '0';
+ALTER TABLE `ads` CHANGE `discount_price` `discount_price` FLOAT NULL DEFAULT '0';

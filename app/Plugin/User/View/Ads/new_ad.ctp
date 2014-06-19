@@ -32,15 +32,16 @@
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Why Im Selling this </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('why_sell',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '30','row' => '50')); ?>
+			<?php echo $this->Form->input('why_sell',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '10','row' => '20')); ?>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Select Images </label>
 		<div class="col-sm-9">
-			<div class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
-			<div class="images_thumb_selected"></div>
+			<div class="btn btn-warning"  data-rel="tooltip" data-original-title="Select image(s) for your ADS" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
+			<div class="clearfix"></div>
+			<div class="images_thumb_selected well col-lg-8 hide"><div class="clearfix"></div></div>
 			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'hidden')); ?>
 		</div>
 	</div>
@@ -48,7 +49,7 @@
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Point your Location </label>
 		<div class="col-sm-9">
-			<div class="btn btn-danger" data-toggle="modal" data-target=".google_map_pop" onclick="return false"><i class="ace-icon fa fa-map-marker bigger-130"></i><span>Select your location for meet-ups</span></div>
+			<div class="btn btn-danger" data-rel="tooltip" data-original-title="Choose respective place for your meetups" data-toggle="modal" data-target=".google_map_pop" onclick="return false"><i class="ace-icon fa fa-map-marker bigger-130"></i><span>Select Location</span></div>
 			<div id="location"></div>
 		</div>
 	</div>
@@ -61,79 +62,37 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="form-field-orig" class="col-sm-3 control-label no-padding-right"> Original Price </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('orig_price',array('id' => 'form-field-orig','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-
-	<div class="form-group">
 		<label for="form-field-price" class="col-sm-3 control-label no-padding-right"> Selling Price </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('selling_price',array('id' => 'form-field-price','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('selling_price',array('id' => 'form-field-price','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false,'data-rel'=>'tooltip','data-original-title'=>'Put here your selling price for this ADS')); ?>
 		</div>
 	</div>
-	
 	<div class="form-group">
 		<label for="form-field-before" class="col-sm-3 control-label no-padding-right"> Before Price </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('before_price',array('id' => 'form-field-before','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('before_price',array('id' => 'form-field-before','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false,'data-rel'=>'tooltip','data-original-title'=>'Put here your ADS original price')); ?>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="form-field-discount" class="col-sm-3 control-label no-padding-right"> Discount Price </label>
+		<label for="form-field-is-discounted" class="col-sm-3 control-label no-padding-right"> Is Discounted </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('discount_price',array('id' => 'form-field-discount','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<div class="checkbox is-disc">
+				<label>
+					<input type="checkbox" id="is-discounted" class="ace" name="form-field-checkbox">
+					<span class="lbl"></span>
+				</label>
+				<span title="" data-content="Check this if you want to add discount on your selling price." data-placement="left" data-trigger="hover" data-rel="popover" class="help-button" data-original-title="Create ADS Guide">?</span>
+			</div>
+			<select id="form-field-select-1" class="select-disc-type hide col-xs-10 col-sm-5">
+				<option value="0">Discount Price</option>
+				<option value="1">Promo Price</option>
+			</select>
+			<div class="clearfix"></div>
+			<?php echo $this->Form->input('discount_price',array('id' => 'form-field-discount','class' => 'col-xs-10 col-sm-5 hide','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'hide col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
-	
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Promo Price </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-
-
-	<div class="page-header">
-		<h1>
-			Create ADS
-			<small><i class="ace-icon fa fa-angle-double-right"></i> Address</small>
-		</h1>
-	</div>
-
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Street </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.street',array('id' => 'street','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Town </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.town',array('id' => 'town','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Province </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.province',array('id' => 'province','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Zip Code </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.zipcode',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Home Town </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.hometown',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-
 
 	<div class="clearfix form-actions">
 		<div class="col-md-offset-3 col-md-9">
@@ -152,10 +111,8 @@
 
 	<?php echo $this->element('maps_popup'); ?>
 	
-	
 <?php echo $this->Form->end(); ?> 
-	
-<!-- Small modal -->
+
 <div class="clear"></div>
 
 <?php echo $this->element('redactor_settings')?>

@@ -59,6 +59,7 @@ function initialize() {
      
       document.getElementById('lat').value = place.geometry.location.k;
       document.getElementById('lng').value = place.geometry.location.A;
+      geocodePosition(marker.getPosition(),place.geometry.location.k,place.geometry.location.A);
 
       google.maps.event.addListener(marker,'drag',function(event) {
         document.getElementById('lat').value = event.latLng.lat();
@@ -68,8 +69,8 @@ function initialize() {
 
       google.maps.event.addListener(marker,'dragend',function(event) {
           document.getElementById('lat').value = event.latLng.lat();
-          document.getElementById('lng').value = event.latLng.lng();
-          geocodePosition(marker.getPosition());
+          document.getElementById('lng').value = event.latLng.lng(); 
+          geocodePosition(marker.getPosition(),event.latLng.lat(),event.latLng.lng());
       });
 
     }
@@ -90,12 +91,42 @@ function initialize() {
     searchBox.setBounds(bounds);
   });
 
+
+  //On Click
+  google.maps.event.addListener(map, 'click', function(event) {
+     placeMarker(event.latLng, map);
+  });
+
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-function geocodePosition(pos) {
+function placeMarker(location, map) {
+    var marker = new google.maps.Marker({
+        position: location, 
+        map: map,
+        draggable:true
+    });
+
+    document.getElementById('lat').value = location.k;
+    document.getElementById('lng').value = location.A;
+    geocodePosition(marker.getPosition(),location.k,location.A);
+
+    google.maps.event.addListener(marker,'drag',function(event) {
+      document.getElementById('lat').value = event.latLng.lat();
+      document.getElementById('lng').value = event.latLng.lng();
+    });
+
+    google.maps.event.addListener(marker,'dragend',function(event) {
+        document.getElementById('lat').value = event.latLng.lat();
+        document.getElementById('lng').value = event.latLng.lng(); 
+        geocodePosition(marker.getPosition(),event.latLng.lat(),event.latLng.lng());
+    });
+
+}
+
+function geocodePosition(pos,lat,lng) {
    geocoder = new google.maps.Geocoder();
    geocoder.geocode
     ({
@@ -104,11 +135,7 @@ function geocodePosition(pos) {
         function(results, status) 
         {
             if (status == google.maps.GeocoderStatus.OK){
-                $('#street').val(results[0].address_components[0].long_name);
-                $('#town').val(results[0].address_components[1].long_name);
-                $('#province').val(results[0].address_components[2].long_name);
-                $('#hometown').val(results[0].address_components[3].long_name);
-                $('#location').html(results[0].formatted_address);
+                $('#location').html('<i class="ace-icon fa fa-map-marker bigger-130"></i>'+results[0].formatted_address+'<br/><img src="http://maps.google.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=13&markers='+lat+','+lng+'&size=300x300&sensor=false&key=ABQIAAAA6-Rq-t8XwsqXeXws3DleLBSI_7XewNJfovQwsmZjGMbTG7rp6BQaj3bwm-gy7nGQPyWKPTd3zPtcVA"/>');
                 // jQuery('').val(results[0].address_components[4].long_name));
             } 
 

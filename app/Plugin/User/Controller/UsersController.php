@@ -67,10 +67,10 @@ class UsersController extends UserAppController  {
 
 				ClassRegistry::init('Address')->save($this->request->data['Address']);
 				
-				$this->Session->setFlash(__('The Profile has been updated.'));
+				$this->Session->setFlash(__('The Profile has been updated.'),'success');
 			} 
 			else {			
-				$this->Session->setFlash(__('The User could not be update. Please, try again.'));
+				$this->Session->setFlash(__('The User could not be update. Please, try again.'),'error');
 			}
 		} else {
 
