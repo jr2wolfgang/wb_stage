@@ -48,16 +48,6 @@ $(document).ready(function(){
 		$(this).children('.per-ads-img').children('.ads-has-label').toggleClass('pulse');
 	});
 
-	// $(window).scroll(function() {
-	//    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-	//    		$('#lazy-loader-container').fadeIn();
-	//    		setTimeout(
-	//    		  function(){
-	//    			$('#lazy-loader-container').hide();
-	//    		  }, 3000);
-	//    }
-	// });
-
 	$('#ads-list').infinitescroll({
 		 loading: {
 	        finished: undefined,
@@ -77,5 +67,10 @@ $(document).ready(function(){
 	    itemSelector : "#ads-list div.per-ads-list"          
 	                   // selector for all items you'll retrieve
  	 });
+
+	$('.thumb-holder').perfectScrollbar({
+	  wheelSpeed: 10,
+	  wheelPropagation: true
+	});
 
 });
