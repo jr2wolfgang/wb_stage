@@ -12,6 +12,54 @@
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
 font-style: normal;
-}.flaticon-black134:before {
+}.flaticon-arrow133:before {
 	content: "\e000";
+}
+.flaticon-arrow208:before {
+	content: "\e001";
+}
+.flaticon-arrow73:before {
+	content: "\e002";
+}
+.flaticon-arrow83:before {
+	content: "\e003";
+}
+.flaticon-businessmen5:before {
+	content: "\e004";
+}
+.flaticon-career:before {
+	content: "\e005";
+}
+.flaticon-check1:before {
+	content: "\e006";
+}
+.flaticon-clock61:before {
+	content: "\e007";
+}
+.flaticon-lock39:before {
+	content: "\e008";
+}
+.flaticon-male79:before {
+	content: "\e009";
+}
+.flaticon-male80:before {
+	content: "\e00a";
+}
+.flaticon-map5:before {
+	content: "\e00b";
+}
+.flaticon-search54:before {
+	content: "\e00c";
+}
+.flaticon-small44:before {
+	content: "\e00d";
+}
+.flaticon-three115:before {
+	content: "\e00e";
+}
+.flaticon-user7:before {
+	content: "\e00f";
+}
+.flaticon-viral:before {
+	content: "\e010";
 }

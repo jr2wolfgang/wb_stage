@@ -7,42 +7,17 @@ App::uses('AppModel', 'Model');
  */
 class Ad extends AppModel {
 
-/**
- * Validation rules
- *
- * @var array
- */
 
 	public $recursive = -1;
 	
 	public $actsAs = array('Containable');
 	
-	public $validate = array(
-		// 'name' => array(
-		// 	'notEmpty' => array(
-		// 		'rule' => array('notEmpty'),
-		// 		//'message' => 'Your custom message here',
-		// 		//'allowEmpty' => false,
-		// 		//'required' => false,
-		// 		//'last' => false, // Stop validation after this rule
-		// 		//'on' => 'create', // Limit validation to 'create' or 'update' operations
-		// 	),
-		// ),
-		// 'modified_by' => array(
-		// 	'numeric' => array(
-		// 		'rule' => array('numeric'),
-		// 		//'message' => 'Your custom message here',
-		// 		'allowEmpty' => true,
-		// 		//'required' => false,
-		// 		//'last' => false, // Stop validation after this rule
-		// 		//'on' => 'create', // Limit validation to 'create' or 'update' operations
-		// 	),
-		// ),
-	);
+	public $validate = array();
 
+	 public $usetable = 'Ads';
 	
 
-	
+
 	public function bind($model = array('Group')){
 
 		$this->bindModel(
@@ -78,6 +53,19 @@ class Ad extends AppModel {
 				)
 			),
 			'hasOne' => array(
+				'Address' => array(
+					'className' => 'Address',
+					'foreignKey' => 'foreign_key',
+					'dependent' => true,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				),
 				'Map' => array(
 					'className' => 'Map',
 					'foreignKey' => 'foreign_key',
@@ -103,12 +91,13 @@ class Ad extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
-					)
+					),
+				
 			)
 		
 		)
 		
-		);
+		,false);
 
 		$this->contain($model);
 	}
@@ -130,6 +119,81 @@ class Ad extends AppModel {
 	
 	}
 
+
+
+
+	public function getUniqueUrl($slugName = null, $field = 'slug') 
+    { 
+          
+        $currentUrl = $this->_getStringAsURL($slugName); 
+         
+        $conditions = array('Ad.slug like' => '%'.$slugName.'%'); 
+         
+        $result = $this->find('all',array('conditions' => $conditions)); 
+         
+        if ($result !== false && count($result) > 0) 
+        { 
+            $sameUrls = array(); 
+             
+            foreach($result as $record) 
+            { 
+                $sameUrls[] = $record[$this->name][$field]; 
+            } 
+        } 
+       
+        if (isset($sameUrls) && count($sameUrls) > 0) 
+        { 
+            $currentBegginingUrl = $currentUrl; 
+     
+            $currentIndex = 1; 
+     
+            while($currentIndex > 0) 
+            { 
+                if (!in_array($currentBegginingUrl . '_' . $currentIndex, $sameUrls)) 
+                { 
+	            	 if ( count($result) > 0) {
+	            	 	
+	            	 	$currentUrl = $currentBegginingUrl . '_' . $currentIndex; 
+
+	            	 } else {
+	            	 	$currentUrl = $currentBegginingUrl;
+
+	            	 }
+                	
+     
+                    $currentIndex = -1; 
+                } 
+     
+                $currentIndex++; 
+            } 
+        } 
+         
+        return $currentUrl; 
+    }
+
+
+   public function _getStringAsURL($string = null) 
+    { 
+         
+        $currentMaximumURLLength = 100; 
+         
+        $string = strtolower($string); 
+         
+        $string = preg_replace('/[^a-z0-9_]/i', '_', $string); 
+        $string = preg_replace('/_[_]*/i', '_', $string); 
+         
+         
+        if (strlen($string) > $currentMaximumURLLength) 
+        { 
+            $string = substr($string, 0, $currentMaximumURLLength); 
+        } 
+         
+         
+        $string = preg_replace('/_$/i', '', $string); 
+        $string = preg_replace('/^_/i', '', $string); 
+         
+        return $string; 
+    }  
 
 	
 }

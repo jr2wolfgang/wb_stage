@@ -293,8 +293,8 @@ $.extend($.validator, {
 		minlength: $.validator.format("Please enter at least {0} characters."),
 		rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
 		range: $.validator.format("Please enter a value between {0} and {1}."),
-		max: $.validator.format("Please enter a value less than or equal to {0}."),
-		min: $.validator.format("Please enter a value greater than or equal to {0}.")
+		max: $.validator.format("<i class='ace-icon fa fa-times bigger-130 red'></i><span class='lighter'>Please enter a value less than or equal to {0}.</span>"),
+		min: $.validator.format("<i class='ace-icon fa fa-times bigger-130 red'></i><span class='lighter'>Please enter a value greater than or equal to {0}.</span>")
 	},
 
 	autoCreateRanges: false,

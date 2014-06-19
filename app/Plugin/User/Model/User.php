@@ -107,7 +107,7 @@ class User extends AppModel {
 					'className' => 'Image',
 					'foreignKey' => 'foreign_key',
 					'dependent' => false,
-					'conditions' => '',
+					'conditions' => array('Image.model' => 'User'),
 					'fields' => '',
 					'order' => '',
 					'limit' => '',
@@ -120,8 +120,8 @@ class User extends AppModel {
 
 			),
 			'hasOne' => array(
-				'Addresses' => array(
-					'className' => 'Addresses',
+				'Address' => array(
+					'className' => 'Address',
 					'foreignKey' => 'foreign_key',
 					'dependent' => false,
 					'conditions' =>'',

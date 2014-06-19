@@ -15,8 +15,10 @@ class UsersController extends UserAppController  {
 
 	    $userData = $this->Session->read('Auth');
 	    
-	    $this->User->bind(array('Group','AccountType','Addresses'));
+	    $this->User->bind(array('Group','AccountType','Address'));
 	
+	    $this->loadModel('User.User');
+	   
 
 	    $AccountType = $this->User->find('list');
 
@@ -42,11 +44,13 @@ class UsersController extends UserAppController  {
 
 	public function profile(){ 
 	
-		$this->User->bind( array('Addresses'));
+		$this->User->bind( array('Address'));
 
 		$this->User->validate = array();
-
-
+		$address = $this->User->Address->find('first', array(
+	        'conditions' => array('Address.foreign_key' => $this->Session->read('Auth.User.id')
+	    )));
+		
 		if ($this->request->is('post')) {
 			
 			
@@ -58,20 +62,19 @@ class UsersController extends UserAppController  {
 			else {
 				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
 			}
-				
-			$this->request->data['Addresses']['foreign_key'] = $this->request->data['User']['id'];
-
 
 			if ($this->User->saveAssociated($this->request->data)) {
 
-				$this->Session->setFlash(__('The Profile has been updated.'));
+				ClassRegistry::init('Address')->save($this->request->data['Address']);
+				
+				$this->Session->setFlash(__('The Profile has been updated.'),'success');
 			} 
 			else {			
-				$this->Session->setFlash(__('The User could not be update. Please, try again.'));
+				$this->Session->setFlash(__('The User could not be update. Please, try again.'),'error');
 			}
 		} else {
 
-			$this->User->bind( array('Addresses'));
+			$this->User->bind( array('Address'));
 
 			$this->request->data = $this->User->findById($this->Session->read('Auth.User.id'));
 

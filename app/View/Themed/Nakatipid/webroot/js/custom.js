@@ -48,16 +48,6 @@ $(document).ready(function(){
 		$(this).children('.per-ads-img').children('.ads-has-label').toggleClass('pulse');
 	});
 
-	// $(window).scroll(function() {
-	//    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-	//    		$('#lazy-loader-container').fadeIn();
-	//    		setTimeout(
-	//    		  function(){
-	//    			$('#lazy-loader-container').hide();
-	//    		  }, 3000);
-	//    }
-	// });
-
 	$('#ads-list').infinitescroll({
 		 loading: {
 	        finished: undefined,
@@ -77,5 +67,35 @@ $(document).ready(function(){
 	    itemSelector : "#ads-list div.per-ads-list"          
 	                   // selector for all items you'll retrieve
  	 });
+
+	$('.thumb-holder').perfectScrollbar({
+	  wheelSpeed: 10,
+	  wheelPropagation: true
+	});
+
+	$('.ads-desc-box-inner').perfectScrollbar({
+	  wheelSpeed: 10,
+	  wheelPropagation: true
+	});
+
+	$('.seller-other-ads-inner').perfectScrollbar({
+	  wheelSpeed: 10,
+	  wheelPropagation: true
+	});
+
+
+
+	$('.img-wrap-main').hover(function(){
+		$(this).css('overflow','visible');
+		$(this).children('img').css('position','absolute');
+	}, function(){
+		$(this).css('overflow','hidden')
+		$(this).children('img').css('position','relative');
+	});
+
+	$('.thumb-holder').on("click",".per-thumb ",function(){
+		var $img = $(this).children('img').attr('Src');
+		$('.img-wrap-main').children('img').attr('Src',$img);
+	});
 
 });

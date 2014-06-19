@@ -20,7 +20,7 @@
 								<div id="mulitplefileuploader" class="btn btn-warning"><i class='ace-icon fa fa-folder'></i>Choose File</div>
 								<div class="clearfix"></div>
 								<div class="row add-selected-image-btn">
-									<div class="col-lg-12">
+									<div class="col-lg-12 text-left">
 										<button class="btn btn-lg btn-success use_image">
 											<i class="ace-icon fa fa-check"></i>
 											Add Selected Image(s)
@@ -52,9 +52,7 @@
 													</div>
 													<div class="col-lg-6"><?php echo $value['name']?></div>
 													<div class="col-lg-2">
-														<button class="btn btn-info btn-sm edit-image" data-id="<?php echo $value['id']; ?>">
-															<i class="ace-icon fa fa-pencil icon-only"></i>
-														</button>
+														
 														<button class="btn btn-danger btn-sm delete-image" data-id="<?php echo $value['id']; ?>">
 															<i class="ace-icon fa fa-trash-o icon-only"></i>
 														</button>
@@ -69,6 +67,17 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
+
+								<div class="row add-selected-image-btn">
+									<div class="col-lg-12 text-left">
+										<button class="btn btn-lg btn-success use_image">
+											<i class="ace-icon fa fa-check"></i>
+											Add Selected Image(s)
+										</button>
+									</div>
+								</div>
+
+								
 							</div>
 						</div>
 					</div>

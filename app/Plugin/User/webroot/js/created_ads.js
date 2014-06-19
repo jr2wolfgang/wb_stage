@@ -24,14 +24,7 @@ $('.fancybox').fancybox();
 
 var serverPath = "/wb_stage";
 
-
-$('.redactor').redactor({
-		imageUpload: '/user/redactor_upload_image',
-		//fileUpload: 'redactor/demo/scripts/file_upload.php',
-		imageGetJson: '/js/json_data/new_data.json',				
-		plugins: ['fontfamily','fontcolor','fontsize'],
-		focus: true,
-	});  
+ 
                 
 $('.btn-danger').click(function(){
 
@@ -39,11 +32,9 @@ $('.btn-danger').click(function(){
 	if ($('.map_container').append('<input id="pac-input" class="controls" type="text" placeholder="Search Box">')) {
 
 		setTimeout(function(){
-
 		initialize();
 
-
-	},1000); 
+		},1000); 
 
 	}
 
@@ -129,9 +120,6 @@ var settings = {
 								</div>\
 								<div class="col-lg-6">'+item.file+'</div>\
 								<div class="col-lg-2">\
-									<button class="btn btn-info btn-sm edit-image" data-id="'+item.key+'">\
-										<i class="ace-icon fa fa-pencil icon-only"></i>\
-									</button>\
 									<button class="btn btn-danger btn-sm delete-image" data-id="'+item.key+'">\
 										<i class="ace-icon fa fa-trash-o icon-only"></i>\
 									</button>\
@@ -170,16 +158,6 @@ $( "#AdNewAdForm" ).validate({
   }
 });
 
-/*$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
-
-	if ($(this).val() != '') {
-		$('.price_error').remove();
-	} else {
-		$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
-	}
-
-});*/
-
 $('#AdNewAdForm').submit(function(e){
 
 		$('.price_error').remove();
@@ -194,9 +172,18 @@ $('#AdNewAdForm').submit(function(e){
 	
 });
 
+$('.btn[type="reset"]').click(function(){
+	$('.redactor_redactor').html('');
+});
+
 $('input[type="number"]').bind('keypress', function (e) {
         return !(e.which != 8 && e.which != 0 &&
                 (e.which < 48 || e.which > 57) && e.which != 46);
+});
+
+$('.percent-limit').bind('keypress', function (e) {
+        return !(e.which != 8 && e.which != 0 &&
+                (e.which < 48 || e.which > 57) && e.which != 46  && e.which != 36);
 });
 
 $('.fm-image-wrap').on('click','.delete-image',function(){
@@ -222,26 +209,29 @@ $('.use_image').click(function(){
 		$('#AdSelectedImg').empty();
 
 		var imgArray = [];
-
+		var appendImage = "";
 		$('.fm-image-wrap .ace:checked').each(function(){
 		
 		$img_src = $(this).parents('.fm-per-img').find('.img-responsive').attr('src');
 		$data_id = $(this).attr('value');
-
-		console.log($data_id);
-		
-		console.log($(this).val());
 				
-				
-		var appendImage = "<div class='selected_img'>";
-			appendImage += "<i class='fa fa-times-circle-o remove_image' data-id='"+$data_id+"'></i> ";
-			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;'></div></a>";
-			appendImage += "<div class='select_primary'><input type='radio' checked='true' name='data[PrimaryImage]' value='"+$data_id+"'> Select As Primary</div>";
+			appendImage += "<div class='selected_img'>";
+			appendImage += "<i class='fa fa-times remove_image' data-id='"+$data_id+"'></i> ";
+			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;background-position:top center;'></div></a>";
+			appendImage += '<div class="radio">\
+								<label>\
+									<input type="radio" class="ace" checked="true" data-img="'+$img_src+'" name="data[PrimaryImage]" value="'+$data_id+'">\
+									<span class="lbl"> Set as Primary </span>\
+								</label>\
+							</div>';
 			appendImage += "</div>";
-				imgArray.push($(this).val());		
-			$('.images_thumb_selected').append( appendImage);
-		
-		}); 
+			imgArray.push($(this).val());
+			
+		});
+		$('.images_thumb_selected').html('<div class="clearfix"></div>');
+		$('.images_thumb_selected').prepend(appendImage);
+		$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast');
+		$('.error[for="AdSelectedImg"]').hide();
 		if ($('#AdSelectedImg').val() != '') {
 				$('#AdSelectedImg').val( $('#AdSelectedImg').val() +','+imgArray);	
 
@@ -249,30 +239,57 @@ $('.use_image').click(function(){
 			$('#AdSelectedImg').val(imgArray);	
 		}
 		
-});	
-
-
+});
 
 $('body').on('click','.remove_image',function(){
 	$ImgArray = $('#AdSelectedImg').val().split(',');
-	
 	$image_id = $(this).attr('data-id');
-
-	
-	console.log($ImgArray);
-
 	 $(this).parent().fadeOut(function(){
-
-		
 		$newImgArray = jQuery.grep($ImgArray, function(value) {
 			return value != $image_id;
 		});
-
 		$('#AdSelectedImg').val($newImgArray);
-	
-	});
-	 
+	}).remove();
+	 if($('.images_thumb_selected').html() == '<div class="clearfix"></div>') {
+	 	$('.images_thumb_selected').slideUp('fast');
+	 }
 });
 
+$('#is-discounted').click(function(){
+	if($(this).is(':checked')) {
+		$('.select-disc-type').removeClass('hide');
+		$('#form-field-discount').removeClass('hide').attr('required',true);
+		$('.error[for="form-field-discount"]').hide();
+	} else {
+		$('.select-disc-type').addClass('hide');
+		$('#form-field-discount').addClass('hide').removeAttr('required',true);
+		$('#form-field-promo').addClass('hide').removeAttr('required',true);
+		$('.error[for="form-field-discount"]').hide();
+	}
+});
+
+$('.select-disc-type').on('change', function() {
+	if($(this).val() == 0) {
+		$('#form-field-discount').removeClass('hide').attr('required',true);
+		$('#form-field-promo').addClass('hide').removeAttr('required',true);
+		$('#form-field-promo').next().hide();
+	} else {
+		$('#form-field-promo').removeClass('hide').attr('required',true);
+		$('#form-field-discount').addClass('hide').removeAttr('required',true);
+		$('#form-field-discount').next().hide();
+	}
+});
+
+$('input.percent-limit').on('focusout', function() {
+    var val = $(this).val();
+    var $this = $(this);
+    val = val.replace('$', '');
+});
+
+$('#preview-ads').click(function(){
+	var $img = $('.selected_img .radio label .ace:checked').data('img');
+	$('.img-container img').attr('src',$img);
+	$('.per-ads-title a').text($('#form-field-name').val())
+});
 
 });

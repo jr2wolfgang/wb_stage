@@ -1,0 +1,1 @@
+ALTER TABLE `ads`  ADD `slug` VARCHAR(255) NOT NULL  AFTER `name`;

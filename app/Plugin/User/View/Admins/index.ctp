@@ -15,7 +15,7 @@
 					<span class="bigger-110">Create ADS</span>
 				</a>
 
-				<a class="btn btn-sm btn-block btn-primary" href="#">
+				<a class="btn btn-sm btn-block btn-primary" href="users/profile">
 					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 					<span class="bigger-110">Edit Profile</span>
 				</a>
@@ -29,7 +29,7 @@
 							echo $this->request->data['User']['firstname']. ' '.$this->request->data['User']['lastname'];
 						?>
 					</span>
-
+				
 					<span class="label label-light arrowed-in-right">
 						<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
 						offline
@@ -66,7 +66,7 @@
 
 						<div class="profile-info-value">
 							<i class="fa fa-map-marker light-orange bigger-110"></i>
-							<span><?php echo $this->request->data['Addresses'][0]['hometown']; ?></span>
+							<span><?php echo !empty($this->request->data['Address'][0]['hometown']) ? $this->request->data['Address'][0]['hometown'] : ''; ?></span>
 							<span></span>
 						</div>
 					</div>
@@ -82,30 +82,7 @@
 
 				<div class="hr hr-8 dotted"></div>
 
-				<div class="profile-user-info">
-					<div class="profile-info-row">
-						<div class="profile-info-name"> Social Media </div>
-					</div>
-
-					<div class="profile-info-row">
-						<div class="profile-info-name">
-							<i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
-						</div>
-
-						<div class="profile-info-value">
-							<a href="#">Add me on Facebook</a>
-						</div>
-
-						<div class="profile-info-name">
-							<i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
-						</div>
-
-						<div class="profile-info-value">
-							<a href="#">Follow me on Twitter</a>
-						</div>
-
-					</div>
-				</div>
+				
 			</div><!-- /.col -->
 		</div>
 	</div>

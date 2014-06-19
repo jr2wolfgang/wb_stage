@@ -20,30 +20,32 @@
             </div>
             <div id="searchbar-container" class="row">
                 <div class="large-12 small-12 colums">
-                    <div id="search-field" class="large-9 small-7 no-pad-both columns">
-                        <input type="text" id="mainsearch-field" placeholder="Type in your keyword ..">
-                    </div>
-                    <div id="location-dropdown" class="large-2 small-3 no-pad-both columns">
-                        <div class="dropdown icon-right">
-                            <div class="selected-dropdown">Green Bit</div>
-                            <i class="flaticon-arrow133"></i>
-                            <div class="clearfix"></div>
-                            <ul class="list dropdown-fade">
-                                <li class="selected">East Blue</li>
-                                <li class="">Grand Line</li>
-                                <li class="">Red Line</li>
-                                <li class="">New World</li>
-                                <li class="">Alabasta</li>
-                                <li class="">Enies Lobby</li>
-                                <li class="">Marineford</li>
-                                <li class="">Dressrosa</li>
-                                <li class="">Arlong Park</li>
-                            </ul>
+                    <form method="get" action="<?php echo $this->html->url('search', true); ?>" id="search-form">
+                        <div id="search-field" class="large-9 small-7 no-pad-both columns">
+                            <input type="text" id="mainsearch-field" placeholder="Type in your keyword .." name="q" />
                         </div>
-                    </div>
-                    <div id="search-button" class="large-1 small-2 no-pad-both columns solo-icon btn">
-                        <i class="flaticon-search54"></i>
-                    </div>
+                        <div id="location-dropdown" class="large-2 small-3 no-pad-both columns">
+                            <div class="dropdown icon-right">
+                                <div class="selected-dropdown">Green Bit</div>
+                                <i class="flaticon-arrow133"></i>
+                                <div class="clearfix"></div>
+                                <ul class="list dropdown-fade">
+                                    <li class="selected">East Blue</li>
+                                    <li class="">Grand Line</li>
+                                    <li class="">Red Line</li>
+                                    <li class="">New World</li>
+                                    <li class="">Alabasta</li>
+                                    <li class="">Enies Lobby</li>
+                                    <li class="">Marineford</li>
+                                    <li class="">Dressrosa</li>
+                                    <li class="">Arlong Park</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="search-button" class="large-1 small-2 no-pad-both columns solo-icon btn">
+                            <i class="flaticon-search54" type="submit"></i>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -73,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="large-10 columns">
-                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?>
+                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?> 
                         </div>
                     </div>
                     <div class="row">
@@ -273,33 +275,51 @@
                     
                     <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
                         <div class="img-container">
-                            <?php echo $this->Html->image('/user/img/uploads/'. $data['PrimaryImage']['name']); ?>
+                            <?php echo $this->Html->image('/user/img/uploads/'. $data['PrimaryImage']['name'],
+                            array('url' => array('controller' => 'ads', 'action' => 'view','slug' => $data['Ad']['slug']))); ?>
                         </div>
                     </a>
                 </div>
                 <div class="per-ads-desc">
                     <div class="per-ads-title">
-                        <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
-                            <?php echo $data['Ad']['name']; ?>
-                        </a>
+                       
+                        <?php echo $this->Html->link($data['Ad']['name'],array(
+                                'controller' => 'ads',
+                                'action' => 'view',
+                                'slug' => $data['Ad']['slug'],
+                                
+                        )); ?>
+
                     </div>
                     <div class="per-ads-info">
                         <span>
                             <i class="flaticon-clock61"></i>
                             <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
                         </span>
-                        <span><i class="flaticon-map5"></i> Dressrossa, New World</span>
+                        <span>
+                            <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
+                                <i class="flaticon-map5"></i>
+                            </div>
+                            <?php if(!empty($data['Address']['street'])): ?>
+
+                                <div class="address" style="display:inline-block; width:80%;">
+                                    <?php echo $data['Address']['street']; ?>, 
+                                    <?php echo $data['Address']['town']; ?>, 
+                                    <?php echo $data['Address']['province']; ?>
+                                </div>
+
+                            <?php endif; ?>
+                        </span>
                         <span><i class="flaticon-small44"></i> 500 views</span>
                     </div>
                     <div class="per-ads-price-box">
                         <?php $class = '';?>
-                        <?php if ($data['Ad']['discount_price'] != 0): ?>
+                        <div class="per-ads-price <?php echo ($data['Ad']['selling_price'] != 0) ? 'per-ads-before-price' : '' ?>">PHP <?php echo $data['Ad']['before_price']; ?></div>
+                        <?php if ($data['Ad']['selling_price'] != 0): ?>
                              <div class="per-ads-price per-discount-price">
-                                 &nbsp; NOW PHP <?php echo $data['Ad']['discount_price']; ?>
-                                 <?php $class = 'per-ads-before-price'; ?>
+                                 &nbsp; NOW! PHP <?php echo $data['Ad']['selling_price']; ?>
                              </div>
                         <?php endif;?>
-                        <div class="per-ads-price <?php echo $class; ?>">PHP <?php echo $data['Ad']['orig_price']; ?></div>
                         <div class="clearfix"></div>
                     </div>
                 </div>

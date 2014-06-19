@@ -56,9 +56,8 @@ public function saveImages($ImageData = null, $model = 'User',$foreign_key = nul
 						$images['name'] = $data['file'];
 					}
 
-					if (!empty($data['model'])) {
-						$images['model'] = $model;
-					}
+					$images['model'] = $model;
+					
 
 					if (!empty($foreign_key)) {
 						$images['foreign_key'] = $foreign_key;
