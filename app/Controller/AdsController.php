@@ -1,12 +1,21 @@
 <?php
 App::uses('AppController', 'Controller');
-
+/**
+ * Users Controller
+ *
+ * @property User $User
+ * @property PaginatorComponent $Paginator
+ */
 class AdsController extends AppController {
 
-	public $helpers = array(
-        'Html',
-        'Form',
-    );
+/**
+ * Main View
+ *
+ * @param none
+ * @return void
+ */
+
+	// public $uses = array('Ad','User');
 
 	function beforeFilter() {
 		$this->theme = 'Nakatipid';
@@ -17,13 +26,34 @@ class AdsController extends AppController {
 		$this->Ad->bind(array('Image','PrimaryImage'));
 
 		$this->paginate = array(
-		    'limit' => 8,
+		    'limit' => 8, 
 		    'order' => array(
-		        'Ad.id' => 'DESC')
+		        'Ad.id' => 'DESC')		    
 		);
+		$this->set('ads', $this->paginate('Ad'));
 
+	}
+
+
+	public function search(){
+		$keyword = $this->request->query('q');
+		$this->Ad->bind(array('Image','PrimaryImage'));
+
+		if ( !empty($keyword) ){
+			$cond=array( 'OR'=>array("Ad.name LIKE '%$keyword%'")  );
+		} else {
+			$cond=array();
+		}
+
+		$this->paginate = array(
+		    'limit' => 8, 
+		    'order' => array(
+		        'Ad.id' => 'DESC'),
+		    'conditions' => $cond
+		);
 		$this->set('ads', $this->paginate('Ad'));
 	}
+
 
 	public function view($slugUrl = null) {
 
@@ -34,6 +64,8 @@ class AdsController extends AppController {
 		
 		$ads = $this->Ad;
 		$ads->bind(array('Image','User','PrimaryImage'));
+		// Please refer to User-jrr Model
+		/*$this->User->bind(array('Ad'));*/
 
 		if(empty($this->data)){
 			$ads_data = $ads->findBySlug($slug);

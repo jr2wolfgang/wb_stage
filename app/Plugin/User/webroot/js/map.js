@@ -134,10 +134,14 @@ function geocodePosition(pos,lat,lng) {
     }, 
         function(results, status) 
         {
+
             if (status == google.maps.GeocoderStatus.OK){
                 $('#location').html('<i class="ace-icon fa fa-map-marker bigger-130"></i>'+results[0].formatted_address+'<br/><img src="http://maps.google.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=13&markers='+lat+','+lng+'&size=300x300&sensor=false&key=ABQIAAAA6-Rq-t8XwsqXeXws3DleLBSI_7XewNJfovQwsmZjGMbTG7rp6BQaj3bwm-gy7nGQPyWKPTd3zPtcVA"/>');
-                // jQuery('').val(results[0].address_components[4].long_name));
-            } 
+                $('#street').val(results[0].address_components[0].long_name);
+                $('#town').val(results[0].address_components[1].long_name);
+                $('#province').val(results[0].address_components[2].long_name);
+                $('#hometown').val(results[0].address_components[3].long_name);
+             }
 
             else{
                 console.log('Error!!!');

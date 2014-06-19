@@ -94,6 +94,14 @@
 		</div>
 	</div>
 
+	<div id="address-form">
+		<?php echo $this->Form->input('Address.street',array('id' => 'street','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.town',array('id' => 'town','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.province',array('id' => 'province','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.zipcode',array('id' => 'zipcode','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.hometown',array('id' => 'hometown','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+	</div>
+
 	<div class="clearfix form-actions">
 		<div class="col-md-offset-3 col-md-9">
 			<button type="submit" id="submit" class="btn btn-success">
