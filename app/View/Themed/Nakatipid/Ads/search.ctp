@@ -1,3 +1,8 @@
+
+<?php echo $this->Html->script('/footable/js/footable.js'); ?>
+<?php echo $this->Html->css('/footable/css/footable.core.css'); ?>
+<?php echo $this->Html->css('/footable/css/footable.standalone.css'); ?>
+
 <header class="row full-width no-pads">
     <div id="navi-top" class="">
         <ul>
@@ -39,11 +44,11 @@
             <thead>
                 <tr>
                     <th>Image</th>
-                    <th>Name</th>
-                    <th>Address</th>
+                    <th data-hide="phone,tablet">Name</th>
+                    <th data-hide="phone,tablet">Address</th>
                     <th>Price</th>
                     <th>Date Posted</th>
-                    <th>View</th>
+                    <th data-hide="phone,tablet">View</th>
                 </tr>
             </thead>
             <tbody>
@@ -90,16 +95,7 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Price</th>
-                    <th>Date Posted</th>
-                    <th>View</th>
-                </tr>
-            </tfoot>
+        
         </table>
         <div id="search-pagination">
             Page: 
@@ -121,15 +117,32 @@
     #search-right { border-left: 1px solid; }
     #search-pagination { text-align: left; }
     #search-logo { width: 10%; }
-    #search-table { width: 100%; }
+    #search-table { width: 100%; border-radius: 0 !important; -wekit-border-radius: 0 !important; -moz-border-radius: 0 !important; }
+    #search-table td, #search-table tr, #search-table th { border: none !important; }
     #search-table a { display: block; height: 150px; overflow: hidden; width: 150px; }
     #search-table > tbody > tr:hover { background: #d4d6d6; cursor: pointer; }
+
+    @media only screen and (max-width : 640px) {
+        .search-logo { text-align: center; }
+        #search-logo { width: 50%; }
+    }
+
 </style>
 
 <script type="text/javascript">
     $(document).ready(function($){
-        $('#search-table > tbody > tr').click(function(){
-            window.location.href = $(this).attr('data-url');
+
+        if ($(window).width() > 1024){
+            $('#search-table > tbody > tr').click(function(){
+                window.location.href = $(this).attr('data-url');
+            });
+        }
+
+        $('#search-table').footable({
+            breakpoints: {
+                phone: 480,
+                tablet: 1024
+            }
         });
     });
 </script>
