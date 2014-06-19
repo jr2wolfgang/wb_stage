@@ -131,9 +131,9 @@ class Ad extends AppModel {
           
         $currentUrl = $this->_getStringAsURL($slugName); 
          
-        $conditions = array($this->name . '.' . $field => 'LIKE ' . $currentUrl . '%'); 
+        $conditions = array('Ad.slug like' => '%'.$slugName.'%'); 
          
-        $result = $this->find('all',$conditions, $this->name . '.*', null); 
+        $result = $this->find('all',array('conditions' => $conditions)); 
          
         if ($result !== false && count($result) > 0) 
         { 
@@ -144,7 +144,7 @@ class Ad extends AppModel {
                 $sameUrls[] = $record[$this->name][$field]; 
             } 
         } 
-     
+       
         if (isset($sameUrls) && count($sameUrls) > 0) 
         { 
             $currentBegginingUrl = $currentUrl; 
@@ -155,13 +155,15 @@ class Ad extends AppModel {
             { 
                 if (!in_array($currentBegginingUrl . '_' . $currentIndex, $sameUrls)) 
                 { 
+	            	 if ( count($result) > 0) {
+	            	 	
+	            	 	$currentUrl = $currentBegginingUrl . '_' . $currentIndex; 
+
+	            	 } else {
+	            	 	$currentUrl = $currentBegginingUrl;
+
+	            	 }
                 	
-                	if ($currentIndex == 0) {
-                		$currentUrl = $currentBegginingUrl;	
-                	} else {
-                		$currentUrl = $currentBegginingUrl . '_' . $currentIndex; 
-                	}
-                   
      
                     $currentIndex = -1; 
                 } 
