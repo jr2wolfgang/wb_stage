@@ -75,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="large-10 columns">
-                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?>
+                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?> 
                         </div>
                     </div>
                     <div class="row">
@@ -317,7 +317,7 @@
                         <div class="per-ads-price <?php echo ($data['Ad']['selling_price'] != 0) ? 'per-ads-before-price' : '' ?>">PHP <?php echo $data['Ad']['before_price']; ?></div>
                         <?php if ($data['Ad']['selling_price'] != 0): ?>
                              <div class="per-ads-price per-discount-price">
-                                 &nbsp; NOW PHP <?php echo $data['Ad']['selling_price']; ?>
+                                 &nbsp; NOW! PHP <?php echo $data['Ad']['selling_price']; ?>
                              </div>
                         <?php endif;?>
                         <div class="clearfix"></div>
