@@ -23,8 +23,6 @@ class AdsController extends AppController {
  	}
 
 	public function index() {
-		echo "This is now a test";
-		echo 'hindi ako masatisfy.. isa pa nga';
 		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		$this->paginate = array(
