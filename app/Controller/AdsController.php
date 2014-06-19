@@ -1,21 +1,12 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Users Controller
- *
- * @property User $User
- * @property PaginatorComponent $Paginator
- */
+
 class AdsController extends AppController {
 
-/**
- * Main View
- *
- * @param none
- * @return void
- */
-
-	// public $uses = array('Ad','User');
+	public $helpers = array(
+        'Html',
+        'Form',
+    );
 
 	function beforeFilter() {
 		$this->theme = 'Nakatipid';
@@ -23,17 +14,13 @@ class AdsController extends AppController {
  	}
 
 	public function index() {
-		// Please refer to User-jrr Model
-		/*$this->User->bind(array('Ad'));*/
-
 		$this->Ad->bind(array('Image','PrimaryImage'));
 
 		$this->paginate = array(
-		    'limit' => 8, // this was the option which you forgot to mention
+		    'limit' => 8,
 		    'order' => array(
 		        'Ad.id' => 'DESC')
 		);
-
 
 		$this->set('ads', $this->paginate('Ad'));
 	}
@@ -47,8 +34,6 @@ class AdsController extends AppController {
 		
 		$ads = $this->Ad;
 		$ads->bind(array('Image','User','PrimaryImage'));
-		// Please refer to User-jrr Model
-		/*$this->User->bind(array('Ad'));*/
 
 		if(empty($this->data)){
 			$ads_data = $ads->findBySlug($slug);
