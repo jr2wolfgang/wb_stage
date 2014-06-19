@@ -3,6 +3,10 @@
 <?php echo $this->Html->css('/footable/css/footable.core.css'); ?>
 <?php echo $this->Html->css('/footable/css/footable.standalone.css'); ?>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
 <header class="row full-width no-pads">
     <div id="navi-top" class="">
         <ul>
@@ -144,5 +148,12 @@
                 tablet: 1024
             }
         });
+
+    
+        $( "input[name='q']" ).autocomplete({
+              source: "<?php echo $this->html->url('ajax_search', true); ?>",
+              minLength: 1
+        });
+        
     });
 </script>
