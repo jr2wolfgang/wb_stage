@@ -67,7 +67,11 @@ class AdsController extends UserAppController  {
 			$this->Ad->bind(array('Map','Address'));
 
 			$this->request->data['Address']['id'] = '';
+
 			$this->request->data['Address']['model'] = 'Ad';
+
+			$this->request->data['Ad']['slug'] = $this->Ad->getUniqueUrl(Inflector::slug($this->request->data['Ad']['name']));
+
 
 		if ($this->Ad->saveAssociated($this->request->data)) {
 
@@ -223,7 +227,8 @@ class AdsController extends UserAppController  {
 
 			$this->request->data['Address'][0] = $this->request->data['Address'];
 
-
+			$this->request->data['Ad']['slug'] = $this->Ad->getUniqueUrl(Inflector::slug($this->request->data['Ad']['name']));
+		
 			if ($this->Ad->saveAssociated($this->request->data,array('deep' => true))) {
 				
 				ClassRegistry::init('Address')->save($this->request->data['Address']);

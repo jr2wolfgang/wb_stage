@@ -33,7 +33,7 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 	Router::connect(
-	'/ads/view/:slug-:id',
+	'/ads/view/:slug',
 	array('controller' => 'ads', 'action' => 'view'),
 	array('pass' => array('slug','id'),
 	'id' => '[0-9]+'

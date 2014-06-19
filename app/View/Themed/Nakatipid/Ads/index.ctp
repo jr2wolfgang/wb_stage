@@ -273,7 +273,8 @@
                     
                     <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
                         <div class="img-container">
-                            <?php echo $this->Html->image('/user/img/uploads/'. $data['PrimaryImage']['name']); ?>
+                            <?php echo $this->Html->image('/user/img/uploads/'. $data['PrimaryImage']['name'],
+                            array('url' => array('controller' => 'ads', 'action' => 'view','slug' => $data['Ad']['slug']))); ?>
                         </div>
                     </a>
                 </div>
@@ -283,8 +284,8 @@
                         <?php echo $this->Html->link($data['Ad']['name'],array(
                                 'controller' => 'ads',
                                 'action' => 'view',
-                                'slug' => strtolower(Inflector::slug($data['Ad']['name'],'-')),
-                                'id' => $data['Ad']['id']
+                                'slug' => $data['Ad']['slug'],
+                                
                         )); ?>
 
                     </div>

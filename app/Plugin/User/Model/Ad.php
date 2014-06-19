@@ -124,5 +124,78 @@ class Ad extends AppModel {
 	}
 
 
+
+
+	public function getUniqueUrl($slugName = null, $field = 'slug') 
+    { 
+          
+        $currentUrl = $this->_getStringAsURL($slugName); 
+         
+        $conditions = array($this->name . '.' . $field => 'LIKE ' . $currentUrl . '%'); 
+         
+        $result = $this->find('all',$conditions, $this->name . '.*', null); 
+         
+        if ($result !== false && count($result) > 0) 
+        { 
+            $sameUrls = array(); 
+             
+            foreach($result as $record) 
+            { 
+                $sameUrls[] = $record[$this->name][$field]; 
+            } 
+        } 
+     
+        if (isset($sameUrls) && count($sameUrls) > 0) 
+        { 
+            $currentBegginingUrl = $currentUrl; 
+     
+            $currentIndex = 1; 
+     
+            while($currentIndex > 0) 
+            { 
+                if (!in_array($currentBegginingUrl . '_' . $currentIndex, $sameUrls)) 
+                { 
+                	
+                	if ($currentIndex == 0) {
+                		$currentUrl = $currentBegginingUrl;	
+                	} else {
+                		$currentUrl = $currentBegginingUrl . '_' . $currentIndex; 
+                	}
+                   
+     
+                    $currentIndex = -1; 
+                } 
+     
+                $currentIndex++; 
+            } 
+        } 
+         
+        return $currentUrl; 
+    }
+
+
+   public function _getStringAsURL($string = null) 
+    { 
+         
+        $currentMaximumURLLength = 100; 
+         
+        $string = strtolower($string); 
+         
+        $string = preg_replace('/[^a-z0-9_]/i', '_', $string); 
+        $string = preg_replace('/_[_]*/i', '_', $string); 
+         
+         
+        if (strlen($string) > $currentMaximumURLLength) 
+        { 
+            $string = substr($string, 0, $currentMaximumURLLength); 
+        } 
+         
+         
+        $string = preg_replace('/_$/i', '', $string); 
+        $string = preg_replace('/^_/i', '', $string); 
+         
+        return $string; 
+    }  
+
 	
 }

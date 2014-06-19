@@ -38,7 +38,10 @@ class AdsController extends AppController {
 		$this->set('ads', $this->paginate('Ad'));
 	}
 
-	public function view($id) {
+	public function view($slugUrl = null) {
+
+		$slug = !empty($this->params['slug']) ? $this->params['slug'] : $slugUrl;
+
 		$this->theme = 'Nakatipid';
 		$imgFolder = '/user/img/';
 		
@@ -48,7 +51,7 @@ class AdsController extends AppController {
 		/*$this->User->bind(array('Ad'));*/
 
 		if(empty($this->data)){
-			$ads_data = $ads->findById($id);
+			$ads_data = $ads->findBySlug($slug);
 			$this->data = $ads_data;
 
 			if ( empty($this->request->data['User']['avatar']) ){
