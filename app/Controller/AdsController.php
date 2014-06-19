@@ -19,7 +19,7 @@ class AdsController extends AppController {
 
 	function beforeFilter() {
 		$this->theme = 'Nakatipid';
-  		$this->Auth->allow('index','view');
+  		$this->Auth->allow('index','view','search');
  	}
 
 	public function index() {
