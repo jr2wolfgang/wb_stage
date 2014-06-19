@@ -304,7 +304,7 @@
                         <div class="per-ads-price <?php echo ($data['Ad']['selling_price'] != 0) ? 'per-ads-before-price' : '' ?>">PHP <?php echo $data['Ad']['before_price']; ?></div>
                         <?php if ($data['Ad']['selling_price'] != 0): ?>
                              <div class="per-ads-price per-discount-price">
-                                 &nbsp; NOW PHP <?php echo $data['Ad']['selling_price']; ?>
+                                 &nbsp; NOW! PHP <?php echo $data['Ad']['selling_price']; ?>
                              </div>
                         <?php endif;?>
                         <div class="clearfix"></div>
