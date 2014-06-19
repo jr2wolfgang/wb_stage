@@ -204,6 +204,8 @@ class UsersController extends AppController {
 					}
 			}
 			
+			$this->User->bind('AccountType');
+
 			$accountTypes = $this->User->AccountType->find('list');
 
 			$this->set(compact('accountTypes'));
