@@ -297,13 +297,16 @@
                             <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
                         </span>
                         <span>
-                            <i class="flaticon-map5"></i>
+                            <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
+                                <i class="flaticon-map5"></i>
+                            </div>
                             <?php if(!empty($data['Address']['street'])): ?>
 
-                                <?php echo $data['Address']['street']; ?>, 
-                                <?php echo $data['Address']['town']; ?>, <br/>
-                                <?php echo $data['Address']['province']; ?>,
-                                <?php echo $data['Address']['hometown']; ?>
+                                <div class="address" style="display:inline-block; width:80%;">
+                                    <?php echo $data['Address']['street']; ?>, 
+                                    <?php echo $data['Address']['town']; ?>, 
+                                    <?php echo $data['Address']['province']; ?>
+                                </div>
 
                             <?php endif; ?>
                         </span>
