@@ -158,16 +158,6 @@ $( "#AdNewAdForm" ).validate({
   }
 });
 
-/*$('#AdDiscountPrice,#AdPromoPrice').keyup(function(){
-
-	if ($(this).val() != '') {
-		$('.price_error').remove();
-	} else {
-		$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
-	}
-
-});*/
-
 $('#AdNewAdForm').submit(function(e){
 
 		$('.price_error').remove();
@@ -180,6 +170,10 @@ $('#AdNewAdForm').submit(function(e){
 
 		}
 	
+});
+
+$('.btn[type="reset"]').click(function(){
+	$('.redactor_redactor').html('');
 });
 
 $('input[type="number"]').bind('keypress', function (e) {
@@ -226,17 +220,18 @@ $('.use_image').click(function(){
 			appendImage += "<a class='fancybox' data-fancybox-group='gallery-selected' href='"+$img_src+"''><div class='img_prev' style='background:url("+$img_src+");background-size:cover;background-position:top center;'></div></a>";
 			appendImage += '<div class="radio">\
 								<label>\
-									<input type="radio" class="ace" checked="true" name="data[PrimaryImage]" value="'+$data_id+'">\
+									<input type="radio" class="ace" checked="true" data-img="'+$img_src+'" name="data[PrimaryImage]" value="'+$data_id+'">\
 									<span class="lbl"> Set as Primary </span>\
 								</label>\
 							</div>';
 			appendImage += "</div>";
-				imgArray.push($(this).val());
+			imgArray.push($(this).val());
 			
 		});
 		$('.images_thumb_selected').html('<div class="clearfix"></div>');
 		$('.images_thumb_selected').prepend(appendImage);
-		$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast')
+		$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast');
+		$('.error[for="AdSelectedImg"]').hide();
 		if ($('#AdSelectedImg').val() != '') {
 				$('#AdSelectedImg').val( $('#AdSelectedImg').val() +','+imgArray);	
 
@@ -255,26 +250,33 @@ $('body').on('click','.remove_image',function(){
 		});
 		$('#AdSelectedImg').val($newImgArray);
 	}).remove();
+	 if($('.images_thumb_selected').html() == '<div class="clearfix"></div>') {
+	 	$('.images_thumb_selected').slideUp('fast');
+	 }
 });
 
 $('#is-discounted').click(function(){
 	if($(this).is(':checked')) {
 		$('.select-disc-type').removeClass('hide');
-		$('#form-field-discount').removeClass('hide');
+		$('#form-field-discount').removeClass('hide').attr('required',true);
+		$('.error[for="form-field-discount"]').hide();
 	} else {
 		$('.select-disc-type').addClass('hide');
-		$('#form-field-discount').addClass('hide');
-		$('#form-field-promo').addClass('hide');
+		$('#form-field-discount').addClass('hide').removeAttr('required',true);
+		$('#form-field-promo').addClass('hide').removeAttr('required',true);
+		$('.error[for="form-field-discount"]').hide();
 	}
 });
 
 $('.select-disc-type').on('change', function() {
 	if($(this).val() == 0) {
-		$('#form-field-discount').removeClass('hide');
-		$('#form-field-promo').addClass('hide');
+		$('#form-field-discount').removeClass('hide').attr('required',true);
+		$('#form-field-promo').addClass('hide').removeAttr('required',true);
+		$('#form-field-promo').next().hide();
 	} else {
-		$('#form-field-promo').removeClass('hide');
-		$('#form-field-discount').addClass('hide');
+		$('#form-field-promo').removeClass('hide').attr('required',true);
+		$('#form-field-discount').addClass('hide').removeAttr('required',true);
+		$('#form-field-discount').next().hide();
 	}
 });
 
@@ -284,5 +286,10 @@ $('input.percent-limit').on('focusout', function() {
     val = val.replace('$', '');
 });
 
+$('#preview-ads').click(function(){
+	var $img = $('.selected_img .radio label .ace:checked').data('img');
+	$('.img-container img').attr('src',$img);
+	$('.per-ads-title a').text($('#form-field-name').val())
+});
 
 });

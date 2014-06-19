@@ -41,6 +41,7 @@
 			echo $this->Html->css('User.ace.min');
 			echo $this->Html->css('User.ace-skins.min');
 			echo $this->Html->css('User.ace-rtl.min');
+			echo $this->Html->css('User.flaticon');
 
 
 			echo $this->Html->script('User.global'); 	

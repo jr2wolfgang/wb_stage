@@ -25,7 +25,7 @@
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Description </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('description',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '30','row' => '50')); ?>
+			<?php echo $this->Form->input('description',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor desc','contenteditable' => 'true','type' =>'textarea','cols' => '50','row' => '50')); ?>
 		</div>
 	</div>
 
@@ -42,7 +42,7 @@
 			<div class="btn btn-warning"  data-rel="tooltip" data-original-title="Select image(s) for your ADS" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
 			<div class="clearfix"></div>
 			<div class="images_thumb_selected well col-lg-8 hide"><div class="clearfix"></div></div>
-			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'hidden')); ?>
+			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'text','style'=>'opacity:0','class'=>'required','required'=>'required')); ?>
 		</div>
 	</div>
 
@@ -96,11 +96,10 @@
 
 	<div class="clearfix form-actions">
 		<div class="col-md-offset-3 col-md-9">
-			<button type="submit" id="submit" class="btn btn-info">
+			<button type="submit" id="submit" class="btn btn-success">
 				<i class="ace-icon fa fa-check bigger-110"></i>
 				Submit
 			</button>
-
 			&nbsp; &nbsp; &nbsp;
 			<button type="reset" class="btn">
 				<i class="ace-icon fa fa-undo bigger-110"></i>
@@ -116,6 +115,7 @@
 <div class="clear"></div>
 
 <?php echo $this->element('redactor_settings')?>
+<?php echo $this->element('ads_previewer'); ?>
 <?php echo $this->element('image_manager'); ?>
 
 
