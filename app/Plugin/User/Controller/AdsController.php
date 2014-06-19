@@ -23,28 +23,26 @@ class AdsController extends UserAppController  {
 
 	public $paginate = array(
         'limit' => 10,
-        'order' => array(
-            'Ad.created' => 'DESC'
-        )
+       
     );
-
 	public function index() {
 
-	  $this->Ad->bind(array('User','Map','Image','PrimaryImage'));
-				
-	  $this->Ad->recursive = 0;
+		$this->Ad->bind(array('User','Map','Image','PrimaryImage'));
+			
+		$this->Ad->recursive = 0;
 
-	  $conditions = array('Ad.modified_by' => $this->Session->read('Auth.User.id'));
-	  
-	  $this->paginate = array(
-          	'recursive' => -1,
-            'conditions' => $conditions,
-          	'order' => array('Ad.created DESC')
-            
-         );
-		$ads =  $this->paginate();
+		$conditions = array('Ad.modified_by' => $this->Session->read('Auth.User.id'));
 
-	$this->set(compact('ads'));		
+		$this->paginate = array(
+			'limit' => 8, 
+			'conditions' => $conditions,
+			'order' => array('Ad.id' => 'DESC'),
+			'group' => array('Ad.id')		    
+		);
+
+		$ads = $this->paginate();
+		
+		$this->set(compact('ads'));		
 	}
 
 	public function new_ad(){
@@ -53,7 +51,6 @@ class AdsController extends UserAppController  {
 		$ads = ClassRegistry::init('Ad');
 		
 		$User = ClassRegistry::init('User');
-
 
 		$User->bind(array('Image'));
 
@@ -124,11 +121,9 @@ class AdsController extends UserAppController  {
 			$this->request->data['Address'][0] = $this->request->data['Address'];
 
 			$this->request->data['Ad']['slug'] = $this->Ad->getUniqueUrl(Inflector::slug($this->request->data['Ad']['name']));
-		
+			
 			if ($this->Ad->saveAssociated($this->request->data,array('deep' => true))) {
 				
-				ClassRegistry::init('Address')->save($this->request->data['Address']);
-
 				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
 				
 				$this->Session->setFlash(__('The Ads has been saved.'),'success');
@@ -147,12 +142,13 @@ class AdsController extends UserAppController  {
 
 			$images = $User->read(null,$this->Session->read('Auth.User.id'));
 
-			pr($this->request->data);	
+			$imagesArray = Set::classicExtract($this->request->data['Image'], '{n}.id');
+			
 		}
 
 		 $this->create_json_data();
 
-		$this->set(compact('image','images'));
+		$this->set(compact('image','images','imagesArray'));
 
 
 	}

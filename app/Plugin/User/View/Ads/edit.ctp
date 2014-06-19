@@ -14,10 +14,11 @@
 </div>
 <div class="clear"></div>
 <?php echo $this->Form->create('Ad',array('class'=>'form-horizontal','role'=>'form','url'=>array('controller' => 'ads','action' => 'edit'))); ?>
-	<?php echo $this->Form->input('id',array('type' => 'hidden')); ?>
+
 	<div class="form-group">
 		<label for="form-field-name" class="col-sm-3 control-label no-padding-right"> Item Name </label>
 		<div class="col-sm-9">
+			<?php echo $this->Form->input('id'); ?>
 			<?php echo $this->Form->input('name',array('id' => 'form-field-name','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
@@ -25,22 +26,31 @@
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Description </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('description',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '30','row' => '50')); ?>
+			<?php echo $this->Form->input('description',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor desc','contenteditable' => 'true','type' =>'textarea','cols' => '50','row' => '50')); ?>
 		</div>
 	</div>
-
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Why Im Selling this </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('why_sell',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '30','row' => '50')); ?>
+			<?php echo $this->Form->input('why_sell',array('label' => false,'div' => 'col-xs-12 col-lg-9 col-sm-5 no-padding-left','id' => 'form-field-desc','class' => 'redactor','contenteditable' => 'true','type' =>'textarea','cols' => '10','row' => '20')); ?>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Select Images </label>
 		<div class="col-sm-9">
-			<div class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
-			<div class="images_thumb_selected">
+			<div class="btn btn-warning"  data-rel="tooltip" data-original-title="Select image(s) for your ADS" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
+			<div class="clearfix"></div>
+
+
+		<div class="images_thumb_selected well col-lg-8 hide"><div class="clearfix"></div></div>
+		<?php echo $this->Form->input('selected_img',array(
+					'label' => false,
+					'type' => 'text',
+					'style'=>'opacity:0',
+					'value' => implode(',',$imagesArray)
+		)); ?>
+			<div class="images_thumb_selected well col-lg-8 hide" style="display:block !important"><div class="clearfix"></div>
 			<?php
 			$DataImage = array();
 			 foreach ($this->request->data['Image'] as $key => $imageList) :
@@ -48,27 +58,49 @@
 				$DataImage[] = $imageList['id'];
 			 ?>		
 			<div class="selected_img">
-				<i class="fa fa-times-circle-o remove_image" data-id="<?php echo $imageList['id']?>"></i>
+				<i class="fa fa-times remove_image" data-id="<?php echo $imageList['id'] ?>"></i>
 				<a class="fancybox" href="<?php echo Configure::read('folder_name').$imageList['path'].$imageList['name'] ?>" data-fancybox-group="gallery-selected">
 				<div class="img_prev" style="background:url(<?php echo Configure::read('folder_name').$imageList['path'].$imageList['name'] ?>);background-size:cover;"></div>
 				</a>
-				<div class="select_primary">
-					<input type="radio" value="<?php echo $imageList['id']?>" name="data[PrimaryImage]" <?php echo ($imageList['is_primary'] == 1) ? 'checked' : ''; ?>>
-							Select As Primary
-							</div>
-						</div>
+				<div class="radio">
+				<label>
+				<input class="ace" type="radio" value="<?php echo $imageList['id'] ?>" name="data[PrimaryImage]"
+				 <?php echo ($imageList['id'] == $this->request->data['PrimaryImage']['id']) ? 'checked' : '' ?>>
+				<span class="lbl"> Set as Primary </span>
+				</label>
+				</div>
+			</div>
 			<?php 
 			endif;
 			endforeach; $ImageValue = implode(',',$DataImage);  ?>
 			</div>
-			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'hidden','value' => $ImageValue)); ?>
+			
 		</div>
 	</div>
+
+	
+
 
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Point your Location </label>
 		<div class="col-sm-9">
-			<div class="btn btn-danger" data-toggle="modal" data-target=".google_map_pop" onclick="return false"><i class="ace-icon fa fa-map-marker bigger-130"></i><span>Select your location for meet-ups</span></div>
+			<div class="btn btn-danger" data-rel="tooltip" data-original-title="Choose respective place for your meetups" data-toggle="modal" data-target=".google_map_pop" onclick="return false"><i class="ace-icon fa fa-map-marker bigger-130"></i><span>Select Location</span></div>
+			<div id="location">
+				<i class="ace-icon fa fa-map-marker bigger-130"></i>
+
+					<?php echo $this->request->data['Address']['street'].', '.$this->request->data['Address']['town'].' '. $this->request->data['Address']['province'] ?>
+				<br/>
+				<?php
+				$long = $this->request->data['Map']['longhitude'];
+				$lat = $this->request->data['Map']['latitude'];
+
+
+				echo '<img src="http://maps.google.com/maps/api/staticmap?center='.$lat.','.$long.'&zoom=13&markers='.$lat.','.$long.'&size=300x300&sensor=false&key=ABQIAAAA6-Rq-t8XwsqXeXws3DleLBSI_7XewNJfovQwsmZjGMbTG7rp6BQaj3bwm-gy7nGQPyWKPTd3zPtcVA">';
+				?>
+
+			</div>
+
+
 		</div>
 	</div>
 
@@ -80,79 +112,51 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="form-field-orig" class="col-sm-3 control-label no-padding-right"> Original Price </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('orig_price',array('id' => 'form-field-orig','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-
-	<div class="form-group">
 		<label for="form-field-price" class="col-sm-3 control-label no-padding-right"> Selling Price </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('selling_price',array('id' => 'form-field-price','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('selling_price',array('id' => 'form-field-price','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false,'data-rel'=>'tooltip','data-original-title'=>'Put here your selling price for this ADS')); ?>
 		</div>
 	</div>
-	
 	<div class="form-group">
 		<label for="form-field-before" class="col-sm-3 control-label no-padding-right"> Before Price </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('before_price',array('id' => 'form-field-before','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('before_price',array('id' => 'form-field-before','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false,'data-rel'=>'tooltip','data-original-title'=>'Put here your ADS original price')); ?>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="form-field-discount" class="col-sm-3 control-label no-padding-right"> Discount Price </label>
+		<label for="form-field-is-discounted" class="col-sm-3 control-label no-padding-right"> Is Discounted </label>
 		<div class="col-sm-9">
-			<?php echo $this->Form->input('discount_price',array('id' => 'form-field-discount','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Promo Price </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('promo_price',array('id' => 'form-field-promo','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
+			<div class="checkbox is-disc">
+				<label>
+					<input type="checkbox" id="is-discounted" class="ace" name="form-field-checkbox">
+					<span class="lbl"></span>
+				</label>
+				<span title="" data-content="Check this if you want to add discount on your selling price." data-placement="left" data-trigger="hover" data-rel="popover" class="help-button" data-original-title="Create ADS Guide">?</span>
+			</div>
+			<select id="form-field-select-1" class="select-disc-type hide col-xs-10 col-sm-5">
+				<option value="0">Discount Percent</option>
+				<option value="1">Promo Percent</option>
+			</select>
+			<div class="clearfix"></div>
+			<?php echo $this->Form->input('discount_price',array('data-rel'=>'tooltip','min'=>"1",'max'=>"99",'data-original-title'=>'Must enter 1% to 99% only','id' => 'form-field-discount','class' => 'hide percent-limit col-xs-10 col-sm-5','type'=>'text','label' => false,'div' => false)); ?>
+			<?php echo $this->Form->input('promo_price',array('data-rel'=>'tooltip','min'=>"1",'max'=>"99",'data-original-title'=>'Must enter 1% to 99% only','id' => 'form-field-promo','class' => 'hide percent-limit col-xs-10 col-sm-5','type'=>'text','label' => false,'div' => false)); ?>
 		</div>
 	</div>
 
-	<div class="page-header">
-		<h1>
-			Create ADS
-			<small><i class="ace-icon fa fa-angle-double-right"></i> Address</small>
-		</h1>
+
+
+	<div id="address-form">
+
+	<?php echo $this->Form->input('Address.id',array('type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.street',array('id' => 'street','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.town',array('id' => 'town','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.province',array('id' => 'province','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.zipcode',array('id' => 'zipcode','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
+		<?php echo $this->Form->input('Address.hometown',array('id' => 'hometown','class' => 'col-xs-10 col-sm-5','label' => false,'div' => false, 'type' => 'hidden')); ?>
 	</div>
 
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Street </label>
-		<div class="col-sm-9">
 
-			<?php echo $this->Form->input('Address.id',array('type' => 'hidden')); ?>
-			<?php echo $this->Form->input('Address.street',array('id' => 'street','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Town </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.town',array('id' => 'town','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Province </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.province',array('id' => 'province','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Zip Code </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.zipcode',array('id' => 'zipcode','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="form-field-promo" class="col-sm-3 control-label no-padding-right"> Home Town </label>
-		<div class="col-sm-9">
-			<?php echo $this->Form->input('Address.hometown',array('id' => 'hometown','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
-		</div>
-	</div>
 	<div class="clearfix form-actions">
 		<div class="col-md-offset-3 col-md-9">
 			<button type="submit" id="submit" class="btn btn-info">
@@ -170,34 +174,9 @@
 
 	<?php echo $this->element('maps_popup'); ?>
 	
-	<div class="modal fade google_map_pop" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="map_container" style="display:block" >
-				
-					<?php echo $this->Html->script('User.map'); ?>
-
-					<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
-					<div id="map-canvas" style="width:100%; height:600px;"></div>
-						
-					<?php echo $this->Form->input('Map.model',array('value' => 'Ad','type' => 'text')); ?>
-					<?php echo $this->Form->input('Map.latitude',array('id' => 'lat','type' => 'text')); ?>
-					<?php echo $this->Form->input('Map.longhitude',array('id' => 'lng','type' => 'text')); ?>
-					
-					<button id="close" onclick="return false">Close </button>
-					<!--ENDS-->
-				</div>
-			</div>
-		</div>
-	</div>
-
-		
 <?php echo $this->Form->end(); ?> 
-	
-<!-- Small modal -->
-<div class="clear"></div>
 
+<div class="clear"></div>
 
 <?php echo $this->element('redactor_settings')?>
 <?php echo $this->element('image_manager'); ?>

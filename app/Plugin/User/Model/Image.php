@@ -38,7 +38,6 @@ $this->contain($model);
 	
 public function saveImages($ImageData = null, $model = 'User',$foreign_key = null,$primary = null) {
 
-			//pr($ImageData);
 			if (!empty($ImageData)) {
 
 				foreach ($ImageData as $key => $data) {

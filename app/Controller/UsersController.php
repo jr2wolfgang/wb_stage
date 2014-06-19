@@ -81,6 +81,8 @@ class UsersController extends AppController {
 		
 		$this->layout = 'register';
 
+		$this->User->bind('AccountType');
+
 		if ($this->request->is('post')) {
 			
 			if (!empty($this->request->data['User']['email'])) {
@@ -89,7 +91,7 @@ class UsersController extends AppController {
 
 				$this->request->data['User']['group_id'] = 2;
 				
-				if ( $this->User->save($this->request->data) ) {
+				if ($this->User->save($this->request->data) ) {
 
 					if ($this->Auth->login($this->request->data['User'])) {
 

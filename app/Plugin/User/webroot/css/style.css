@@ -222,9 +222,10 @@ section.row {
 }
 
 .error[for="AdSelectedImg"] {
-    margin-left: 30px;
-    margin-top: -32px;
-    position: absolute;
+    clear: both;
+    float: left;
+    margin: 11px 0;
+
 }
 
 /*perads view*/
