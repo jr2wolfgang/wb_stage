@@ -56,7 +56,16 @@
                         </td>
                         <td><?php echo $ad['Ad']['name']; ?></td>
                         <td>
-                            GreenBit
+
+                            <?php if(!empty($ad['Address']['street'])): ?>
+
+                                <?php echo $ad['Address']['street']; ?>, 
+                                <?php echo $ad['Address']['town']; ?>, <br/>
+                                <?php echo $ad['Address']['province']; ?>,
+                                <?php echo $ad['Address']['hometown']; ?>
+    
+                            <?php endif; ?>
+
                         </td>
                         <td>
                              <?php if( $ad['Ad']['selling_price'] != 0): ?>
