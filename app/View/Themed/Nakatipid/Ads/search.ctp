@@ -49,7 +49,7 @@
             <tbody>
 
                 <?php foreach ($ads as $ad): ?>                    
-                    <tr>
+                    <tr data-url="<?php echo $this->html->url(array('controller' => 'ads', 'action' => 'view','slug' => $ad['Ad']['slug']), true); ?>">
                         <td>
                             <?php echo $this->Html->image('/user/img/uploads/'. $ad['PrimaryImage']['name'],
                             array('url' => array('controller' => 'ads', 'action' => 'view','slug' => $ad['Ad']['slug']))); ?>
@@ -86,10 +86,11 @@
                         <td>
                             <?php echo $this->Time->timeAgoInWords($ad['Ad']['created']); ?>
                         </td>
+                        <td>&nbsp;</td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-            <tfooter>
+            <tfoot>
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
@@ -98,7 +99,7 @@
                     <th>Date Posted</th>
                     <th>View</th>
                 </tr>
-            </tfooter>
+            </tfoot>
         </table>
         <div id="search-pagination">
             Page: 
@@ -114,7 +115,7 @@
     .before-price { text-decoration: line-through; }
 
     .search-logo { border-bottom: 1px solid; padding: 10px; }
-    .block { text-align: center; padding: 20px; }
+    .block { text-align: center; padding: 10px 20px;}
     .block div { background: rgba(0,0,0,0.8); color: #fff; width: 100%; height: 100px; margin: 10px; display: block; vertical-align: middle; }
 
     #search-right { border-left: 1px solid; }
@@ -122,4 +123,13 @@
     #search-logo { width: 10%; }
     #search-table { width: 100%; }
     #search-table a { display: block; height: 150px; overflow: hidden; width: 150px; }
+    #search-table > tbody > tr:hover { background: #d4d6d6; cursor: pointer; }
 </style>
+
+<script type="text/javascript">
+    $(document).ready(function($){
+        $('#search-table > tbody > tr').click(function(){
+            window.location.href = $(this).attr('data-url');
+        });
+    });
+</script>
