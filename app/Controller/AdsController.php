@@ -19,11 +19,11 @@ class AdsController extends AppController {
 
 	function beforeFilter() {
 		$this->theme = 'Nakatipid';
-  		$this->Auth->allow('index','view');
+  		$this->Auth->allow('index','view','search');
  	}
 
 	public function index() {
-		$this->Ad->bind(array('Image','PrimaryImage'));
+		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		$this->paginate = array(
 		    'limit' => 8, 
@@ -37,10 +37,14 @@ class AdsController extends AppController {
 
 	public function search(){
 		$keyword = $this->request->query('q');
-		$this->Ad->bind(array('Image','PrimaryImage'));
+		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		if ( !empty($keyword) ){
-			$cond=array( 'OR'=>array("Ad.name LIKE '%$keyword%'")  );
+			$cond=array( 'OR'=>array("Ad.name LIKE '%$keyword%'",
+									 "Address.street LIKE '%$keyword%'",
+									 "Address.town LIKE '%$keyword%'",
+									 "Address.province LIKE '%$keyword%'",
+									 "Address.hometown LIKE '%$keyword%'")  );
 		} else {
 			$cond=array();
 		}

@@ -15,6 +15,8 @@ class AdsController extends UserAppController  {
 	    $this->layout = 'default';
 	    $this->loadModel('User.Ad');
 	    $this->loadModel('User.Image');
+	    $this->loadModel('User.User');
+	    
 	    // Allow users to register and logout.
 	    $this->Auth->allow('register', 'logout');
 	}
@@ -50,9 +52,8 @@ class AdsController extends UserAppController  {
 		
 		$ads = ClassRegistry::init('Ad');
 		
-		$this->loadModel('User.User');
-
 		$User = ClassRegistry::init('User');
+
 
 		$User->bind(array('Image'));
 
@@ -67,15 +68,20 @@ class AdsController extends UserAppController  {
 			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $this->request->data['Address']['modified_by'] = $images['User']['id'];
 
 			$AdsData = $this->Ad->GetData($this->request->data);
-			
-			$this->Ad->bind(array('Map','Address'));
 
-			$this->request->data['Address']['id'] = '';
+			$this->loadModel('User.Ad');
+	    	
+	    	$this->Ad->bind(array('Map','Address'));
 
 			$this->request->data['Address']['model'] = 'Ad';
 
+			$this->request->data['Address']['zipcode'] = 'Ad';
+
+
 			$this->request->data['Ad']['slug'] = $this->Ad->getUniqueUrl(Inflector::slug($this->request->data['Ad']['name']));
 
+			unset($this->request->data['form-field-checkbox']);
+		
 
 		if ($this->Ad->saveAssociated($this->request->data)) {
 
@@ -96,6 +102,62 @@ class AdsController extends UserAppController  {
 
 		$this->set(compact('images'));
 	}
+
+
+	public function edit($id = null) {
+		
+		$User = ClassRegistry::init('User');
+
+		if (!$this->Ad->exists($id)) {
+			throw new NotFoundException(__('Invalid group'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+
+			$AdsData = $this->Ad->GetData($this->request->data);
+			
+			$current_id = $this->request->data['Ad']['id'];
+
+			$this->Ad->bind(array('Image','Address'));
+
+			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $this->request->data['Address']['modified_by'] = $this->Session->read('Auth.User.id');
+
+			$this->request->data['Address'][0] = $this->request->data['Address'];
+
+			$this->request->data['Ad']['slug'] = $this->Ad->getUniqueUrl(Inflector::slug($this->request->data['Ad']['name']));
+		
+			if ($this->Ad->saveAssociated($this->request->data,array('deep' => true))) {
+				
+				ClassRegistry::init('Address')->save($this->request->data['Address']);
+
+				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
+				
+				$this->Session->setFlash(__('The Ads has been saved.'),'success');
+				return $this->redirect(array('action' => 'index'));
+
+			} else {
+				$this->Session->setFlash(__('The Ads could not be saved. Please, try again.'),'error');
+			}
+		} else {
+			$options = array('conditions' => array('Ad.id' => $id));
+				
+			$this->Ad->bind(array('Image','PrimaryImage','Address','Map'));
+			$this->request->data = $this->Ad->find('first', $options);
+
+			$User->bind(array('Image'));
+
+			$images = $User->read(null,$this->Session->read('Auth.User.id'));
+
+			pr($this->request->data);	
+		}
+
+		 $this->create_json_data();
+
+		$this->set(compact('image','images'));
+
+
+	}
+
+
 
 	public function upload_multiple(){
 
@@ -214,58 +276,7 @@ class AdsController extends UserAppController  {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function edit($id = null) {
-		
-		$User = ClassRegistry::init('User');
-
-		if (!$this->Ad->exists($id)) {
-			throw new NotFoundException(__('Invalid group'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-
-			$AdsData = $this->Ad->GetData($this->request->data);
-			
-			$current_id = $this->request->data['Ad']['id'];
-
-			$this->Ad->bind(array('Image','Address'));
-
-			$this->request->data['Ad']['modified_by'] = $this->request->data['Map']['modified_by'] = $this->request->data['Address']['modified_by'] = $this->Session->read('Auth.User.id');
-
-			$this->request->data['Address'][0] = $this->request->data['Address'];
-
-			$this->request->data['Ad']['slug'] = $this->Ad->getUniqueUrl(Inflector::slug($this->request->data['Ad']['name']));
-		
-			if ($this->Ad->saveAssociated($this->request->data,array('deep' => true))) {
-				
-				ClassRegistry::init('Address')->save($this->request->data['Address']);
-
-				ClassRegistry::init('Image')->saveImages($AdsData['Image'],'Ad',$current_id,$this->request->data['PrimaryImage']);
-				
-				$this->Session->setFlash(__('The Ads has been saved.'),'success');
-				return $this->redirect(array('action' => 'index'));
-
-			} else {
-				$this->Session->setFlash(__('The Ads could not be saved. Please, try again.'),'error');
-			}
-		} else {
-			$options = array('conditions' => array('Ad.id' => $id));
-				
-			$this->Ad->bind(array('Image','PrimaryImage','Address'));
-			$this->request->data = $this->Ad->find('first', $options);
-
-			$User->bind(array('Image'));
-
-			$images = $User->read(null,$this->Session->read('Auth.User.id'));
-
-			
-		}
-
-		 $this->create_json_data();
-
-		$this->set(compact('image','images'));
-
-
-	}
+	
 
 	public function redactor_upload_image() {
 
