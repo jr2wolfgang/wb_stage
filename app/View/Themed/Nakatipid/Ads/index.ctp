@@ -75,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="large-10 columns">
-                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?>
+                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?> 
                         </div>
                     </div>
                     <div class="row">
