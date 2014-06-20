@@ -148,28 +148,65 @@ jQuery.validator.setDefaults({
   success: "valid"
 });
 $( "#AdNewAdForm" ).validate({
+  ignore: [], 		
   rules: {
-    required: {
-      required: true,
-    
-    },
+    redactor: {
+	    required: true,
+	    minlength: 30
+	}
+
     
   
   }
 });
 
-$('#AdNewAdForm').submit(function(e){
 
-		$('.price_error').remove();
+$('.redactor_redactor.redactor_desc').hover(function() {
+    this.focus();
+}, function() {
+    this.blur();
+}).keydown(function(e) {
+	 $('.error.desc').remove();
+   	if ($.trim($(this).text()).length < 150) {
 
-		if ($('#AdDiscountPrice').val() == '' &&  $('#AdPromoPrice').val() == '') {
+ 
+   	var $error = '<label class="error desc" for="form-field-price">';
+	$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
+	$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';
+	$(this).after($error);
+   	}
+});
 
-			$('#AdPromoPrice').after('<label class="price_error" style="display:block !important">Must Select from Discount or Promo Price</label>');
+
+$('#AdNewAdForm,#AdEditForm').submit(function(e){
+
 		
-			e.preventDefault();
+		 $('.error.image,.error.desc').remove();
+
+		
+
+		if ($.trim($('.redactor_redactor.redactor_desc').text()).length < 150) {
+		 		
+				var $error = '<label class="error desc" for="form-field-price">';
+				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
+				$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';
+				$('.redactor_redactor.redactor_desc').after($error);
+
+				e.preventDefault();	
+		}
+
+		if ($('.selected_img').length < 3) {
+
+				var $error = '<label class="error image" for="AdSelectedImg">';
+				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
+				$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';
+				$('#AdSelectedImg').after($error);
+				e.preventDefault();
 
 		}
-	
+
+
+		
 });
 
 $('.btn[type="reset"]').click(function(){
@@ -201,7 +238,7 @@ $('.fm-image-wrap').on('click','.delete-image',function(){
 
 
 
-$('.use_image').click(function(){
+$('.use_image').click(function(e){
 
 	$('.bs-example-modal-sm').modal('hide');
 	
@@ -238,6 +275,17 @@ $('.use_image').click(function(){
 		} else {
 			$('#AdSelectedImg').val(imgArray);	
 		}
+
+
+
+		if ($('.selected_img').length < 3) {
+
+				var $error = '<label class="error image" for="AdSelectedImg">';
+				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
+				$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';
+				$('#AdSelectedImg').after($error);
+				
+		}
 		
 });
 
@@ -251,7 +299,7 @@ $('body').on('click','.remove_image',function(){
 		$('#AdSelectedImg').val($newImgArray);
 	}).remove();
 	 if($('.images_thumb_selected').html() == '<div class="clearfix"></div>') {
-	 	$('.images_thumb_selected').slideUp('fast');
+	 	//$('.images_thumb_selected').slideUp('fast');
 	 }
 });
 
@@ -259,12 +307,12 @@ $('#is-discounted').click(function(){
 	if($(this).is(':checked')) {
 		$('.select-disc-type').removeClass('hide');
 		$('#form-field-discount').removeClass('hide').attr('required',true);
-		$('.error[for="form-field-discount"]').hide();
+		//$('.error[for="form-field-discount"]').hide();
 	} else {
 		$('.select-disc-type').addClass('hide');
 		$('#form-field-discount').addClass('hide').removeAttr('required',true);
 		$('#form-field-promo').addClass('hide').removeAttr('required',true);
-		$('.error[for="form-field-discount"]').hide();
+		//$('.error[for="form-field-discount"]').hide();
 	}
 });
 
@@ -272,11 +320,11 @@ $('.select-disc-type').on('change', function() {
 	if($(this).val() == 0) {
 		$('#form-field-discount').removeClass('hide').attr('required',true);
 		$('#form-field-promo').addClass('hide').removeAttr('required',true);
-		$('#form-field-promo').next().hide();
+		//$('#form-field-promo').next().hide();
 	} else {
 		$('#form-field-promo').removeClass('hide').attr('required',true);
 		$('#form-field-discount').addClass('hide').removeAttr('required',true);
-		$('#form-field-discount').next().hide();
+		//$('#form-field-discount').next().hide();
 	}
 });
 
