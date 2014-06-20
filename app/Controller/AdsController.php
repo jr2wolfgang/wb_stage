@@ -26,6 +26,7 @@ class AdsController extends AppController {
 		echo 'Please disregard.. Testing the live server';
 		echo '<br> still getting some error';
 		echo '<br> isa pa!!';
+		echo '<br> dalawa pa!!';
 		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		$this->paginate = array(
