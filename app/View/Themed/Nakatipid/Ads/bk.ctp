@@ -41,7 +41,7 @@
 				 	<?php $class = '';?>
 				 	 <?php if ($ad['Ad']['discount_price'] != 0): ?>
                          <div class="per-ads-price per-discount-price">
-                             &nbsp; PHP <?php echo $ad['Ad']['discount_price']; ?>
+                             PHP <?php echo $ad['Ad']['discount_price']; ?>
                              <?php $class = 'per-ads-before-price'; ?>
                          </div>
                     <?php endif;?>

@@ -1,9 +1,16 @@
 #view-ads {
 	margin-top: 30px;
 }
-.v-left-sidebar, .v-right-sidebar {
-	background: #575757;
-	min-height: 10px;
+
+.v-right-sidebar .three-col {
+    background: none repeat scroll 0 0 #575757;
+    padding: 0px 17px;
+}
+
+.v-left-sidebar .three-col {
+    background: none repeat scroll 0 0 #575757;
+    padding: 0px 17px;
+    min-height: 10px;
 }
 
 #searchbar-container {
@@ -75,8 +82,10 @@
 }
 
 .img-wrap-main {
-	background: #6A6A6A;
+	background: #E0E0E0;
 	min-height: 360px;
+	max-height: 360px;
+	overflow: hidden;	
 }
 
 .img-ads-thumb {
@@ -104,4 +113,162 @@
 
 .img-ads-thumb .thumb-holder .per-thumb:first-child {
 	margin-top: 0px;
+}
+
+.main-ads-price {
+	font-family: 'franchiseregular';
+}
+
+.title-price-box {
+    margin: 20px 0;
+}
+
+.main-ads-title {
+    font-size: 16pt;
+    margin-top: 3px;
+}
+
+.ads-att-box {
+	background: #6A6A6A;
+	padding: 10px;
+}
+
+.ads-desc-box {
+	background: #6A6A6A;
+	padding: 10px;
+	margin: 20px 0;
+}
+
+.ads-desc-box-inner {
+	max-height: 200px;
+	min-height: 200px;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	color: #fff;
+}
+
+.ads-map-box {
+	background: #6A6A6A;
+	padding: 10px;
+}
+
+.btn-section {
+	padding: 20px 0; 
+}
+
+.btn-section .button.expand {
+    margin-bottom: 4px;
+    background: #373737;
+    color: #fff;
+}
+
+.btn-section .button.expand:last-child {
+	margin-bottom: 0px;
+}
+
+.btn-section .button.expand:hover {
+	background: #474747;
+}
+
+.header-txt {
+	margin: 15px 0;
+	font-size: 14pt;
+	font-weight: bold;
+	color: #fff;
+}
+
+.seller-dp {
+	background: #444444;
+	min-height: 150px;
+}
+
+.seller-is-online {
+    background: none repeat scroll 0 0 #6a6a6a;
+    color: #fff;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.seller-name {
+    color: #fff;
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.seller-is-online i {
+    color: #878787;
+    font-size: 9pt;
+}
+
+.seller-social {
+	background: #444444;
+	padding: 5px 0px;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.more-btn {
+    background: none repeat scroll 0 0 #373737;
+    font-size: 10pt;
+    font-weight: normal;
+    margin-top: -6px;
+    padding: 7px;
+}
+
+.seller-other-ads {
+	padding: 10px;
+}
+
+.seller-other-ads-inner {
+	max-height: 200px;
+	min-height: 200px;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.per-seller-other-ads {
+	margin-bottom: 10px;
+}
+
+.per-seller-other-ads:last-child {
+	margin-bottom: 0px;
+}
+
+.other-ads-img {
+	background: #6A6A6A;
+	height: 100px;
+}
+
+.other-ads-view-btn {
+    background: none repeat scroll 0 0 #494949;
+    color: #fff;
+    font-size: 10pt;
+    margin: 10px 0;
+    padding: 7px 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.other-ads-title {
+    color: #fff;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.other-ads-pricelbl {
+    color: #fff;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.other-ads-price {
+    color: #fff;
+    font-size: 13pt;
+    font-weight: bold;
+    text-align: right;
 }

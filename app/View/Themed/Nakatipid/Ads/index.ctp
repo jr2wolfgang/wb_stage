@@ -75,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="large-10 columns">
-                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?>
+                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?> 
                         </div>
                     </div>
                     <div class="row">
@@ -296,7 +296,20 @@
                             <i class="flaticon-clock61"></i>
                             <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
                         </span>
-                        <span><i class="flaticon-map5"></i> Dressrossa, New World</span>
+                        <span>
+                            <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
+                                <i class="flaticon-map5"></i>
+                            </div>
+                            <?php if(!empty($data['Address']['street'])): ?>
+
+                                <div class="address" style="display:inline-block; width:80%;">
+                                    <?php echo $data['Address']['street']; ?>, 
+                                    <?php echo $data['Address']['town']; ?>, 
+                                    <?php echo $data['Address']['province']; ?>
+                                </div>
+
+                            <?php endif; ?>
+                        </span>
                         <span><i class="flaticon-small44"></i> 500 views</span>
                     </div>
                     <div class="per-ads-price-box">
@@ -304,7 +317,7 @@
                         <div class="per-ads-price <?php echo ($data['Ad']['selling_price'] != 0) ? 'per-ads-before-price' : '' ?>">PHP <?php echo $data['Ad']['before_price']; ?></div>
                         <?php if ($data['Ad']['selling_price'] != 0): ?>
                              <div class="per-ads-price per-discount-price">
-                                 &nbsp; NOW PHP <?php echo $data['Ad']['selling_price']; ?>
+                                 &nbsp; NOW! PHP <?php echo $data['Ad']['selling_price']; ?>
                              </div>
                         <?php endif;?>
                         <div class="clearfix"></div>
