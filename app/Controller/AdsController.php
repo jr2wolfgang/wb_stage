@@ -23,9 +23,6 @@ class AdsController extends AppController {
  	}
 
 	public function index() {
-		echo 'Please disregard.. Testing the live server';
-		echo '<br> still getting some error';
-		echo '<br> hangkulit';
 		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		$this->paginate = array(
