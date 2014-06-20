@@ -7,22 +7,17 @@ App::uses('AppModel', 'Model');
  */
 class Ad extends AppModel {
 
-/**
- * Validation rules
- *
- * @var array
- */
 
 	public $recursive = -1;
 	
 	public $actsAs = array('Containable');
 	
-	public $validate = array(
-	);
+	public $validate = array();
 
+	 public $usetable = 'Ads';
 	
 
-	
+
 	public function bind($model = array('Group')){
 
 		$this->bindModel(
@@ -58,6 +53,19 @@ class Ad extends AppModel {
 				)
 			),
 			'hasOne' => array(
+				'Address' => array(
+					'className' => 'Address',
+					'foreignKey' => 'foreign_key',
+					'dependent' => true,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+				),
 				'Map' => array(
 					'className' => 'Map',
 					'foreignKey' => 'foreign_key',
@@ -84,24 +92,12 @@ class Ad extends AppModel {
 					'finderQuery' => '',
 					'counterQuery' => ''
 					),
-				'Address' => array(
-					'className' => 'Address',
-					'foreignKey' => 'foreign_key',
-					'dependent' => false,
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'exclusive' => '',
-					'finderQuery' => '',
-					'counterQuery' => ''
-				)
+				
 			)
 		
 		)
 		
-		);
+		,false);
 
 		$this->contain($model);
 	}
