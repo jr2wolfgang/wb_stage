@@ -2,6 +2,7 @@
 <?php echo $this->Html->script('User.global'); ?>
 
 
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 <div class="page-header">
 	<h1>
@@ -9,18 +10,20 @@
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
 			Basic ADS Information
+			
 		</small>
 	</h1>
 </div>
 <div class="clear"></div>
-<?php echo $this->Form->create('Ad',array('class'=>'form-horizontal','role'=>'form','url'=>array('controller' => 'ads','action' => 'new_ad'))); ?>
-
+<?php echo $this->Form->create('Ad',array('class'=>'form-horizontal ads','role'=>'form','url'=>array('controller' => 'ads','action' => 'new_ad'))); ?>
+	
 	<div class="form-group">
 		<label for="form-field-name" class="col-sm-3 control-label no-padding-right"> Item Name </label>
 		<div class="col-sm-9">
 			<?php echo $this->Form->input('name',array('id' => 'form-field-name','class' => 'required col-xs-10 col-sm-5','label' => false,'div' => false)); ?>
 		</div>
 	</div>
+
 
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Description </label>
@@ -42,7 +45,7 @@
 			<div class="btn btn-warning"  data-rel="tooltip" data-original-title="Select image(s) for your ADS" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
 			<div class="clearfix"></div>
 			<div class="images_thumb_selected well col-lg-8 hide"><div class="clearfix"></div></div>
-			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'text','style'=>'opacity:0','class'=>'required','required'=>'required')); ?>
+			<?php echo $this->Form->input('selected_img',array('label' => false,'type' => 'text','style'=>'opacity:0')); ?>
 		</div>
 	</div>
 
@@ -121,6 +124,68 @@
 <?php echo $this->Form->end(); ?> 
 
 <div class="clear"></div>
+
+	<div class="ads_preview">
+		
+
+		 <div class="per-ads-list">
+                <div class="per-ads-img">                            
+                    <?php if (time() - strtotime('2014-06-18 20:02:07.000000') < 60*60*24): ?>
+                        <div class="per-ads-new-label ads-has-label animated">New</div>
+                    <?php endif; ?>
+                    
+                    <a href="ads/view/slugs/">
+                        <div class="img-container">
+                            <?php echo $this->Html->image('/user/img/default_product_image.png'); ?>
+                        </div>
+                    </a>
+                </div>
+                <div class="per-ads-desc">
+                    <div class="per-ads-title">
+                       
+                        <?php echo $this->Html->link(' ',array(
+                                'controller' => 'ads',
+                                'action' => 'view',
+                             
+                                
+                        )); ?>
+
+                    </div>
+                    <div class="per-ads-info">
+                        <span>
+                            <i class="flaticon-clock61"></i>
+                             a seconds ago
+                        </span>
+                        <span>
+                            <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
+                                <i class="flaticon-map5"></i>
+                            </div>
+                        
+                                <div class="address" style="display:inline-block; width:80%;">
+                                	&nbsp
+                                </div>
+
+                            
+                        </span>
+                        <span><i class="flaticon-small44"></i> 500 views</span>
+                    </div>
+                  
+
+
+                 <div class="per-ads-price-box">
+                        <?php $class = '';?>
+                        <div class="per-ads-price per-ads-before-price">
+                        PHP <span class="before_price">0</span>
+                        </div>
+                             
+                             <div class="per-ads-price per-discount-price">
+                                 &nbsp; NOW! PHP  <span class="discounted_price">0</span>
+                             </div>
+                      
+                        <div class="clearfix"></div>
+                    </div>
+            </div>      		
+	</div>
 
 <?php echo $this->element('redactor_settings')?>
 <?php echo $this->element('ads_previewer'); ?>

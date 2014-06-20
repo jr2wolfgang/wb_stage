@@ -141,6 +141,8 @@ function geocodePosition(pos,lat,lng) {
                 $('#town').val(results[0].address_components[1].long_name);
                 $('#province').val(results[0].address_components[2].long_name);
                 $('#hometown').val(results[0].address_components[3].long_name);
+
+                $('.per-ads-info .address').text(results[0].formatted_address);
              }
 
             else{
