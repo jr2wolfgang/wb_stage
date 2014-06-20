@@ -384,3 +384,29 @@ section.row {
     margin: 10px!important;
     width: 40% !important;
 }
+
+.ads_preview {
+    position: fixed;
+    right: 0;
+    top: 93px;
+    z-index: 9999;
+}
+
+.form-horizontal.ads {
+    max-width: 1035px;
+}
+.per-ads-before-price {
+    color: #9E9E9E;
+    font-size: 14pt;
+    margin-right: 10px;
+    margin-top: -21px;
+    text-decoration: line-through;
+    position: absolute;
+    right: 0;
+    display: none;
+}
+.per-ads-price.per-discount-price {
+    float: right;
+    margin: 0;
+    position: relative;
+}

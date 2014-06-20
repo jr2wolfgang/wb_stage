@@ -142,72 +142,9 @@ var settings = {
 }
 $("#mulitplefileuploader").uploadFile(settings);
 
+jQuery.validator.setDefaults({  debug: false,  success: "valid"});$( "#AdNewAdForm" ).validate({  ignore: [], 		  rules: {    redactor: {	    required: true,	    minlength: 30	}        }});$('.redactor_redactor.redactor_desc').hover(function() {    this.focus();}, function() {    this.blur();}).keydown(function(e) {	 $('.error.desc').remove();   	if ($.trim($(this).text()).length < 150) {    	var $error = '<label class="error desc" for="form-field-price">';	$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';	$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';	$(this).after($error);   	}});
 
-jQuery.validator.setDefaults({
-  debug: false,
-  success: "valid"
-});
-$( "#AdNewAdForm" ).validate({
-  ignore: [], 		
-  rules: {
-    redactor: {
-	    required: true,
-	    minlength: 30
-	}
-
-    
-  
-  }
-});
-
-
-$('.redactor_redactor.redactor_desc').hover(function() {
-    this.focus();
-}, function() {
-    this.blur();
-}).keydown(function(e) {
-	 $('.error.desc').remove();
-   	if ($.trim($(this).text()).length < 150) {
-
- 
-   	var $error = '<label class="error desc" for="form-field-price">';
-	$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
-	$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';
-	$(this).after($error);
-   	}
-});
-
-
-$('#AdNewAdForm,#AdEditForm').submit(function(e){
-
-		
-		 $('.error.image,.error.desc').remove();
-
-		
-
-		if ($.trim($('.redactor_redactor.redactor_desc').text()).length < 150) {
-		 		
-				var $error = '<label class="error desc" for="form-field-price">';
-				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
-				$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';
-				$('.redactor_redactor.redactor_desc').after($error);
-
-				e.preventDefault();	
-		}
-
-		if ($('.selected_img').length < 3) {
-
-				var $error = '<label class="error image" for="AdSelectedImg">';
-				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
-				$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';
-				$('#AdSelectedImg').after($error);
-				e.preventDefault();
-
-		}
-
-
-		
-});
+$('#AdNewAdForm,#AdEditForm').submit(function(e){				 $('.error.image,.error.desc').remove();				if ($.trim($('.redactor_redactor.redactor_desc').text()).length < 150) {		 						var $error = '<label class="error desc" for="form-field-price">';				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';				$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';				$('.redactor_redactor.redactor_desc').after($error);				e.preventDefault();			}		if ($('.selected_img').length < 3) {				var $error = '<label class="error image" for="AdSelectedImg">';				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';				$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';				$('#AdSelectedImg').after($error);				e.preventDefault();		}		});
 
 $('.btn[type="reset"]').click(function(){
 	$('.redactor_redactor').html('');
@@ -238,7 +175,7 @@ $('.fm-image-wrap').on('click','.delete-image',function(){
 
 
 
-$('.use_image').click(function(e){
+$('.use_image').click(function(){
 
 	$('.bs-example-modal-sm').modal('hide');
 	
@@ -263,6 +200,8 @@ $('.use_image').click(function(e){
 							</div>';
 			appendImage += "</div>";
 			imgArray.push($(this).val());
+
+			$('.img-container img').attr('src',$img_src);
 			
 		});
 		$('.images_thumb_selected').html('<div class="clearfix"></div>');
@@ -274,19 +213,21 @@ $('.use_image').click(function(e){
 
 		} else {
 			$('#AdSelectedImg').val(imgArray);	
-		}
-
-
-
-		if ($('.selected_img').length < 3) {
-
-				var $error = '<label class="error image" for="AdSelectedImg">';
-				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';
-				$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';
-				$('#AdSelectedImg').after($error);
-				
+		}			
+		if ($('.selected_img').length < 3) {			
+			var $error = '<label class="error image" for="AdSelectedImg">';				
+			$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';				
+			$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';				
+			$('#AdSelectedImg').after($error);						
 		}
 		
+
+		
+});
+
+
+$('.images_thumb_selected').on('click',".lbl",function(){
+		$('.img-container img').attr('src',$(this).prev().data('img'));
 });
 
 $('body').on('click','.remove_image',function(){
@@ -299,7 +240,7 @@ $('body').on('click','.remove_image',function(){
 		$('#AdSelectedImg').val($newImgArray);
 	}).remove();
 	 if($('.images_thumb_selected').html() == '<div class="clearfix"></div>') {
-	 	//$('.images_thumb_selected').slideUp('fast');
+	 	$('.images_thumb_selected').slideUp('fast');
 	 }
 });
 
@@ -320,11 +261,11 @@ $('.select-disc-type').on('change', function() {
 	if($(this).val() == 0) {
 		$('#form-field-discount').removeClass('hide').attr('required',true);
 		$('#form-field-promo').addClass('hide').removeAttr('required',true);
-		//$('#form-field-promo').next().hide();
+		$('#form-field-promo').next().hide();
 	} else {
 		$('#form-field-promo').removeClass('hide').attr('required',true);
 		$('#form-field-discount').addClass('hide').removeAttr('required',true);
-		//$('#form-field-discount').next().hide();
+		$('#form-field-discount').next().hide();
 	}
 });
 
@@ -339,5 +280,93 @@ $('#preview-ads').click(function(){
 	$('.img-container img').attr('src',$img);
 	$('.per-ads-title a').text($('#form-field-name').val())
 });
+
+
+$('#form-field-name').bind({
+        copy : function(){
+            $('.per-ads-title a').text($(this).val());
+        },
+        paste : function(){
+           $('.per-ads-title a').text($(this).val());
+        },
+        cut : function(){
+           $('.per-ads-title a').text($(this).val());
+        },
+        keyup : function(){
+        	$('.per-ads-title a').text($(this).val());
+        },
+        keydown : function(){
+        	$('.per-ads-title a').text($(this).val());
+        }
+    });
+
+$('#form-field-price').bind({
+        copy : function(){
+            $('.per-discount-price .discounted_price').text($(this).val());
+        },
+        paste : function(){
+            $('.per-discount-price .discounted_price').text($(this).val());
+        },
+        cut : function(){
+           $('.per-discount-price .discounted_price').text($(this).val());
+        },
+        keyup : function(){
+        	 $('.per-discount-price .discounted_price').text($(this).val());
+        },
+        keydown : function(){
+        	 $('.per-discount-price .discounted_price').text($(this).val());
+        }
+    });
+
+
+$('#form-field-before').bind({
+
+		copy : function(){
+			if ($(this).val() != '') {
+ 				$('.per-ads-before-price').show();
+				$('.per-ads-before-price .before_price').text($(this).val());
+			} else {
+				$('.per-ads-before-price .before_price').hide();
+			}
+        },
+        paste : function(){
+          if ($(this).val() != '') {
+ 				$('.per-ads-before-price').show();
+				$('.per-ads-before-price .before_price').text($(this).val());
+        	
+ 				
+			} else {
+				$('.per-ads-before-price .before_price').hide();
+			}
+        },
+        cut : function(){
+          if ($(this).val() != '') {
+ 				$('.per-ads-before-price').show();
+				$('.per-ads-before-price .before_price').text($(this).val());
+			} else {
+				$('.per-ads-before-price .before_price').hide();
+			}
+        },
+        keyup : function(){
+        	if ($(this).val() != '') {
+        		$('.per-ads-before-price').show();
+				$('.per-ads-before-price .before_price').text($(this).val());
+ 				
+			} else {
+				$('.per-ads-before-price .before_price').hide();
+			}
+        },
+        keydown : function(){
+        	if ($(this).val() != '') {
+ 				$('.per-ads-before-price').show();
+				$('.per-ads-before-price .before_price').text($(this).val());
+			} else {
+				$('.per-ads-before-price .before_price').hide();
+			}
+        }
+   
+	
+    });   
+
 
 });

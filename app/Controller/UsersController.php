@@ -77,7 +77,7 @@ class UsersController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function register(){
+	public function register() {
 		
 		$this->layout = 'register';
 
