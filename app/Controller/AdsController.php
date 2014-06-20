@@ -25,6 +25,7 @@ class AdsController extends AppController {
 	public function index() {
 		echo 'test ito';
 		echo 'isa pa';
+		echo 'isa pa';
 		$this->Ad->bind(array('Image','PrimaryImage','Address'));
 
 		$this->paginate = array(
