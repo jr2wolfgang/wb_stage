@@ -3,8 +3,15 @@
 <?php echo $this->Html->css('/footable/css/footable.core.css'); ?>
 <?php echo $this->Html->css('/footable/css/footable.standalone.css'); ?>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
 <header class="row full-width no-pads">
     <div id="navi-top" class="">
+        <div class="search-logo">
+            <?php echo $this->Html->image('logo_orange.png',array('id'=>'search-logo','url'=>array('controller' => 'ads', 'action' => 'index'))); ?>
+        </div>
         <ul>
             <li class="pull-left active">Home</li>
             <li class="pull-left">Clothes</li>
@@ -16,10 +23,6 @@
         <div class="clearfix"></div>
     </div>
 </header>
-
-<div class="search-logo">
-    <?php echo $this->Html->image('logo_orange.png',array('id'=>'search-logo','url'=>array('controller' => 'ads', 'action' => 'index'))); ?>
-</div>
 
 <section class="row full-width no-pads wrapper-ads"> 
     <div id="search-left" class="large-2 columns">
@@ -110,13 +113,13 @@
     #main-wrapper { padding-bottom: 0px; }
     .before-price { text-decoration: line-through; }
 
-    .search-logo { border-bottom: 1px solid; padding: 10px; }
+    .search-logo { border-bottom: 1px solid; padding: 7px 10px; width: 100px; float: left; }
     .block { text-align: center; padding: 10px 20px;}
     .block div { background: rgba(0,0,0,0.8); color: #fff; width: 100%; height: 100px; margin: 10px; display: block; vertical-align: middle; }
 
     #search-right { border-left: 1px solid; }
     #search-pagination { text-align: left; }
-    #search-logo { width: 10%; }
+    #search-logo { width: 100%; }
     #search-table { width: 100%; border-radius: 0 !important; -wekit-border-radius: 0 !important; -moz-border-radius: 0 !important; }
     #search-table td, #search-table tr, #search-table th { border: none !important; }
     #search-table a { display: block; height: 150px; overflow: hidden; width: 150px; }
@@ -144,5 +147,12 @@
                 tablet: 1024
             }
         });
+
+    
+        $( "input[name='q']" ).autocomplete({
+              source: "<?php echo $this->html->url('ajax_search', true); ?>",
+              minLength: 1
+        });
+        
     });
 </script>

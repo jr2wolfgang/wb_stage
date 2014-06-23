@@ -1,55 +1,62 @@
-<div class="modal fade ads_previewer" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content transparent-modal">
-		<div class="row">
-			<div class="col-sm-12 col-lg-12">
-				<div class="widget-box">
-					<div class="widget-header">
-						<h4 class="widget-title">Map</h4>
+	<div class="ads_preview">
+		<div class="per-ads-list">
+                <div class="per-ads-img">                            
+                    <?php if (time() - strtotime('2014-06-18 20:02:07.000000') < 60*60*24): ?>
+                        <div class="per-ads-new-label ads-has-label animated">New</div>
+                    <?php endif; ?>
+                    
+                    <a href="ads/view/slugs/">
+                        <div class="img-container">
+                            <?php 
+                            $ImgSrc = !empty($data['PrimaryImage']['id']) ? '/'.$data['PrimaryImage']['path'].$data['PrimaryImage']['name'] : '/user/img/default_product_image.png';
+                             echo $this->Html->image($ImgSrc); ?>
+                        </div>
+                    </a>
+                </div>
+                <div class="per-ads-desc">
+                    <div class="per-ads-title">
+                       <?php 
+                       $Title = !empty($data['Ad']['name']) ? $data['Ad']['name'] : 'Ads name';
+                       echo $this->Html->link($Title,'#'); 
+                       ?>
 
-						<div class="widget-toolbar">
-							<a class="close_modal" href="#">
-								<i class="ace-icon fa fa-times"></i>
-							</a>
-						</div>
-					</div>
-					<div class="widget-body">
-						<div class="widget-body-inner" style="display: block;">
-							<div class="per-ads-list">
-								<div class="per-ads-img">                            
-									<div class="per-ads-discount-label ads-has-label animated">New</div>
-									<a href="javascript:;">
-										<div class="img-container">
-											<img alt="" src="/user/img/uploads/1d.jpg">
-										</div>
-									</a>
-								</div>
-								<div class="per-ads-desc">
-									<div class="per-ads-title">
-										<a href="javscript:;">Mac Love Lorn</a>
-									</div>
-									<div class="per-ads-info">
-										<span>
-										<i class="flaticon-clock61"></i>
-										17 minutes ago                        </span>
-										<span><i class="flaticon-map5"></i> Dressrossa, New World</span>
-										<span><i class="flaticon-small44"></i> 500 views</span>
-									</div>
-									<div class="per-ads-price-box">
-										<div class="per-ads-price per-discount-price">
-											NOW PHP 900
-										</div>
-										<div class="per-ads-price per-ads-before-price">PHP 1200</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-  </div>
-</div>
+                    </div>
+                    <div class="per-ads-info">
+                        <span>
+                            <i class="flaticon-clock61"></i>
+                           <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
+                        </span>
+                        <span>
+                            <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
+                                <i class="flaticon-map5"></i>
+                            </div>
+                        
+                              <?php if(!empty($data['Address']['street'])): ?>
 
+                                <div class="address" style="display:inline-block; width:80%;">
+                                    <?php echo $data['Address']['street']; ?>, 
+                                    <?php echo $data['Address']['town']; ?>, 
+                                    <?php echo $data['Address']['province']; ?>
+                                </div>
+
+                            <?php endif; ?>
+
+                            
+                        </span>
+                        <span><i class="flaticon-small44"></i> 500 views</span>
+                    </div>
+                  
+
+
+               <div class="per-ads-price-box">
+                        <?php $class = '';?>
+                        <div class="per-ads-price <?php echo ($data['Ad']['selling_price'] != 0) ? 'per-ads-before-price' : '' ?>">PHP <span class="before_price"><?php echo $data['Ad']['before_price']; ?></span></div>
+                        <?php if ($data['Ad']['selling_price'] != 0): ?>
+                             <div class="per-ads-price per-discount-price">
+                                 &nbsp; NOW! PHP <span class="discounted_price"><?php echo $data['Ad']['selling_price']; ?></span>
+                             </div>
+                        <?php endif;?>
+                        <div class="clearfix"></div>
+                    </div>
+            </div>      		
+	</div>

@@ -35,22 +35,25 @@
 
 	<ul class="nav nav-list" style="top: 0px;">
 		<li class="">
-			<a href="index.html">
-				<i class="menu-icon fa fa-home"></i>
-				<span class="menu-text"> Home </span>
-			</a>
+			
+
+				<?php echo $this->Html->link('<i class="menu-icon fa fa-home"></i>
+				<span class="menu-text"> Home </span>',array('controller' => 'admins',
+					'action'=> 'index'),
+					array('escape' => false)); ?>
 
 			<b class="arrow"></b>
 		</li>
 
 		<li class="">
-			<a href="index.html">
-				<i class="menu-icon fa fa-heart"></i>
-				<span class="menu-text"> My Ads </span>
-			</a>
+		
+		<?php echo $this->Html->link('<i class="menu-icon fa fa-heart"></i>
+				<span class="menu-text"> Ads </span>',array('controller' => 'ads',
+					'action'=> 'index'),
+					array('escape' => false)); ?>
 
 			<b class="arrow"></b>
-		</li>
+		</li>	
 
 		<li class="">
 			<a href="index.html">
@@ -62,19 +65,18 @@
 		</li>
 
 		<li class="">
-			<a href="index.html">
-				<i class="menu-icon fa fa-user"></i>
-				<span class="menu-text"> Profile </span>
-			</a>
+			<?php echo $this->Html->link('<i class="menu-icon fa fa-user"></i>
+				<span class="menu-text"> Users </span>',array('controller' => 'users',
+					'action'=> 'index'),
+					array('escape' => false)); ?>
+		
 
 			<b class="arrow"></b>
 		</li>
 
 		<li class="">
-			<a href="index.html">
-				<i class="menu-icon fa fa-gear"></i>
-				<span class="menu-text"> Settings </span>
-			</a>
+			<?php echo $this->Html->link('<i class="menu-icon fa fa-gear"></i><span class="menu-text"> Settings </span>',								array('controller' => 'users', 'action' => 'setting'),
+										    array('escape' => false)); ?>
 
 			<b class="arrow"></b>
 		</li>

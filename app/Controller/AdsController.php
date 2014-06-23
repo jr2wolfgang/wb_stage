@@ -19,7 +19,7 @@ class AdsController extends AppController {
 
 	function beforeFilter() {
 		$this->theme = 'Nakatipid';
-  		$this->Auth->allow('index','view','search');
+  		$this->Auth->allow('index','view','search','ajax_search');
  	}
 
 	public function index() {
@@ -56,6 +56,41 @@ class AdsController extends AppController {
 		    'conditions' => $cond
 		);
 		$this->set('ads', $this->paginate('Ad'));
+	}
+
+
+	public function ajax_search(){
+		$this->autoRender = false; 
+	    $this->request->onlyAllow('ajax');
+		$this->Ad->bind( array('Address') );
+		
+		$keyword = $this->request->query('term');
+		
+		if ( !empty($keyword) ){
+			$cond=array( 'OR'=>array("Ad.name LIKE '%$keyword%'",
+									 "Address.street LIKE '%$keyword%'",
+									 "Address.town LIKE '%$keyword%'",
+									 "Address.province LIKE '%$keyword%'",
+									 "Address.hometown LIKE '%$keyword%'")  );
+		} else {
+			$cond=array();
+		}
+
+		$this->paginate = array(
+		    'limit' => 8,
+		    'fields' => array('Ad.name','Address.street','Address.town','Address.province','Address.hometown'),
+		    'order' => array('Ad.id' => 'DESC'),
+		    'conditions' => $cond
+		);	
+		$getData = $this->paginate('Ad');
+		foreach ($getData as $json) {
+			$data[] = $json['Ad']['name'];
+			// $data[] = $json['Address']['street'];
+			// $data[] = $json['Address']['town'];
+			// $data[] = $json['Address']['province'];
+			// $data[] = $json['Address']['hometown'];
+		}
+		return json_encode($data);
 	}
 
 

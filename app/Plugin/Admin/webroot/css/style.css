@@ -1,3 +1,20 @@
 .nav-list > li > a > .menu-icon {
 	vertical-align: text-bottom;
 }
+
+.paging {
+    margin: 15px 0;
+} 
+.paging > span {
+    margin: 9px;
+}
+
+.btn.btn-info.create-ad-btn {
+    margin: 12px 0;
+}
+.error-message {
+    color: #d15b47;
+}
+label.error {
+    margin: 0 15px;
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `maps` CHANGE `longhitude` `longhitude` DECIMAL NULL DEFAULT NULL, CHANGE `latitude` `latitude` DECIMAL NULL DEFAULT NULL;

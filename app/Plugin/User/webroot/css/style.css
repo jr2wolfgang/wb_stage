@@ -1,7 +1,7 @@
 @import url("../fonts/fonts.css");
 
 .nav-list > li > a > .menu-icon {
-	vertical-align: text-bottom;
+    vertical-align: text-bottom;
 }
 .container > table {
     width: 100%;
@@ -15,7 +15,7 @@
     width: 127px;
 }
 .modal-sm {
-	width: 800px;
+    width: 800px;
 }
 
 .modal-content {
@@ -222,9 +222,10 @@ section.row {
 }
 
 .error[for="AdSelectedImg"] {
-    margin-left: 30px;
-    margin-top: -32px;
-    position: absolute;
+    clear: both;
+    float: left;
+    margin: 11px 0;
+
 }
 
 /*perads view*/
@@ -382,4 +383,35 @@ section.row {
     float: right !important;
     margin: 10px!important;
     width: 40% !important;
+}
+
+.ads_preview {
+    position: fixed;
+    right: 0;
+    top: 93px;
+    z-index: 9999;
+}
+
+.form-horizontal.ads {
+    max-width: 1035px;
+}
+.per-ads-before-price {
+    color: #9E9E9E;
+    font-size: 14pt;
+    margin-right: 10px;
+    margin-top: -21px;
+    text-decoration: line-through;
+    position: absolute;
+    right: 0;
+    display: block;
+}
+.per-ads-price.per-discount-price {
+    float: right;
+    margin: 0;
+    position: relative;
+}
+
+#AdNewAdForm .form-group label,#AdEditForm .form-group label{
+    width:100% !important;
+    text-align:left !important;
 }

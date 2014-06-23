@@ -21,19 +21,25 @@
 <html>
 	<head>
 		<?php echo $this->Html->charset(); ?>
-		<title>Dashboard - Bryan Sumague</title>
+		<title>Dashboard - <?php echo $userData['User']['firstname'] .' '.  $userData['User']['lastname']?></title>
 		<script src="js/ace-extra.min.js"></script>
 				<script src="js/jquery.min.js"></script>
 		<?php
 
-			echo $this->Html->css('User.bootstrap.min');
-			echo $this->Html->css('User.font-awesome.min');
-			echo $this->Html->css('User.flaticon');
-			echo $this->Html->css('User.ace.min');
-			echo $this->Html->css('User.style');
+			echo $this->Html->css('Admin.bootstrap.min');
+			echo $this->Html->css('Admin.font-awesome.min');
+			echo $this->Html->css('Admin.flaticon');
+			echo $this->Html->css('Admin.ace.min');
+			echo $this->Html->css('Admin.style');
 
-			echo $this->Html->script('User.ace-extra.min');
-			echo $this->Html->script('User.jquery.min');
+			echo $this->Html->script('Admin.ace-extra.min');
+			echo $this->Html->script('Admin.jquery.min');
+
+
+
+				/* validate */
+			echo $this->Html->script('Admin.validate/jquery.validate');
+			echo $this->Html->script('Admin.validate/additional-methods');
 
 
 			echo $this->fetch('meta');
@@ -59,7 +65,8 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							<!-- CONTENT HERE -->
+						<?php echo $this->Session->flash(); ?>
+							<?php echo $this->fetch('content'); ?>
 						</div>
 					</div>
 				</div>

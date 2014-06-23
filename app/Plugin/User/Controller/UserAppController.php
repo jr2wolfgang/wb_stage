@@ -43,14 +43,7 @@ class UserAppController extends Controller {
   		
  	}
 
- 	public function index() {
-
-
-  			
-	
-	}
-
-	  
+ 
 
 
 }
