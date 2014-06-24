@@ -75,10 +75,8 @@
 		</li>
 
 		<li class="">
-			<a href="index.html">
-				<i class="menu-icon fa fa-gear"></i>
-				<span class="menu-text"> Settings </span>
-			</a>
+			<?php echo $this->Html->link('<i class="menu-icon fa fa-gear"></i><span class="menu-text"> Settings </span>',								array('controller' => 'admins', 'action' => 'setting'),
+										    array('escape' => false)); ?>
 
 			<b class="arrow"></b>
 		</li>
