@@ -301,13 +301,13 @@
 						<li class="divider"></li>
 
 						<li>
-							<a href="#">
+							
 					<?php echo $this->Html->link('<i class="ace-icon fa fa-power-off"></i>
 								Logout',array('controller' => 'ads',
 								'action'=> 'index',
 								'plugin' => false),
 								array('escape' => false)); ?>
-							</a>
+							
 						</li>
 					</ul>
 				</li>

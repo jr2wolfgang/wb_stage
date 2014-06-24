@@ -62,6 +62,7 @@
                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Interested</th>
                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Total Views</th>
                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Live Visitors</th>
+                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="hidden-480 sorting">Actions</th>
                    
                 </tr>
             </thead>
@@ -79,11 +80,12 @@
                 <tr role="row">
                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Name</th>
                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Email</th>
+                     <th aria-label="" colspan="1" rowspan="1" aria-controls="ads-table" tabindex="0" role="columnheader" class="sorting">Action</th>
                   
                    
                 </tr>
             </thead>
-			<?php //echo $this->element('ads_table'); ?>
+			<?php echo $this->element('user_table'); ?>
         </table>
     </div>
 </div>

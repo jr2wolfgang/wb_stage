@@ -36,12 +36,17 @@ class AdminsController extends AdminAppController  {
 		    'limit' => '5'
 		);
 
-		
 		$ads = $this->paginate('Ad');
 
+		$users = $this->User->find('all',array(
+			 'conditions' => array(''),
+		    'group' => array('User.id'),
+		    'order' => array('User.id DESC'),
+		    'limit' => '5'
+		));
 
 
-		$this->set(compact('ads'));
+		$this->set(compact('ads','users'));
 		
 		
 	}

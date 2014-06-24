@@ -26,6 +26,11 @@
             <td class="">
                 sadfa
             </td>
+              <td class="actions">
+                <?php echo $this->Html->link(__('View'), array('controller' => 'ads','action' => 'view', $adslist['Ad']['id'])); ?> |
+                <?php echo $this->Html->link(__('Edit'), array('controller' => 'ads','action' => 'edit', $adslist['Ad']['id'])); ?> |
+                <?php echo $this->Form->postLink(__('Delete'), array('controller' => 'ads','action' => 'delete', $adslist['Ad']['id']), array(), __('Are you sure you want to delete # %s?', $adslist['Ad']['id'])); ?>
+            </td>
         </tr>
 
     </tbody>
