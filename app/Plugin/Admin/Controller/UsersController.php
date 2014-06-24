@@ -93,6 +93,7 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
+		
 		if ($this->request->is(array('post', 'put'))) {
 
 			if (!empty($this->request->data['User']['password'])) {
@@ -109,6 +110,7 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
+
 		$this->User->bind(array('Group' => array('fields' => array('id','name'))));
 
 		$groups = $this->User->Group->find('list');
@@ -116,22 +118,8 @@ class UsersController extends AppController {
 		$accountTypes = $this->User->AccountType->find('list');
 
 		$this->set(compact('groups', 'accountTypes'));
-	}
-
-
-			$this->User->bind( array('Address'));
-
-			$this->request->data = $this->User->findById($this->Session->read('Auth.User.id'));
-
-			//pr($this->request->data);exit();
-			$this->request->data['User']['jrr_password'] = '';
-
-			if (empty($this->request->data['User']['avatar']) ){
-				$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
-			}
-
+	
 		
-		 }
 	}
 	
 	public function setting(){

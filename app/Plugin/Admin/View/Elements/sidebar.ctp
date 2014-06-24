@@ -75,7 +75,7 @@
 		</li>
 
 		<li class="">
-			<?php echo $this->Html->link('<i class="menu-icon fa fa-gear"></i><span class="menu-text"> Settings </span>',								array('controller' => 'admins', 'action' => 'setting'),
+			<?php echo $this->Html->link('<i class="menu-icon fa fa-gear"></i><span class="menu-text"> Settings </span>',								array('controller' => 'users', 'action' => 'setting'),
 										    array('escape' => false)); ?>
 
 			<b class="arrow"></b>
