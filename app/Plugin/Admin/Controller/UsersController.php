@@ -28,7 +28,7 @@ class UsersController extends AppController {
 
 	public function index() {
 
-		$this->User->bind(array('Address','Group'));
+		$this->User->bind(array('Group' => array('fields' => array('id','name'))));
 
 		$conditions = array('');
 
@@ -37,10 +37,12 @@ class UsersController extends AppController {
 		    'conditions' => $conditions,
 		    'group' => array('User.id'),
 		    'order' => array('User.id DESC'),
-		    'limit' => '5'
+		    'limit' => '10',
+
 		);
 
 		$users = $this->paginate('User');	
+
 
 		$this->set(compact('users'));
 	}
@@ -48,7 +50,17 @@ class UsersController extends AppController {
 	
 	
 	public function delete($id = null) {
-		
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		$this->request->allowMethod('post', 'delete');
+		if ($this->User->delete()) {
+			$this->Session->setFlash(__('The user has been deleted.'));
+		} else {
+			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'index'));
 	}
 
 	public function add() {
@@ -67,7 +79,7 @@ class UsersController extends AppController {
 			}
 		}
 		
-		$this->User->bind(array('Address','Group'));
+		$this->User->bind(array('Group' => array('fields' => array('id','name'))));
 
 		$groups = $this->User->Group->find('list');
 		
@@ -75,4 +87,35 @@ class UsersController extends AppController {
 		
 		$this->set(compact('groups', 'accountTypes'));
 	}
+
+
+	public function edit($id = null) {
+		if (!$this->User->exists($id)) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+
+			if (!empty($this->request->data['User']['password'])) {
+				$this->request->data['User']['default_password'] = $this->request->data['User']['password'];
+			}
+
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('The user has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+			$this->request->data = $this->User->find('first', $options);
+		}
+		$this->User->bind(array('Group' => array('fields' => array('id','name'))));
+
+		$groups = $this->User->Group->find('list');
+
+		$accountTypes = $this->User->AccountType->find('list');
+
+		$this->set(compact('groups', 'accountTypes'));
+	}
+
 }

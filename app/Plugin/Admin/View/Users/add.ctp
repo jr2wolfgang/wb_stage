@@ -40,6 +40,15 @@
 		</div>
 	</div>
 
+
+	<div class="form-group">
+		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Email Address </label>
+		<div class="col-sm-9">
+			<?php echo $this->Form->input('email',array('label' => false,'class' => 'required')); ?>
+		</div>
+	</div>
+
+
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Birth Date </label>
 		<div class="col-sm-9">
@@ -71,7 +80,7 @@
 	<div class="form-group">
 		<label for="form-field-desc" class="col-sm-3 control-label no-padding-right"> Repeat Password </label>
 		<div class="col-sm-9">
-			<?php  echo $this->Form->input('default_password',array('type' => 'password','label' =>false,'class' => 'required')); ?>
+			<?php  echo $this->Form->input('rxt',array('type' => 'password','label' =>false,'class' => 'required')); ?>
 		</div>
 	</div>
 

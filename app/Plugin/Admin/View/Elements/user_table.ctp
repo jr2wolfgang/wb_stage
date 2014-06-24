@@ -7,20 +7,24 @@
                 <?php echo $userlist['User']['firstname'] ?>
             </td>
                 <td class="sorting_1">
-                <?php echo $userlist['User']['firstname'] ?>
+                <?php echo $userlist['User']['lastname'] ?>
             </td>
-
-            
-            <td class="">
+             <td class="">
 
              <?php echo $userlist['User']['email']; ?>
             	
             </td>
 
+            <td class="">
+
+             <?php echo $userlist['Group']['name']; ?>
+            	
+            </td>
+
               <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('controller' => 'ads','action' => 'view', $userlist['User']['id'])); ?> |
-                <?php echo $this->Html->link(__('Edit'), array('controller' => 'ads','action' => 'edit', $userlist['User']['id'])); ?> |
-                <?php echo $this->Form->postLink(__('Delete'), array('controller' => 'ads','action' => 'delete', $userlist['User']['id']), array(), __('Are you sure you want to delete # %s?', $userlist['User']['id'])); ?>
+                <?php echo $this->Html->link(__('View'), array('controller' => 'users','action' => 'view', $userlist['User']['id'])); ?> |
+                <?php echo $this->Html->link(__('Edit'), array('controller' => 'users','action' => 'edit', $userlist['User']['id'])); ?> |
+                <?php echo $this->Form->postLink(__('Delete'), array('controller' => 'users','action' => 'delete', $userlist['User']['id']), array(), __('Are you sure you want to delete # %s?', $userlist['User']['id'])); ?>
             </td>
 
          

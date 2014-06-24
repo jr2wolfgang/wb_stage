@@ -12,3 +12,9 @@
 .btn.btn-info.create-ad-btn {
     margin: 12px 0;
 }
+.error-message {
+    color: #d15b47;
+}
+label.error {
+    margin: 0 15px;
+}

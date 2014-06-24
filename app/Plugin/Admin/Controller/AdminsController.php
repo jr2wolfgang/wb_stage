@@ -38,6 +38,8 @@ class AdminsController extends AdminAppController  {
 
 		$ads = $this->paginate('Ad');
 
+		$this->User->bind(array('Group' => array('fields' => array('id','name'))));
+
 		$users = $this->User->find('all',array(
 			 'conditions' => array(''),
 		    'group' => array('User.id'),
