@@ -83,42 +83,42 @@
 					<div class="profile-info-name"> Street </div>
 
 					<div class="profile-info-value">
-						<?php echo $this->Form->input('Address.0.id',array( 'type' => 'hidden')); ?>
+						<?php echo $this->Form->input('Address.id',array( 'type' => 'hidden')); ?>
 
-						<?php echo $this->Form->input('Address.0.model',array('value' => 'User','type' => 'hidden')); ?>
-						<?php echo $this->Form->input('Address.0.foreign_key',array('value' =>  $this->request->data['User']['id'],'type' => 'hidden')); ?>
-						<?php echo $this->Form->input('Address.0.modified_by',array('value' =>  $this->request->data['User']['id'],'type' => 'hidden')); ?>
+						<?php echo $this->Form->input('Address.model',array('value' => 'User','type' => 'hidden')); ?>
+						<?php echo $this->Form->input('Address.foreign_key',array('value' =>  $this->request->data['User']['id'],'type' => 'hidden')); ?>
+						<?php echo $this->Form->input('Address.modified_by',array('value' =>  $this->request->data['User']['id'],'type' => 'hidden')); ?>
 
 
-						<?php echo $this->Form->input('Address.0.street',array( 'type' => 'text', 'label' => false )); ?>
+						<?php echo $this->Form->input('Address.street',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>
 				<div class="profile-info-row">
 					<div class="profile-info-name"> Town </div>
 
 					<div class="profile-info-value">
-						<?php echo $this->Form->input('Address.0.town',array( 'type' => 'text', 'label' => false )); ?>
+						<?php echo $this->Form->input('Address.town',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>
 				<div class="profile-info-row">
 					<div class="profile-info-name"> Province </div>
 
 					<div class="profile-info-value">
-						<?php echo $this->Form->input('Address.0.province',array( 'type' => 'text', 'label' => false )); ?>
+						<?php echo $this->Form->input('Address.province',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>
 				<div class="profile-info-row">
 					<div class="profile-info-name"> Zip Code </div>
 
 					<div class="profile-info-value">
-						<?php echo $this->Form->input('Address.0.zipcode',array( 'type' => 'text', 'label' => false )); ?>
+						<?php echo $this->Form->input('Address.zipcode',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>
 				<div class="profile-info-row">
 					<div class="profile-info-name"> Home Town </div>
 
 					<div class="profile-info-value">
-						<?php echo $this->Form->input('Address.0.hometown',array( 'type' => 'text', 'label' => false )); ?>
+						<?php echo $this->Form->input('Address.hometown',array( 'type' => 'text', 'label' => false )); ?>
 					</div>
 				</div>
 				<?php echo $this->Form->input('avatar', array('type' => 'hidden')); ?>

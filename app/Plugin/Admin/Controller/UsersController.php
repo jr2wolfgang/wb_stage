@@ -75,4 +75,50 @@ class UsersController extends AppController {
 		
 		$this->set(compact('groups', 'accountTypes'));
 	}
+
+	public function setting(){
+
+		$this->User->bind( array('Address'));
+
+		$this->User->validate = array();
+		$address = $this->User->Address->find('first', array(
+	        'conditions' => array('Address.foreign_key' => $this->Session->read('Auth.User.id')
+	    )));
+		
+		if ($this->request->is('post')) {
+			
+			if (empty($this->request->data['User']['jrr_password'])){
+				
+				$this->request->data['User']['jrr_password'] = $this->Session->read('Auth.User.rxt');
+				$this->request->data['User']['rxt'] = $this->Session->read('Auth.User.rxt');
+			}
+			else {
+				$this->request->data['User']['rxt'] = $this->request->data['User']['jrr_password'];
+			}
+
+			if ($this->User->saveAssociated($this->request->data)) {
+
+				ClassRegistry::init('Address')->save($this->request->data['Address']);
+				
+				$this->Session->setFlash(__('The Profile has been updated.'),'success');
+			} 
+			else {			
+				$this->Session->setFlash(__('The User could not be update. Please, try again.'),'error');
+			}
+		} else {
+
+			$this->User->bind( array('Address'));
+
+			$this->request->data = $this->User->findById($this->Session->read('Auth.User.id'));
+
+			//pr($this->request->data);exit();
+			$this->request->data['User']['jrr_password'] = '';
+
+			if (empty($this->request->data['User']['avatar']) ){
+				$this->request->data['User']['avatar'] = 'http://avatars.io/asds/?size=large';
+			}
+
+		
+		 }
+	}
 }
