@@ -42,6 +42,7 @@ class AdsController extends AdminAppController {
 
 	
 	public function delete($id = null) {
+	
 		$this->Ad->bind(array('Map'));
 		$this->Ad->id = $id;
 		if (!$this->Ad->exists()) {
@@ -54,5 +55,29 @@ class AdsController extends AdminAppController {
 			$this->Session->setFlash(__('Ad could not be deleted. Please, try again.'),'error');
 		}
 		return $this->redirect(array('action' => 'index'));
+
 	}
+
+	public function view($id = null) {
+
+		$imgFolder = '/user/img/';
+		
+		$ads = $this->Ad;
+
+		$ads->bind(array('Image','User','PrimaryImage'));
+		
+		if(empty($this->data)) {
+			$ads = $ads->findById($id);
+			
+			
+			if ( empty($this->request->data['User']['avatar']) ){
+				$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
+			}
+			
+
+			$this->set(compact('ads'));
+
+			
+		}	
+	}	
 }

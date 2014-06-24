@@ -103,10 +103,8 @@ class AdsController extends AppController {
 		
 		$ads = $this->Ad;
 		$ads->bind(array('Image','User','PrimaryImage'));
-		// Please refer to User-jrr Model
-		/*$this->User->bind(array('Ad'));*/
-
-		if(empty($this->data)){
+		
+		if(empty($this->data)) {
 			$ads_data = $ads->findBySlug($slug);
 			$this->data = $ads_data;
 

@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property User $User
  */
-class Ad extends AppModel {
+class Ad extends AdminAppModel {
 
 
 	public $recursive = -1;

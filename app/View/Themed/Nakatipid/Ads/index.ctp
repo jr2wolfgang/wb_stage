@@ -165,12 +165,11 @@
                         <div class="per-ads-new-label ads-has-label animated">New</div>
                     <?php endif; ?>
                     
-                    <a href="ads/view/<?php echo $data['Ad']['id']; ?>/">
-                        <div class="img-container">
+                       <div class="img-container">
                             <?php echo $this->Html->image('/user/img/uploads/'. $data['PrimaryImage']['name'],
                             array('url' => array('controller' => 'ads', 'action' => 'view','slug' => $data['Ad']['slug']))); ?>
                         </div>
-                    </a>
+                 
                 </div>
                 <div class="per-ads-desc">
                     <div class="per-ads-title">

@@ -2,7 +2,7 @@
 App::uses('AppModel', 'Model');
 
 
-class Ad extends AppModel {
+class Ad extends AdminAppModel {
 
 	public $recursive = -1;
 	

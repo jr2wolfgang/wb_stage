@@ -20,13 +20,13 @@
 				Welcome to
 				<strong class="green"> Admin </strong>,
 				
-				There is 100 new ads uploaded
+				There is 100 <?php echo $this->Html->link('new ads',array('controller' => 'ads','action' => 'index'));?> uploaded
 									
 			</div>
 
 
 <div class="row">
-								<div class="space-6"></div>
+								<div clas s="space-6"></div>
 
 								<div class="col-sm-7 infobox-container">
 									<div class="infobox infobox-green">

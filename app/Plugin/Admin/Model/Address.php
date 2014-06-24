@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property User $User
  */
-class Address extends AppModel {
+class Address extends AdminAppModel {
 
 /**
  * Validation rules
