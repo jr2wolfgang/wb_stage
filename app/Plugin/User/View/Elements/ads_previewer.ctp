@@ -28,7 +28,7 @@
                            if (!empty($data['Ad']['created'])) :
                                 echo $this->Time->timeAgoInWords($data['Ad']['created']);
                             else : 
-                                '';
+                                echo 'A Second Ago';
                             endif;    
                             ?>
                         </span>
