@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	var $windowHeight = $(window).height();
+	var $totalHeight = $windowHeight - 40;
+	$('.top-header-container').css('height',$totalHeight);
+
 	$(document).mouseup(function (e)
 	{
 	    var container = $(".dropdown-fade");
@@ -12,6 +16,7 @@ $(document).ready(function(){
 	        $('div.flaticon-arrow208').css('transform','rotate(270deg)');
 	    }
 	});
+	
 
 	$('.dropdown').click(function(){
 

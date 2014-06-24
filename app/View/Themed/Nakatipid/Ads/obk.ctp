@@ -11,58 +11,131 @@
     		<div class="clearfix"></div>
     	</div>
     </div>
-    
-    <div class="row full-width top-header-container">
-        <div class="large-6 columns">
-            <div id="logo-columns" class="row">
-                <?php echo $this->Html->image('logo_orange.png'); ?>
+    <div class="row">
+        <div id="header-container" class="large-12 column">
+            <div id="logo-container" class="row">
+                <div class="large-6 large-centered small-centered medium-centered column">
+                    <?php echo $this->Html->image('logo_orange.png'); ?>
+                </div>
             </div>
-            <div class="slogan-title">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </div>
-            <div class="slogan-content">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            <div id="searchbar-container" class="row">
+                <div class="large-12 small-12 colums">
+                    <form method="get" action="<?php echo $this->html->url('search', true); ?>" id="search-form">
+                        <div id="search-field" class="large-9 small-7 no-pad-both columns">
+                            <input type="text" id="mainsearch-field" placeholder="Type in your keyword .." name="q" />
+                        </div>
+                        <div id="location-dropdown" class="large-2 small-3 no-pad-both columns">
+                            <div class="dropdown icon-right">
+                                <div class="selected-dropdown">Green Bit</div>
+                                <i class="flaticon-arrow133"></i>
+                                <div class="clearfix"></div>
+                                <ul class="list dropdown-fade">
+                                    <li class="selected">East Blue</li>
+                                    <li class="">Grand Line</li>
+                                    <li class="">Red Line</li>
+                                    <li class="">New World</li>
+                                    <li class="">Alabasta</li>
+                                    <li class="">Enies Lobby</li>
+                                    <li class="">Marineford</li>
+                                    <li class="">Dressrosa</li>
+                                    <li class="">Arlong Park</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="search-button" class="large-1 small-2 no-pad-both columns solo-icon btn">
+                            <i class="flaticon-search54" type="submit"></i>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="large-6 columns">
-            <div id="searchbar-container">
-                <div class="large-12 small-12 colums right">
-                    <div id="search-field" class="large-10 small-10 no-pad-both columns">
-                        <input type="text" id="mainsearch-field" placeholder="Clothes, Shoes, Gadgets, Phones etc..">
-                    </div>
-                    <div id="search-button" class="large-2 small-2 no-pad-both columns solo-icon btn">
-                        <i class="flaticon-search54"></i>
-                    </div>
-                </div>
-            </div>
-            <div id="signin-container" class="small-12 large-12 columns">
-                <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'login')); ?>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <div class="access-title">
-                            Mag Login
+    </div>
+    <div id="access-section" class="dekstop-view">
+
+        <div class="access-forms row dekstop-view">
+            <div class="row">
+                <div class="large-6 columns">
+                    <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'register')); ?>
+                    <div class="row">
+                        <div class="large-9 columns">
+                            <div class="access-title">
+                                Register at mag post!
+                            </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="large-10 columns">
+                            <?php echo $this->Form->input('email',array('label' => false,'placeholder' => 'Email Address'));?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-10 columns">
+                            <?php echo $this->Form->input('jrr_password',array('type' => 'password','label' => false,'placeholder' => 'Password'));?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-10 columns">
+                            <?php echo $this->Form->input('rxt',array('type' => 'password','label' => false,'placeholder' => 'Confirm Password'));?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-10 columns">
+                           <button type="submit" id="register-btn" class="btn right icon-left">
+                              <i class="flaticon-user7"></i> <span>Register</span>
+                            </button>
+                        </div>
+                    </div>
+                    <?php echo $this->Form->end(); ?>
                 </div>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <?php echo $this->Form->input('email',array('type' => 'text','label' => false,
-                         'placeholder' =>'Email Address')); ?>
+                <div class="large-6 columns">
+                    <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'login')); ?>
+                    <div class="row">
+                        <div class="large-10 columns right">
+                            <div class="access-title">
+                                Mag Login
+                            </div>
+                        </div>
                     </div>
-                    <div class="large-6 columns">
-                        <?php echo $this->Form->input('jrr_password',array('type' => 'password','label' => false,
-                         'placeholder' =>'Password')); ?>
+                    <div class="row">
+                        <div class="large-10 columns right">
+                            <?php echo $this->Form->input('email',array('type' => 'text','label' => false,
+                             'placeholder' =>'Email Address')); ?>
+                        </div>
                     </div>
-                    <div class="large-4 columns">
-                         <button type="submit" id="login-btn" class="btn right icon-left">
-                          <i class="flaticon-lock39"></i> 
-                           <span>Login</span>
-                        </button>
+                    <div class="row">
+                        <div class="large-10 columns right">
+                            <?php echo $this->Form->input('jrr_password',array('type' => 'password','label' => false,
+                             'placeholder' =>'Password')); ?>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="large-10 columns right">
+                           
+
+                             <button type="submit" id="login-btn" class="btn right icon-left">
+                              <i class="flaticon-lock39"></i> 
+                               <span>Login</span>
+                            </button>
+                        </div>
+                    </div>
+                    <?php echo $this->Form->end(); ?>  
                 </div>
-                <?php echo $this->Form->end(); ?>  
             </div>
-            <div id="register-container" class="small-12 large-12 columns">
+        </div>
+        <div id="register-container" class="dekstop-view small-12 large-6 columns">
+            
+        </div>
+        <div id="signin-container" class="dekstop-view small-12 large-6 columns">
+            <div class="or-circle left">
+                OR
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-access-container mobile-view">
+        
+        <div class="row mobile-view register-container-mobile">
+            <div class="large-12 columns">
                 <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'register')); ?>
                 <div class="row">
                     <div class="large-12 columns">
@@ -90,6 +163,41 @@
                     <div class="large-12 columns">
                        <button type="submit" id="register-btn" class="btn right icon-left">
                           <i class="flaticon-user7"></i> <span>Register</span>
+                        </button>
+                    </div>
+                </div>
+                <?php echo $this->Form->end(); ?>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="row mobile-view signin-container-mobile">
+            <div class="large-12 columns">
+                <?php echo $this->Form->create('User',array('controller' => 'users','action' => 'login')); ?>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="access-title">
+                            Mag Login
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <?php echo $this->Form->input('email',array('type' => 'text','label' => false,
+                         'placeholder' =>'Email Address')); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <?php echo $this->Form->input('jrr_password',array('type' => 'password','label' => false,
+                         'placeholder' =>'Password')); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                         <button type="submit" id="login-btn" class="btn right icon-left">
+                          <i class="flaticon-lock39"></i> 
+                           <span>Login</span>
                         </button>
                     </div>
                 </div>
