@@ -26,14 +26,14 @@
 				<script src="js/jquery.min.js"></script>
 		<?php
 
-			echo $this->Html->css('User.bootstrap.min');
-			echo $this->Html->css('User.font-awesome.min');
-			echo $this->Html->css('User.flaticon');
-			echo $this->Html->css('User.ace.min');
-			echo $this->Html->css('User.style');
+			echo $this->Html->css('Admin.bootstrap.min');
+			echo $this->Html->css('Admin.font-awesome.min');
+			echo $this->Html->css('Admin.flaticon');
+			echo $this->Html->css('Admin.ace.min');
+			echo $this->Html->css('Admin.style');
 
-			echo $this->Html->script('User.ace-extra.min');
-			echo $this->Html->script('User.jquery.min');
+			echo $this->Html->script('Admin.ace-extra.min');
+			echo $this->Html->script('Admin.jquery.min');
 
 
 			echo $this->fetch('meta');
