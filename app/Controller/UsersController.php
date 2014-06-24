@@ -37,8 +37,13 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
+		
+		$this->User->bind(array('Address','Group'));
+
 		$groups = $this->User->Group->find('list');
+		
 		$accountTypes = $this->User->AccountType->find('list');
+		
 		$this->set(compact('groups', 'accountTypes'));
 	}
 

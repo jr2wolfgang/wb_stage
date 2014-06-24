@@ -4,8 +4,13 @@
 
         <tr class="even">
             <td class="sorting_1">
-                <?php echo $userlist['User']['firstname'].' ,'. $userlist['User']['firstname']?>
+                <?php echo $userlist['User']['firstname'] ?>
             </td>
+                <td class="sorting_1">
+                <?php echo $userlist['User']['firstname'] ?>
+            </td>
+
+            
             <td class="">
 
              <?php echo $userlist['User']['email']; ?>

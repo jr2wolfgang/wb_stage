@@ -16,8 +16,9 @@ class AdsController extends AppController {
  */
 
 	function beforeFilter() {
-		$this->theme = 'Nakatipid';
-  		$this->Auth->allow('index');
+			$userData = $this->Session->read('Auth');
+			$this->set(compact('userData'));
+			$this->Auth->allow('index');
  	}
 
 	public function index() {
@@ -35,6 +36,8 @@ class AdsController extends AppController {
 		);
 
 		$ads = $this->paginate('Ad');	
+
+		$this->set(compact('ads'));
 	}
 
 	
