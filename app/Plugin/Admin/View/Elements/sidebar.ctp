@@ -65,10 +65,11 @@
 		</li>
 
 		<li class="">
-			<a href="index.html">
-				<i class="menu-icon fa fa-user"></i>
-				<span class="menu-text"> Users </span>
-			</a>
+			<?php echo $this->Html->link('<i class="menu-icon fa fa-user"></i>
+				<span class="menu-text"> Users </span>',array('controller' => 'users',
+					'action'=> 'index'),
+					array('escape' => false)); ?>
+		
 
 			<b class="arrow"></b>
 		</li>

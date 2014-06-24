@@ -36,6 +36,12 @@
 			echo $this->Html->script('Admin.jquery.min');
 
 
+
+				/* validate */
+			echo $this->Html->script('Admin.validate/jquery.validate');
+			echo $this->Html->script('Admin.validate/additional-methods');
+
+
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
 			echo $this->fetch('script');

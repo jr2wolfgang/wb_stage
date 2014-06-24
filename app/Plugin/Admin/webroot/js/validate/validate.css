@@ -1,0 +1,16 @@
+
+input.error { border: 1px solid red; }
+label.error, .price_error {
+    xbackground: url("images/unchecked.gif") no-repeat scroll left center rgba(0, 0, 0, 0);
+    margin-left: 20px;
+    color:#939393;
+}
+label.error .ace-icon, .price_error .ace-icon{
+	margin-right: 7px;
+}
+label.valid {
+	xbackground: url('images/checked.gif') no-repeat;
+	display: block;
+	width: 16px;
+	height: 16px;
+}

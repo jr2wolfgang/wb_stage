@@ -16,7 +16,8 @@ class AdsController extends AppController {
  */
 
 	function beforeFilter() {
-		
+			$userData = $this->Session->read('Auth');
+			$this->set(compact('userData'));
 			$this->Auth->allow('index');
  	}
 
