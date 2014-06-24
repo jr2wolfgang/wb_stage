@@ -7,8 +7,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 	    parent::beforeFilter();
-
-	    $this->Auth->allow('register', 'logout');
+		$this->Auth->allow('register', 'logout');
 	}
 
 	public function index() {
@@ -148,6 +147,11 @@ class UsersController extends AppController {
 	    if ($this->request->is('post')) {
 
 	        if ($this->Auth->login()) {
+
+
+			if ($this->Session->read('Auth.User.group_id') == '1') {
+                      return $this->redirect($this->Auth->redirectUrl(array('controller' => 'admins','action' => 'index','plugin' => 'admin')));
+               }
 
 	        	$this->User->LoginAction($this->Session->read('Auth'),'1');
 				

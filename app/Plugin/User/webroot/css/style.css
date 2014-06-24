@@ -1,7 +1,7 @@
 @import url("../fonts/fonts.css");
 
 .nav-list > li > a > .menu-icon {
-	vertical-align: text-bottom;
+    vertical-align: text-bottom;
 }
 .container > table {
     width: 100%;
@@ -15,7 +15,7 @@
     width: 127px;
 }
 .modal-sm {
-	width: 800px;
+    width: 800px;
 }
 
 .modal-content {
@@ -403,10 +403,15 @@ section.row {
     text-decoration: line-through;
     position: absolute;
     right: 0;
-    display: none;
+    display: block;
 }
 .per-ads-price.per-discount-price {
     float: right;
     margin: 0;
     position: relative;
+}
+
+#AdNewAdForm .form-group label,#AdEditForm .form-group label{
+    width:100% !important;
+    text-align:left !important;
 }

@@ -205,8 +205,8 @@ $('.use_image').click(function(){
 			
 		});
 		$('.images_thumb_selected').html('<div class="clearfix"></div>');
-		$('.images_thumb_selected').prepend(appendImage);
-		$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast');
+		$('.images_thumb_selected').append(appendImage);
+		//$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast');
 		$('.error[for="AdSelectedImg"]').hide();
 		if ($('#AdSelectedImg').val() != '') {
 				$('#AdSelectedImg').val( $('#AdSelectedImg').val() +','+imgArray);	
@@ -323,15 +323,15 @@ $('#form-field-before').bind({
 
 		copy : function(){
 			if ($(this).val() != '') {
- 				$('.per-ads-before-price').show();
+ 				$('.per-ads-before-price .before_price').show();
 				$('.per-ads-before-price .before_price').text($(this).val());
 			} else {
-				$('.per-ads-before-price .before_price').hide();
+				$('.per-ads-before-price  .before_price').hide();
 			}
         },
         paste : function(){
           if ($(this).val() != '') {
- 				$('.per-ads-before-price').show();
+ 				$('.per-ads-before-price .before_price').show();
 				$('.per-ads-before-price .before_price').text($(this).val());
         	
  				
@@ -341,7 +341,7 @@ $('#form-field-before').bind({
         },
         cut : function(){
           if ($(this).val() != '') {
- 				$('.per-ads-before-price').show();
+ 				$('.per-ads-before-price .before_price').show();
 				$('.per-ads-before-price .before_price').text($(this).val());
 			} else {
 				$('.per-ads-before-price .before_price').hide();
@@ -349,7 +349,7 @@ $('#form-field-before').bind({
         },
         keyup : function(){
         	if ($(this).val() != '') {
-        		$('.per-ads-before-price').show();
+        		$('.per-ads-before-price .before_price').show();
 				$('.per-ads-before-price .before_price').text($(this).val());
  				
 			} else {
@@ -358,7 +358,7 @@ $('#form-field-before').bind({
         },
         keydown : function(){
         	if ($(this).val() != '') {
- 				$('.per-ads-before-price').show();
+ 				$('.per-ads-before-price .before_price').show();
 				$('.per-ads-before-price .before_price').text($(this).val());
 			} else {
 				$('.per-ads-before-price .before_price').hide();

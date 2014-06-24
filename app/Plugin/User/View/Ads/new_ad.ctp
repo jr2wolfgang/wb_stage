@@ -125,67 +125,7 @@
 
 <div class="clear"></div>
 
-	<div class="ads_preview">
-		
 
-		 <div class="per-ads-list">
-                <div class="per-ads-img">                            
-                    <?php if (time() - strtotime('2014-06-18 20:02:07.000000') < 60*60*24): ?>
-                        <div class="per-ads-new-label ads-has-label animated">New</div>
-                    <?php endif; ?>
-                    
-                    <a href="ads/view/slugs/">
-                        <div class="img-container">
-                            <?php echo $this->Html->image('/user/img/default_product_image.png'); ?>
-                        </div>
-                    </a>
-                </div>
-                <div class="per-ads-desc">
-                    <div class="per-ads-title">
-                       
-                        <?php echo $this->Html->link(' ',array(
-                                'controller' => 'ads',
-                                'action' => 'view',
-                             
-                                
-                        )); ?>
-
-                    </div>
-                    <div class="per-ads-info">
-                        <span>
-                            <i class="flaticon-clock61"></i>
-                             a seconds ago
-                        </span>
-                        <span>
-                            <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
-                                <i class="flaticon-map5"></i>
-                            </div>
-                        
-                                <div class="address" style="display:inline-block; width:80%;">
-                                	&nbsp
-                                </div>
-
-                            
-                        </span>
-                        <span><i class="flaticon-small44"></i> 500 views</span>
-                    </div>
-                  
-
-
-                 <div class="per-ads-price-box">
-                        <?php $class = '';?>
-                        <div class="per-ads-price per-ads-before-price">
-                        PHP <span class="before_price">0</span>
-                        </div>
-                             
-                             <div class="per-ads-price per-discount-price">
-                                 &nbsp; NOW! PHP  <span class="discounted_price">0</span>
-                             </div>
-                      
-                        <div class="clearfix"></div>
-                    </div>
-            </div>      		
-	</div>
 
 <?php echo $this->element('redactor_settings')?>
 <?php echo $this->element('ads_previewer'); ?>

@@ -277,7 +277,7 @@
 						<img alt="" src="assets/avatars/user.jpg" class="nav-user-photo">
 						<span class="user-info">
 							<small>Welcome,</small>
-							Bryan
+							Admin
 						</span>
 
 						<i class="ace-icon fa fa-caret-down"></i>
@@ -302,8 +302,11 @@
 
 						<li>
 							<a href="#">
-								<i class="ace-icon fa fa-power-off"></i>
-								Logout
+					<?php echo $this->Html->link('<i class="ace-icon fa fa-power-off"></i>
+								Logout',array('controller' => 'ads',
+								'action'=> 'index',
+								'plugin' => false),
+								array('escape' => false)); ?>
 							</a>
 						</li>
 					</ul>

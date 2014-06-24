@@ -46,7 +46,6 @@ class AdminsController extends UserAppController  {
 		$this->paginate = array(
 		  	'recursive' => -1,
 		    'conditions' => $conditions,
-		    
 		);
 
 		$this->set('ads', $this->paginate('Ad'));		

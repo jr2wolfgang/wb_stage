@@ -42,14 +42,7 @@
 			<div class="btn btn-warning"  data-rel="tooltip" data-original-title="Select image(s) for your ADS" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="return false"><i class="ace-icon fa fa-picture-o bigger-130"></i><span>Open Image Manager</span></div>
 			<div class="clearfix"></div>
 
-
-		<div class="images_thumb_selected well col-lg-8 hide"><div class="clearfix"></div></div>
-		<?php echo $this->Form->input('selected_img',array(
-					'label' => false,
-					'type' => 'text',
-					'style'=>'opacity:0',
-					'value' => implode(',',$imagesArray)
-		)); ?>
+	
 			<div class="images_thumb_selected well col-lg-8 hide" style="display:block !important"><div class="clearfix"></div>
 			<?php
 			$DataImage = array();
@@ -74,6 +67,14 @@
 			endif;
 			endforeach; $ImageValue = implode(',',$DataImage);  ?>
 			</div>
+
+
+				<?php echo $this->Form->input('selected_img',array(
+					'label' => false,
+					'type' => 'text',
+					'style'=>'opacity:0',
+					'value' => implode(',',$imagesArray)
+		)); ?>
 			
 		</div>
 	</div>
@@ -145,7 +146,6 @@
 	</div>
 
 
-
 	<div id="address-form">
 
 	<?php echo $this->Form->input('Address.id',array('type' => 'hidden')); ?>
@@ -180,7 +180,7 @@
 
 <?php echo $this->element('redactor_settings')?>
 <?php echo $this->element('image_manager'); ?>
-
+<?php echo $this->element('ads_previewer'); ?>
 
 <?php echo $this->Html->script('User.fancybox/source/jquery.fancybox');  ?>
 <?php echo $this->Html->css('User./js/fancybox/source/jquery.fancybox');  ?>

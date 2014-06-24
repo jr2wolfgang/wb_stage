@@ -46,7 +46,7 @@
 		<li class="">
 			<a href="index.html">
 				<i class="menu-icon fa fa-heart"></i>
-				<span class="menu-text"> My Ads </span>
+				<span class="menu-text"> Ads </span>
 			</a>
 
 			<b class="arrow"></b>
@@ -64,7 +64,7 @@
 		<li class="">
 			<a href="index.html">
 				<i class="menu-icon fa fa-user"></i>
-				<span class="menu-text"> Profile </span>
+				<span class="menu-text"> Users </span>
 			</a>
 
 			<b class="arrow"></b>

@@ -136,19 +136,19 @@ class AdsController extends UserAppController  {
 			$options = array('conditions' => array('Ad.id' => $id));
 				
 			$this->Ad->bind(array('Image','PrimaryImage','Address','Map'));
-			$this->request->data = $this->Ad->find('first', $options);
-
+			$data = $this->request->data = $this->Ad->find('first', $options);
 			$User->bind(array('Image'));
 
 			$images = $User->read(null,$this->Session->read('Auth.User.id'));
 
 			$imagesArray = Set::classicExtract($this->request->data['Image'], '{n}.id');
 			
+
 		}
 
 		 $this->create_json_data();
 
-		$this->set(compact('image','images','imagesArray'));
+		$this->set(compact('image','images','imagesArray','data'));
 
 
 	}
