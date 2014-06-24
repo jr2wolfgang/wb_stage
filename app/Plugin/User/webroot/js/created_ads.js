@@ -217,7 +217,7 @@ $('.use_image').click(function(){
 		});
 		$('.images_thumb_selected').html('<div class="clearfix"></div>');
 		$('.images_thumb_selected').append(appendImage);
-		//$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast');
+		$('.images_thumb_selected').hide().removeClass('hide').slideDown('fast');
 		$('.error[for="AdSelectedImg"]').hide();
 		if ($('#AdSelectedImg').val() != '') {
 				$('#AdSelectedImg').val( $('#AdSelectedImg').val() +','+imgArray);	

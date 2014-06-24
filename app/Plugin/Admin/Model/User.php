@@ -7,7 +7,7 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
  * @property Group $Group
  * @property AccountType $AccountType
  */
-class User extends AppModel {
+class User extends AdminAppModel {
 
 /**
  * Validation rules

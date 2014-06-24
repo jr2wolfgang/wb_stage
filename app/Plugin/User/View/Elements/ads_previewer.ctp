@@ -24,7 +24,13 @@
                     <div class="per-ads-info">
                         <span>
                             <i class="flaticon-clock61"></i>
-                           <?php echo $this->Time->timeAgoInWords($data['Ad']['created']); ?>
+                           <?php 
+                           if (!empty($data['Ad']['created'])) :
+                                echo $this->Time->timeAgoInWords($data['Ad']['created']);
+                            else : 
+                                '';
+                            endif;    
+                            ?>
                         </span>
                         <span>
                             <div class="address-icon" style="display:inline-block; width:5%; vertical-align:top;">
@@ -38,7 +44,10 @@
                                     <?php echo $data['Address']['town']; ?>, 
                                     <?php echo $data['Address']['province']; ?>
                                 </div>
-
+                            <?php else : ?>
+                                 <div class="address" style="display:inline-block; width:80%;">
+                                    
+                                </div>
                             <?php endif; ?>
 
                             
@@ -50,11 +59,19 @@
 
                <div class="per-ads-price-box">
                         <?php $class = '';?>
-                        <div class="per-ads-price <?php echo ($data['Ad']['selling_price'] != 0) ? 'per-ads-before-price' : '' ?>">PHP <span class="before_price"><?php echo $data['Ad']['before_price']; ?></span></div>
-                        <?php if ($data['Ad']['selling_price'] != 0): ?>
-                             <div class="per-ads-price per-discount-price">
+                        <?php if (!empty($data['Ad']['before_price'])) : ?>
+                        <div class="per-ads-price per-ads-before-price">PHP <span class="before_price"><?php echo $data['Ad']['before_price']; ?></span></div>
+                    <?php else : ?>
+                         <div class="per-ads-price per-ads-before-price">PHP <span class="before_price">0</span></div>
+                    <?php endif; ?>
+                     <?php if (!empty($data['Ad']['selling_price'])) : ?>
+                        <div class="per-ads-price per-discount-price">
                                  &nbsp; NOW! PHP <span class="discounted_price"><?php echo $data['Ad']['selling_price']; ?></span>
                              </div>
+                     <?php else : ?>
+                        <div class="per-ads-price per-discount-price">
+                                 &nbsp; NOW! PHP <span class="discounted_price">0</span>
+                             </div>     
                         <?php endif;?>
                         <div class="clearfix"></div>
                     </div>

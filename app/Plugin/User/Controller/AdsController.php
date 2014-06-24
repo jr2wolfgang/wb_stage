@@ -56,7 +56,7 @@ class AdsController extends UserAppController  {
 
 		$images = $User->read(null,$this->Session->read('Auth.User.id'));
 
-
+		$data = '';
 
 		if ($this->request->is('post')) {
 
@@ -87,6 +87,8 @@ class AdsController extends UserAppController  {
 			$this->Session->setFlash(__('The ads has been saved.'),'success');
 
 			$this->redirect(array('action' => 'index'));
+
+			
 				
 		} else {
 					
@@ -97,7 +99,7 @@ class AdsController extends UserAppController  {
 
 		$this->create_json_data();
 
-		$this->set(compact('images'));
+		$this->set(compact('images','data'));
 	}
 
 

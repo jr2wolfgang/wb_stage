@@ -40,10 +40,23 @@ class AdminAppController extends Controller {
 		$userData = $this->Session->read('Auth');
 
 		$this->set(compact('userData'));
+
+		$this->checkAdminSession();
   		
  	}
 
-	  
+	 
+
+	function checkAdminSession() {
+	
+		$userData = $this->Session->read('Auth');
+	
+		if ($userData['User']['group_id'] != '1') {
+			$this->Session->setFlash('You Are Not Authorized to Access that Location');
+			$this->redirect('/users/login');
+			exit();
+		}
+	} 	
 
 
 }

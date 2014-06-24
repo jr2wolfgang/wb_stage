@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property User $User
  * @property PaginatorComponent $Paginator
  */
-class AdsController extends AppController {
+class AdsController extends AdminAppController {
 
 /**
  * Main View

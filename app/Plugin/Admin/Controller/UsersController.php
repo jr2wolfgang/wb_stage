@@ -1,12 +1,15 @@
 <?php
 App::uses('AppController', 'Controller');
+
 /**
  * Users Controller
  *
  * @property User $User
  * @property PaginatorComponent $Paginator
  */
-class UsersController extends AppController {
+class UsersController extends AdminAppController {
+
+	var $uses = array('User');
 
 /**
  * Main View
@@ -72,10 +75,10 @@ class UsersController extends AppController {
 				$this->request->data['User']['default_password'] = $this->request->data['User']['password'];
 			}
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
+				$this->Session->setFlash(__('The user has been saved.'),'success');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'),'error');
 			}
 		}
 		
@@ -101,10 +104,10 @@ class UsersController extends AppController {
 			}
 
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
+				$this->Session->setFlash(__('The user has been saved.'),'success');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'),'error');
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));

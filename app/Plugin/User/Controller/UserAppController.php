@@ -21,7 +21,7 @@
 
 App::uses('Controller', 'Controller');
 
-
+App::import('Controller', 'App');
 
 
 /**
@@ -39,11 +39,23 @@ class UserAppController extends Controller {
 
 		$userData = $this->Session->read('Auth');
 
+		$this->checkAdminSession();
+
 		$this->set(compact('userData'));
   		
  	}
 
  
 
+	function checkAdminSession() {
+	
+		$userData = $this->Session->read('Auth');
+
+		if ($userData['User']['group_id'] != '2') {
+			$this->Session->setFlash('You Are Not Authorized to Access that Location');
+			$this->redirect('/users/login');
+			exit();
+		}
+	} 
 
 }
