@@ -22,7 +22,7 @@ $('.fancybox').fancybox();
 
 
 
-var serverPath = "";
+var serverPath = "/wb_stage";
 
  
                 

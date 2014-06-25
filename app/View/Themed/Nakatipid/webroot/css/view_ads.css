@@ -1,4 +1,4 @@
-#view-ads {
+#view-ads { 
 	margin-top: 30px;
 }
 
@@ -272,3 +272,79 @@
     font-weight: bold;
     text-align: right;
 }
+
+/*new additional css*/
+
+.seller-ads-view {
+    background: none repeat scroll 0 0 #6a6a6a;
+    color: #fff;
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.view-section {
+    padding-top: 45px; 
+}
+
+.seller-stats {
+    background: none repeat scroll 0 0 #575757;
+    padding-top: 35px;
+}
+
+.other-stats-lbl {
+    color: #fff;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 3px;
+    text-align: left;
+}
+
+.url {
+    color: #fff;
+    font-size: 8pt;
+    font-weight: bold;
+    margin: 10px 0;
+    padding-top: 25px;
+}
+
+.url-view {
+    background: none repeat scroll 0 0 #6a6a6a;
+    color: #fff;
+    padding: 10px 10px;
+    text-align: left;
+    margin-top: 13px;
+}
+
+.ad-header-txt {
+    margin: 15px 0;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 25px;
+}
+
+.share-ads {
+    background: #6A6A6A;
+    height: 50px;
+    width: 50px;
+    float: left;
+   margin-left: 10px;
+}
+
+.share-me {
+    color: #fff;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.other-google {
+    background: #6A6A6A;
+    height: 150px;
+    width: 260px;
+    margin: auto;
+    margin-top: 25px;
+}
+

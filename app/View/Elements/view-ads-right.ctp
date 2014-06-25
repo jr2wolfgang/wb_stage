@@ -1,5 +1,5 @@
 <div class="small-12 large-3 columns v-right-sidebar">
-	<div class="three-col">
+	<div class="three-col"> 
 		<div class="btn-section">
 			<a href="#" class="button expand">Im Interested</a>
 			<a href="#" class="button expand">Send Message</a>
