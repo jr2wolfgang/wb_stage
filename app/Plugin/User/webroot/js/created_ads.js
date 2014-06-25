@@ -153,7 +153,15 @@ ignore: [],
   }        
  }});
 
-$('.redactor_redactor.redactor_desc').hover(function() {    this.focus();}, function() {    this.blur();}).keydown(function(e) {	 $('.error.desc').remove();   	if ($.trim($(this).text()).length < 150) {    	var $error = '<label class="error desc" for="form-field-price">';	$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';	$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';	$(this).after($error);   	}});
+$('.redactor_redactor.redactor_desc').hover(function() { 
+   this.focus();}, function() {    this.blur();}).keydown(function(e) {	
+    $('.error.desc').remove();   	
+    if ($.trim($(this).text()).length < 150) {    	
+    	var $error = '<label class="error desc" for="form-field-price">';	
+    	$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';	
+    	$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';	
+    	$(this).after($error);   	
+   }});
 
 $('#AdNewAdForm,#AdEditForm').submit(function(e){				 $('.error.image,.error.desc').remove();				if ($.trim($('.redactor_redactor.redactor_desc').text()).length < 150) {		 						var $error = '<label class="error desc" for="form-field-price">';				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';				$error += '<span class="lighter">Please Enter Atleast 150 characters.</span></label>';				$('.redactor_redactor.redactor_desc').after($error);				e.preventDefault();			}		if ($('.selected_img').length < 3) {				var $error = '<label class="error image" for="AdSelectedImg">';				$error += '<i class="ace-icon fa fa-times bigger-130 red"></i>';				$error += '<span class="lighter">Must atleast 3 image(s) for this Ad</span></label>';				$('#AdSelectedImg').after($error);				e.preventDefault();		}		});
 

@@ -32,7 +32,7 @@ class AdminsController extends AdminAppController  {
 		  	'recursive' => -1,
 		    'conditions' => $conditions,
 		    'group' => array('Ad.id'),
-		    'order' => array('Ad.id DESC'),
+		     'order' => array('Ad.id' => 'DESC'),
 		    'limit' => '5'
 		);
 

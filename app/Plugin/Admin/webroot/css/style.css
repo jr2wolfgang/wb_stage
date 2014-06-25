@@ -18,7 +18,60 @@
 label.error {
     margin: 0 15px;
 }
-
-.img-container img {
+.img-container {
+    margin-bottom: 3px;
+}
+.img-container img,.other_pics img {
     width: 100%;
+}
+.other_pics {
+    float: left;
+    margin: 1px;
+    max-height: 75px;
+    max-width: 83px;
+    overflow: hidden;
+}
+
+.profile-info-value.description {
+    max-width: 281px;
+}
+.profile-info-value.description img {
+    width: 100%;
+}
+
+.jqibox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.jqi {
+    background: none repeat scroll 0 0 #fff;
+    padding: 10px;
+}
+.jqiclose {
+    float: right;
+    font-size: 22px;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+}
+.jqimessage {
+    margin: 22px 0;
+}
+
+.jqibutton.jqidefaultbutton {
+background: none repeat scroll 0 0 #87b87f;
+    border: medium none;
+    color: #fff;
+    margin-right: 12px;
+    padding: 4px 13px;
+}
+.jqibutton {
+    background: none repeat scroll 0 0 #d15b47;
+    border: medium none;
+    color: #fff;
+    padding: 4px;
+}
+
+td.publish {
+    text-align: center;
 }
