@@ -415,3 +415,7 @@ section.row {
     width:100% !important;
     text-align:left !important;
 }
+
+.modal-content {
+    left: -15% !important;
+}

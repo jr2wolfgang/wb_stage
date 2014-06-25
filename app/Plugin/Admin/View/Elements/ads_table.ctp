@@ -18,17 +18,17 @@
             	<i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
             </td>
             <td class="">
-            	fsdff
+            
+                Price: <?php echo $adslist['Ad']['discount_price']?> php <br/>
+            </td>
+            <td class="publish">
+               <?php echo ($adslist['Ad']['is_published'] == '1') ? '<i class="ace-icon fa fa-check bigger-110" title="publish"></i>' : '<i class="ace-icon fa fa-exclamation-triangle red bigger-130" title="Need Review"></i> ';  ?>
             </td>
             <td class="">
-                sadfa
-            </td>
-            <td class="">
-                sadfa
+                 <?php echo $this->Time->timeAgoInWords($adslist['Ad']['created']); ?>
             </td>
               <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('controller' => 'ads','action' => 'view', $adslist['Ad']['id'])); ?> |
-                <?php echo $this->Html->link(__('Edit'), array('controller' => 'ads','action' => 'edit', $adslist['Ad']['id'])); ?> |
+                <?php echo $this->Html->link(__('Review'), array('controller' => 'ads','action' => 'view', $adslist['Ad']['id'])); ?> |
                 <?php echo $this->Form->postLink(__('Delete'), array('controller' => 'ads','action' => 'delete', $adslist['Ad']['id']), array(), __('Are you sure you want to delete # %s?', $adslist['Ad']['id'])); ?>
             </td>
         </tr>

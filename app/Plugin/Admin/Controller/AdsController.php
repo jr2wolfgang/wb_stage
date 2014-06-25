@@ -31,7 +31,7 @@ class AdsController extends AdminAppController {
 		  	'recursive' => -1,
 		    'conditions' => $conditions,
 		    'group' => array('Ad.id'),
-		    'order' => array('Ad.id DESC'),
+		    'order' => array('Ad.id' => 'DESC'),
 		    'limit' => '5'
 		);
 
@@ -64,20 +64,52 @@ class AdsController extends AdminAppController {
 		
 		$ads = $this->Ad;
 
-		$ads->bind(array('Image','User','PrimaryImage'));
+		$ads->bind(array('Image','User','PrimaryImage','Address','Map'));
 		
 		if(empty($this->data)) {
+			
 			$ads = $ads->findById($id);
 			
 			
 			if ( empty($this->request->data['User']['avatar']) ){
 				$this->request->data['User']['avatar'] = $imgFolder.'default-avatar.png';
 			}
-			
+
 
 			$this->set(compact('ads'));
 
 			
 		}	
+	}
+
+	public function review($id = null, $action = null) {
+
+		if (!empty($id) && $action = 'approved') {
+			$this->Ad->id = $id;
+			if ($this->Ad->saveField('is_published', '1')) {
+				$this->Session->setFlash(__('The ads has been Approved.'),'success');
+
+				$this->redirect(array('action' => 'index'));
+
+			}
+
+		}
+		if (!empty($id) && $action = 'reject') {
+			
+			$this->Ad->id = $id;
+
+			if ($this->Ad->saveField('is_published', '0')) {
+				
+			$this->Session->setFlash(__('The ads has been Rejected.'),'error');
+
+
+			$this->redirect(array('action' => 'index'));
+
+			}
+
+		} 
+
+		exit();
+
 	}	
 }

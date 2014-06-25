@@ -7,6 +7,7 @@
 		</small>
 	</h1>
 </div>
+
 <div class="users index">
 	<?php echo $this->Html->link('<i class="ace-icon fa fa-plus align-top bigger-125"></i> Create New ADS',array('controller' => 'ads','action' => 'new_ad'),array('class'=>'btn btn-info create-ad-btn','escape' => FALSE)); ?>
 	<div class="row">

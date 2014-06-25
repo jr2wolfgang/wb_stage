@@ -1,0 +1,1 @@
+ALTER TABLE `ads` CHANGE `is_published` `is_published` SMALLINT(6) NOT NULL DEFAULT '0';
